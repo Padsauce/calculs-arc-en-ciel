@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Administrateurs : comptes Google autorisés à supprimer n'importe quel score ou photo.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['amarck.pro@gmail.com'];
+    }
+
+    // Scores : tout le monde lit ; chaque appareil (connexion anonyme) ajoute les siens ;
+    // seul l'appareil qui a fait le score, ou un administrateur, peut le supprimer.
+    match /scores/{scoreId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid', 'pid', 'name', 'avatar', 'level', 'dur', 'time', 'points', 'errors', 'good', 'date'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 16
+        && request.resource.data.level in ['add', 'sub', 'mix1', 'mul', 'mix2']
+        && request.resource.data.dur in ['pts10', 't15', 't30', 't60']
+        && request.resource.data.time is int && request.resource.data.time >= 0 && request.resource.data.time <= 86400000
+        && request.resource.data.points is int && request.resource.data.points >= 0 && request.resource.data.points <= 1000
+        && request.resource.data.errors is int && request.resource.data.errors >= 0;
+      allow update: if false;
+      allow delete: if request.auth != null && (resource.data.uid == request.auth.uid || isAdmin());
+    }
+
+    // Photos rendues publiques par leur propriétaire (document "<uid>_<profil>").
+    match /avatars/{avatarId} {
+      allow read: if true;
+      allow create, update: if request.auth != null
+        && avatarId.split('_')[0] == request.auth.uid
+        && request.resource.data.keys().hasOnly(['img', 'updated'])
+        && request.resource.data.img is string
+        && request.resource.data.img.size() < 60000
+        && request.resource.data.img.matches('data:image/jpeg;base64,.*');
+      allow delete: if request.auth != null && (avatarId.split('_')[0] == request.auth.uid || isAdmin());
+    }
+  }
+}
