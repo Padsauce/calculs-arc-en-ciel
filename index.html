@@ -640,7 +640,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Padsauce</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 18</p>
+      <p class="credits-ver" id="credVer">Version 19</p>
     </div>
   </div>
 </div>
@@ -758,7 +758,7 @@ const FB = { apiKey: 'AIzaSyBeJ7xPDxAI_RtIlZHe3_2wmCJWoF1fReE', authDomain: 'cal
 const ADMINS = ['amarck.pro@gmail.com'];
 const FB_VER = '10.12.2';
 const fbReady = () => !!(FB.apiKey && FB.projectId);
-let fb = null, fbAdmin = null, syncing = false;
+let fb = null, fbAdmin = null, syncing = false, sharedErr = '';
 let remoteState = fbReady() ? 'idle' : 'failed';   // idle (connecting) | ok | off (offline) | failed (cannot load)
 let remote = [], publicPhotos = {};
 K.remote = 'cae.remote'; K.admin = 'cae.admin';
@@ -808,8 +808,11 @@ async function initShared() {
     await loadFirebase();
     const app = appNamed('[DEFAULT]') || firebase.initializeApp(FB);
     const auth = app.auth(), db = app.firestore();
+    // Some browsers and networks (Brave shields, school or office filters) block Firestore's streaming connection:
+    // let the SDK fall back to long polling on its own.
+    try { db.settings({ experimentalAutoDetectLongPolling: true, merge: true }); } catch (e) {}
     const u = (await firstUser(auth)) || (await auth.signInAnonymously()).user;
-    fb = { app, db, uid: u.uid };
+    fb = { app, db, uid: u.uid }; sharedErr = "";
     db.collection('scores').orderBy('date', 'desc').limit(3000).onSnapshot(snap => {
       const out = []; snap.forEach(d => { const x = fromDoc(d.id, d.data()); if (x) out.push(x); });
       remote = out; remoteState = 'ok'; store.set(K.remote, remote); refreshViews();
@@ -821,9 +824,11 @@ async function initShared() {
     if (store.get(K.admin, false)) restoreAdmin();
     syncPending(); syncAvatars();
   } catch (e) {
-    remoteState = 'failed'; refreshViews();
+    sharedErr = (e && (e.code || e.message)) || 'erreur'; remoteState = fbReady() ? 'off' : 'failed'; refreshViews();
+    setTimeout(() => { if (!fb) initShared(); }, 20000);
   }
 }
+setInterval(() => { if (fb && pendingCount()) syncPending(); }, 30000);
 function withTimeout(pr, ms) { return Promise.race([pr, new Promise((_, rej) => setTimeout(() => rej({ code: 'timeout' }), ms))]); }
 async function syncPending() {
   if (!fb || syncing) return;
@@ -969,7 +974,11 @@ function bestPane() {
   const pane = el('div', 'pane');
   // Row 1: label, coloured mode pill, link. Row 2: the level name in its colour, full width.
   const head = el('div', 'panel-head'), t = el('div', 'ph-title'), top = el('div', 'ph-top');
-  const lab = el('span', 'label'); lab.textContent = sharedOn() ? 'Tous les joueurs' : 'Meilleurs scores';
+  const lab = el('span', 'label');
+  const pend = pendingCount();
+  lab.textContent = !sharedOn() ? 'Meilleurs scores' : 'Tous les joueurs'
+    + (remoteState === 'off' ? ' · ⚠️ hors ligne' : remoteState === 'idle' ? ' · connexion…' : '')
+    + (pend ? ' · ⏳ ' + pend + ' à envoyer' : '');
   const pill = el('span', 'mode-pill'); pill.textContent = d.label; pill.style.setProperty('--c', d.color);
   const link = el('button', 'link'); link.type = 'button'; link.dataset.board = '1'; link.textContent = 'Tout voir';
   top.append(lab, pill, link);
@@ -1752,7 +1761,7 @@ function renderShare() {
   if (panel.hidden) return;
   const pend = pendingCount();
   const state = { ok: 'à jour', off: 'hors ligne', idle: 'connexion…' }[remoteState] || '';
-  $('#shareStatus').textContent = 'Tous les joueurs · ' + state + (pend ? ' · ' + pend + ' score' + (pend > 1 ? 's' : '') + ' à envoyer' : '');
+  $('#shareStatus').textContent = 'Tous les joueurs · ' + state + (pend ? ' · ' + pend + ' score' + (pend > 1 ? 's' : '') + ' à envoyer' : '') + (sharedErr && remoteState !== 'ok' ? ' · (' + sharedErr + ')' : '');
   $('#shareHelp').textContent = 'Tu peux supprimer tes propres scores avec 🗑.' + (fbAdmin ? ' Mode administrateur : tous les scores peuvent être supprimés.' : '');
   $('#adminBtn').textContent = fbAdmin ? 'Administrateur : ' + fbAdmin.email + ' · se déconnecter' : 'Connexion administrateur';
 }
