@@ -233,6 +233,32 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 @keyframes pop{0%{opacity:0;transform:scale(.4) rotate(-6deg)}18%{opacity:1;transform:scale(1.12) rotate(2deg)}32%{transform:scale(1) rotate(0)}72%{opacity:1}100%{opacity:0;transform:translateY(-34px) scale(1.04)}}
 @keyframes bad{0%{opacity:0;transform:scale(.7)}15%{opacity:1;transform:scale(1.05)}25%{transform:translateX(-8px)}35%{transform:translateX(8px)}45%{transform:translateX(0)}75%{opacity:1}100%{opacity:0;transform:translateY(16px)}}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:29}
+.intro{justify-content:center}
+.intro-in{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;padding-block:8px}
+.intro-hero{font-size:clamp(44px,8vh,72px);line-height:1;animation:float 2.4s ease-in-out infinite alternate;filter:drop-shadow(0 8px 16px rgba(255,121,214,.5))}
+.intro-logo{flex:none;font-size:clamp(32px,min(10vw,6vh),54px)}
+.intro-lead{margin:0;font-size:16px;font-weight:700;color:var(--mist);text-wrap:balance}
+.intro-rules{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;text-align:left;width:100%}
+.intro-rules li{display:flex;gap:12px;align-items:center;padding:8px 12px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid var(--line)}
+.intro-rules span{font-size:26px;flex:none}
+.intro-rules p{margin:0;font-size:14.5px;line-height:1.3}
+.intro-rules b{color:var(--gold)}
+#introBtn{width:100%;margin-top:4px}
+.opt-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid var(--line)}
+.opt-ico{font-size:24px}
+.opt-label{flex:1;font-weight:800;font-size:18px}
+.switch{width:58px;height:34px;border-radius:999px;background:rgba(255,255,255,.18);position:relative;transition:background .2s}
+.switch i{position:absolute;top:4px;left:4px;width:26px;height:26px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.switch[aria-checked="true"]{background:linear-gradient(90deg,#ff9ad8,#a99bff)}
+.switch[aria-checked="true"] i{transform:translateX(24px)}
+.credits{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.credits-title{margin:0;font-family:var(--f-display);font-weight:800;font-size:22px}
+.credits ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.credits li{display:flex;gap:10px;align-items:center}
+.credits li > span:first-child{font-size:26px}
+.credits li b{display:block;font-size:17px}
+.credits li small{color:var(--mist);font-size:13.5px}
+.credits-ver{margin:0;color:var(--mist);font-size:12px}
 .bust{position:fixed;left:0;right:0;bottom:0;height:66%;z-index:27;pointer-events:none}
 .bust::before{content:"";position:absolute;left:50%;bottom:6%;width:min(95vw,560px);aspect-ratio:1;transform:translateX(-50%);
   background:radial-gradient(circle,rgba(255,154,216,.55),rgba(114,241,255,.22) 42%,transparent 68%)}
@@ -405,12 +431,27 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 
 <main class="app" lang="fr">
   <!-- MENU -->
+  <section id="intro" class="screen intro" aria-label="Bienvenue" hidden>
+    <div class="intro-in">
+      <div class="intro-hero" aria-hidden="true">🦄</div>
+      <h1 class="logo intro-logo">Calculs<br><span class="holo-text">Arc-en-ciel</span></h1>
+      <p class="intro-lead">Le jeu de calcul mental pailleté. Entraîne-toi en t’amusant&nbsp;!</p>
+      <ul class="intro-rules">
+        <li><span aria-hidden="true">🧮</span><p>Réponds aux calculs avec le pavé. Pas besoin de valider&nbsp;: chaque chiffre tapé compte tout de suite.</p></li>
+        <li><span aria-hidden="true">✨</span><p>Bonne réponse&nbsp;: <b>+1&nbsp;point</b>. Erreur&nbsp;: <b>−1&nbsp;point</b> (jamais sous zéro), et on passe à la suivante.</p></li>
+        <li><span aria-hidden="true">⏱️</span><p>Atteins <b>10&nbsp;points</b> le plus vite possible, ou fais un maximum de points en <b>15&nbsp;s, 30&nbsp;s ou 1&nbsp;min</b>.</p></li>
+        <li><span aria-hidden="true">🌈</span><p>5 niveaux, des additions aux 4 opérations. Bats tes records pour une fête encore plus folle&nbsp;!</p></li>
+      </ul>
+      <button id="introBtn" class="start" type="button">Créer mon profil</button>
+    </div>
+  </section>
+
   <section id="menu" class="screen" aria-label="Menu principal">
    <div class="menu-inner" id="menuInner">
     <header class="brand">
       <h1 class="logo">Calculs<br><span class="holo-text">Arc-en-ciel</span></h1>
       <span class="mascot" aria-hidden="true">🦄</span>
-      <button id="soundBtn" class="icon-btn" type="button" aria-label="Couper le son">🔊</button>
+      <button id="optBtn" class="icon-btn" type="button" aria-label="Options et crédits">☰</button>
     </header>
 
     <button id="playerCard" class="player" type="button"></button>
@@ -581,6 +622,28 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
   </div>
 </div>
 
+<div class="sheet" id="optSheet" hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="optTitle">
+    <div class="sheet-top">
+      <h3 id="optTitle">Options</h3>
+      <button class="close" type="button" id="optClose" aria-label="Fermer">✕</button>
+    </div>
+    <div class="opt-row">
+      <span class="opt-ico" aria-hidden="true">🔊</span>
+      <span class="opt-label">Son</span>
+      <button class="switch" id="soundSwitch" type="button" role="switch" aria-checked="true" aria-label="Son"><i></i></button>
+    </div>
+    <div class="credits">
+      <span class="label">Crédits</span>
+      <p class="credits-title">Calculs <span class="holo-text">Arc-en-ciel</span></p>
+      <ul>
+        <li><span aria-hidden="true">🦄</span><span><b>Padsauce</b><small>Idée, conception et tests</small></span></li>
+        <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
+      </ul>
+      <p class="credits-ver" id="credVer">Version 18</p>
+    </div>
+  </div>
+</div>
 <div class="bust" id="bust" aria-hidden="true" hidden></div>
 <div class="starwrap" id="starWrap" aria-hidden="true" hidden></div>
 <div class="bravo" id="bravo" aria-hidden="true" hidden></div>
@@ -894,7 +957,7 @@ function renderRows(ol, list, { limit = 10, hi = null, emptyText = '', del = fal
 }
 
 /* ---------- screens ---------- */
-const SCREENS = ['menu', 'game', 'win', 'board'];
+const SCREENS = ['intro', 'menu', 'game', 'win', 'board'];
 function show(id) {
   SCREENS.forEach(s => { $('#' + s).hidden = s !== id; });
   if (id === 'menu') fitMenu();
@@ -964,9 +1027,6 @@ function renderMenu(dir = 0) {
   document.querySelectorAll('.lvl').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.level === level)));
   document.querySelectorAll('#durs .dur').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.dur === dur)));
   $('#rules').textContent = (d.sec ? 'Un maximum de points en ' + d.label + '.' : 'Atteins 10 points le plus vite possible.') + ' Bonne réponse +1, erreur −1 (jamais sous zéro).';
-  const sb = $('#soundBtn');
-  sb.textContent = soundOn ? '🔊' : '🔇';
-  sb.setAttribute('aria-label', soundOn ? 'Couper le son' : 'Activer le son');
   fitMenu();
 }
 MODES.forEach(m => {
@@ -990,7 +1050,12 @@ DURS.forEach(d => {
   });
   $('#durs').appendChild(b);
 });
-$('#soundBtn').addEventListener('click', () => { soundOn = !soundOn; store.set(K.sound, soundOn); renderMenu(); if (soundOn) sfxGood(); });
+function renderOpts() { const sw = $('#soundSwitch'); sw.setAttribute('aria-checked', String(soundOn)); sw.previousElementSibling.textContent = soundOn ? 'Son activé' : 'Son coupé'; sw.parentElement.firstElementChild.textContent = soundOn ? '🔊' : '🔇'; }
+$('#optBtn').addEventListener('click', () => { renderOpts(); $('#optSheet').hidden = false; });
+$('#optClose').addEventListener('click', () => { $('#optSheet').hidden = true; });
+$('#optSheet').addEventListener('click', e => { if (e.target.id === 'optSheet') $('#optSheet').hidden = true; });
+$('#soundSwitch').addEventListener('click', () => { soundOn = !soundOn; store.set(K.sound, soundOn); renderOpts(); if (soundOn) sfxGood(); });
+$('#introBtn').addEventListener('click', () => openEditor(null));
 $('#playerCard').addEventListener('click', openWho);
 $('#startBtn').addEventListener('click', startGame);
 $('#bestSlider').addEventListener('click', e => { if (e.target.closest('[data-board]')) openBoard(); });
@@ -1371,6 +1436,7 @@ pad.addEventListener('click', e => {
   flashKey(b.dataset.k); press(b.dataset.k);
 });
 addEventListener('keydown', e => {
+  if (!$('#optSheet').hidden) { if (e.key === 'Escape') $('#optSheet').hidden = true; return; }
   if (!$('#sheet').hidden) { if (e.key === 'Escape') closeSheet(); return; }
   if ($('#game').hidden) return;
   if (e.key === 'Escape') { quitGame(); return; }
@@ -1703,7 +1769,7 @@ function openWho() {
   if (!profiles.length) { openEditor(null); return; }
   renderWho(); whoP.hidden = false; editP.hidden = true; sheet.hidden = false;
 }
-function closeSheet() { sheet.hidden = true; }
+function closeSheet() { sheet.hidden = true; if (profiles.length && !$('#intro').hidden) { renderMenu(); show('menu'); } }
 function renderWho() {
   const ul = $('#whoList'); ul.textContent = '';
   profiles.forEach(p => {
@@ -1831,7 +1897,7 @@ $('#delBtn').addEventListener('click', () => {
   profiles = profiles.filter(p => p.id !== draft.id); store.set(K.profiles, profiles);
   if (currentId === draft.id) { currentId = profiles[0] ? profiles[0].id : null; store.set(K.current, currentId); }
   renderMenu();
-  if (profiles.length) { renderWho(); whoP.hidden = false; editP.hidden = true; } else closeSheet();
+  if (profiles.length) { renderWho(); whoP.hidden = false; editP.hidden = true; } else { closeSheet(); show('intro'); }
 });
 sheet.addEventListener('click', e => { if (e.target === sheet || e.target.closest('[data-close]')) closeSheet(); });
 
@@ -1847,7 +1913,7 @@ for (let i = 0; i < 30; i++) {
 }
 
 renderMenu();
-show('menu');
+show(profiles.length ? 'menu' : 'intro');
 initShared();
 })();
 </script>
