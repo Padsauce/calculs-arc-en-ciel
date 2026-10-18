@@ -745,7 +745,9 @@ function levelScores(l, d = 'pts10', src = allScores()) {
 const ordinal = n => n === 1 ? '1re' : n + 'e';
 // Lists come sorted best-first, so the first entry seen for each player is their best.
 // Players are matched by first name, so the same child counts once across devices.
-function pkey(s) { const p = profiles.find(x => x.id === s.pid); return String((p ? p.name : s.name) || '').trim().toLowerCase(); }
+// A score belongs to a local profile only if it was made on this device (same anonymous id, or not sent yet).
+function localProfile(s) { if (s.uid && typeof fb !== 'undefined' && fb && s.uid !== fb.uid) return null; return profiles.find(x => x.id === s.pid) || null; }
+function pkey(s) { const p = localProfile(s); return String((p ? p.name : s.name) || '').trim().toLowerCase(); }
 function bestPerPlayer(list) {
   const seen = new Set();
   return list.filter(s => { const k = pkey(s); if (seen.has(k)) return false; seen.add(k); return true; });
@@ -929,7 +931,7 @@ function renderRows(ol, list, { limit = 10, hi = null, emptyText = '', del = fal
   if (hiIdx >= limit) shown = shown.slice(0, limit - 1).concat([list[hiIdx]]);
   shown.forEach(s => {
     const i = list.indexOf(s);
-    const p = profiles.find(x => x.id === s.pid);
+    const p = localProfile(s);
     const name = p ? p.name : s.name;
     const li = el('li', 'row' + (s.id === hi ? ' me' : ''));
     const rk = el('span', 'rank' + (i < 3 ? ' r' + (i + 1) : '')); rk.textContent = i + 1;
