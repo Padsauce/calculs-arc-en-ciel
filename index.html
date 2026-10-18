@@ -640,7 +640,8 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Padsauce</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 19</p>
+      <p class="credits-ver" id="credVer">Version 20</p>
+      <p class="credits-ver" id="diag"></p>
     </div>
   </div>
 </div>
@@ -793,7 +794,7 @@ const emoteOf = p => p && p.avatar && p.avatar.kind === 'emoji' ? p.avatar.i : (
 function toDoc(s) {
   const p = profiles.find(x => x.id === s.pid);
   return {
-    uid: fb.uid, pid: String(s.pid || '').slice(0, 40), name: String((p ? p.name : s.name) || '?').slice(0, 16),
+    uid: (fb.app.auth().currentUser || {}).uid || fb.uid, pid: String(s.pid || '').slice(0, 40), name: String((p ? p.name : s.name) || '?').slice(0, 16),
     avatar: emoteOf(p), level: s.level, dur: durOf(s),
     time: Math.round(s.time || 0), points: Math.round(s.points || 0), errors: Math.round(s.errors || 0), good: Math.round(s.good || 0), date: Math.round(s.date || Date.now())
   };
@@ -832,14 +833,25 @@ async function initShared() {
 }
 setInterval(() => { if (fb && pendingCount()) syncPending(); }, 30000);
 function withTimeout(pr, ms) { return Promise.race([pr, new Promise((_, rej) => setTimeout(() => rej({ code: 'timeout' }), ms))]); }
+let lastSync = '';
 async function syncPending() {
   if (!fb || syncing) return;
   syncing = true; let changed = false;
   try {
     for (const s of scores.filter(x => !x.sent)) {
-      try { await withTimeout(fb.db.collection('scores').doc(s.id).set(toDoc(s)), 12000); s.sent = true; s.uid = fb.uid; changed = true; }
+      const ref = fb.db.collection('scores').doc(s.id);
+      try { await withTimeout(ref.set(toDoc(s)), 12000); s.sent = true; s.uid = fb.uid; changed = true; lastSync = 'envoyé ✓'; }
       catch (e) {
-        if (e && e.code === 'permission-denied') { s.sent = true; s.uid = fb.uid; changed = true; continue; } // already there, or refused for good
+        lastSync = 'échec : ' + ((e && e.code) || 'erreur');
+        if (e && e.code === 'permission-denied') {
+          // Only drop the pending flag if the score really is on the server; otherwise keep it and retry later.
+          let there = false;
+          try { const d = await withTimeout(ref.get({ source: 'server' }), 8000); there = d.exists; } catch (e2) {}
+          if (there) { s.sent = true; s.uid = fb.uid; changed = true; lastSync = 'déjà envoyé ✓'; continue; }
+          s.tries = (s.tries || 0) + 1; changed = true;
+          try { const cu = fb.app.auth().currentUser; if (cu) { await cu.getIdToken(true); fb.uid = cu.uid; } } catch (e3) {}
+        }
+        sharedErr = (e && e.code) || 'erreur';
         remoteState = remoteState === 'ok' ? 'ok' : 'off'; break;
       }
     }
@@ -1062,7 +1074,12 @@ DURS.forEach(d => {
   $('#durs').appendChild(b);
 });
 function renderOpts() { const sw = $('#soundSwitch'); sw.setAttribute('aria-checked', String(soundOn)); sw.previousElementSibling.textContent = soundOn ? 'Son activé' : 'Son coupé'; sw.parentElement.firstElementChild.textContent = soundOn ? '🔊' : '🔇'; }
-$('#optBtn').addEventListener('click', () => { renderOpts(); $('#optSheet').hidden = false; });
+function renderDiag() {
+  const mine = sharedOn() ? scores.filter(x => !x.sent).length : 0;
+  const st = !fbReady() ? 'scores locaux' : !fb ? 'pas connecté' + (sharedErr ? ' (' + sharedErr + ')' : '') : remoteState === 'ok' ? 'connecté' : 'hors ligne';
+  $('#diag').textContent = 'Serveur : ' + st + (fb ? ' · appareil ' + String(fb.uid).slice(0, 6) : '') + ' · ' + mine + ' en attente' + (lastSync ? ' · dernier envoi ' + lastSync : '');
+}
+$('#optBtn').addEventListener('click', () => { renderOpts(); renderDiag(); $('#optSheet').hidden = false; });
 $('#optClose').addEventListener('click', () => { $('#optSheet').hidden = true; });
 $('#optSheet').addEventListener('click', e => { if (e.target.id === 'optSheet') $('#optSheet').hidden = true; });
 $('#soundSwitch').addEventListener('click', () => { soundOn = !soundOn; store.set(K.sound, soundOn); renderOpts(); if (soundOn) sfxGood(); });
@@ -1763,7 +1780,7 @@ function renderShare() {
   if (panel.hidden) return;
   const pend = pendingCount();
   const state = { ok: 'à jour', off: 'hors ligne', idle: 'connexion…' }[remoteState] || '';
-  $('#shareStatus').textContent = 'Tous les joueurs · ' + state + (pend ? ' · ' + pend + ' score' + (pend > 1 ? 's' : '') + ' à envoyer' : '') + (sharedErr && remoteState !== 'ok' ? ' · (' + sharedErr + ')' : '');
+  $('#shareStatus').textContent = 'Tous les joueurs · ' + state + (pend ? ' · ' + pend + ' score' + (pend > 1 ? 's' : '') + ' à envoyer' : '') + (sharedErr && (remoteState !== 'ok' || pend) ? ' · (' + sharedErr + ')' : '');
   $('#shareHelp').textContent = 'Tu peux supprimer tes propres scores avec 🗑.' + (fbAdmin ? ' Mode administrateur : tous les scores peuvent être supprimés.' : '');
   $('#adminBtn').textContent = fbAdmin ? 'Administrateur : ' + fbAdmin.email + ' · se déconnecter' : 'Connexion administrateur';
 }
