@@ -483,12 +483,14 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .mini-box::after{content:"FIGURINE";position:absolute;bottom:5px;font-size:9px;font-weight:800;letter-spacing:.1em;color:var(--plum)}
 
 /* trading card */
-.tcard{--rc:#cfd6e6;--h:280;position:relative;width:100%;aspect-ratio:63/88;border-radius:6%/4.3%;padding:3.2%;
+.tcard{--rc:#cfd6e6;--h:280;position:relative;display:block;width:100%;aspect-ratio:63/88;border-radius:6%/4.3%;
   background:linear-gradient(160deg,color-mix(in srgb,var(--rc) 85%,#fff),var(--rc) 40%,color-mix(in srgb,var(--rc) 55%,#1b0f3d));
-  box-shadow:0 8px 20px rgba(0,0,0,.4);container-type:inline-size;overflow:hidden;isolation:isolate;text-align:left;display:flex;flex-direction:column;min-height:0;height:auto}
+  box-shadow:0 8px 20px rgba(0,0,0,.4);overflow:hidden;isolation:isolate;text-align:left}
+/* The wrapper is the size container: the frame inset and all text sizes follow the card width (cqw), so the frame is the same on every side whatever the browser. */
+.tcw{container-type:inline-size;width:100%;display:block}
 .tcard.r4{background:conic-gradient(from var(--a),#ffd86b,#fff3b0,#ffb36b,#ffd86b,#fff3b0,#ffd86b);animation:spin 5s linear infinite}
 .tcard.r3{box-shadow:0 8px 20px rgba(0,0,0,.4),0 0 16px color-mix(in srgb,var(--rc) 60%,transparent)}
-.tc-in{position:relative;flex:1;min-height:0;border-radius:4.5%/3.2%;background:linear-gradient(180deg,#2b1b5c,#1b1040);display:flex;flex-direction:column;overflow:hidden}
+.tc-in{position:absolute;inset:3.2cqw;border-radius:4.5%/3.2%;background:linear-gradient(180deg,#2b1b5c,#1b1040);display:flex;flex-direction:column;overflow:hidden}
 .tc-top{display:flex;align-items:center;justify-content:space-between;padding:2.5cqw 4cqw 1.5cqw;font-weight:800;font-size:5.6cqw;color:var(--mist);font-variant-numeric:tabular-nums}
 .tc-top .tico{font-size:6.4cqw;line-height:1}
 .tc-art{position:relative;margin:0 3.5cqw;aspect-ratio:1.36;border-radius:3cqw;overflow:hidden;
@@ -552,7 +554,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .new-tag{position:absolute;left:50%;top:-8px;transform:translateX(-50%);z-index:9;padding:2px 8px;border-radius:99px;background:linear-gradient(90deg,#ffd86b,#ff9ad8);color:#3a1660;font-weight:800;font-size:11.5px;letter-spacing:.06em;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.35)}
 
 /* card detail sheet */
-.card-sheet .tcard{width:min(78vw,320px);margin:0 auto;flex:none}
+.card-sheet .tcw{width:min(78vw,320px);margin:0 auto;flex:none}
 .ghost[disabled]{opacity:.45}
 .card-info{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
 .card-info span{padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.08);font-weight:800;font-size:14px}
@@ -2415,7 +2417,8 @@ function cardNode(c, opts = {}) {
   card.appendChild(inn);
   if (fx) { card.appendChild(el('div', 'tc-fx')); if (opts.tag) { const t = el('span', 'fx-tag'); t.textContent = FX[fx]; card.appendChild(t); } }
   card.setAttribute('role', 'img'); card.setAttribute('aria-label', 'Carte ' + c.no + ', ' + c.name + ', ' + RARITY[c.r].name);
-  return card;
+  const wrap = el('div', 'tcw'); wrap.appendChild(card);
+  return wrap;
 }
 function figNode(f, opts = {}) {
   const st = el('div', 'fig-stage'); st.style.setProperty('--rc', RARITY[f.r].color);
