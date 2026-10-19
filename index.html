@@ -728,6 +728,8 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .pl-figs{display:flex;flex-wrap:wrap;gap:6px;font-size:26px;justify-content:center}
 .pl-figs .off{filter:brightness(0) opacity(.3)}
 .card-sheet > .tcw{width:min(78vw,320px);margin:0 auto;flex:none}
+.update-toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 14px);transform:translateX(-50%);z-index:60;padding:10px 18px;border-radius:999px;
+  background:linear-gradient(90deg,#ff9ad8,#ffd86b,#9dffb0,#72f1ff);color:#3a1660;font-weight:800;font-size:16px;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.4);animation:gainIn .4s cubic-bezier(.2,1.6,.4,1) both}
 </style>
 
 </head>
@@ -972,13 +974,14 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 23</p>
+      <p class="credits-ver" id="credVer">Version 24</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
 </div>
 <div class="sheet" id="cardSheet" hidden><div class="sheet-card card-sheet" id="cardSheetIn" role="dialog" aria-modal="true"></div></div>
 <div class="opener" id="opener" hidden></div>
+<div class="update-toast" id="updateToast" hidden><span>✨</span> Nouvelle version, mise à jour…</div>
 <div class="bust" id="bust" aria-hidden="true" hidden></div>
 <div class="starwrap" id="starWrap" aria-hidden="true" hidden></div>
 <div class="bravo" id="bravo" aria-hidden="true" hidden></div>
@@ -1351,6 +1354,7 @@ function renderRows(ol, list, { limit = 10, hi = null, emptyText = '', del = fal
 /* ---------- screens ---------- */
 const SCREENS = ['intro', 'menu', 'game', 'win', 'board', 'coll'];
 function show(id) {
+  if (id === 'menu' || id === 'board' || id === 'coll') setTimeout(() => { try { applyUpdateIfIdle(); } catch (e) {} }, 500);
   SCREENS.forEach(s => { $('#' + s).hidden = s !== id; });
   if (id === 'menu') fitMenu();
 }
@@ -1903,6 +1907,7 @@ function finish() {
   show('win');
   // A record, or a score close to the best a person can do, gets the full record celebration.
   celebrate(mode.tier, isRecord || excellent, gain, isRecord ? null : 'Score exceptionnel' + NB + '!', zero ? 0 : score);
+  checkUpdate();
 }
 
 /* ---------- 3D bust, shown for a mega score (80 % of the human best or more) ---------- */
@@ -2108,7 +2113,7 @@ function parade(n, giants) {
   if (giants >= 1) send(runner('🦄', false, { giant: true, dur: 5 }), 1500);
   if (giants >= 2) send(runner('🐎', true, { giant: true, dur: 4.5 }), 4200);
 }
-$('#retryBtn').addEventListener('click', () => { clearCelebration(); startGame(); });
+$('#retryBtn').addEventListener('click', () => { clearCelebration(); if (updateReady) { renderMenu(); show('menu'); return; } startGame(); });
 $('#menuBtn').addEventListener('click', () => { clearCelebration(); renderMenu(); show('menu'); });
 
 /* ---------- leaderboard ---------- */
@@ -3084,6 +3089,33 @@ document.querySelectorAll('#boardKind .dur').forEach(b => b.addEventListener('cl
 renderMenu();
 show(profiles.length ? 'menu' : 'intro');
 setTimeout(maybeClaim, 800);
+
+/* ---------- Updates: version.json (next to index.html) holds the number of the version online.
+   When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
+const APP_VERSION = 24;
+let updateReady = 0;
+// The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
+const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
+async function checkUpdate() {
+  if (location.protocol === 'file:' || updateReady) return;
+  try {
+    const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) return;
+    const v = Number((await r.json()).v) || 0;
+    if (v > APP_VERSION && v > askedVersion) { updateReady = v; applyUpdateIfIdle(); }
+  } catch (e) {}
+}
+function applyUpdateIfIdle() {
+  if (!updateReady) return;
+  const busy = !$('#game').hidden || !$('#win').hidden || !$('#opener').hidden || !$('#sheet').hidden || !$('#cardSheet').hidden || syncing;
+  if (busy) return;
+  $('#updateToast').hidden = false;
+  // A new address (?v=…) makes the browser fetch the page again instead of reusing its cached copy.
+  setTimeout(() => location.replace(location.pathname + '?v=' + updateReady), 1200);
+}
+setTimeout(checkUpdate, 4000);
+setInterval(checkUpdate, 5 * 60 * 1000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) checkUpdate(); });
 initShared();
 })();
 </script>
