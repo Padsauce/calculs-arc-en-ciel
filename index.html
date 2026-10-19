@@ -485,10 +485,10 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 /* trading card */
 .tcard{--rc:#cfd6e6;--h:280;position:relative;width:100%;aspect-ratio:63/88;border-radius:6%/4.3%;padding:3.2%;
   background:linear-gradient(160deg,color-mix(in srgb,var(--rc) 85%,#fff),var(--rc) 40%,color-mix(in srgb,var(--rc) 55%,#1b0f3d));
-  box-shadow:0 8px 20px rgba(0,0,0,.4);container-type:inline-size;overflow:hidden;isolation:isolate;text-align:left}
+  box-shadow:0 8px 20px rgba(0,0,0,.4);container-type:inline-size;overflow:hidden;isolation:isolate;text-align:left;display:flex;flex-direction:column;min-height:0;height:auto}
 .tcard.r4{background:conic-gradient(from var(--a),#ffd86b,#fff3b0,#ffb36b,#ffd86b,#fff3b0,#ffd86b);animation:spin 5s linear infinite}
 .tcard.r3{box-shadow:0 8px 20px rgba(0,0,0,.4),0 0 16px color-mix(in srgb,var(--rc) 60%,transparent)}
-.tc-in{position:relative;height:100%;border-radius:4.5%/3.2%;background:linear-gradient(180deg,#2b1b5c,#1b1040);display:flex;flex-direction:column;overflow:hidden}
+.tc-in{position:relative;flex:1;min-height:0;border-radius:4.5%/3.2%;background:linear-gradient(180deg,#2b1b5c,#1b1040);display:flex;flex-direction:column;overflow:hidden}
 .tc-top{display:flex;align-items:center;justify-content:space-between;padding:2.5cqw 4cqw 1.5cqw;font-weight:800;font-size:5.6cqw;color:var(--mist);font-variant-numeric:tabular-nums}
 .tc-top .tico{font-size:6.4cqw;line-height:1}
 .tc-art{position:relative;margin:0 3.5cqw;aspect-ratio:1.36;border-radius:3cqw;overflow:hidden;
@@ -513,7 +513,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .stars i{font-style:normal;color:rgba(255,255,255,.2);text-shadow:none}
 .tc-type{display:flex;align-items:center;gap:1.5cqw;margin:1.5cqw 4cqw 0;font-size:3.9cqw;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--mist);line-height:1.1}
 .tc-type span:first-child{font-size:5.6cqw}
-.tc-desc{margin:1.6cqw 4cqw 3cqw;font-size:4.9cqw;line-height:1.25;color:#efe6ff;flex:1;overflow:hidden}
+.tc-desc{margin:1.6cqw 4cqw 3cqw;font-size:4.9cqw;line-height:1.25;color:#efe6ff;flex:1;min-height:0;overflow:hidden}
 .tc-rar{font-size:4.2cqw;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--rc)}
 /* effects added by merging duplicates */
 .tc-fx{position:absolute;inset:0;pointer-events:none;z-index:5;border-radius:inherit}
@@ -538,14 +538,15 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .slot{position:relative;content-visibility:auto;contain-intrinsic-size:auto 150px}
 .slot .tcard{box-shadow:0 4px 10px rgba(0,0,0,.35)}
 .slot.mini .tc-desc,.slot.mini .tc-type{display:none}
-.slot.mini .tcard{aspect-ratio:auto}
-.slot.mini .tc-in{padding-bottom:4cqw}
+.slot.mini .tc-art{aspect-ratio:1.02}
+.slot.mini .tc-meta{margin-top:auto;margin-bottom:5cqw}
+.slot.mini .tc-rar{display:none}
 .slot.mini .tc-name{font-size:9.5cqw;margin-top:3cqw;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .slot.mini .stars{font-size:8.5cqw}
 .slot.mini .tc-top{font-size:8cqw}
 .slot.mini .tc-top .tico{font-size:9cqw}
 .slot .cnt{position:absolute;right:-3px;top:-5px;z-index:8;min-width:24px;height:24px;padding:0 6px;border-radius:99px;background:var(--rose);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.4)}
-.empty-slot{width:100%;aspect-ratio:63/80;border-radius:8px;border:2px dashed rgba(255,255,255,.18);background:rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:rgba(255,255,255,.35);font-weight:800}
+.empty-slot{width:100%;aspect-ratio:63/88;border-radius:8px;border:2px dashed rgba(255,255,255,.18);background:rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:rgba(255,255,255,.35);font-weight:800}
 .empty-slot b{font-size:22px}
 .empty-slot small{font-size:12px;font-variant-numeric:tabular-nums}
 .new-tag{position:absolute;left:50%;top:-8px;transform:translateX(-50%);z-index:9;padding:2px 8px;border-radius:99px;background:linear-gradient(90deg,#ffd86b,#ff9ad8);color:#3a1660;font-weight:800;font-size:11.5px;letter-spacing:.06em;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.35)}
@@ -660,6 +661,22 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .gains .gift{font-weight:800;font-size:14px;color:var(--gold);width:100%;text-align:center;animation:gainIn .5s cubic-bezier(.2,1.6,.4,1) both}
 @keyframes gainIn{from{transform:scale(0);opacity:0}}
 @media (prefers-reduced-motion: reduce){.tcard.r4,.fx3,.fig-emo,.box3d,.pack,.big-pack{animation:none!important}}
+
+/* card book: one chapter per type, then a grid split by rarity */
+.chapters{display:grid;gap:8px}
+.chapter{display:flex;align-items:center;gap:12px;width:100%;padding:10px 14px;border-radius:20px;text-align:left;
+  background:linear-gradient(100deg,hsl(var(--h) 60% 45% / .35),rgba(255,255,255,.05));border:1px solid var(--line)}
+.chapter .ci{font-size:30px;width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:rgba(255,255,255,.12);flex:none}
+.chapter .cm{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.chapter b{font-family:var(--f-display);font-size:17px;line-height:1.1}
+.chapter .bar{height:8px}
+.chapter .cn{font-weight:800;font-size:14px;color:var(--mist);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chapter .go{font-size:20px;color:var(--mist)}
+.chap-head{display:flex;align-items:center;gap:10px}
+.chap-head h3{flex:1;margin:0;font-family:var(--f-display);font-weight:800;font-size:20px;line-height:1.1}
+.rar-head{display:flex;align-items:center;gap:8px;margin:6px 2px -2px;font-weight:800;font-size:14px;color:var(--rc)}
+.rar-head .stars{font-size:13px}
+.rar-head small{margin-left:auto;color:var(--mist);font-size:13px}
 </style>
 
 </head>
@@ -2445,38 +2462,64 @@ function renderShop(body, w) {
   body.appendChild(earn);
 }
 function renderBook(body, w) {
-  const head = el('div', 'book-head');
   const n = owned(w);
-  const pr = el('div', 'progress'); const t = el('span'); t.textContent = n + ' / ' + CARDS.length;
-  const bar = el('div', 'bar'); const fill = el('i'); fill.style.width = (n / CARDS.length * 100) + '%'; bar.appendChild(fill);
-  pr.append(t, bar);
+  if (!bookType) {
+    // Chapters: one per type, so nobody has to scroll through 500 cards.
+    const pr = el('div', 'progress'); const t = el('span'); t.textContent = n + ' / ' + CARDS.length + ' cartes';
+    const bar = el('div', 'bar'); const fill = el('i'); fill.style.width = (n / CARDS.length * 100) + '%'; bar.appendChild(fill); pr.append(t, bar);
+    const list = el('div', 'chapters');
+    Object.entries(TYPES).forEach(([k, v]) => {
+      const all = CARDS.filter(c => c.t === k), got = all.filter(c => w.cards[c.no]).length;
+      const ch = el('button', 'chapter'); ch.type = 'button'; ch.style.setProperty('--h', v.hue);
+      const ci = el('span', 'ci'); ci.textContent = v.ico;
+      const cm = el('span', 'cm'); const nm = el('b'); nm.textContent = v.name;
+      const br = el('span', 'bar'); const f = el('i'); f.style.width = (got / all.length * 100) + '%'; br.appendChild(f); cm.append(nm, br);
+      const cn = el('span', 'cn'); cn.textContent = got + ' / ' + all.length;
+      const go = el('span', 'go'); go.textContent = '›';
+      ch.append(ci, cm, cn, go);
+      ch.addEventListener('click', () => { bookType = k; renderColl(); $('#coll').scrollTop = 0; });
+      list.appendChild(ch);
+    });
+    body.append(pr, list);
+    return;
+  }
+  const v = TYPES[bookType], all = CARDS.filter(c => c.t === bookType);
+  const head = el('div', 'chap-head');
+  const back = el('button', 'quit'); back.type = 'button'; back.textContent = '← Chapitres';
+  back.addEventListener('click', () => { bookType = ''; renderColl(); $('#coll').scrollTop = 0; });
+  const h = el('h3'); h.textContent = v.ico + ' ' + v.name;
+  head.append(back, h);
   const fl = el('div', 'filters');
-  const chip = (label, val) => { const b = el('button', 'fchip'); b.type = 'button'; b.textContent = label; b.setAttribute('aria-pressed', String(bookType === val)); b.addEventListener('click', () => { bookType = val; renderColl(); }); return b; };
-  fl.appendChild(chip('Tous les types', ''));
-  Object.entries(TYPES).forEach(([k, v]) => fl.appendChild(chip(v.ico + ' ' + v.short, k)));
-  const mine = el('button', 'fchip'); mine.type = 'button'; mine.textContent = '✓ Les miennes'; mine.setAttribute('aria-pressed', String(bookMine));
-  mine.addEventListener('click', () => { bookMine = !bookMine; renderColl(); }); fl.prepend(mine);
-  head.append(pr, fl);
-  body.appendChild(head);
-  const grid = el('div', 'grid');
-  CARDS.forEach(c => {
-    if (bookType && c.t !== bookType) return;
-    const have = w.cards[c.no];
-    if (bookMine && !have) return;
-    const s = el('button', 'slot mini'); s.type = 'button';
-    if (have) {
-      s.appendChild(cardNode(c, { fx: have[1] }));
-      if (have[0] > 1) { const k = el('span', 'cnt'); k.textContent = '×' + have[0]; s.appendChild(k); }
-      s.addEventListener('click', () => openCard(c));
-      s.setAttribute('aria-label', c.name);
-    } else {
-      const e = el('div', 'empty-slot'); const b = el('b'); b.textContent = '?'; const sm = el('small'); sm.textContent = '#' + String(c.no).padStart(3, '0');
-      e.append(b, sm); s.appendChild(e); s.disabled = true; s.setAttribute('aria-label', 'Carte ' + c.no + ' pas encore trouvée');
-    }
-    grid.appendChild(s);
+  const opt = (label, val) => { const b = el('button', 'fchip'); b.type = 'button'; b.textContent = label; b.setAttribute('aria-pressed', String(bookMine === val)); b.addEventListener('click', () => { bookMine = val; renderColl(); }); return b; };
+  const got = all.filter(c => w.cards[c.no]).length;
+  fl.append(opt('Toutes (' + all.length + ')', false), opt('✓ Les miennes (' + got + ')', true));
+  body.append(head, fl);
+  let shown = 0;
+  [4, 3, 2, 1, 0].forEach(r => {
+    const cards = all.filter(c => c.r === r && (!bookMine || w.cards[c.no]));
+    if (!cards.length) return;
+    const rh = el('div', 'rar-head'); rh.style.setProperty('--rc', RARITY[r].color);
+    const nm = el('span'); nm.textContent = RARITY[r].name + 's';
+    const sm = el('small'); sm.textContent = all.filter(c => c.r === r && w.cards[c.no]).length + ' / ' + all.filter(c => c.r === r).length;
+    rh.append(stars(r), nm, sm);
+    const grid = el('div', 'grid');
+    cards.forEach(c => {
+      const have = w.cards[c.no];
+      const s = el('button', 'slot mini'); s.type = 'button';
+      if (have) {
+        s.appendChild(cardNode(c, { fx: have[1] }));
+        if (have[0] > 1) { const k = el('span', 'cnt'); k.textContent = '×' + have[0]; s.appendChild(k); }
+        s.addEventListener('click', () => openCard(c));
+        s.setAttribute('aria-label', c.name);
+      } else {
+        const e = el('div', 'empty-slot'); const b = el('b'); b.textContent = '?'; const sm2 = el('small'); sm2.textContent = '#' + String(c.no).padStart(3, '0');
+        e.append(b, sm2); s.appendChild(e); s.disabled = true; s.setAttribute('aria-label', 'Carte ' + c.no + ' pas encore trouvée');
+      }
+      grid.appendChild(s); shown++;
+    });
+    body.append(rh, grid);
   });
-  if (!grid.children.length) { const p = el('p', 'shop-note'); p.textContent = 'Aucune carte ici pour l’instant. Ouvre des sachets dans la boutique' + NB + '!'; body.appendChild(p); }
-  body.appendChild(grid);
+  if (!shown) { const p = el('p', 'shop-note'); p.textContent = 'Aucune carte de ce type pour l’instant. Ouvre des sachets dans la boutique' + NB + '!'; body.appendChild(p); }
 }
 function renderShelf(body, w) {
   const got = FIGS.filter(f => w.figs[f.id]).length;
@@ -2633,7 +2676,7 @@ function revealCards(o, rays, drawn) {
     drawn.forEach(d => { const s = el('div', 'slot mini'); s.appendChild(cardNode(d.c)); if (d.isNew) { const nt = el('span', 'new-tag'); nt.textContent = 'NEW'; s.appendChild(nt); } g.appendChild(s); });
     const acts = el('div', 'op-actions'); const ok = el('button', 'start'); ok.type = 'button'; ok.textContent = 'Super' + NB + '!';
     ok.addEventListener('click', closeOpener);
-    const bk = el('button', 'ghost'); bk.type = 'button'; bk.textContent = 'Voir mon carnet'; bk.addEventListener('click', () => { collTab = 'book'; closeOpener(); });
+    const bk = el('button', 'ghost'); bk.type = 'button'; bk.textContent = 'Voir mon carnet'; bk.addEventListener('click', () => { collTab = 'book'; bookType = ''; closeOpener(); });
     acts.append(ok, bk);
     o.append(t, g, acts);
   };
