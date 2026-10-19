@@ -973,7 +973,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 25</p>
+      <p class="credits-ver" id="credVer">Version 26</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -997,6 +997,10 @@ const rnd = n => Math.floor(Math.random() * n);
 const pick = a => a[rnd(a.length)];
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+/* Real time: serverOffset corrects the device clock with the web server's clock (Date header of version.json),
+   so changing the date of the phone does not change the day used for daily gifts and the daily leaderboard. */
+let serverOffset = 0, timeSynced = false;
+const nowMs = () => Date.now() + serverOffset;
 
 /* ---------- storage ---------- */
 const store = {
@@ -1141,14 +1145,16 @@ function toDoc(s) {
   return {
     uid: (fb.app.auth().currentUser || {}).uid || fb.uid, pid: String(s.pid || '').slice(0, 40), name: String((p ? p.name : s.name) || '?').slice(0, 16),
     avatar: emoteOf(p), level: s.level, dur: durOf(s),
-    time: Math.round(s.time || 0), points: Math.round(s.points || 0), errors: Math.round(s.errors || 0), good: Math.round(s.good || 0), date: Math.round(s.date || Date.now())
+    time: Math.round(s.time || 0), points: Math.round(s.points || 0), errors: Math.round(s.errors || 0), good: Math.round(s.good || 0),
+    // The date is set by the server when the score arrives.
+    date: window.firebase && firebase.firestore && firebase.firestore.FieldValue ? firebase.firestore.FieldValue.serverTimestamp() : Math.round(s.date || nowMs())
   };
 }
 function fromDoc(id, d) {
   if (!d || typeof d.name !== 'string' || !MODES.some(m => m.id === d.level) || !DURS.some(x => x.id === d.dur)) return null;
   const n = v => Number(v) || 0;
   return { id, uid: String(d.uid || ''), pid: String(d.pid || ''), name: d.name.slice(0, 16), avatar: n(d.avatar), level: d.level, dur: d.dur,
-    time: n(d.time), points: n(d.points), errors: n(d.errors), good: n(d.good), date: n(d.date) };
+    time: n(d.time), points: n(d.points), errors: n(d.errors), good: n(d.good), date: d.date && typeof d.date.toMillis === 'function' ? d.date.toMillis() : n(d.date) };
 }
 async function initShared() {
   if (!fbReady()) return;
@@ -1162,7 +1168,7 @@ async function initShared() {
     const u = (await firstUser(auth)) || (await auth.signInAnonymously()).user;
     fb = { app, db, uid: u.uid }; sharedErr = "";
     db.collection('scores').orderBy('date', 'desc').limit(3000).onSnapshot(snap => {
-      const out = []; snap.forEach(d => { const x = fromDoc(d.id, d.data()); if (x) out.push(x); });
+      const out = []; snap.forEach(d => { const x = fromDoc(d.id, d.data({ serverTimestamps: 'estimate' })); if (x) out.push(x); });
       remote = out; remoteState = 'ok'; store.set(K.remote, remote); refreshViews();
     }, () => { if (remoteState !== 'ok') remoteState = 'off'; refreshViews(); });
     db.collection('hidden').onSnapshot(snap => {
@@ -1750,11 +1756,20 @@ function countShow(s, go) {
   void n.offsetWidth; n.classList.add('pop');
   sfxBeep(go);
 }
+// Time since GO: the larger of the page clock and the wall clock, so time spent outside the app still counts
+// and putting the device clock back does not shorten a game.
+function elapsedMs() { return Math.max(performance.now() - G.t0, Date.now() - G.w0); }
 function beginPlay() {
   $('#count').hidden = true; stage.classList.remove('counting');
   G.q = makeQuestion(G.level, null); G.typed = ''; renderQ();
-  G.t0 = performance.now(); G.active = true;
-  if (G.dur.sec) { const run = G.run; setTimeout(() => { if (G.run === run && G.active) timeUp(); }, G.dur.sec * 1000); }
+  G.t0 = performance.now(); G.w0 = Date.now(); G.active = true;
+  if (G.dur.sec) {
+    const run = G.run;
+    const tick = setInterval(() => {
+      if (G.run !== run || !G.active) { clearInterval(tick); return; }
+      if (elapsedMs() >= G.dur.sec * 1000) { clearInterval(tick); timeUp(); }
+    }, 200);
+  }
 }
 function timeUp() {
   G.active = false;
@@ -1775,6 +1790,7 @@ function renderAnswer() {
 }
 function press(k) {
   if (!G.active || !G.q) return;
+  if (G.dur && G.dur.sec && elapsedMs() >= G.dur.sec * 1000) { timeUp(); return; }
   const exp = String(G.q.r), t = G.typed + k;
   if (exp.startsWith(t)) {
     if (t === exp) correct(); else { G.typed = t; renderAnswer(); }
@@ -1854,11 +1870,11 @@ addEventListener('keydown', e => {
 function finish() {
   G.active = false; releaseWake();
   const d = G.dur, timed = !!d.sec;
-  const ms = timed ? d.sec * 1000 : Math.round(performance.now() - G.t0);
+  const ms = timed ? d.sec * 1000 : Math.round(elapsedMs());
   const p = current(), mode = modeById(G.level);
   const before = levelScores(mode.id, d.id);
   const prevBest = before[0];
-  const rec = { id: uid(), pid: p.id, name: p.name, level: mode.id, dur: d.id, time: ms, points: G.score, errors: G.errors, good: G.good, date: Date.now() };
+  const rec = { id: uid(), pid: p.id, name: p.name, level: mode.id, dur: d.id, time: ms, points: G.score, errors: G.errors, good: G.good, date: nowMs() };
   rec.sent = false;
   const prevMine = before.find(s => pkey(s) === pkey(rec));
   const better = (a, b) => timed ? a.points > b.points : a.time < b.time;
@@ -2376,7 +2392,7 @@ const CUR_NAMES = { g: 'jetons dorés', r: 'jetons arc-en-ciel', m: 'gemmes' };
 K.coll = 'cae.coll';
 let colls = store.get(K.coll, {}); if (!colls || typeof colls !== 'object' || Array.isArray(colls)) colls = {};
 const saveColl = () => { store.set(K.coll, colls); try { pushCollections(); } catch (e) {} };
-const today = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
+const today = () => dayKey(nowMs());
 function wallet(p = current()) {
   if (!p) return null;
   let w = colls[p.id];
@@ -2844,7 +2860,7 @@ function dailyBoard(day, fair = false) {
 }
 function msToMidnight() {
   // Next Paris midnight, found by stepping forward until the Paris day changes.
-  const now = Date.now(), today = dayKey(now);
+  const now = nowMs(), today = dayKey(now);
   let lo = now, hi = now + 26 * 3600e3;
   while (hi - lo > 60e3) { const mid = (lo + hi) / 2; if (dayKey(mid) === today) lo = mid; else hi = mid; }
   return hi - now;
@@ -2854,7 +2870,7 @@ const ordinalF = (n, p) => n === 1 ? accord(p, '1er', '1re', '1er·ère') : n + 
 /* rewards, granted once per profile and per finished day (last 7 days), when fresh scores are loaded */
 function claimDailyRewards() {
   if (fbReady() && remoteState !== 'ok' && remoteState !== 'failed') return;
-  const now = Date.now(), todayK = dayKey(now), won = [];
+  const now = nowMs(), todayK = dayKey(now), won = [];
   const days = [];
   for (let i = 1; i <= 7; i++) { const k = dayKey(now - i * 86400e3); if (k !== todayK && !days.includes(k)) days.push(k); }
   profiles.forEach(p => {
@@ -2926,7 +2942,7 @@ function dailyRows(ol, list, hiKey) {
 }
 function renderDaily() {
   const box = $('#dailyBox'); box.textContent = '';
-  const today = dayKey(Date.now()), list = dailyBoard(today);
+  const today = dayKey(nowMs()), list = dailyBoard(today);
   const p = current(), myKey = p ? String(p.name).trim().toLowerCase() : '';
   const info = el('div', 'daily-info');
   const ms = msToMidnight(), hh = Math.floor(ms / 3600e3), mm = Math.floor(ms % 3600e3 / 60e3);
@@ -2940,7 +2956,7 @@ function renderDaily() {
   box.append(info, panel);
   const me = list.findIndex(e => e.key === myKey);
   if (me >= 20) { const pl = el('p', 'board-mode'); pl.style.fontSize = '16px'; pl.textContent = 'Toi : ' + ordinalF(me + 1, p) + ' avec ' + list[me].pts + ' points'; box.appendChild(pl); }
-  const yk = dayKey(Date.now() - 86400e3), y = dailyBoard(yk, true).slice(0, 3);
+  const yk = dayKey(nowMs() - 86400e3), y = dailyBoard(yk, true).slice(0, 3);
   if (y.length) {
     const yh = el('p', 'daily-yh'); yh.textContent = 'Podium d’hier';
     const yp = el('div', 'panel board-list'); const yol = el('ol', 'rows'); yp.appendChild(yol); dailyRows(yol, y, myKey);
@@ -2948,7 +2964,7 @@ function renderDaily() {
   }
 }
 function dailyGainLine(rec) {
-  const today = dayKey(Date.now()), list = dailyBoard(today), k = pkey(rec);
+  const today = dayKey(nowMs()), list = dailyBoard(today), k = pkey(rec);
   const i = list.findIndex(e => e.key === k);
   if (i < 0) return null;
   const s = el('span', 'gift'); s.textContent = '☀️ +' + dayPoints(rec) + ' points du jour · ' + ordinalF(i + 1, current()) + ' aujourd’hui';
@@ -3032,7 +3048,7 @@ function openPlayer(key, s, keepAll) {
   const sc = el('div', 'pl-score'); sc.innerHTML = '<span></span><small>score global</small>'; sc.firstChild.textContent = g.pts;
   const pod = el('div', 'pl-pod'); pod.textContent = '🥇 ' + g.podium[0] + '   🥈 ' + g.podium[1] + '   🥉 ' + g.podium[2];
   hm.append(nm, pod); hero.append(aw, hm, sc);
-  const today = dailyBoard(dayKey(Date.now())), di = today.findIndex(e => e.key === key);
+  const today = dailyBoard(dayKey(nowMs())), di = today.findIndex(e => e.key === key);
   const dline = el('p', 'help'); dline.textContent = di >= 0 ? '☀️ Aujourd’hui : ' + (di ? (di + 1) + 'e' : '1re') + ' place du classement du jour (' + today[di].pts + ' pts)' : '☀️ Pas encore joué aujourd’hui';
   // positions in the 20 boards
   const grid = el('div', 'rank-grid');
@@ -3079,7 +3095,8 @@ let claimMark = '';
 function maybeClaim() {
   if (!$('#game').hidden || !$('#opener').hidden) return;
   if (fbReady() && remoteState !== 'ok' && remoteState !== 'failed') return;
-  const k = dayKey(Date.now()); if (k === claimMark) return;
+  if (!timeSynced && location.protocol !== 'file:') return;
+  const k = dayKey(nowMs()); if (k === claimMark) return;
   claimMark = k; claimDailyRewards();
 }
 setInterval(maybeClaim, 60000);
@@ -3091,17 +3108,19 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 25;
+const APP_VERSION = 26;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
 async function checkUpdate() {
-  if (location.protocol === 'file:' || updateReady) return;
+  if (location.protocol === 'file:') return;
   try {
     const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
     if (!r.ok) return;
+    const hd = Date.parse(r.headers.get('Date') || '');
+    if (hd) { const off = hd + 500 - Date.now(); serverOffset = Math.abs(off) < 90e3 ? 0 : off; if (!timeSynced) { timeSynced = true; try { maybeClaim(); } catch (e) {} } }
     const v = Number((await r.json()).v) || 0;
-    if (v > APP_VERSION && v > askedVersion) { updateReady = v; applyUpdateIfIdle(); }
+    if (!updateReady && v > APP_VERSION && v > askedVersion) { updateReady = v; applyUpdateIfIdle(); }
   } catch (e) {}
 }
 function applyUpdateIfIdle() {
@@ -3112,12 +3131,11 @@ function applyUpdateIfIdle() {
   // A new address (?v=…) makes the browser fetch the page again instead of reusing its cached copy.
   setTimeout(() => location.replace(location.pathname + '?v=' + updateReady), 1200);
 }
-setTimeout(checkUpdate, 4000);
+setTimeout(checkUpdate, 300);
 setInterval(checkUpdate, 5 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) checkUpdate(); });
 initShared();
 })();
 </script>
-
 </body>
 </html>
