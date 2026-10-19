@@ -38,5 +38,16 @@ service cloud.firestore {
         && request.resource.data.img.matches('data:image/jpeg;base64,.*');
       allow delete: if request.auth != null && (avatarId.split('_')[0] == request.auth.uid || isAdmin());
     }
+
+    // Joueurs cachés par un administrateur (document = nom du joueur en minuscules).
+    // Tout le monde lit la liste pour filtrer le tableau ; seuls les administrateurs la modifient.
+    match /hidden/{hiddenId} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['name', 'by', 'date'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 16;
+      allow delete: if isAdmin();
+    }
   }
 }

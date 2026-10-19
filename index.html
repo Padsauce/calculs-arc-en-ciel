@@ -361,6 +361,10 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .rowdel{height:30px;min-width:30px;border-radius:999px;font-size:14px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-weight:800}
 .rowdel.armed{background:var(--rose);color:#2a0612;font-size:12px;padding:0 6px;min-width:44px}
 .rowdel.ghost-del{visibility:hidden}
+.row.can-del.can-hide{grid-template-columns:32px 36px minmax(0,1fr) auto 34px 34px}
+.row.is-hidden{opacity:.55}
+.row.is-hidden .nm small::before{content:'caché · ';color:var(--rose);font-weight:800}
+.rowhide.on{background:var(--rose);color:#2a0612}
 .admin-row{display:flex;flex-direction:column;align-items:center;gap:4px}
 .admin-row .textbtn{font-size:13px;opacity:.75}
 .privacy{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
@@ -640,7 +644,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 21</p>
+      <p class="credits-ver" id="credVer">Version 22</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -763,14 +767,22 @@ const FB_VER = '10.12.2';
 const fbReady = () => !!(FB.apiKey && FB.projectId);
 let fb = null, fbAdmin = null, syncing = false, sharedErr = '';
 let remoteState = fbReady() ? 'idle' : 'failed';   // idle (connecting) | ok | off (offline) | failed (cannot load)
-let remote = [], publicPhotos = {};
+let remote = [], publicPhotos = {}, hiddenNames = new Set();
+K.hidden = 'cae.hidden';
+{ const h = store.get(K.hidden, []); if (Array.isArray(h)) hiddenNames = new Set(h); }
+/* Hidden players (set by an admin): their scores are left out for everyone except their own device. */
+const hkey = s => String(s.name || '').trim().toLowerCase();
+const hiddenId = name => encodeURIComponent(name).slice(0, 200);
+const ownScore = s => !s.uid || (!!fb && s.uid === fb.uid) || scores.some(x => x.id === s.id);
+const isHiddenScore = s => hiddenNames.has(hkey(s));
 K.remote = 'cae.remote'; K.admin = 'cae.admin';
 if (fbReady()) { const c = store.get(K.remote, null); if (Array.isArray(c)) remote = c; }
 const sharedOn = () => fbReady() && remoteState !== 'failed';
 function allScores() {
   if (!sharedOn()) return scores;
   const ids = new Set(remote.map(s => s.id));
-  return remote.concat(scores.filter(s => !s.sent && !ids.has(s.id)));
+  const vis = fbAdmin ? remote : remote.filter(s => !isHiddenScore(s) || ownScore(s));
+  return vis.concat(scores.filter(s => !s.sent && !ids.has(s.id)));
 }
 const pendingCount = () => sharedOn() ? scores.filter(s => !s.sent).length : 0;
 function refreshViews() {
@@ -820,6 +832,10 @@ async function initShared() {
       const out = []; snap.forEach(d => { const x = fromDoc(d.id, d.data()); if (x) out.push(x); });
       remote = out; remoteState = 'ok'; store.set(K.remote, remote); refreshViews();
     }, () => { if (remoteState !== 'ok') remoteState = 'off'; refreshViews(); });
+    db.collection('hidden').onSnapshot(snap => {
+      const out = new Set(); snap.forEach(d => { const v = d.data(); if (v && typeof v.name === 'string') out.add(v.name); });
+      hiddenNames = out; store.set(K.hidden, [...out]); refreshViews();
+    }, () => {});
     db.collection('avatars').onSnapshot(snap => {
       const out = {}; snap.forEach(d => { const v = d.data(); if (v && typeof v.img === 'string' && v.img.indexOf('data:image/') === 0) out[d.id] = v.img; });
       publicPhotos = out; refreshViews();
@@ -878,6 +894,16 @@ async function deleteScore(s) {
   scores = scores.filter(x => x.id !== s.id); store.set(K.scores, scores);
   remote = remote.filter(x => x.id !== s.id); store.set(K.remote, remote);
   refreshViews(); return '';
+}
+
+async function setHidden(s, hide) {
+  if (!fbAdmin) return 'Réservé aux administrateurs.';
+  const name = hkey(s); if (!name) return '';
+  const ref = fbAdmin.db.collection('hidden').doc(hiddenId(name));
+  try { await withTimeout(hide ? ref.set({ name, by: fbAdmin.email, date: Date.now() }) : ref.delete(), 12000); }
+  catch (e) { return e && e.code === 'permission-denied' ? 'Refusé par le serveur : mets à jour les règles Firestore.' : 'Pas de connexion : réessaie quand tu es en ligne.'; }
+  if (hide) hiddenNames.add(name); else hiddenNames.delete(name);
+  store.set(K.hidden, [...hiddenNames]); refreshViews(); return '';
 }
 
 /* Admin sign-in (Google), kept apart from the device's anonymous identity. */
@@ -957,6 +983,21 @@ function renderRows(ol, list, { limit = 10, hi = null, emptyText = '', del = fal
     aw.appendChild(avatarNode(av, name));
     if (i === 0) { const c = el('span', 'crown'); c.textContent = '👑'; c.setAttribute('aria-hidden', 'true'); aw.appendChild(c); }
     li.append(rk, aw, nm, tm);
+    if (del && fbAdmin && sharedOn() && s.uid) {
+      const hid = isHiddenScore(s);
+      if (hid) li.classList.add('is-hidden');
+      li.classList.add('can-hide');
+      const hb = el('button', 'rowdel rowhide' + (hid ? ' on' : '')); hb.type = 'button';
+      hb.textContent = hid ? '🙈' : '👁';
+      hb.title = hid ? 'Joueur caché aux autres : toucher pour le montrer' : 'Cacher ce joueur aux autres';
+      hb.setAttribute('aria-label', (hid ? 'Montrer ' : 'Cacher ') + name);
+      hb.addEventListener('click', async () => {
+        hb.disabled = true; hb.textContent = '…';
+        const err = await setHidden(s, !hid);
+        if (err) { hb.disabled = false; hb.textContent = hid ? '🙈' : '👁'; boardMsg(err); }
+      });
+      li.appendChild(hb);
+    }
     if (del) {
       li.classList.add('can-del');
       const db = el('button', 'rowdel'); db.type = 'button';
@@ -1781,7 +1822,7 @@ function renderShare() {
   const pend = pendingCount();
   const state = { ok: 'à jour', off: 'hors ligne', idle: 'connexion…' }[remoteState] || '';
   $('#shareStatus').textContent = 'Tous les joueurs · ' + state + (pend ? ' · ' + pend + ' score' + (pend > 1 ? 's' : '') + ' à envoyer' : '') + (sharedErr && (remoteState !== 'ok' || pend) ? ' · (' + sharedErr + ')' : '');
-  $('#shareHelp').textContent = 'Tu peux supprimer tes propres scores avec 🗑.' + (fbAdmin ? ' Mode administrateur : tous les scores peuvent être supprimés.' : '');
+  $('#shareHelp').textContent = 'Tu peux supprimer tes propres scores avec 🗑.' + (fbAdmin ? ' Mode administrateur : tous les scores peuvent être supprimés. 👁 cache un joueur aux autres (il continue de voir ses scores sur son appareil) ; 🙈 le montre à nouveau.' : '');
   $('#adminBtn').textContent = fbAdmin ? 'Administrateur : ' + fbAdmin.email + ' · se déconnecter' : 'Connexion administrateur';
 }
 let boardMsgT = 0;
