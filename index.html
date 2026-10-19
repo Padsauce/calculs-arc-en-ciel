@@ -556,7 +556,6 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .new-tag{position:absolute;left:50%;top:-8px;transform:translateX(-50%);z-index:9;padding:2px 8px;border-radius:99px;background:linear-gradient(90deg,#ffd86b,#ff9ad8);color:#3a1660;font-weight:800;font-size:11.5px;letter-spacing:.06em;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.35)}
 
 /* card detail sheet */
-.card-sheet .tcw{width:min(78vw,320px);margin:0 auto;flex:none}
 .ghost[disabled]{opacity:.45}
 .card-info{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
 .card-info span{padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.08);font-weight:800;font-size:14px}
@@ -974,7 +973,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 24</p>
+      <p class="credits-ver" id="credVer">Version 25</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -3092,7 +3091,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 24;
+const APP_VERSION = 25;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
