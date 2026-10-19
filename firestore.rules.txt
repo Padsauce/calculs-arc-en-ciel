@@ -22,7 +22,9 @@ service cloud.firestore {
         && request.resource.data.dur in ['pts10', 't15', 't30', 't60']
         && request.resource.data.time is int && request.resource.data.time >= 0 && request.resource.data.time <= 86400000
         && request.resource.data.points is int && request.resource.data.points >= 0 && request.resource.data.points <= 1000
-        && request.resource.data.errors is int && request.resource.data.errors >= 0;
+        && request.resource.data.errors is int && request.resource.data.errors >= 0
+        // Depuis la v26, la date du score est l'heure du serveur (impossible de la changer depuis le téléphone).
+        && request.resource.data.date == request.time;
       allow update: if false;
       allow delete: if request.auth != null && (resource.data.uid == request.auth.uid || isAdmin());
     }
