@@ -691,6 +691,43 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .card-back{height:0!important;padding-top:139.683%;position:relative}
 .card-back::after{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
 .empty-slot::before{content:'';position:absolute;inset:0;border-radius:inherit;border:2px dashed rgba(255,255,255,.18)}
+/* ---------- daily leaderboard ---------- */
+#boardKind .dur{font-size:15px}
+.daily-box{display:flex;flex-direction:column;gap:10px}
+.daily-info{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:20px;background:linear-gradient(110deg,rgba(255,216,107,.18),rgba(255,154,216,.12));border:1px solid rgba(255,216,107,.35)}
+.daily-time{font-family:var(--f-display);font-weight:800;font-size:18px;color:var(--gold)}
+.daily-info p{margin:0;color:var(--mist);font-size:13.5px;line-height:1.35}
+.daily-rw{display:flex;flex-wrap:wrap;gap:6px}
+.daily-rw span{font-weight:800;font-size:13px;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.22)}
+.daily-yh{margin:6px 4px -4px;font-family:var(--f-display);font-weight:800;font-size:17px;color:var(--mist)}
+.daily-win{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;max-width:360px;animation:cardIn .6s cubic-bezier(.2,1.4,.4,1) both}
+.daily-medal{font-size:min(30vw,120px);line-height:1;filter:drop-shadow(0 8px 18px rgba(255,216,107,.6));animation:float 1.4s ease-in-out infinite alternate}
+.daily-win h3{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(26px,8vw,34px)}
+.daily-win p{margin:4px 0 0;font-size:17px;font-weight:700}
+.daily-win .gains .cur{animation:none}
+/* ---------- player card ---------- */
+.rows .row.tap{cursor:pointer}
+.rows .row.tap:active{background:rgba(255,255,255,.08)}
+.pl-hero{display:flex;align-items:center;gap:12px;padding:12px;border-radius:20px;background:linear-gradient(110deg,rgba(255,154,216,.18),rgba(114,241,255,.1));border:1px solid var(--line)}
+.pl-hero .av{width:58px;height:58px;font-size:34px}
+.pl-hero .avwrap.sun::before{inset:-9px}
+.pl-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.pl-meta b{font-family:var(--f-display);font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-pod{font-weight:800;font-size:14px;white-space:pre}
+.pl-score{display:flex;flex-direction:column;align-items:center;line-height:1}
+.pl-score span{font-family:var(--f-display);font-weight:800;font-size:34px;color:var(--gold)}
+.pl-score small{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);margin-top:3px}
+.rank-grid{display:grid;grid-template-columns:44px repeat(4,minmax(0,1fr));gap:4px;align-items:center;text-align:center}
+.rank-grid span{padding:5px 2px;border-radius:10px;font-weight:800;font-size:14px}
+.rg-h{font-size:12.5px!important;text-transform:uppercase}
+.rg-l{font-family:var(--f-display);font-size:15px!important}
+.rg-v{background:rgba(255,255,255,.07)}
+.rg-v.none{color:rgba(255,255,255,.3)}
+.rg-v.p1,.rg-v.p2,.rg-v.p3{font-size:17px!important;background:rgba(255,216,107,.16)}
+.pl-h{margin:6px 0 0;font-family:var(--f-display);font-weight:800;font-size:20px}
+.pl-figs{display:flex;flex-wrap:wrap;gap:6px;font-size:26px;justify-content:center}
+.pl-figs .off{filter:brightness(0) opacity(.3)}
+.card-sheet > .tcw{width:min(78vw,320px);margin:0 auto;flex:none}
 </style>
 
 </head>
@@ -815,6 +852,11 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <div class="meta"><span class="label">Tableau commun</span><div class="fam-status" id="shareStatus"></div><p class="fam-help" id="shareHelp"></p></div>
       </div>
     </div>
+    <div class="durs two" id="boardKind" role="group" aria-label="Classement">
+      <button class="dur" type="button" data-kind="rec">🏆 Records</button>
+      <button class="dur" type="button" data-kind="day">☀️ Du jour</button>
+    </div>
+    <div class="daily-box" id="dailyBox" hidden></div>
     <div class="tabs" id="tabs" role="tablist"></div>
     <div class="durs" id="boardDurs" role="group" aria-label="Mode"></div>
     <div class="durs two" id="boardView" role="group" aria-label="Affichage">
@@ -1074,6 +1116,7 @@ function allScores() {
 }
 const pendingCount = () => sharedOn() ? scores.filter(s => !s.sent).length : 0;
 function refreshViews() {
+  try { maybeClaim(); watchPlayers(); } catch (e) {}
   if (!$('#menu').hidden) renderMenu();
   if (!$('#board').hidden) renderBoard();
 }
@@ -1271,6 +1314,7 @@ function renderRows(ol, list, { limit = 10, hi = null, emptyText = '', del = fal
     aw.appendChild(avatarNode(av, name));
     if (i === 0) { const c = el('span', 'crown'); c.textContent = '👑'; c.setAttribute('aria-hidden', 'true'); aw.appendChild(c); }
     li.append(rk, aw, nm, tm);
+    li.classList.add('tap'); li.addEventListener('click', e => { if (!e.target.closest('button')) openPlayer(pkey(s), s); });
     if (del && fbAdmin && sharedOn() && s.uid) {
       const hid = isHiddenScore(s);
       if (hid) li.classList.add('is-hidden');
@@ -1840,6 +1884,7 @@ function finish() {
   const score = rating(mode.id, d, ms, G.score);
   const excellent = !zero && score >= .8;
   renderGains(awardGame({ tier: mode.tier, good: G.good, perf: zero ? 0 : score, isRecord, excellent, zero, level: mode.id }));
+  { const dl = dailyGainLine(rec); if (dl) { dl.style.animationDelay = '1.2s'; $('#winGains').appendChild(dl); $('#winGains').hidden = false; } }
   renderWinIcons(iconCount(zero ? 0 : score), p);
   const badge = $('#winBadge'); badge.hidden = false;
   if (isRecord && isTop) badge.textContent = 'Record absolu' + NB + '!';
@@ -2082,10 +2127,15 @@ DURS.forEach(d => {
   b.addEventListener('click', () => { boardDur = d.id; renderBoard(); });
   $('#boardDurs').appendChild(b);
 });
-let boardAll = false;
+let boardAll = false, boardKind = 'rec';
 document.querySelectorAll('#boardView .dur').forEach(b => b.addEventListener('click', () => { boardAll = b.dataset.all === '1'; renderBoard(); }));
 function openBoard() { boardLevel = level; boardDur = dur; boardAll = false; renderBoard(); show('board'); }
 function renderBoard() {
+  document.querySelectorAll('#boardKind .dur').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.kind === boardKind)));
+  const isDay = boardKind === 'day';
+  ['#tabs', '#boardDurs', '#boardView', '#boardMode'].forEach(q => { $(q).hidden = isDay; });
+  $('#boardList').parentElement.hidden = isDay; $('#dailyBox').hidden = !isDay;
+  if (isDay) { $('#clearBtn').hidden = true; renderDaily(); renderShare(); return; }
   document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', String(t.dataset.level === boardLevel)));
   document.querySelectorAll('#boardDurs .dur').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.dur === boardDur)));
   document.querySelectorAll('#boardView .dur').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.all === '1') === boardAll)));
@@ -2321,7 +2371,7 @@ const CUR_NAMES = { g: 'jetons dorés', r: 'jetons arc-en-ciel', m: 'gemmes' };
 
 K.coll = 'cae.coll';
 let colls = store.get(K.coll, {}); if (!colls || typeof colls !== 'object' || Array.isArray(colls)) colls = {};
-const saveColl = () => store.set(K.coll, colls);
+const saveColl = () => { store.set(K.coll, colls); try { pushCollections(); } catch (e) {} };
 const today = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
 function wallet(p = current()) {
   if (!p) return null;
@@ -2473,7 +2523,10 @@ function renderShop(body, w) {
   const pb = priceBtn(null, free ? 'Gratuit' + (free > 1 ? ' (' + free + ')' : '') : 'Revient demain');
   pb.classList.add('free'); pb.disabled = !free; pb.addEventListener('click', () => buyPack('promo'));
   grid.appendChild(shopItem(packVisual('promo'), 'Sachet promo', '5 cartes, dont 2 peu communes et 1 rare possibles. Un offert chaque jour.', pb));
-  const cb = priceBtn(PRICES.classic); cb.disabled = !canPay(w, PRICES.classic); cb.addEventListener('click', () => buyPack('classic'));
+  const owned = (w.packs && w.packs.classic) || 0;
+  const cb = owned ? priceBtn(null, 'Offert' + (owned > 1 ? ' (' + owned + ')' : '')) : priceBtn(PRICES.classic);
+  if (owned) cb.classList.add('free'); else cb.disabled = !canPay(w, PRICES.classic);
+  cb.addEventListener('click', () => buyPack('classic'));
   grid.appendChild(shopItem(packVisual('classic'), 'Sachet de cartes', '10 cartes : 3 peu communes, 2 rares, 1 épique et 1 légendaire possibles.', cb));
   const sb = priceBtn(PRICES.star); sb.disabled = !canPay(w, PRICES.star); sb.addEventListener('click', () => buyPack('star'));
   grid.appendChild(shopItem(packVisual('star'), 'Sachet étoilé', '10 cartes, dont une épique ou légendaire garantie.', sb));
@@ -2628,7 +2681,8 @@ function buyPack(kind) {
   if (kind === 'promo') {
     if (!freePromo(w)) return;
     if (w.day !== today()) w.day = today(); else w.gift--;
-  } else { if (!canPay(w, PRICES[kind])) return; pay(w, PRICES[kind]); }
+  } else if (kind === 'classic' && w.packs && w.packs.classic > 0) { w.packs.classic--; }
+  else { if (!canPay(w, PRICES[kind])) return; pay(w, PRICES[kind]); }
   const drawn = rollPack(kind).map(c => {
     const have = w.cards[c.no]; const isNew = !have;
     if (have) have[0]++; else w.cards[c.no] = [1, 0];
@@ -2754,15 +2808,282 @@ function renderCollBtn() {
   const w = wallet(); b.hidden = !w; if (!w) return;
   const t = el('span', 'ct'); t.textContent = '🎴 Ma collection'; const s = el('small'); s.textContent = owned(w) + ' / ' + CARDS.length + ' cartes'; t.appendChild(s);
   b.appendChild(t);
-  if (freePromo(w)) { const d = el('span', 'dot'); d.title = 'Un sachet gratuit t’attend'; b.appendChild(d); }
+  if (freePromo(w) || (w.packs && w.packs.classic)) { const d = el('span', 'dot'); d.title = 'Un sachet gratuit t’attend'; b.appendChild(d); }
   b.appendChild(walletNode(w));
 }
 $('#collBtn').addEventListener('click', () => openColl('shop'));
 $('#collBack').addEventListener('click', () => { renderMenu(); show('menu'); });
 document.querySelectorAll('#collTabs .tab').forEach(b => b.addEventListener('click', () => { collTab = b.dataset.tab; renderColl(); $('#coll').scrollTop = 0; }));
 
+/* ---------- Daily leaderboard: one ranking for the whole day (Paris time), reset at midnight ----------
+   Daily points of a game = final points × level number (Niv. 1 to 5), added up over the day.
+   The podium of a finished day is rewarded on the next visit: 1st 💎 + card pack, 2nd 💎 + promo pack, 3rd promo pack. */
+const PARIS_DAY = new Intl.DateTimeFormat('fr-CA', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' });
+const dayKey = t => PARIS_DAY.format(new Date(t));
+const DAY_REWARDS = [
+  { m: 1, classic: 1, promo: 0 },
+  { m: 1, classic: 0, promo: 1 },
+  { m: 0, classic: 0, promo: 1 }
+];
+const dayPoints = s => Math.max(0, Math.round(s.points || 0)) * (modeById(s.level) ? modeById(s.level).tier : 1);
+function dailyBoard(day, fair = false) {
+  const by = new Map();
+  allScores().forEach(s => {
+    if (!s.date || dayKey(s.date) !== day) return;
+    if (fair && isHiddenScore(s)) return;
+    const k = pkey(s); if (!k) return;
+    let e = by.get(k); if (!e) by.set(k, e = { key: k, s, pts: 0, games: 0, last: 0 });
+    e.pts += dayPoints(s); e.games++;
+    if (s.date > e.last) { e.last = s.date; e.s = s; }
+  });
+  return [...by.values()].filter(e => e.pts > 0).sort((a, b) => b.pts - a.pts || a.last - b.last);
+}
+function msToMidnight() {
+  // Next Paris midnight, found by stepping forward until the Paris day changes.
+  const now = Date.now(), today = dayKey(now);
+  let lo = now, hi = now + 26 * 3600e3;
+  while (hi - lo > 60e3) { const mid = (lo + hi) / 2; if (dayKey(mid) === today) lo = mid; else hi = mid; }
+  return hi - now;
+}
+const ordinalF = (n, p) => n === 1 ? accord(p, '1er', '1re', '1er·ère') : n + 'e';
+
+/* rewards, granted once per profile and per finished day (last 7 days), when fresh scores are loaded */
+function claimDailyRewards() {
+  if (fbReady() && remoteState !== 'ok' && remoteState !== 'failed') return;
+  const now = Date.now(), todayK = dayKey(now), won = [];
+  const days = [];
+  for (let i = 1; i <= 7; i++) { const k = dayKey(now - i * 86400e3); if (k !== todayK && !days.includes(k)) days.push(k); }
+  profiles.forEach(p => {
+    const w = wallet(p); w.daily = w.daily || {};
+    const born = w.born || (w.born = todayK);
+    days.forEach(d => {
+      if (w.daily[d] || d < born) return;
+      w.daily[d] = 1;
+      const podium = dailyBoard(d, true).slice(0, 3);
+      const i = podium.findIndex(e => e.key === String(p.name || '').trim().toLowerCase());
+      if (i < 0) return;
+      const r = DAY_REWARDS[i];
+      w.m += r.m; w.packs = w.packs || {}; w.packs.classic = (w.packs.classic || 0) + r.classic; w.gift = (w.gift || 0) + r.promo;
+      won.push({ p, rank: i + 1, day: d, pts: podium[i].pts, r });
+    });
+  });
+  // Old days are not kept forever.
+  profiles.forEach(p => { const w = wallet(p); Object.keys(w.daily || {}).forEach(d => { if (!days.includes(d)) delete w.daily[d]; }); });
+  saveColl();
+  const mine = won.filter(x => x.p.id === currentId);
+  if (mine.length) showDailyRewards(mine);
+  if (!$('#menu').hidden) renderMenu();
+}
+function rewardChips(r) {
+  const box = el('div', 'gains');
+  if (r.m) box.appendChild(curNode('m', '+' + r.m));
+  if (r.classic) { const s = el('span', 'cur'); s.textContent = '🎴 Sachet de cartes'; box.appendChild(s); }
+  if (r.promo) { const s = el('span', 'cur'); s.textContent = '🎁 Sachet promo'; box.appendChild(s); }
+  return box;
+}
+function showDailyRewards(list) {
+  const o = opener();
+  const rays = el('div', 'op-rays on'); o.style.setProperty('--rc', '#ffd86b'); o.appendChild(rays);
+  const box = el('div', 'daily-win');
+  const medal = el('div', 'daily-medal'); medal.textContent = ['🥇', '🥈', '🥉'][list[0].rank - 1];
+  const h = el('h3'); h.textContent = 'Classement du jour';
+  box.append(medal, h);
+  list.forEach(x => {
+    const p = el('p'); const d = new Date(x.day + 'T12:00:00');
+    p.textContent = (list.length > 1 ? d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' : ' : 'Hier, tu as fini ') + ordinalF(x.rank, x.p) + ' avec ' + x.pts + ' points' + NB + '!';
+    box.append(p, rewardChips(x.r));
+  });
+  const acts = el('div', 'op-actions');
+  const ok = el('button', 'start'); ok.type = 'button'; ok.textContent = 'Récupérer mes cadeaux';
+  ok.addEventListener('click', () => { o.hidden = true; o.textContent = ''; collTab = 'shop'; openColl('shop'); });
+  acts.appendChild(ok);
+  o.append(box, acts);
+  sfxGood(); later(() => fanfare(3), 200);
+  burst(W / 2, H * .35, 80, 1.2); glitter(50);
+}
+
+/* board view */
+function dailyRows(ol, list, hiKey) {
+  ol.textContent = '';
+  if (!list.length) { const li = el('li', 'empty'); li.textContent = 'Personne n’a encore joué aujourd’hui. Sois le premier ou la première' + NB + '!'; ol.appendChild(li); return; }
+  list.slice(0, 20).forEach((e, i) => {
+    const s = e.s, p = localProfile(s), name = p ? p.name : s.name;
+    const li = el('li', 'row' + (e.key === hiKey ? ' me' : ''));
+    const rk = el('span', 'rank' + (i < 3 ? ' r' + (i + 1) : '')); rk.textContent = i + 1;
+    const pub = s.uid && publicPhotos[s.uid + '_' + s.pid];
+    const av = p ? p.avatar : pub ? { kind: 'photo', src: pub } : (s.avatar >= 0 && s.avatar < AVATARS.length ? { kind: 'emoji', i: s.avatar } : null);
+    const aw = el('span', 'avwrap' + (i < 3 ? ' sun s' + (i + 1) : '')); aw.appendChild(avatarNode(av, name));
+    if (i === 0) { const c = el('span', 'crown'); c.textContent = '👑'; aw.appendChild(c); }
+    const nm = el('span', 'nm'); nm.textContent = name;
+    const sm = el('small'); sm.textContent = e.games + ' partie' + (e.games > 1 ? 's' : '') + (i < 3 ? ' · ' + ['💎 + 🎴', '💎 + 🎁', '🎁'][i] : ''); nm.appendChild(sm);
+    const tm = el('span', 'tm'); tm.textContent = e.pts + NB + 'pts';
+    li.append(rk, aw, nm, tm); li.classList.add('tap'); li.addEventListener('click', () => openPlayer(e.key, s)); ol.appendChild(li);
+  });
+}
+function renderDaily() {
+  const box = $('#dailyBox'); box.textContent = '';
+  const today = dayKey(Date.now()), list = dailyBoard(today);
+  const p = current(), myKey = p ? String(p.name).trim().toLowerCase() : '';
+  const info = el('div', 'daily-info');
+  const ms = msToMidnight(), hh = Math.floor(ms / 3600e3), mm = Math.floor(ms % 3600e3 / 60e3);
+  const t = el('div', 'daily-time'); t.textContent = '☀️ Fin du jour dans ' + (hh ? hh + ' h ' : '') + String(mm).padStart(hh ? 2 : 1, '0') + ' min';
+  const rule = el('p'); rule.textContent = 'Toutes les parties du jour comptent : tes points × le numéro du niveau. Le podium gagne des cadeaux, à récupérer demain.';
+  const rw = el('div', 'daily-rw');
+  [['🥇', '💎 + 🎴 sachet de cartes'], ['🥈', '💎 + 🎁 sachet promo'], ['🥉', '🎁 sachet promo']].forEach(([m, txt]) => { const d = el('span'); d.textContent = m + ' ' + txt; rw.appendChild(d); });
+  info.append(t, rule, rw);
+  const panel = el('div', 'panel board-list'); const ol = el('ol', 'rows'); panel.appendChild(ol);
+  dailyRows(ol, list, myKey);
+  box.append(info, panel);
+  const me = list.findIndex(e => e.key === myKey);
+  if (me >= 20) { const pl = el('p', 'board-mode'); pl.style.fontSize = '16px'; pl.textContent = 'Toi : ' + ordinalF(me + 1, p) + ' avec ' + list[me].pts + ' points'; box.appendChild(pl); }
+  const yk = dayKey(Date.now() - 86400e3), y = dailyBoard(yk, true).slice(0, 3);
+  if (y.length) {
+    const yh = el('p', 'daily-yh'); yh.textContent = 'Podium d’hier';
+    const yp = el('div', 'panel board-list'); const yol = el('ol', 'rows'); yp.appendChild(yol); dailyRows(yol, y, myKey);
+    box.append(yh, yp);
+  }
+}
+function dailyGainLine(rec) {
+  const today = dayKey(Date.now()), list = dailyBoard(today), k = pkey(rec);
+  const i = list.findIndex(e => e.key === k);
+  if (i < 0) return null;
+  const s = el('span', 'gift'); s.textContent = '☀️ +' + dayPoints(rec) + ' points du jour · ' + ordinalF(i + 1, current()) + ' aujourd’hui';
+  return s;
+}
+
+/* ---------- Player card: tap a player in any leaderboard to see their global score and their collection ----------
+   Global score: in each of the 20 boards (5 levels × 4 modes, best game per player), 1st place = 10 points,
+   2nd = 9 … 10th and below = 1 point. Collections are shared through Firestore (players/<uid>_<profile>). */
+let playerDocs = {}, watchingPlayers = false, pushT = 0;
+const lastPushed = {};
+function encodeCards(w) { let s = ''; for (let i = 1; i <= CARDS.length; i++) { const h = w.cards[i]; s += h ? String(1 + Math.min(3, h[1] || 0)) : '0'; } return s; }
+function encodeFigs(w) { return FIGS.map(f => String(Math.min(9, w.figs[f.id] || 0))).join(''); }
+function pushCollections() {
+  clearTimeout(pushT);
+  pushT = setTimeout(async () => {
+    if (!fb || !sharedOn()) return;
+    for (const p of profiles) {
+      const w = colls[p.id]; if (!w) continue;
+      const doc = { name: String(p.name || '?').slice(0, 16), avatar: emoteOf(p), cards: encodeCards(w), figs: encodeFigs(w), n: owned(w), updated: Date.now() };
+      const sig = doc.name + '|' + doc.avatar + '|' + doc.cards + '|' + doc.figs;
+      if (lastPushed[p.id] === sig) continue;
+      try { await withTimeout(fb.db.collection('players').doc(fb.uid + '_' + p.id).set(doc), 12000); lastPushed[p.id] = sig; } catch (e) {}
+    }
+  }, 3000);
+}
+function watchPlayers() {
+  if (!fb || watchingPlayers) return;
+  watchingPlayers = true;
+  try {
+    fb.db.collection('players').onSnapshot(snap => {
+      const out = {}; snap.forEach(d => { const v = d.data(); if (v && typeof v.name === 'string' && typeof v.cards === 'string') out[d.id] = v; });
+      playerDocs = out;
+    }, () => {});
+  } catch (e) {}
+  pushCollections();
+}
+function globalScore(key) {
+  let pts = 0; const podium = [0, 0, 0], ranks = {};
+  MODES.forEach(m => DURS.forEach(d => {
+    const list = bestPerPlayer(levelScores(m.id, d.id));
+    const i = list.findIndex(s => pkey(s) === key);
+    ranks[m.id + d.id] = i >= 0 ? i + 1 : 0;
+    if (i >= 0) { pts += Math.max(1, 10 - i); if (i < 3) podium[i]++; }
+  }));
+  return { pts, podium, ranks };
+}
+// Cards of a player: the profiles on this device with that name, plus what other devices shared.
+function playerCollection(key) {
+  const cards = new Map(), figs = {}; let shared = false;
+  profiles.filter(p => String(p.name).trim().toLowerCase() === key).forEach(p => {
+    const w = colls[p.id]; if (!w) return; shared = true;
+    Object.entries(w.cards).forEach(([no, h]) => cards.set(Number(no), Math.max(cards.get(Number(no)) ?? -1, h[1] || 0)));
+    FIGS.forEach(f => { figs[f.id] = Math.max(figs[f.id] || 0, w.figs[f.id] || 0); });
+  });
+  Object.entries(playerDocs).forEach(([id, d]) => {
+    if (fb && id.split('_')[0] === fb.uid) return;
+    if (String(d.name).trim().toLowerCase() !== key) return;
+    shared = true;
+    for (let i = 0; i < d.cards.length && i < CARDS.length; i++) { const v = Number(d.cards[i]); if (v > 0) cards.set(i + 1, Math.max(cards.get(i + 1) ?? -1, v - 1)); }
+    FIGS.forEach((f, i) => { figs[f.id] = Math.max(figs[f.id] || 0, Number((d.figs || '')[i]) || 0); });
+  });
+  return { cards, figs, shared };
+}
+function playerAvatar(s) {
+  const p = localProfile(s), pub = s.uid && publicPhotos[s.uid + '_' + s.pid];
+  return p ? p.avatar : pub ? { kind: 'photo', src: pub } : (s.avatar >= 0 && s.avatar < AVATARS.length ? { kind: 'emoji', i: s.avatar } : null);
+}
+let playerAll = false;
+function openPlayer(key, s, keepAll) {
+  if (!key) return;
+  if (!keepAll) playerAll = false;
+  const box = $('#cardSheetIn'); box.textContent = '';
+  const lp = localProfile(s), name = lp ? lp.name : s.name;
+  const top = el('div', 'sheet-top'); const h = el('h3'); h.textContent = 'Fiche joueur';
+  const x = el('button', 'close'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Fermer'); x.addEventListener('click', closeCard); top.append(h, x);
+  const g = globalScore(key);
+  const hero = el('div', 'pl-hero');
+  const aw = el('span', 'avwrap sun s1'); aw.appendChild(avatarNode(playerAvatar(s), name));
+  const hm = el('div', 'pl-meta'); const nm = el('b'); nm.textContent = name;
+  const sc = el('div', 'pl-score'); sc.innerHTML = '<span></span><small>score global</small>'; sc.firstChild.textContent = g.pts;
+  const pod = el('div', 'pl-pod'); pod.textContent = '🥇 ' + g.podium[0] + '   🥈 ' + g.podium[1] + '   🥉 ' + g.podium[2];
+  hm.append(nm, pod); hero.append(aw, hm, sc);
+  const today = dailyBoard(dayKey(Date.now())), di = today.findIndex(e => e.key === key);
+  const dline = el('p', 'help'); dline.textContent = di >= 0 ? '☀️ Aujourd’hui : ' + (di ? (di + 1) + 'e' : '1re') + ' place du classement du jour (' + today[di].pts + ' pts)' : '☀️ Pas encore joué aujourd’hui';
+  // positions in the 20 boards
+  const grid = el('div', 'rank-grid');
+  grid.appendChild(el('span'));
+  DURS.forEach(d => { const c = el('span', 'rg-h'); c.textContent = d.short; c.style.color = d.color; grid.appendChild(c); });
+  MODES.forEach(m => {
+    const c = el('span', 'rg-l'); c.textContent = m.sym.replace(/ /g, ''); c.style.color = m.color; grid.appendChild(c);
+    DURS.forEach(d => { const r = g.ranks[m.id + d.id]; const v = el('span', 'rg-v' + (r && r <= 3 ? ' p' + r : '') + (r ? '' : ' none')); v.textContent = r ? (r <= 3 ? ['🥇', '🥈', '🥉'][r - 1] : r + 'e') : '–'; grid.appendChild(v); });
+  });
+  const how = el('p', 'help'); how.textContent = 'Score global : dans chacun des 20 tableaux, 1re place = 10 points, 2e = 9… et 1 point à partir de la 10e.';
+  box.append(top, hero, dline, grid, how);
+  // collection
+  const col = playerCollection(key);
+  const ch = el('h4', 'pl-h'); ch.textContent = 'Collection';
+  box.appendChild(ch);
+  if (!col.shared) { const p = el('p', 'help'); p.textContent = 'Sa collection n’est pas encore partagée (elle le sera à sa prochaine connexion avec cette version du jeu).'; box.appendChild(p); return show2(); }
+  const n = col.cards.size;
+  const pr = el('div', 'progress'); const t = el('span'); t.textContent = n + ' / ' + CARDS.length + ' cartes';
+  const bar = el('div', 'bar'); const fill = el('i'); fill.style.width = (n / CARDS.length * 100) + '%'; bar.appendChild(fill); pr.append(t, bar);
+  const figRow = el('div', 'pl-figs');
+  FIGS.forEach(f => { const c = col.figs[f.id] || 0; const sp = el('span', c ? '' : 'off'); sp.textContent = f.emo; sp.title = c ? f.name : '???'; figRow.appendChild(sp); });
+  box.append(pr, figRow);
+  const list = [...col.cards.entries()].map(([no, fx]) => ({ c: CARDS[no - 1], fx })).filter(x => x.c).sort((a, b) => b.c.r - a.c.r || b.fx - a.fx || a.c.no - b.c.no);
+  const shown = playerAll ? list : list.slice(0, 24);
+  const gr = el('div', 'grid');
+  shown.forEach(({ c, fx }) => { const sl = el('button', 'slot mini'); sl.type = 'button'; sl.appendChild(cardNode(c, { fx })); sl.addEventListener('click', () => viewCard(c, fx, () => openPlayer(key, s, true))); gr.appendChild(sl); });
+  box.appendChild(gr);
+  if (list.length > shown.length) { const more = el('button', 'ghost'); more.type = 'button'; more.textContent = 'Voir ses ' + list.length + ' cartes'; more.addEventListener('click', () => { playerAll = true; openPlayer(key, s, true); }); box.appendChild(more); }
+  return show2();
+  function show2() { $('#cardSheet').hidden = false; $('#cardSheetIn').scrollTop = 0; }
+}
+function viewCard(c, fx, back) {
+  const box = $('#cardSheetIn'); box.textContent = '';
+  const top = el('div', 'sheet-top'); const b = el('button', 'quit'); b.type = 'button'; b.textContent = '← Retour'; b.addEventListener('click', back);
+  const h = el('h3'); h.textContent = '';
+  const x = el('button', 'close'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Fermer'); x.addEventListener('click', closeCard);
+  top.append(b, h, x);
+  box.append(top, cardNode(c, { fx, tag: true }));
+  $('#cardSheetIn').scrollTop = 0;
+}
+
+/* Rewards of finished days are checked when fresh scores arrive, at start-up and when the day changes. */
+let claimMark = '';
+function maybeClaim() {
+  if (!$('#game').hidden || !$('#opener').hidden) return;
+  if (fbReady() && remoteState !== 'ok' && remoteState !== 'failed') return;
+  const k = dayKey(Date.now()); if (k === claimMark) return;
+  claimMark = k; claimDailyRewards();
+}
+setInterval(maybeClaim, 60000);
+document.querySelectorAll('#boardKind .dur').forEach(b => b.addEventListener('click', () => { boardKind = b.dataset.kind; renderBoard(); }));
+
 renderMenu();
 show(profiles.length ? 'menu' : 'intro');
+setTimeout(maybeClaim, 800);
 initShared();
 })();
 </script>
