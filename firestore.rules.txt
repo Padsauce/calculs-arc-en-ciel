@@ -63,5 +63,21 @@ service cloud.firestore {
         && request.resource.data.figs is string && request.resource.data.figs.size() <= 40;
       allow delete: if request.auth != null && (playerId.split('_')[0] == request.auth.uid || isAdmin());
     }
+
+    // Cadeaux de l'administrateur : document "g…" adressé à un profil (uid de l'appareil + identifiant du profil).
+    // Seuls l'administrateur et l'appareil qui reçoit le cadeau peuvent le lire ; l'appareil le marque comme reçu.
+    match /gifts/{giftId} {
+      allow read: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid);
+      allow create: if isAdmin()
+        && request.resource.data.keys().hasOnly(['uid', 'pid', 'name', 'from', 'msg', 'g', 'r', 'm', 'promo', 'classic', 'star', 'box', 'cards', 'by', 'at', 'done'])
+        && request.resource.data.uid is string && request.resource.data.pid is string
+        && request.resource.data.msg is string && request.resource.data.msg.size() <= 300
+        && request.resource.data.cards is string && request.resource.data.cards.size() <= 400
+        && request.resource.data.done == false;
+      allow update: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['done', 'got'])
+        && request.resource.data.done == true);
+      allow delete: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid);
+    }
   }
 }

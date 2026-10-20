@@ -754,6 +754,42 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .card-sheet > .tcw{width:min(78vw,320px);margin:0 auto;flex:none}
 .update-toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 14px);transform:translateX(-50%);z-index:60;padding:10px 18px;border-radius:999px;
   background:linear-gradient(90deg,#ff9ad8,#ffd86b,#9dffb0,#72f1ff);color:#3a1660;font-weight:800;font-size:16px;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.4);animation:gainIn .4s cubic-bezier(.2,1.6,.4,1) both}
+
+/* gifts */
+.gift-form{display:flex;flex-direction:column;gap:14px}
+.gift-form .gf-sec{display:flex;flex-direction:column;gap:6px}
+.gift-form .gf-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.gift-form .gf-num{display:flex;align-items:center;gap:8px;padding:6px 8px 6px 10px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid var(--line);font-size:14px;font-weight:700}
+.gift-form .gf-num > i{font-size:20px;flex:none}
+.gift-form .gf-num span{flex:1;line-height:1.15}
+.gift-form input,.gift-form select,.gift-form textarea{font:inherit;color:var(--ink);background:rgba(0,0,0,.25);border:2px solid var(--line);border-radius:12px;padding:8px 10px;font-size:16px;min-width:0}
+.gift-form select option{color:#170d33}
+.gift-form input[type=number]{width:68px;text-align:center;padding:6px 4px;flex:none}
+.gift-form textarea{width:100%;min-height:76px;resize:vertical}
+.gf-card-row{display:flex;gap:6px;flex-wrap:wrap}
+.gf-card-row input{flex:1 1 180px}
+.gf-card-row .dur{background:rgba(255,255,255,.12);color:var(--ink);padding:8px 14px}
+.gf-chips{display:flex;flex-wrap:wrap;gap:6px}
+.gf-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 5px 4px 10px;border-radius:999px;background:rgba(255,216,107,.15);border:1px solid rgba(255,216,107,.35);font-size:14px;font-weight:700}
+.gf-chip button{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.14);font-size:12px;flex:none}
+.gf-status{margin:0;min-height:1em;font-size:14.5px;font-weight:700;text-align:center}
+.gf-status.ok{color:var(--mint)}
+.gf-status.err{color:var(--rose)}
+.gf-sent{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.gf-sent li{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:13.5px;line-height:1.3;color:var(--mist)}
+.gf-sent li span{flex:1}
+.gf-sent li b{display:block;font-size:15px;color:var(--ink)}
+.gf-sent .rowdel{flex:none}
+.gift-win{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;width:min(92vw,380px);animation:cardIn .6s cubic-bezier(.2,1.4,.4,1) both}
+.gift-win .gw-ico{font-size:min(26vw,104px);line-height:1;filter:drop-shadow(0 8px 18px rgba(255,154,216,.6));animation:float 1.4s ease-in-out infinite alternate}
+.gift-win h3{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(24px,7.5vw,32px);line-height:1.1}
+.gift-win .gw-for{margin:0;color:var(--mist);font-weight:700;font-size:15px}
+.gift-win .gw-msg{margin:0;width:100%;padding:12px 16px;border-radius:18px;background:rgba(255,255,255,.1);border:1px solid var(--line);font-size:17px;line-height:1.35;font-weight:700;overflow-wrap:anywhere}
+.gift-win .gw-msg small{display:block;margin-top:6px;color:var(--gold);font-size:14px;text-align:right}
+.gift-win .gains .cur{animation:none}
+.gift-win .gw-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 8px;width:min(300px,78vw)}
+.gift-win .gw-cards .slot{position:relative}
+.admin-gift{font-weight:800}
 </style>
 
 </head>
@@ -895,6 +931,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
     <button id="clearBtn" class="danger" type="button">Effacer les scores de ce niveau</button>
     <div class="admin-row" id="adminRow" hidden>
       <span class="err" id="adminErr" hidden></span>
+      <button class="dur admin-gift" id="giftBtn" type="button" hidden>🎁 Offrir un cadeau</button>
       <button class="textbtn" id="adminBtn" type="button">Connexion administrateur</button>
     </div>
   </section>
@@ -1003,7 +1040,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 30</p>
+      <p class="credits-ver" id="credVer">Version 31</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -1229,7 +1266,7 @@ async function initShared() {
       publicPhotos = out; refreshViews();
     }, () => {});
     if (store.get(K.admin, false)) restoreAdmin();
-    syncPending(); syncAvatars(); processErase();
+    syncPending(); syncAvatars(); processErase(); setTimeout(checkGifts, 1500);
   } catch (e) {
     sharedErr = (e && (e.code || e.message)) || 'erreur'; remoteState = fbReady() ? 'off' : 'failed'; refreshViews();
     setTimeout(() => { if (!fb) initShared(); }, 20000);
@@ -1321,6 +1358,11 @@ async function eraseOnline(job) {
   await Promise.all(ids.map(id => withTimeout(db.collection('scores').doc(id).delete(), 15000)));
   await withTimeout(db.collection('players').doc(uid + '_' + job.pid).delete(), 15000);
   await withTimeout(db.collection('avatars').doc(uid + '_' + job.pid).delete(), 15000);
+  try {
+    const gs = await withTimeout(db.collection('gifts').where('uid', '==', uid).get(), 15000), gids = [];
+    gs.forEach(d => { const v = d.data(); if (v && v.pid === job.pid) gids.push(d.id); });
+    await Promise.all(gids.map(id => withTimeout(db.collection('gifts').doc(id).delete(), 15000)));
+  } catch (e) { if (!e || e.code !== 'permission-denied') throw e; }   // rules without gifts: nothing to erase
 }
 function processErase() {
   if (!fb || !eraseQueue.length) return Promise.resolve();
@@ -1510,6 +1552,7 @@ async function adminLogin() {
 async function adminLogout() {
   try { if (fbAdmin) await fbAdmin.app.auth().signOut(); } catch (e) {}
   fbAdmin = null; store.set(K.admin, false);
+  if (giftSentUnsub) { try { giftSentUnsub(); } catch (e) {} giftSentUnsub = null; giftSent = []; }
 }
 
 /* Public photos: only for profiles whose owner chose to publish them. */
@@ -2427,9 +2470,11 @@ function renderShare() {
   const pend = pendingCount();
   const state = { ok: 'à jour', off: 'hors ligne', idle: 'connexion…' }[remoteState] || '';
   $('#shareStatus').textContent = 'Tous les joueurs · ' + state + (pend ? ' · ' + pend + ' score' + (pend > 1 ? 's' : '') + ' à envoyer' : '') + (sharedErr && (remoteState !== 'ok' || pend) ? ' · (' + sharedErr + ')' : '');
-  $('#shareHelp').textContent = 'Tu peux supprimer tes propres scores avec 🗑.' + (fbAdmin ? ' Mode administrateur : tous les scores peuvent être supprimés. 👁 cache un joueur aux autres (il continue de voir ses scores sur son appareil) ; 🙈 le montre à nouveau.' : '');
+  $('#shareHelp').textContent = 'Tu peux supprimer tes propres scores avec 🗑.' + (fbAdmin ? ' Mode administrateur : tous les scores peuvent être supprimés. 👁 cache un joueur aux autres (il continue de voir ses scores sur son appareil) ; 🙈 le montre à nouveau. 🎁 offre des jetons, des sachets ou des cartes à un joueur.' : '');
   $('#adminBtn').textContent = fbAdmin ? 'Administrateur : ' + fbAdmin.email + ' · se déconnecter' : 'Connexion administrateur';
+  $('#giftBtn').hidden = !fbAdmin;
 }
+$('#giftBtn').addEventListener('click', () => openGift());
 let boardMsgT = 0;
 function boardMsg(m) { const e = $('#adminErr'); e.textContent = m || ''; e.hidden = !m; clearTimeout(boardMsgT); if (m) boardMsgT = setTimeout(() => { e.hidden = true; }, 5000); }
 $('#adminBtn').addEventListener('click', async () => {
@@ -2837,9 +2882,15 @@ function renderShop(body, w) {
   if (owned) cb.classList.add('free'); else cb.disabled = !canPay(w, PRICES.classic);
   cb.addEventListener('click', () => buyPack('classic'));
   grid.appendChild(shopItem(packVisual('classic'), 'Sachet de cartes', '10 cartes : 3 peu communes, 2 rares, 1 épique et 1 légendaire possibles.', cb));
-  const sb = priceBtn(PRICES.star); sb.disabled = !canPay(w, PRICES.star); sb.addEventListener('click', () => buyPack('star'));
+  const ownS = (w.packs && w.packs.star) || 0;
+  const sb = ownS ? priceBtn(null, 'Offert' + (ownS > 1 ? ' (' + ownS + ')' : '')) : priceBtn(PRICES.star);
+  if (ownS) sb.classList.add('free'); else sb.disabled = !canPay(w, PRICES.star);
+  sb.addEventListener('click', () => buyPack('star'));
   grid.appendChild(shopItem(packVisual('star'), 'Sachet étoilé', '10 cartes, dont une épique ou légendaire garantie.', sb));
-  const bb = priceBtn(PRICES.box); bb.disabled = !canPay(w, PRICES.box); bb.addEventListener('click', buyBox);
+  const ownB = (w.packs && w.packs.box) || 0;
+  const bb = ownB ? priceBtn(null, 'Offerte' + (ownB > 1 ? ' (' + ownB + ')' : '')) : priceBtn(PRICES.box);
+  if (ownB) bb.classList.add('free'); else bb.disabled = !canPay(w, PRICES.box);
+  bb.addEventListener('click', buyBox);
   grid.appendChild(shopItem(el('div', 'mini-box'), 'Boîte figurine', 'Une figurine mystère pour ta vitrine. ' + FIGS.length + ' à collectionner.', bb));
   body.appendChild(grid);
   const earn = el('div', 'earn');
@@ -2990,7 +3041,7 @@ function buyPack(kind) {
   if (kind === 'promo') {
     if (!freePromo(w)) return;
     if (w.day !== today()) w.day = today(); else w.gift--;
-  } else if (kind === 'classic' && w.packs && w.packs.classic > 0) { w.packs.classic--; }
+  } else if (w.packs && w.packs[kind] > 0) { w.packs[kind]--; }
   else { if (!canPay(w, PRICES[kind])) return; pay(w, PRICES[kind]); }
   const drawn = rollPack(kind).map(c => {
     const have = w.cards[c.no]; const isNew = !have;
@@ -3073,8 +3124,9 @@ function revealCards(o, rays, drawn) {
   showNext();
 }
 function buyBox() {
-  const w = wallet(); if (!w || !canPay(w, PRICES.box)) return;
-  pay(w, PRICES.box);
+  const w = wallet(); if (!w) return;
+  if (w.packs && w.packs.box > 0) w.packs.box--;
+  else { if (!canPay(w, PRICES.box)) return; pay(w, PRICES.box); }
   const f = rollFig(); const n = (w.figs[f.id] || 0) + 1; w.figs[f.id] = n; saveColl();
   const o = opener();
   const rays = el('div', 'op-rays'); o.appendChild(rays);
@@ -3117,7 +3169,7 @@ function renderCollBtn() {
   const w = wallet(); b.hidden = !w; if (!w) return;
   const t = el('span', 'ct'); t.textContent = '🎴 Ma collection'; const s = el('small'); s.textContent = owned(w) + ' / ' + CARDS.length + ' cartes'; t.appendChild(s);
   b.appendChild(t);
-  if (freePromo(w) || (w.packs && w.packs.classic)) { const d = el('span', 'dot'); d.title = 'Un sachet gratuit t’attend'; b.appendChild(d); }
+  if (freePromo(w) || (w.packs && ['classic', 'star', 'box'].some(k => w.packs[k] > 0))) { const d = el('span', 'dot'); d.title = 'Un sachet gratuit t’attend'; b.appendChild(d); }
   b.appendChild(walletNode(w));
 }
 $('#collBtn').addEventListener('click', () => openColl('shop'));
@@ -3351,6 +3403,7 @@ function openPlayer(key, s, keepAll) {
   });
   const how = el('p', 'help'); how.textContent = 'Score global : dans chacun des 20 tableaux, 1re place = 10 points, 2e = 9… et 1 point à partir de la 10e.';
   box.append(top, hero, dline, grid, how);
+  if (fbAdmin) { const gb = el('button', 'dur admin-gift'); gb.type = 'button'; gb.textContent = '🎁 Offrir un cadeau à ' + name; gb.addEventListener('click', () => openGift(key)); box.appendChild(gb); }
   // collection
   const col = playerCollection(key);
   const ch = el('h4', 'pl-h'); ch.textContent = 'Collection';
@@ -3371,6 +3424,242 @@ function openPlayer(key, s, keepAll) {
   return show2();
   function show2() { $('#cardSheet').hidden = false; $('#cardSheetIn').scrollTop = 0; }
 }
+/* ---------- Gifts from the admin (Firestore "gifts") ----------
+   The admin sends jetons, packs or cards to one profile (<uid>_<profile>), with a message.
+   The player's device picks it up at its next connection, adds it to the collection once, shows the message,
+   then marks the gift as received. Only the admin and the receiving device can read a gift. */
+const GIFT_FROM = 'Marckorel';
+const GIFT_PACKS = [['promo', '🎁', 'Sachet promo'], ['classic', '🎴', 'Sachet de cartes'], ['star', '⭐', 'Sachet étoilé'], ['box', '📦', 'Boîte figurine']];
+const GIFT_MAX = { g: 9999, r: 999, m: 99, promo: 20, classic: 20, star: 20, box: 20 };
+var giftBusy = false, giftShow = [], giftSentUnsub = null, giftSent = [];
+const giftInt = (v, k) => Math.max(0, Math.min(GIFT_MAX[k], Math.floor(Number(v) || 0)));
+function giftCards(str) {
+  return String(str || '').split(',').map(x => x.split(':').map(Number)).filter(([n]) => n >= 1 && n <= CARDS.length)
+    .map(([n, fx]) => ({ c: CARDS[n - 1], fx: Math.max(0, Math.min(3, fx || 0)) }));
+}
+function giftSummary(v) {
+  const out = [];
+  ['g', 'r', 'm'].forEach(k => { if (giftInt(v[k], k)) out.push(giftInt(v[k], k) + ' ' + CUR_NAMES[k]); });
+  GIFT_PACKS.forEach(([k, ico, name]) => { const n = giftInt(v[k], k); if (n) out.push(ico + ' ' + name + (n > 1 ? ' ×' + n : '')); });
+  const cs = giftCards(v.cards); if (cs.length) out.push(cs.length + ' carte' + (cs.length > 1 ? 's' : ''));
+  return out.join(' · ') || 'rien';
+}
+function applyGift(w, v) {
+  ['g', 'r', 'm'].forEach(k => { w[k] = (w[k] || 0) + giftInt(v[k], k); });
+  w.gift = (w.gift || 0) + giftInt(v.promo, 'promo');
+  w.packs = w.packs || {};
+  ['classic', 'star', 'box'].forEach(k => { const n = giftInt(v[k], k); if (n) w.packs[k] = (w.packs[k] || 0) + n; });
+  return giftCards(v.cards).map(({ c, fx }) => {
+    const have = w.cards[c.no], isNew = !have;
+    if (have) { have[0]++; have[1] = Math.max(have[1] || 0, fx); } else w.cards[c.no] = [1, fx];
+    return { c, fx, isNew };
+  });
+}
+async function checkGifts() {
+  if (!fb || giftBusy || !profiles.length) return;
+  giftBusy = true;
+  const received = [];
+  try {
+    const snap = await withTimeout(fb.db.collection('gifts').where('uid', '==', fb.uid).get(), 15000);
+    const list = []; snap.forEach(d => { const v = d.data(); if (v && !v.done) list.push({ id: d.id, v }); });
+    for (const { id, v } of list) {
+      const p = profiles.find(x => x.id === v.pid);
+      if (!p) continue;                                   // this profile is not on this device any more: left for the admin
+      const w = wallet(p); w.giftsIn = w.giftsIn || {};
+      if (!w.giftsIn[id]) { const cards = applyGift(w, v); w.giftsIn[id] = Date.now(); saveColl(); received.push({ p, v, cards }); }
+      try {
+        await withTimeout(fb.db.collection('gifts').doc(id).update({ done: true, got: firebase.firestore.FieldValue.serverTimestamp() }), 12000);
+        delete w.giftsIn[id]; saveColl();
+      } catch (e) {}                                       // marked later; giftsIn stops it from being added twice
+    }
+  } catch (e) {}                                          // offline, or rules without gifts yet
+  finally { giftBusy = false; }
+  if (received.length) { giftShow.push(...received); showGiftsWhenIdle(); renderCollBtn(); }
+}
+function showGiftsWhenIdle() {
+  if (!giftShow.length) return;
+  const busy = $('#menu').hidden && $('#coll').hidden && $('#board').hidden || !$('#opener').hidden || !$('#sheet').hidden || !$('#cardSheet').hidden;
+  if (busy) { setTimeout(showGiftsWhenIdle, 2500); return; }
+  showGift(giftShow.shift());
+}
+function showGift({ p, v, cards }) {
+  const o = opener(); o.style.setProperty('--rc', '#ff9ad8');
+  o.appendChild(el('div', 'op-rays on'));
+  const box = el('div', 'gift-win');
+  const ico = el('div', 'gw-ico'); ico.textContent = '🎁';
+  const h = el('h3'); h.textContent = 'Un cadeau de ' + (v.from || GIFT_FROM) + NB + '!';
+  box.append(ico, h);
+  if (profiles.length > 1) { const who = el('p', 'gw-for'); who.textContent = 'Pour ' + p.name; box.appendChild(who); }
+  if (v.msg) { const m = el('p', 'gw-msg'); m.textContent = v.msg; const sg = el('small'); sg.textContent = '— ' + (v.from || GIFT_FROM); m.appendChild(sg); box.appendChild(m); }
+  const gains = el('div', 'gains');
+  ['g', 'r', 'm'].forEach(k => { const n = giftInt(v[k], k); if (n) gains.appendChild(curNode(k, '+' + n)); });
+  GIFT_PACKS.forEach(([k, i, name]) => { const n = giftInt(v[k], k); if (n) { const s = el('span', 'cur'); s.textContent = i + ' ' + name + (n > 1 ? ' ×' + n : ''); gains.appendChild(s); } });
+  if (gains.children.length) box.appendChild(gains);
+  if (cards.length) {
+    const g = el('div', 'gw-cards');
+    cards.slice(0, 6).forEach(d => { const s = el('div', 'slot mini'); s.appendChild(cardNode(d.c, { fx: d.fx })); if (d.isNew) { const t = el('span', 'new-tag'); t.textContent = 'NEW'; s.appendChild(t); } g.appendChild(s); });
+    box.appendChild(g);
+    if (cards.length > 6) { const more = el('p', 'gw-for'); more.textContent = '+ ' + (cards.length - 6) + ' autre' + (cards.length > 7 ? 's' : '') + ' dans ton carnet'; box.appendChild(more); }
+  }
+  const acts = el('div', 'op-actions');
+  const ok = el('button', 'start'); ok.type = 'button';
+  const mine = current() && current().id === p.id;
+  ok.textContent = mine ? 'Voir ma collection' : 'Merci' + NB + '!';
+  ok.addEventListener('click', () => {
+    o.hidden = true; o.textContent = '';
+    if (giftShow.length) { showGiftsWhenIdle(); return; }
+    if (mine) openColl(GIFT_PACKS.some(([k]) => giftInt(v[k], k)) || !cards.length ? 'shop' : 'book');
+  });
+  acts.appendChild(ok); o.append(box, acts);
+  sfxGood(); later(() => fanfare(3), 200); burst(W / 2, H * .35, 80, 1.2); glitter(50);
+}
+
+/* admin side */
+function giftTargets() {
+  const t = new Map();
+  remote.forEach(s => {
+    if (!s.uid || !s.pid) return;
+    const k = s.uid + '_' + s.pid, e = t.get(k);
+    if (!e) t.set(k, { uid: s.uid, pid: s.pid, name: s.name, last: s.date || 0 }); else if ((s.date || 0) > e.last) { e.last = s.date; e.name = s.name; }
+  });
+  Object.entries(playerDocs || {}).forEach(([k, d]) => {
+    const i = k.indexOf('_'); if (i < 1) return;
+    const e = t.get(k), last = Number(d.updated) || 0;
+    if (!e) t.set(k, { uid: k.slice(0, i), pid: k.slice(i + 1), name: d.name, last }); else if (last > e.last) { e.last = last; e.name = d.name; }
+  });
+  const by = new Map();
+  t.forEach(e => { const key = String(e.name || '').trim().toLowerCase(); if (!key) return; if (!by.has(key)) by.set(key, []); by.get(key).push(e); });
+  by.forEach(list => list.sort((a, b) => b.last - a.last));
+  return [...by.entries()].sort((a, b) => a[0].localeCompare(b[0], 'fr'));
+}
+function watchGiftsSent() {
+  if (!fbAdmin || giftSentUnsub) return;
+  try {
+    giftSentUnsub = fbAdmin.db.collection('gifts').orderBy('at', 'desc').limit(40).onSnapshot(snap => {
+      const out = []; snap.forEach(d => { const v = d.data({ serverTimestamps: 'estimate' }); if (v) out.push({ id: d.id, v }); });
+      giftSent = out; if (document.getElementById('gfSent')) renderGiftsSent();
+    }, () => {});
+  } catch (e) {}
+}
+const giftTime = t => t && typeof t.toMillis === 'function' ? t.toMillis() : Number(t) || 0;
+function renderGiftsSent() {
+  const ul = $('#gfSent'); if (!ul) return; ul.textContent = '';
+  if (!giftSent.length) { const li = el('li'); li.textContent = 'Aucun cadeau envoyé pour l’instant.'; ul.appendChild(li); return; }
+  giftSent.forEach(({ id, v }) => {
+    const li = el('li'); const sp = el('span'); const b = el('b'); b.textContent = v.name || '?';
+    const when = v.done ? '✅ reçu' + (giftTime(v.got) ? ' le ' + fmtDate(giftTime(v.got)) : '') : '⏳ pas encore reçu';
+    sp.append(b, giftSummary(v) + ' · ' + when); li.appendChild(sp);
+    if (!v.done) {
+      const x = el('button', 'rowdel'); x.type = 'button'; x.textContent = '🗑'; x.title = 'Annuler ce cadeau'; x.setAttribute('aria-label', 'Annuler le cadeau pour ' + (v.name || ''));
+      x.addEventListener('click', async () => { x.disabled = true; try { await withTimeout(fbAdmin.db.collection('gifts').doc(id).delete(), 12000); } catch (e) { x.disabled = false; giftStatus('Annulation impossible (' + ((e && e.code) || 'erreur') + ').', 'err'); } });
+      li.appendChild(x);
+    }
+    ul.appendChild(li);
+  });
+}
+function giftStatus(text, kind) { const s = $('#gfStatus'); if (!s) return; s.textContent = text; s.className = 'gf-status ' + (kind || ''); }
+function numField(key, label, icon) {
+  const l = el('label', 'gf-num');
+  if (typeof icon === 'string') { const i = el('i'); i.textContent = icon; i.style.fontStyle = 'normal'; l.appendChild(i); } else l.appendChild(icon);
+  const t = el('span'); t.textContent = label;
+  const inp = el('input'); inp.type = 'number'; inp.min = '0'; inp.max = String(GIFT_MAX[key]); inp.step = '1'; inp.value = '0'; inp.inputMode = 'numeric'; inp.dataset.k = key;
+  inp.addEventListener('focus', () => inp.select());
+  l.append(t, inp); return l;
+}
+function openGift(key) {
+  if (!fbAdmin) return;
+  watchGiftsSent();
+  const targets = giftTargets();
+  const box = $('#cardSheetIn'); box.textContent = '';
+  const top = el('div', 'sheet-top'); const h = el('h3'); h.textContent = '🎁 Offrir un cadeau';
+  const x = el('button', 'close'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Fermer'); x.addEventListener('click', closeCard);
+  top.append(h, x); box.appendChild(top);
+  const f = el('div', 'gift-form');
+  // who
+  const s1 = el('div', 'gf-sec'); const l1 = el('span', 'label'); l1.textContent = 'Pour';
+  const who = el('select'); who.id = 'gfWho'; who.setAttribute('aria-label', 'Joueur');
+  if (!targets.length) { const o = el('option'); o.textContent = 'Aucun joueur en ligne pour l’instant'; o.value = ''; who.appendChild(o); }
+  targets.forEach(([k, list]) => { const o = el('option'); o.value = k; o.textContent = list[0].name + (list.length > 1 ? ' (' + list.length + ' appareils)' : ''); who.appendChild(o); });
+  if (key && targets.some(([k]) => k === key)) who.value = key;
+  const dev = el('select'); dev.id = 'gfDev'; dev.setAttribute('aria-label', 'Appareil');
+  const devNote = el('small', 'field-hint');
+  const fillDev = () => {
+    dev.textContent = ''; const t = targets.find(([k]) => k === who.value); const list = t ? t[1] : [];
+    list.forEach((e, i) => { const o = el('option'); o.value = String(i); o.textContent = (i ? 'Autre appareil' : 'Son appareil le plus récent') + (e.last ? ' · actif le ' + fmtDate(e.last) : ''); dev.appendChild(o); });
+    dev.hidden = list.length < 2;
+    devNote.textContent = list.length ? 'Il le recevra à sa prochaine connexion, avec ton message.' : '';
+  };
+  who.addEventListener('change', fillDev); fillDev();
+  s1.append(l1, who, dev, devNote);
+  // jetons
+  const s2 = el('div', 'gf-sec'); const l2 = el('span', 'label'); l2.textContent = 'Jetons';
+  const r2 = el('div', 'gf-row'); ['g', 'r', 'm'].forEach(k => r2.appendChild(numField(k, CUR_NAMES[k].replace(/^./, c => c.toUpperCase()), coinNode(k))));
+  s2.append(l2, r2);
+  // packs
+  const s3 = el('div', 'gf-sec'); const l3 = el('span', 'label'); l3.textContent = 'Sachets et boîtes';
+  const r3 = el('div', 'gf-row'); GIFT_PACKS.forEach(([k, i, name]) => r3.appendChild(numField(k, name, i)));
+  s3.append(l3, r3);
+  // cards
+  const s4 = el('div', 'gf-sec'); const l4 = el('span', 'label'); l4.textContent = 'Cartes';
+  const row = el('div', 'gf-card-row');
+  const q = el('input'); q.type = 'text'; q.placeholder = 'N° ou nom de carte'; q.setAttribute('list', 'gfCardList'); q.setAttribute('aria-label', 'Carte à offrir');
+  const dl = el('datalist'); dl.id = 'gfCardList';
+  CARDS.forEach(c => { const o = el('option'); o.value = c.no + ' · ' + c.name; o.label = '★'.repeat(c.r + 1); dl.appendChild(o); });
+  const fxs = el('select'); fxs.setAttribute('aria-label', 'Effet'); FX.forEach((n, i) => { const o = el('option'); o.value = String(i); o.textContent = n; fxs.appendChild(o); });
+  const add = el('button', 'dur'); add.type = 'button'; add.textContent = 'Ajouter';
+  row.append(q, fxs, add);
+  const chips = el('div', 'gf-chips'); const picked = [];
+  const renderChips = () => {
+    chips.textContent = '';
+    picked.forEach((p, i) => {
+      const ch = el('span', 'gf-chip'); ch.textContent = '#' + p.c.no + ' ' + p.c.name + ' ' + '★'.repeat(p.c.r + 1) + (p.fx ? ' · ' + FX[p.fx] : '');
+      const rm = el('button'); rm.type = 'button'; rm.textContent = '✕'; rm.setAttribute('aria-label', 'Retirer ' + p.c.name);
+      rm.addEventListener('click', () => { picked.splice(i, 1); renderChips(); }); ch.appendChild(rm); chips.appendChild(ch);
+    });
+  };
+  const addCard = () => {
+    const v = q.value.trim(); if (!v) return;
+    const n = parseInt(v, 10);
+    const c = n >= 1 && n <= CARDS.length ? CARDS[n - 1] : CARDS.find(c => c.name.toLowerCase() === v.toLowerCase()) || CARDS.find(c => c.name.toLowerCase().includes(v.toLowerCase()));
+    if (!c) { giftStatus('Carte introuvable : « ' + v + ' ».', 'err'); return; }
+    if (picked.length >= 20) { giftStatus('20 cartes au maximum par cadeau.', 'err'); return; }
+    picked.push({ c, fx: Number(fxs.value) || 0 }); q.value = ''; giftStatus(''); renderChips();
+  };
+  add.addEventListener('click', addCard);
+  q.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addCard(); } });
+  q.addEventListener('change', () => { if (/^\d+ · /.test(q.value)) addCard(); });
+  s4.append(l4, row, chips, dl);
+  // message
+  const s5 = el('div', 'gf-sec'); const l5 = el('span', 'label'); l5.textContent = 'Ton message';
+  const msg = el('textarea'); msg.maxLength = 200; msg.placeholder = 'Bravo pour tes progrès ! Voici un petit cadeau.'; msg.setAttribute('aria-label', 'Message');
+  const sig = el('small', 'field-hint'); sig.textContent = 'Signé « ' + GIFT_FROM + ' ».';
+  s5.append(l5, msg, sig);
+  const send = el('button', 'start'); send.type = 'button'; send.textContent = 'Envoyer le cadeau';
+  const st = el('p', 'gf-status'); st.id = 'gfStatus';
+  const sh = el('span', 'label'); sh.textContent = 'Cadeaux envoyés';
+  const sent = el('ul', 'gf-sent'); sent.id = 'gfSent';
+  send.addEventListener('click', async () => {
+    const t = targets.find(([k]) => k === who.value); const target = t && t[1][Number(dev.value) || 0];
+    if (!target) { giftStatus('Choisis un joueur.', 'err'); return; }
+    const doc = { uid: target.uid, pid: target.pid, name: String(target.name).slice(0, 16), from: GIFT_FROM, msg: msg.value.trim().slice(0, 200) || 'Un petit cadeau pour toi' + NB + '!',
+      cards: picked.map(p => p.c.no + ':' + p.fx).join(','), by: fbAdmin.email, done: false };
+    f.querySelectorAll('input[type=number]').forEach(i => { doc[i.dataset.k] = giftInt(i.value, i.dataset.k); });
+    if (!['g', 'r', 'm', 'promo', 'classic', 'star', 'box'].some(k => doc[k]) && !doc.cards) { giftStatus('Ajoute au moins des jetons, un sachet ou une carte.', 'err'); return; }
+    doc.at = firebase.firestore.FieldValue.serverTimestamp();
+    send.disabled = true; send.textContent = 'Envoi…';
+    try {
+      await withTimeout(fbAdmin.db.collection('gifts').doc('g' + uid()).set(doc), 12000);
+      giftStatus('🎁 Cadeau envoyé à ' + doc.name + ' : ' + giftSummary(doc) + '.', 'ok');
+      f.querySelectorAll('input[type=number]').forEach(i => { i.value = '0'; }); picked.length = 0; renderChips(); msg.value = '';
+    } catch (e) { giftStatus('Envoi impossible (' + ((e && e.code) || 'erreur') + '). Les règles Firebase autorisent-elles les cadeaux ?', 'err'); }
+    send.disabled = false; send.textContent = 'Envoyer le cadeau';
+  });
+  f.append(s1, s2, s3, s4, s5, send, st, sh, sent);
+  box.appendChild(f);
+  renderGiftsSent();
+  $('#cardSheet').hidden = false; box.scrollTop = 0;
+}
+
 function viewCard(c, fx, back) {
   const box = $('#cardSheetIn'); box.textContent = '';
   const top = el('div', 'sheet-top'); const b = el('button', 'quit'); b.type = 'button'; b.textContent = '← Retour'; b.addEventListener('click', back);
@@ -3399,7 +3688,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 30;
+const APP_VERSION = 31;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
@@ -3424,7 +3713,8 @@ function applyUpdateIfIdle() {
 }
 setTimeout(checkUpdate, 300);
 setInterval(checkUpdate, 5 * 60 * 1000);
-document.addEventListener('visibilitychange', () => { if (!document.hidden) checkUpdate(); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { checkUpdate(); checkGifts(); } });
+setInterval(checkGifts, 5 * 60e3);
 initShared();
 })();
 </script>
