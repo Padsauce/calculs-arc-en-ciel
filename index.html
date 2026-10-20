@@ -1003,7 +1003,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 29</p>
+      <p class="credits-ver" id="credVer">Version 30</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -1171,7 +1171,7 @@ function allScores() {
 }
 const pendingCount = () => sharedOn() ? scores.filter(s => !s.sent).length : 0;
 function refreshViews() {
-  try { maybeClaim(); watchPlayers(); } catch (e) {}
+  try { resolveNames(); maybeClaim(); watchPlayers(); } catch (e) {}
   if (!$('#menu').hidden) renderMenu();
   if (!$('#board').hidden) renderBoard();
 }
@@ -1242,7 +1242,7 @@ async function syncPending() {
   if (!fb || syncing) return;
   syncing = true; let changed = false;
   try {
-    for (const s of scores.filter(x => !x.sent)) {
+    for (const s of scores.filter(x => !x.sent && !nameHeld(x))) {
       const ref = fb.db.collection('scores').doc(s.id);
       try { await withTimeout(ref.set(toDoc(s)), 12000); s.sent = true; s.uid = fb.uid; changed = true; lastSync = 'envoyé ✓'; }
       catch (e) {
@@ -1416,9 +1416,49 @@ setTimeout(maybeLegalNotice, 2500);
 $('#legalBtn').addEventListener('click', () => openLegal());
 $('#introLegal').addEventListener('click', () => openLegal());
 let toastT = 0;
-function infoToast(text) {
+function infoToast(text, ms = 4200) {
   const t = $('#infoToast'); t.textContent = text; t.hidden = false;
-  clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 4200);
+  clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, ms);
+}
+
+/* ---------- One name per player ----------
+   A name already used by another player cannot be taken: the profile editor refuses it and suggests « Léa 2 ».
+   Offline, the names of the other players may not be known yet: the profile is created and marked nameCheck,
+   its scores wait, and at the next connection it gets a number if somebody else had the name (Léa → Léa 2). */
+const nameKey = n => String(n || '').trim().replace(/\s+/g, ' ').toLowerCase();
+function nameOwner(name, exceptId) {
+  const k = nameKey(name); if (!k) return '';
+  if (profiles.some(p => p.id !== exceptId && nameKey(p.name) === k)) return 'local';
+  if (!sharedOn()) return '';
+  const me = (fb && fb.uid) || (scores.find(x => x.sent && x.uid) || {}).uid || '';
+  if (remote.some(s => s.uid && s.uid !== me && nameKey(s.name) === k)) return 'other';
+  if (typeof playerDocs === 'object' && Object.entries(playerDocs).some(([id, d]) => id.split('_')[0] !== me && nameKey(d.name) === k)) return 'other';
+  return '';
+}
+function freeName(name, exceptId) {
+  const base = String(name).trim().replace(/\s+\d+$/, '') || String(name).trim();
+  for (let n = 2; n < 1000; n++) {
+    const sfx = ' ' + n, nm = base.slice(0, 16 - sfx.length).trim() + sfx;
+    if (!nameOwner(nm, exceptId)) return nm;
+  }
+  return base;
+}
+const nameHeld = s => { const p = profiles.find(q => q.id === s.pid); return !!(p && p.nameCheck); };
+function resolveNames() {
+  if (!fb || remoteState !== 'ok' || !profiles.some(p => p.nameCheck)) return;
+  const msgs = [];
+  profiles.forEach(p => {
+    if (!p.nameCheck) return;
+    delete p.nameCheck;
+    if (nameOwner(p.name, p.id) !== 'other') return;
+    const old = p.name; p.name = freeName(old, p.id);
+    scores.forEach(s => { if (s.pid === p.id && !s.sent) s.name = p.name; });
+    msgs.push('Le nom « ' + old + ' » était déjà pris par un autre joueur : ton profil s’appelle maintenant « ' + p.name + ' ».');
+  });
+  store.set(K.profiles, profiles); store.set(K.scores, scores);
+  if (msgs.length) infoToast(msgs.join(' '), 9000);
+  if (!$('#menu').hidden) renderMenu();
+  setTimeout(() => { syncPending(); try { pushCollections(); } catch (e) {} }, 0);
 }
 
 /* Who may delete a score: the device that made it, or a signed-in admin. */
@@ -2527,16 +2567,28 @@ $('#nameInput').addEventListener('input', () => { $('#nameErr').hidden = true; i
 $('#nameInput').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); saveProfile(); } });
 function saveProfile() {
   const name = $('#nameInput').value.trim().replace(/\s+/g, ' ').slice(0, 16);
-  if (!name) { $('#nameErr').hidden = false; $('#nameInput').focus(); return; }
+  const ne = $('#nameErr');
+  if (!name) { ne.textContent = 'Écris ton nom de joueur pour qu’il apparaisse dans les scores.'; ne.hidden = false; $('#nameInput').focus(); return; }
+  const before = draft.id ? profiles.find(x => x.id === draft.id) : null;
+  const renamed = !before || nameKey(before.name) !== nameKey(name);
+  if (renamed) {
+    const owner = nameOwner(name, draft.id);
+    if (owner) {
+      ne.textContent = (owner === 'local' ? 'Il y a déjà un profil « ' + name + ' » sur cet appareil.' : '« ' + name + ' » est déjà pris par un autre joueur.') + ' Choisis un autre nom, par exemple « ' + freeName(name, draft.id) + ' ».';
+      ne.hidden = false; $('#nameInput').focus(); return;
+    }
+  }
+  // Offline, the other players' names are not all known: check again at the next connection.
+  const unsure = renamed && sharedOn() && !(fb && remoteState === 'ok');
   const pub = draft.avatar.kind === 'photo' && draft.public;
-  if (draft.id) { const p = profiles.find(x => x.id === draft.id); if (p) { p.name = name; p.avatar = draft.avatar; p.emote = draft.emote; p.public = pub; } }
-  else { const p = { id: uid(), name, avatar: draft.avatar, emote: draft.emote, public: pub }; profiles.push(p); draft.id = p.id; }
+  if (draft.id) { const p = profiles.find(x => x.id === draft.id); if (p) { p.name = name; p.avatar = draft.avatar; p.emote = draft.emote; p.public = pub; if (unsure) p.nameCheck = true; } }
+  else { const p = { id: uid(), name, avatar: draft.avatar, emote: draft.emote, public: pub }; if (unsure) p.nameCheck = true; profiles.push(p); draft.id = p.id; }
   currentId = draft.id;
   if (!store.set(K.profiles, profiles) && draft.avatar.kind === 'photo') {
     const pe = $('#photoErr'); pe.textContent = 'La photo est trop lourde pour être gardée sur cet appareil. Choisis un avatar ou une autre image.'; pe.hidden = false;
   }
   store.set(K.current, currentId);
-  syncAvatars();
+  syncAvatars(); try { pushCollections(); } catch (e) {}
   const go = draft.thenStart;
   closeSheet(); renderMenu();
   if (go) startGame();
@@ -3220,7 +3272,8 @@ function pushCollections() {
   pushT = setTimeout(async () => {
     if (!fb || !sharedOn()) return;
     for (const p of profiles) {
-      const w = colls[p.id]; if (!w) continue;
+      if (p.nameCheck) continue;
+      const w = colls[p.id] || wallet(p);   // every profile is shown online, so its name is reserved even before it plays
       const doc = { name: String(p.name || '?').slice(0, 16), avatar: emoteOf(p), cards: encodeCards(w), figs: encodeFigs(w), n: owned(w), updated: Date.now() };
       const sig = doc.name + '|' + doc.avatar + '|' + doc.cards + '|' + doc.figs;
       if (lastPushed[p.id] === sig) continue;
@@ -3346,7 +3399,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 29;
+const APP_VERSION = 30;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
