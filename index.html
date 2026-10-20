@@ -423,6 +423,12 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .textbtn{font-weight:700;font-size:15px;color:var(--mist);padding:8px 4px}
 .textbtn.del{color:var(--rose)}
 .field-hint{color:var(--mist);font-size:13px;line-height:1.3}
+.same-box{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:20px;background:rgba(114,241,255,.1);border:1px solid rgba(114,241,255,.45)}
+.same-box p{margin:0;font-size:15px;line-height:1.4}
+.same-box .dur{background:rgba(255,255,255,.12);color:var(--ink)}
+.same-box .dur.yes{background:var(--aqua);color:#11304a}
+.name-ask{display:flex;flex-direction:column;gap:12px}
+.name-ask p{margin:0;font-size:16px;line-height:1.4}
 .linkbtn{display:inline;padding:0;font:inherit;color:var(--aqua);text-decoration:underline;text-underline-offset:2px}
 .intro-legal{margin:0;font-size:13px;line-height:1.35;color:var(--mist);text-wrap:balance}
 @media (max-height:700px){.intro-in{gap:8px}.intro-rules{gap:6px}.intro-rules li{padding:6px 10px}.intro-hero{font-size:clamp(34px,6vh,60px)}}
@@ -790,6 +796,10 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .gift-win .gw-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 8px;width:min(300px,78vw)}
 .gift-win .gw-cards .slot{position:relative}
 .admin-gift{font-weight:800}
+.admin-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.stats-sum{margin:0;color:var(--mist);font-size:14.5px;font-weight:700;text-align:center}
+.stats-list .tm{font-size:15px;white-space:nowrap}
+.pl-games{font-weight:800;font-size:14px;color:var(--mist)}
 </style>
 
 </head>
@@ -931,7 +941,10 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
     <button id="clearBtn" class="danger" type="button">Effacer les scores de ce niveau</button>
     <div class="admin-row" id="adminRow" hidden>
       <span class="err" id="adminErr" hidden></span>
-      <button class="dur admin-gift" id="giftBtn" type="button" hidden>🎁 Offrir un cadeau</button>
+      <div class="admin-btns">
+        <button class="dur admin-gift" id="giftBtn" type="button" hidden>🎁 Offrir un cadeau</button>
+        <button class="dur admin-gift" id="statsBtn" type="button" hidden>📊 Parties jouées</button>
+      </div>
       <button class="textbtn" id="adminBtn" type="button">Connexion administrateur</button>
     </div>
   </section>
@@ -974,6 +987,13 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <input id="nameInput" type="text" maxlength="16" autocomplete="off" placeholder="Ex. Léa ou Licorne Turbo">
         <span class="err" id="nameErr" hidden>Écris ton nom de joueur pour qu’il apparaisse dans les scores.</span>
         <small class="field-hint">Un prénom, un pseudo… ce que tu veux. Il sera visible par tous les joueurs.</small>
+        <div class="same-box" id="sameBox" hidden>
+          <p id="sameText"></p>
+          <div class="fam-actions">
+            <button class="dur yes" id="sameYes" type="button">Oui, c’est moi</button>
+            <button class="dur" id="sameNo" type="button">Non</button>
+          </div>
+        </div>
       </div>
       <div class="field">
         <span class="label">Choisis ton avatar <small id="avCount">· glisse pour en voir plus</small></span>
@@ -1040,7 +1060,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 32</p>
+      <p class="credits-ver" id="credVer">Version 33</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -1486,21 +1506,51 @@ function freeName(name, exceptId) {
   return base;
 }
 const nameHeld = s => { const p = profiles.find(q => q.id === s.pid); return !!(p && p.nameCheck); };
+// Profiles created offline: at the next connection, a name already used elsewhere leads to a question
+// (« Est-ce toi sur un autre appareil ? »). Yes: same player, the name stays. No: it becomes « Léa 2 ».
+var nameAsked = new Set(), nameAskQueue = [];
 function resolveNames() {
   if (!fb || remoteState !== 'ok' || !profiles.some(p => p.nameCheck)) return;
-  const msgs = [];
+  let changed = false;
   profiles.forEach(p => {
     if (!p.nameCheck) return;
-    delete p.nameCheck;
-    if (nameOwner(p.name, p.id) !== 'other') return;
-    const old = p.name; p.name = freeName(old, p.id);
-    scores.forEach(s => { if (s.pid === p.id && !s.sent) s.name = p.name; });
-    msgs.push('Le nom « ' + old + ' » était déjà pris par un autre joueur : ton profil s’appelle maintenant « ' + p.name + ' ».');
+    if (nameOwner(p.name, p.id) !== 'other') { delete p.nameCheck; changed = true; return; }
+    if (!nameAsked.has(p.id)) { nameAsked.add(p.id); nameAskQueue.push(p.id); }
   });
+  if (changed) nameSettled();
+  if (nameAskQueue.length) askNameWhenIdle();
+}
+function nameSettled() {
   store.set(K.profiles, profiles); store.set(K.scores, scores);
-  if (msgs.length) infoToast(msgs.join(' '), 9000);
   if (!$('#menu').hidden) renderMenu();
   setTimeout(() => { syncPending(); try { pushCollections(); } catch (e) {} }, 0);
+}
+function askNameWhenIdle() {
+  const id = nameAskQueue[0]; const p = profiles.find(x => x.id === id);
+  if (!p || !p.nameCheck) { nameAskQueue.shift(); if (nameAskQueue.length) askNameWhenIdle(); return; }
+  const busy = $('#menu').hidden || !$('#opener').hidden || !$('#sheet').hidden || !$('#cardSheet').hidden || !$('#optSheet').hidden;
+  if (busy) { setTimeout(askNameWhenIdle, 2500); return; }
+  nameAskQueue.shift();
+  const box = $('#cardSheetIn'); box.textContent = '';
+  const top = el('div', 'sheet-top'); const h = el('h3'); h.textContent = 'Ce nom existe déjà'; top.appendChild(h);
+  const f = el('div', 'name-ask');
+  const t = el('p'); t.textContent = 'Un autre appareil utilise déjà le nom « ' + p.name + ' ». Est-ce toi, sur un autre appareil ?';
+  const acts = el('div', 'fam-actions same-box'); acts.style.padding = '0'; acts.style.background = 'none'; acts.style.border = '0';
+  const yes = el('button', 'dur yes'); yes.type = 'button'; yes.textContent = 'Oui, c’est moi';
+  const no = el('button', 'dur'); no.type = 'button'; no.textContent = 'Non';
+  yes.addEventListener('click', () => {
+    delete p.nameCheck; p.linked = true; closeCard(); nameSettled();
+    infoToast('C’est noté : tes scores de tous tes appareils comptent pour « ' + p.name + ' ». Ta collection reste sur chaque appareil.', 7000);
+  });
+  no.addEventListener('click', () => {
+    const old = p.name; p.name = freeName(old, p.id); delete p.nameCheck;
+    scores.forEach(s => { if (s.pid === p.id && !s.sent) s.name = p.name; });
+    closeCard(); nameSettled();
+    infoToast('Ton profil s’appelle maintenant « ' + p.name + ' ». Tu peux changer ce nom avec ✎.', 7000);
+  });
+  acts.append(yes, no); f.append(t, acts); box.append(top, f);
+  $('#cardSheet').hidden = false;
+  if (nameAskQueue.length) setTimeout(askNameWhenIdle, 1000);
 }
 
 /* Who may delete a score: the device that made it, or a signed-in admin. */
@@ -2473,9 +2523,10 @@ function renderShare() {
   $('#shareStatus').textContent = 'Tous les joueurs · ' + state + (pend ? ' · ' + pend + ' score' + (pend > 1 ? 's' : '') + ' à envoyer' : '') + (sharedErr && (remoteState !== 'ok' || pend) ? ' · (' + sharedErr + ')' : '');
   $('#shareHelp').textContent = 'Tu peux supprimer tes propres scores avec 🗑.' + (fbAdmin ? ' Mode administrateur : tous les scores peuvent être supprimés. 👁 cache un joueur aux autres (il continue de voir ses scores sur son appareil) ; 🙈 le montre à nouveau. 🎁 offre des jetons, des sachets ou des cartes à un joueur.' : '');
   $('#adminBtn').textContent = fbAdmin ? 'Administrateur : ' + fbAdmin.email + ' · se déconnecter' : 'Connexion administrateur';
-  $('#giftBtn').hidden = !fbAdmin;
+  $('#giftBtn').hidden = !fbAdmin; $('#statsBtn').hidden = !fbAdmin;
 }
 $('#giftBtn').addEventListener('click', () => openGift());
+$('#statsBtn').addEventListener('click', () => openStats());
 let boardMsgT = 0;
 function boardMsg(m) { const e = $('#adminErr'); e.textContent = m || ''; e.hidden = !m; clearTimeout(boardMsgT); if (m) boardMsgT = setTimeout(() => { e.hidden = true; }, 5000); }
 $('#adminBtn').addEventListener('click', async () => {
@@ -2516,7 +2567,7 @@ function openEditor(p, thenStart = false) {
   $('#editTitle').textContent = p ? 'Modifier le profil' : 'Nouveau profil';
   $('#nameInput').value = p ? p.name : '';
   $('#nameErr').hidden = true; $('#photoErr').hidden = true;
-  $('#delBtn').hidden = !p; $('#eraseBox').hidden = true;
+  $('#delBtn').hidden = !p; $('#eraseBox').hidden = true; $('#sameBox').hidden = true; sameOk = '';
   $('#backWho').hidden = !profiles.length;
   $('#saveBtn').textContent = thenStart ? 'Enregistrer et jouer' : 'Enregistrer';
   renderAvGrid();
@@ -2609,7 +2660,15 @@ function readPhoto(file) {
     const pe = $('#photoErr'); pe.textContent = 'Cette image ne s’ouvre pas. Essaie une photo JPG ou PNG.'; pe.hidden = false;
   }
 }));
-$('#nameInput').addEventListener('input', () => { $('#nameErr').hidden = true; if (draft && draft.avatar.kind !== 'photo' && draft.avatar.kind !== 'emoji') renderAvGrid(); });
+let sameOk = '';
+$('#sameYes').addEventListener('click', () => { sameOk = nameKey($('#nameInput').value); $('#sameBox').hidden = true; saveProfile(); });
+$('#sameNo').addEventListener('click', () => {
+  const name = $('#nameInput').value.trim().replace(/\s+/g, ' ').slice(0, 16), alt = freeName(name, draft && draft.id);
+  $('#sameBox').hidden = true; $('#nameInput').value = alt;
+  const ne = $('#nameErr'); ne.textContent = 'Ce nom est donc pris : on te propose « ' + alt + ' ». Tu peux le changer avant d’enregistrer.'; ne.hidden = false;
+  $('#nameInput').focus(); try { $('#nameInput').select(); } catch (e) {}
+});
+$('#nameInput').addEventListener('input', () => { $('#nameErr').hidden = true; $('#sameBox').hidden = true; sameOk = ''; if (draft && draft.avatar.kind !== 'photo' && draft.avatar.kind !== 'emoji') renderAvGrid(); });
 $('#nameInput').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); saveProfile(); } });
 function saveProfile() {
   const name = $('#nameInput').value.trim().replace(/\s+/g, ' ').slice(0, 16);
@@ -2617,18 +2676,30 @@ function saveProfile() {
   if (!name) { ne.textContent = 'Écris ton nom de joueur pour qu’il apparaisse dans les scores.'; ne.hidden = false; $('#nameInput').focus(); return; }
   const before = draft.id ? profiles.find(x => x.id === draft.id) : null;
   const renamed = !before || nameKey(before.name) !== nameKey(name);
+  let linked = false;
   if (renamed) {
     const owner = nameOwner(name, draft.id);
-    if (owner) {
-      ne.textContent = (owner === 'local' ? 'Il y a déjà un profil « ' + name + ' » sur cet appareil.' : '« ' + name + ' » est déjà pris par un autre joueur.') + ' Choisis un autre nom, par exemple « ' + freeName(name, draft.id) + ' ».';
+    if (owner === 'local') {
+      ne.textContent = 'Il y a déjà un profil « ' + name + ' » sur cet appareil. Choisis un autre nom, par exemple « ' + freeName(name, draft.id) + ' ».';
       ne.hidden = false; $('#nameInput').focus(); return;
+    }
+    if (owner === 'other') {
+      // Same player on a new device? Ask before refusing.
+      if (sameOk !== nameKey(name)) {
+        ne.hidden = true;
+        $('#sameText').textContent = '« ' + name + ' » existe déjà. As-tu déjà joué avec ce nom sur un autre appareil ?';
+        $('#sameBox').hidden = false; $('#sameBox').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        return;
+      }
+      linked = true;
     }
   }
   // Offline, the other players' names are not all known: check again at the next connection.
   const unsure = renamed && sharedOn() && !(fb && remoteState === 'ok');
   const pub = draft.avatar.kind === 'photo' && draft.public;
-  if (draft.id) { const p = profiles.find(x => x.id === draft.id); if (p) { p.name = name; p.avatar = draft.avatar; p.emote = draft.emote; p.public = pub; if (unsure) p.nameCheck = true; } }
-  else { const p = { id: uid(), name, avatar: draft.avatar, emote: draft.emote, public: pub }; if (unsure) p.nameCheck = true; profiles.push(p); draft.id = p.id; }
+  if (draft.id) { const p = profiles.find(x => x.id === draft.id); if (p) { p.name = name; p.avatar = draft.avatar; p.emote = draft.emote; p.public = pub; if (unsure && !linked) p.nameCheck = true; else delete p.nameCheck; if (linked) p.linked = true; } }
+  else { const p = { id: uid(), name, avatar: draft.avatar, emote: draft.emote, public: pub }; if (unsure && !linked) p.nameCheck = true; if (linked) p.linked = true; profiles.push(p); draft.id = p.id; }
+  if (linked) setTimeout(() => infoToast('C’est noté : tes scores de tous tes appareils comptent pour « ' + name + ' ». Ta collection reste sur chaque appareil.', 7000), 400);
   currentId = draft.id;
   if (!store.set(K.profiles, profiles) && draft.avatar.kind === 'photo') {
     const pe = $('#photoErr'); pe.textContent = 'La photo est trop lourde pour être gardée sur cet appareil. Choisis un avatar ou une autre image.'; pe.hidden = false;
@@ -3391,7 +3462,8 @@ function openPlayer(key, s, keepAll) {
   const hm = el('div', 'pl-meta'); const nm = el('b'); nm.textContent = name;
   const sc = el('div', 'pl-score'); sc.innerHTML = '<span></span><small>score global</small>'; sc.firstChild.textContent = g.pts;
   const pod = el('div', 'pl-pod'); pod.textContent = '🥇 ' + g.podium[0] + '   🥈 ' + g.podium[1] + '   🥉 ' + g.podium[2];
-  hm.append(nm, pod); hero.append(aw, hm, sc);
+  const ng = gamesOf(key), gm = el('div', 'pl-games'); gm.textContent = '🎮 ' + ng + ' partie' + (ng > 1 ? 's' : '') + ' jouée' + (ng > 1 ? 's' : '');
+  hm.append(nm, pod, gm); hero.append(aw, hm, sc);
   const today = dailyBoard(dayKey(nowMs())), di = today.findIndex(e => e.key === key);
   const dline = el('p', 'help'); dline.textContent = di >= 0 ? '☀️ Aujourd’hui : ' + (di ? (di + 1) + 'e' : '1re') + ' place du classement du jour (' + today[di].pts + ' pts)' : '☀️ Pas encore joué aujourd’hui';
   // positions in the 20 boards
@@ -3664,6 +3736,42 @@ function openGift(key) {
   $('#cardSheet').hidden = false; box.scrollTop = 0;
 }
 
+
+/* ---------- Games played (finished games saved as scores), per player ---------- */
+function playerStats() {
+  const by = new Map();
+  allScores().forEach(s => {
+    const k = pkey(s); if (!k) return;
+    let e = by.get(k); if (!e) by.set(k, e = { key: k, s, games: 0, today: 0, last: 0 });
+    e.games++; if (s.date && dayKey(s.date) === dayKey(nowMs())) e.today++;
+    if ((s.date || 0) > e.last) { e.last = s.date || 0; e.s = s; }
+  });
+  return [...by.values()].sort((a, b) => b.games - a.games || b.last - a.last);
+}
+function gamesOf(key) { let n = 0; allScores().forEach(s => { if (pkey(s) === key) n++; }); return n; }
+function openStats() {
+  const list = playerStats(), total = list.reduce((t, e) => t + e.games, 0), today = list.reduce((t, e) => t + e.today, 0);
+  const box = $('#cardSheetIn'); box.textContent = '';
+  const top = el('div', 'sheet-top'); const h = el('h3'); h.textContent = '📊 Parties jouées';
+  const x = el('button', 'close'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Fermer'); x.addEventListener('click', closeCard);
+  top.append(h, x);
+  const sum = el('p', 'stats-sum');
+  sum.textContent = list.length + ' joueur' + (list.length > 1 ? 's' : '') + ' · ' + total + ' partie' + (total > 1 ? 's' : '') + ' au total · ' + today + ' aujourd’hui';
+  const panel = el('div', 'panel board-list stats-list'); const ol = el('ol', 'rows'); panel.appendChild(ol);
+  list.forEach((e, i) => {
+    const s = e.s, lp = localProfile(s), name = lp ? lp.name : s.name;
+    const li = el('li', 'row tap');
+    const rk = el('span', 'rank'); rk.textContent = i + 1;
+    const aw = el('span', 'avwrap'); aw.appendChild(avatarNode(playerAvatar(s), name));
+    const nm = el('span', 'nm'); nm.textContent = name;
+    const sm = el('small'); sm.textContent = 'dernière partie : ' + (e.last ? fmtDate(e.last) : '?') + (e.today ? ' · ' + e.today + ' aujourd’hui' : '') + (isHiddenScore(s) ? ' · caché' : ''); nm.appendChild(sm);
+    const tm = el('span', 'tm'); tm.textContent = e.games + NB + 'partie' + (e.games > 1 ? 's' : '');
+    li.append(rk, aw, nm, tm); li.addEventListener('click', () => openPlayer(e.key, s)); ol.appendChild(li);
+  });
+  const help = el('p', 'help'); help.textContent = 'Parties terminées et enregistrées dans les classements (une partie quittée en cours ne compte pas, un score effacé non plus).';
+  box.append(top, sum, panel, help);
+  $('#cardSheet').hidden = false; box.scrollTop = 0;
+}
 function viewCard(c, fx, back) {
   const box = $('#cardSheetIn'); box.textContent = '';
   const top = el('div', 'sheet-top'); const b = el('button', 'quit'); b.type = 'button'; b.textContent = '← Retour'; b.addEventListener('click', back);
@@ -3692,7 +3800,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 32;
+const APP_VERSION = 33;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
