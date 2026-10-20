@@ -4507,5 +4507,6296 @@
   "nom": "Samy Tindel",
   "description": "Spécialiste du hasard, professeur à Nancy, puis à Purdue (États-Unis) depuis 2015. Il étudie le mouvement brownien et les « chemins rugueux ».",
   "date": "doctorat en 1996"
+ },
+ {
+  "no": 502,
+  "rarete": "L",
+  "type": "M",
+  "symbole": "👁",
+  "nom": "Ibn al-Haytham",
+  "description": "Savant du Caire, pionnier de l'optique et de l'expérience scientifique. Il a expliqué que l'on voit grâce à la lumière qui entre dans l'œil.",
+  "date": "vers 965 – vers 1040"
+ },
+ {
+  "no": 503,
+  "rarete": "L",
+  "type": "M",
+  "symbole": "🧠",
+  "nom": "Jean-Pierre Serre",
+  "description": "Mathématicien français. Plus jeune lauréat de la médaille Fields (1954, à 27 ans), il a aussi reçu le tout premier prix Abel en 2003.",
+  "date": "né en 1926"
+ },
+ {
+  "no": 504,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "🤝",
+  "nom": "Thabit ibn Qurra",
+  "description": "Savant de Bagdad. Il a trouvé une règle pour fabriquer des nombres amiables, comme 220 et 284.",
+  "date": "826 – 901"
+ },
+ {
+  "no": 505,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "🗾",
+  "nom": "Seki Takakazu",
+  "description": "Grand mathématicien japonais. Il a découvert les déterminants à peu près en même temps que Leibniz, sans le connaître.",
+  "date": "vers 1642 – 1708"
+ },
+ {
+  "no": 506,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "🌀",
+  "nom": "Nikolaï Lobatchevski",
+  "description": "Mathématicien russe. Il a imaginé une géométrie où, par un point, passent plusieurs parallèles à une même droite.",
+  "date": "1792 – 1856"
+ },
+ {
+  "no": 507,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "✉",
+  "nom": "Élisabeth de Bohême",
+  "description": "Princesse et philosophe. Dans ses lettres à Descartes, elle a résolu le problème des trois cercles d'Apollonius.",
+  "date": "1618 – 1680"
+ },
+ {
+  "no": 508,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "🎓",
+  "nom": "Euphemia Lofton Haynes",
+  "description": "Mathématicienne américaine. En 1943, elle est devenue la première femme afro-américaine docteure en mathématiques.",
+  "date": "1890 – 1980"
+ },
+ {
+  "no": 509,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "🧮",
+  "nom": "Kathleen Ollerenshaw",
+  "description": "Mathématicienne anglaise, sourde depuis l'enfance. Elle a percé les secrets de carrés magiques très spéciaux et résolu le Rubik's Cube.",
+  "date": "1912 – 2014"
+ },
+ {
+  "no": 510,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "🧊",
+  "nom": "Hugo Duminil-Copin",
+  "description": "Mathématicien français, médaille Fields 2022. Il étudie comment l'eau traverse une roche poreuse ou un aimant change d'état.",
+  "date": "né en 1985"
+ },
+ {
+  "no": 511,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "🌌",
+  "nom": "Michael Atiyah",
+  "description": "Mathématicien britannique, médaille Fields 1966 et prix Abel 2004. Il a relié la géométrie, l'algèbre et la physique.",
+  "date": "1929 – 2019"
+ },
+ {
+  "no": 512,
+  "rarete": "E",
+  "type": "M",
+  "symbole": "🐇",
+  "nom": "Lewis Carroll",
+  "description": "Charles Dodgson, mathématicien anglais, a écrit sous ce nom « Alice au pays des merveilles », plein de jeux de logique.",
+  "date": "1832 – 1898"
+ },
+ {
+  "no": 513,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "⏳",
+  "nom": "Eudoxe de Cnide",
+  "description": "Astronome et géomètre grec. Sa méthode d'exhaustion calcule une aire en la remplissant de formes de plus en plus petites.",
+  "date": "vers 408 – vers 355 av. J.-C."
+ },
+ {
+  "no": 514,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🌍",
+  "nom": "Aristarque de Samos",
+  "description": "Astronome grec. Avec la géométrie, il a estimé la distance du Soleil et imaginé que la Terre tourne autour de lui.",
+  "date": "vers 310 – vers 230 av. J.-C."
+ },
+ {
+  "no": 515,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "⭐",
+  "nom": "Hipparque",
+  "description": "Astronome grec, souvent appelé le père de la trigonométrie. Il a dressé une table de cordes et un grand catalogue d'étoiles.",
+  "date": "vers 190 – vers 120 av. J.-C."
+ },
+ {
+  "no": 516,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🧮",
+  "nom": "Gerbert d'Aurillac",
+  "description": "Savant français devenu le pape Sylvestre II. Il a fait connaître en Europe les chiffres venus du monde arabe et un nouvel abaque.",
+  "date": "vers 946 – 1003"
+ },
+ {
+  "no": 517,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🌐",
+  "nom": "Nasir al-Din al-Tusi",
+  "description": "Savant persan. Il a fait de la trigonométrie une science à part entière et dirigé le grand observatoire de Maragha.",
+  "date": "1201 – 1274"
+ },
+ {
+  "no": 518,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🎵",
+  "nom": "Pingala",
+  "description": "Savant indien. Pour classer les rythmes des poèmes, il a combiné syllabes courtes et longues, comme un code binaire.",
+  "date": "vers IIIe siècle av. J.-C."
+ },
+ {
+  "no": 519,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "📈",
+  "nom": "Nicole Oresme",
+  "description": "Savant français. Il a dessiné des grandeurs qui varient, comme un ancêtre des graphiques, et montré que la série harmonique est infinie.",
+  "date": "vers 1320 – 1382"
+ },
+ {
+  "no": 520,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "📒",
+  "nom": "Luca Pacioli",
+  "description": "Moine italien, ami de Léonard de Vinci. Son livre de 1494 explique la comptabilité en partie double, toujours utilisée aujourd'hui.",
+  "date": "vers 1447 – 1517"
+ },
+ {
+  "no": 521,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🌀",
+  "nom": "Rafael Bombelli",
+  "description": "Ingénieur italien. Il a été le premier à calculer avec des racines carrées de nombres négatifs, les ancêtres des nombres imaginaires.",
+  "date": "1526 – 1572"
+ },
+ {
+  "no": 522,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🎺",
+  "nom": "Evangelista Torricelli",
+  "description": "Élève de Galilée. Il a inventé le baromètre et trouvé une forme infiniment longue au volume fini : la trompette de Gabriel.",
+  "date": "1608 – 1647"
+ },
+ {
+  "no": 523,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🛝",
+  "nom": "Jean Bernoulli",
+  "description": "Mathématicien suisse, frère de Jacques et professeur d'Euler. Il a posé le problème de la descente la plus rapide : la brachistochrone.",
+  "date": "1667 – 1748"
+ },
+ {
+  "no": 524,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "✈",
+  "nom": "Daniel Bernoulli",
+  "description": "Fils de Jean. Il a expliqué pourquoi un fluide qui va vite pousse moins fort, ce qui aide à comprendre le vol des avions.",
+  "date": "1700 – 1782"
+ },
+ {
+  "no": 525,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🎲",
+  "nom": "Thomas Bayes",
+  "description": "Pasteur anglais. Sa formule explique comment changer d'avis quand on reçoit de nouveaux indices. Elle sert beaucoup en intelligence artificielle.",
+  "date": "vers 1701 – 1761"
+ },
+ {
+  "no": 526,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🥧",
+  "nom": "Jean-Henri Lambert",
+  "description": "Savant suisse. Il a démontré que π est irrationnel : ses décimales ne se répètent jamais de façon régulière.",
+  "date": "1728 – 1777"
+ },
+ {
+  "no": 527,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "♾",
+  "nom": "Bernard Bolzano",
+  "description": "Prêtre et mathématicien de Prague. Il a étudié l'infini et prouvé le théorème des valeurs intermédiaires.",
+  "date": "1781 – 1848"
+ },
+ {
+  "no": 528,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🔣",
+  "nom": "Sutayta al-Mahamali",
+  "description": "Mathématicienne de Bagdad. Elle était célèbre pour ses calculs d'héritages et ses solutions d'équations.",
+  "date": "Xe siècle (morte en 987)"
+ },
+ {
+  "no": 529,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "☄",
+  "nom": "Nicole-Reine Lepaute",
+  "description": "Astronome et calculatrice française. Avec Clairaut et Lalande, elle a calculé le retour de la comète de Halley, en 1759.",
+  "date": "1723 – 1788"
+ },
+ {
+  "no": 530,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🏆",
+  "nom": "Philippa Fawcett",
+  "description": "En 1890, à Cambridge, elle a eu la meilleure note de tout l'examen de mathématiques, devant tous les garçons.",
+  "date": "1868 – 1948"
+ },
+ {
+  "no": 531,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🌐",
+  "nom": "Hu Hesheng",
+  "description": "Mathématicienne chinoise, spécialiste de géométrie. Elle a été la première femme mathématicienne élue à l'Académie des sciences de Chine.",
+  "date": "1928 – 2020"
+ },
+ {
+  "no": 532,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🧩",
+  "nom": "Maria Chudnovsky",
+  "description": "Mathématicienne israélo-américaine. Avec trois collègues, elle a démontré en 2002 le célèbre théorème des graphes parfaits.",
+  "date": "née en 1977"
+ },
+ {
+  "no": 533,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🦋",
+  "nom": "Laurent Schwartz",
+  "description": "Mathématicien français, médaille Fields 1950. Il a inventé les distributions et collectionnait des milliers de papillons.",
+  "date": "1915 – 2002"
+ },
+ {
+  "no": 534,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🍶",
+  "nom": "Felix Klein",
+  "description": "Mathématicien allemand. Il a classé les géométries selon leurs symétries et imaginé la bouteille qui porte son nom.",
+  "date": "1849 – 1925"
+ },
+ {
+  "no": 535,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "☕",
+  "nom": "Stefan Banach",
+  "description": "Mathématicien polonais. Avec ses amis, il notait des problèmes dans un cahier gardé dans un café de Lwów : le Livre écossais.",
+  "date": "1892 – 1945"
+ },
+ {
+  "no": 536,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🎩",
+  "nom": "Martin Gardner",
+  "description": "Journaliste américain. Pendant 25 ans, sa rubrique de jeux mathématiques a passionné des millions de lecteurs.",
+  "date": "1914 – 2010"
+ },
+ {
+  "no": 537,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🗼",
+  "nom": "Édouard Lucas",
+  "description": "Mathématicien français. Il a inventé le jeu des tours de Hanoï et étudié une suite cousine de celle de Fibonacci.",
+  "date": "1842 – 1891"
+ },
+ {
+  "no": 538,
+  "rarete": "R",
+  "type": "M",
+  "symbole": "🔶",
+  "nom": "Roger Penrose",
+  "description": "Mathématicien et physicien britannique, prix Nobel 2020. Il a inventé des pavages qui ne se répètent jamais.",
+  "date": "né en 1931"
+ },
+ {
+  "no": 539,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🌗",
+  "nom": "Hippocrate de Chios",
+  "description": "Géomètre grec. Il a écrit l'un des premiers livres d'éléments de géométrie et calculé l'aire de lunules, des croissants entre deux cercles.",
+  "date": "vers 470 – vers 410 av. J.-C."
+ },
+ {
+  "no": 540,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🐝",
+  "nom": "Pappus d'Alexandrie",
+  "description": "L'un des derniers grands géomètres grecs. Il admirait les alvéoles des abeilles, qui gardent beaucoup de miel avec peu de cire.",
+  "date": "vers 290 – vers 350"
+ },
+ {
+  "no": 541,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "✋",
+  "nom": "Bède le Vénérable",
+  "description": "Moine anglais. Il a décrit comment compter jusqu'à des milliers avec les doigts et comment calculer la date de Pâques.",
+  "date": "vers 673 – 735"
+ },
+ {
+  "no": 542,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🐺",
+  "nom": "Alcuin",
+  "description": "Savant à la cour de Charlemagne. Il a écrit des énigmes célèbres, comme le loup, la chèvre et le chou à faire traverser une rivière.",
+  "date": "vers 735 – 804"
+ },
+ {
+  "no": 543,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🪜",
+  "nom": "Al-Karaji",
+  "description": "Mathématicien de Bagdad. Il a étudié les puissances et utilisé une forme de raisonnement par récurrence, marche après marche.",
+  "date": "vers 953 – vers 1029"
+ },
+ {
+  "no": 544,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🔣",
+  "nom": "Al-Qalasadi",
+  "description": "Mathématicien andalou. Il a utilisé de petites lettres comme symboles en algèbre, une étape vers nos équations écrites.",
+  "date": "1412 – 1486"
+ },
+ {
+  "no": 545,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "⭕",
+  "nom": "Bhaskara I",
+  "description": "Astronome indien. Dans ses écrits, le zéro est noté par un petit cercle. Il a aussi trouvé une très bonne formule pour le sinus.",
+  "date": "vers 600 – vers 680"
+ },
+ {
+  "no": 546,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🀄",
+  "nom": "Qin Jiushao",
+  "description": "Mathématicien chinois. Il a expliqué le théorème des restes chinois et une méthode pour résoudre des équations difficiles.",
+  "date": "vers 1202 – 1261"
+ },
+ {
+  "no": 547,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🔺",
+  "nom": "Zhu Shijie",
+  "description": "Mathématicien chinois. Son Miroir de jade (1303) contient un triangle de nombres semblable au triangle de Pascal.",
+  "date": "vers 1249 – 1314"
+ },
+ {
+  "no": 548,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🔭",
+  "nom": "Regiomontanus",
+  "description": "Astronome allemand. Il a écrit un grand traité de trigonométrie et des tables très précises utilisées par les navigateurs.",
+  "date": "1436 – 1476"
+ },
+ {
+  "no": 549,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🔟",
+  "nom": "Nicolas Chuquet",
+  "description": "Mathématicien français. Dans un livre de 1484, il a inventé les mots « byllion » et « tryllion » pour nommer les très grands nombres.",
+  "date": "vers 1445 – vers 1488"
+ },
+ {
+  "no": 550,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🏛",
+  "nom": "Girard Desargues",
+  "description": "Architecte et géomètre lyonnais. Il a fondé la géométrie projective, la géométrie de la perspective.",
+  "date": "1591 – 1661"
+ },
+ {
+  "no": 551,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "➰",
+  "nom": "Brook Taylor",
+  "description": "Mathématicien anglais. Ses séries remplacent une courbe compliquée par une somme de puissances toutes simples.",
+  "date": "1685 – 1731"
+ },
+ {
+  "no": 552,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "✉",
+  "nom": "Christian Goldbach",
+  "description": "Mathématicien allemand. Dans une lettre à Euler en 1742, il a posé une conjecture sur les nombres pairs, toujours pas démontrée.",
+  "date": "1690 – 1764"
+ },
+ {
+  "no": 553,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "☄",
+  "nom": "Alexis Clairaut",
+  "description": "Membre de l'Académie des sciences à 18 ans. Il a calculé la forme aplatie de la Terre et le retour de la comète de Halley.",
+  "date": "1713 – 1765"
+ },
+ {
+  "no": 554,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🗳",
+  "nom": "Nicolas de Condorcet",
+  "description": "Philosophe et mathématicien français. En étudiant les votes, il a découvert qu'une majorité peut tourner en rond.",
+  "date": "1743 – 1794"
+ },
+ {
+  "no": 555,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "➿",
+  "nom": "August Ferdinand Möbius",
+  "description": "Mathématicien et astronome allemand. Il a décrit en 1858 le célèbre ruban qui n'a qu'une seule face.",
+  "date": "1790 – 1868"
+ },
+ {
+  "no": 556,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🕊",
+  "nom": "Archytas de Tarente",
+  "description": "Philosophe et inventeur grec. Il a résolu la duplication du cube et aurait construit une colombe en bois capable de voler.",
+  "date": "vers 435 – vers 350 av. J.-C."
+ },
+ {
+  "no": 557,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🎭",
+  "nom": "Hrotsvitha de Gandersheim",
+  "description": "Religieuse et poétesse allemande. Dans une de ses pièces, elle parle des nombres parfaits 6, 28, 496 et 8128.",
+  "date": "vers 935 – vers 973"
+ },
+ {
+  "no": 558,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🧩",
+  "nom": "Hanna Neumann",
+  "description": "Mathématicienne allemande installée en Angleterre puis en Australie. Spécialiste des groupes, l'algèbre des symétries.",
+  "date": "1914 – 1971"
+ },
+ {
+  "no": 559,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🌊",
+  "nom": "Olga Oleïnik",
+  "description": "Mathématicienne russe. Elle a étudié les équations qui décrivent la chaleur, les fluides et l'élasticité des matériaux.",
+  "date": "1925 – 2001"
+ },
+ {
+  "no": 560,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "📐",
+  "nom": "Marie-Hélène Schwartz",
+  "description": "Mathématicienne française. Elle a étudié des formes avec des pointes et des plis, en géométrie et en topologie.",
+  "date": "1913 – 2013"
+ },
+ {
+  "no": 561,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🫙",
+  "nom": "Tatiana Ehrenfest",
+  "description": "Mathématicienne russe et néerlandaise. Avec son mari, elle a expliqué le hasard des molécules avec un jeu de deux urnes et de boules.",
+  "date": "1876 – 1964"
+ },
+ {
+  "no": 562,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🔢",
+  "nom": "Raman Parimala",
+  "description": "Mathématicienne indienne, spécialiste d'algèbre. Elle a reçu de nombreux prix pour ses travaux sur les formes quadratiques.",
+  "date": "née en 1948"
+ },
+ {
+  "no": 563,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🫧",
+  "nom": "Sun-Yung Alice Chang",
+  "description": "Mathématicienne d'origine taïwanaise. Elle étudie la forme des surfaces courbes à l'aide d'équations.",
+  "date": "née en 1948"
+ },
+ {
+  "no": 564,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🧵",
+  "nom": "Gloria Gilmer",
+  "description": "Mathématicienne américaine. Elle a étudié la géométrie cachée dans les tresses et coiffures africaines : l'ethnomathématique.",
+  "date": "1928 – 2021"
+ },
+ {
+  "no": 565,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "📊",
+  "nom": "Florence Nightingale David",
+  "description": "Statisticienne anglaise. Pendant la guerre, elle a calculé les effets possibles des bombardements pour mieux protéger la population.",
+  "date": "1909 – 1993"
+ },
+ {
+  "no": 566,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🌾",
+  "nom": "Gertrude Cox",
+  "description": "Statisticienne américaine. Elle a inventé de bonnes façons d'organiser les expériences, par exemple sur les cultures agricoles.",
+  "date": "1900 – 1978"
+ },
+ {
+  "no": 567,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🪢",
+  "nom": "Joan Birman",
+  "description": "Mathématicienne américaine. Elle étudie les tresses et les nœuds. Elle a commencé sa thèse après avoir élevé ses enfants.",
+  "date": "née en 1927"
+ },
+ {
+  "no": 568,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🔊",
+  "nom": "Nalini Anantharaman",
+  "description": "Mathématicienne française. Elle étudie le chaos et les ondes, par exemple les vibrations d'un tambour de forme bizarre.",
+  "date": "née en 1976"
+ },
+ {
+  "no": 569,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🧲",
+  "nom": "Sylvia Serfaty",
+  "description": "Mathématicienne française. Elle étudie les petits tourbillons qui apparaissent dans les supraconducteurs.",
+  "date": "née en 1975"
+ },
+ {
+  "no": 570,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🌺",
+  "nom": "Cora Ratto de Sadosky",
+  "description": "Mathématicienne argentine. Elle s'est battue pour que les femmes et tous les jeunes puissent étudier les sciences.",
+  "date": "1912 – 1981"
+ },
+ {
+  "no": 571,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🚶",
+  "nom": "Wendelin Werner",
+  "description": "Mathématicien franco-allemand, médaille Fields 2006. Il étudie des chemins tracés au hasard et leurs formes étonnantes.",
+  "date": "né en 1968"
+ },
+ {
+  "no": 572,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🪷",
+  "nom": "Ngô Bảo Châu",
+  "description": "Mathématicien vietnamien et français, médaille Fields 2010, pour la démonstration du « lemme fondamental ».",
+  "date": "né en 1972"
+ },
+ {
+  "no": 573,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🎢",
+  "nom": "Artur Avila",
+  "description": "Mathématicien brésilien et français, médaille Fields 2014. Il étudie le chaos dans les systèmes qui évoluent.",
+  "date": "né en 1979"
+ },
+ {
+  "no": 574,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🧱",
+  "nom": "Peter Scholze",
+  "description": "Mathématicien allemand, médaille Fields 2018 à 30 ans, pour une nouvelle géométrie au service des nombres.",
+  "date": "né en 1987"
+ },
+ {
+  "no": 575,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🔲",
+  "nom": "Arthur Cayley",
+  "description": "Mathématicien anglais, avocat pendant 14 ans. Il a développé le calcul avec les matrices, des tableaux de nombres.",
+  "date": "1821 – 1895"
+ },
+ {
+  "no": 576,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "📏",
+  "nom": "Henri Lebesgue",
+  "description": "Mathématicien français. Il a inventé une nouvelle façon de mesurer les aires et de calculer les intégrales.",
+  "date": "1875 – 1941"
+ },
+ {
+  "no": 577,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🤖",
+  "nom": "Norbert Wiener",
+  "description": "Mathématicien américain, enfant prodige. Il a fondé la cybernétique, la science des machines qui se contrôlent elles-mêmes.",
+  "date": "1894 – 1964"
+ },
+ {
+  "no": 578,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🔻",
+  "nom": "Wacław Sierpiński",
+  "description": "Mathématicien polonais. Il a inventé un triangle troué à l'infini et écrit plus de 700 articles.",
+  "date": "1882 – 1969"
+ },
+ {
+  "no": 579,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "⛓",
+  "nom": "Andreï Markov",
+  "description": "Mathématicien russe. Ses chaînes de Markov décrivent le hasard pas à pas, comme un pion qui avance sur un plateau.",
+  "date": "1856 – 1922"
+ },
+ {
+  "no": 580,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "⭕",
+  "nom": "John Venn",
+  "description": "Logicien anglais. Il a popularisé les diagrammes à cercles qui se chevauchent pour représenter des ensembles.",
+  "date": "1834 – 1923"
+ },
+ {
+  "no": 581,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "6️⃣",
+  "nom": "D. R. Kaprekar",
+  "description": "Professeur indien passionné de nombres. Il a découvert le mystérieux nombre 6174 et bien d'autres curiosités.",
+  "date": "1905 – 1986"
+ },
+ {
+  "no": 582,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🎓",
+  "nom": "Hua Luogeng",
+  "description": "Mathématicien chinois autodidacte. Sans diplôme, il est devenu un grand spécialiste des nombres et a rendu les maths populaires.",
+  "date": "1910 – 1985"
+ },
+ {
+  "no": 583,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🌐",
+  "nom": "János Bolyai",
+  "description": "Mathématicien hongrois. Comme Lobatchevski, il a inventé une géométrie où les parallèles se comportent autrement.",
+  "date": "1802 – 1860"
+ },
+ {
+  "no": 584,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🃏",
+  "nom": "Raymond Smullyan",
+  "description": "Logicien et magicien américain. Ses énigmes parlent de chevaliers qui disent toujours vrai et de fripons qui mentent toujours.",
+  "date": "1919 – 2017"
+ },
+ {
+  "no": 585,
+  "rarete": "U",
+  "type": "M",
+  "symbole": "🧒",
+  "nom": "Vladimir Arnold",
+  "description": "Mathématicien russe. Il a étudié le chaos et écrit un livre de problèmes pour les enfants « de 5 à 15 ans ».",
+  "date": "1937 – 2010"
+ },
+ {
+  "no": 586,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🔢",
+  "nom": "Nicomaque de Gérase",
+  "description": "Auteur d'une Introduction arithmétique qui a servi de manuel pendant plus de mille ans, avec les nombres pairs, impairs et parfaits.",
+  "date": "vers 60 – vers 120"
+ },
+ {
+  "no": 587,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🪔",
+  "nom": "Mahavira",
+  "description": "Mathématicien indien. Il a écrit un grand livre de calcul avec des règles sur les fractions et des problèmes en forme de poèmes.",
+  "date": "IXe siècle"
+ },
+ {
+  "no": 588,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🧀",
+  "nom": "Bonaventura Cavalieri",
+  "description": "Élève de Galilée. Il calculait les volumes en empilant des tranches très fines, comme des tranches de fromage.",
+  "date": "1598 – 1647"
+ },
+ {
+  "no": 589,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "⚖",
+  "nom": "Gilles Personne de Roberval",
+  "description": "Mathématicien français. Il a calculé l'aire sous la cycloïde et inventé la balance à deux plateaux qui porte son nom.",
+  "date": "1602 – 1675"
+ },
+ {
+  "no": 590,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "📍",
+  "nom": "Jean-Robert Argand",
+  "description": "Comptable suisse et mathématicien amateur. Il a représenté les nombres imaginaires comme des points sur un plan.",
+  "date": "1768 – 1822"
+ },
+ {
+  "no": 591,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "5️⃣",
+  "nom": "Paolo Ruffini",
+  "description": "Mathématicien et médecin italien. Il a montré qu'il n'existe pas de formule générale pour les équations du cinquième degré.",
+  "date": "1765 – 1822"
+ },
+ {
+  "no": 592,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🎯",
+  "nom": "Guillaume de l'Hôpital",
+  "description": "Marquis français. Il a écrit en 1696 le premier manuel de calcul différentiel, avec la règle qui porte son nom.",
+  "date": "1661 – 1704"
+ },
+ {
+  "no": 593,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🔟",
+  "nom": "Marie Crous",
+  "description": "Mathématicienne française. Elle a écrit des livres pour apprendre aux jeunes filles à calculer, notamment avec les nombres décimaux.",
+  "date": "XVIIe siècle"
+ },
+ {
+  "no": 594,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🧭",
+  "nom": "Mary Edwards",
+  "description": "Calculatrice anglaise. Pendant des années, elle a fait à la main les calculs des tables d'astronomie utilisées par les marins.",
+  "date": "vers 1750 – 1815"
+ },
+ {
+  "no": 595,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "📜",
+  "nom": "Ban Zhao",
+  "description": "Historienne et savante chinoise. Elle a terminé le Livre des Han, qui contient un traité d'astronomie et de calendrier.",
+  "date": "vers 45 – vers 117"
+ },
+ {
+  "no": 596,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "⚛",
+  "nom": "Grete Hermann",
+  "description": "Mathématicienne et philosophe allemande, élève d'Emmy Noether. Elle a réfléchi aux fondements de la physique quantique.",
+  "date": "1901 – 1984"
+ },
+ {
+  "no": 597,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🎨",
+  "nom": "Christine Ladd-Franklin",
+  "description": "Logicienne et psychologue américaine. Elle a étudié les raisonnements logiques et la vision des couleurs.",
+  "date": "1847 – 1930"
+ },
+ {
+  "no": 598,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🎓",
+  "nom": "Winifred Edgerton Merrill",
+  "description": "En 1886, elle est devenue la première Américaine docteure en mathématiques, à l'université Columbia.",
+  "date": "1862 – 1951"
+ },
+ {
+  "no": 599,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "∫",
+  "nom": "Anna Pell Wheeler",
+  "description": "Mathématicienne américaine. Elle a étudié les équations intégrales et dirigé le département de maths de Bryn Mawr.",
+  "date": "1883 – 1966"
+ },
+ {
+  "no": 600,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "💧",
+  "nom": "Pelageïa Kotchina",
+  "description": "Mathématicienne russe. Elle a calculé comment l'eau circule dans le sol, utile pour construire des barrages et des canaux.",
+  "date": "1899 – 1999"
+ },
+ {
+  "no": 601,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "✨",
+  "nom": "Sophie Piccard",
+  "description": "Mathématicienne suisse d'origine russe. En 1943, elle est devenue la première femme professeure titulaire d'une université suisse.",
+  "date": "1904 – 1990"
+ },
+ {
+  "no": 602,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "♾",
+  "nom": "Lioudmila Keldych",
+  "description": "Mathématicienne russe. Elle a étudié les ensembles et la topologie. Son fils Sergueï Novikov a reçu la médaille Fields en 1970.",
+  "date": "1904 – 1976"
+ },
+ {
+  "no": 603,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "📈",
+  "nom": "Pia Nalli",
+  "description": "Mathématicienne italienne, spécialiste d'analyse. Elle a été l'une des premières femmes professeures d'université en Italie.",
+  "date": "1886 – 1964"
+ },
+ {
+  "no": 604,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🕸",
+  "nom": "Karen Vogtmann",
+  "description": "Mathématicienne américaine. Elle étudie des formes géométriques construites à partir de graphes, comme des réseaux de fils.",
+  "date": "née en 1949"
+ },
+ {
+  "no": 605,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "📚",
+  "nom": "Michèle Audin",
+  "description": "Mathématicienne et écrivaine française. Elle raconte aussi l'histoire des mathématiciennes, comme Sofia Kovalevskaïa.",
+  "date": "née en 1954"
+ },
+ {
+  "no": 606,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🎓",
+  "nom": "Etta Zuber Falconer",
+  "description": "Mathématicienne américaine. Elle a aidé des centaines d'étudiantes afro-américaines à se lancer dans les sciences.",
+  "date": "1933 – 2002"
+ },
+ {
+  "no": 607,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🏫",
+  "nom": "Mary Winston Newson",
+  "description": "Mathématicienne américaine. En 1897, elle est devenue la première Américaine docteure de l'université de Göttingen.",
+  "date": "1869 – 1959"
+ },
+ {
+  "no": 608,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🌌",
+  "nom": "Elizabeth Scott",
+  "description": "Astronome et statisticienne américaine. Elle a utilisé les statistiques pour étudier comment les galaxies sont réparties.",
+  "date": "1917 – 1988"
+ },
+ {
+  "no": 609,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "〰",
+  "nom": "Grace Wahba",
+  "description": "Statisticienne américaine. Elle a créé des méthodes pour tracer des courbes souples à travers des données imprécises.",
+  "date": "née en 1934"
+ },
+ {
+  "no": 610,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🔺",
+  "nom": "Marion Walter",
+  "description": "Professeure de maths américaine. Elle aimait inventer des problèmes à partir d'une simple figure. Un théorème sur les triangles porte son nom.",
+  "date": "1928 – 2021"
+ },
+ {
+  "no": 611,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "📖",
+  "nom": "Constance Reid",
+  "description": "Écrivaine américaine. Elle a raconté la vie de grands mathématiciens comme David Hilbert et écrit De zéro à l'infini.",
+  "date": "1918 – 2010"
+ },
+ {
+  "no": 612,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "✍",
+  "nom": "June Huh",
+  "description": "Mathématicien coréano-américain, médaille Fields 2022. Jeune, il voulait devenir poète avant de découvrir les maths.",
+  "date": "né en 1983"
+ },
+ {
+  "no": 613,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🐒",
+  "nom": "Émile Borel",
+  "description": "Mathématicien français. Il a imaginé un singe qui tape au hasard sur une machine à écrire et finit par écrire un livre entier.",
+  "date": "1871 – 1956"
+ },
+ {
+  "no": 614,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "∴",
+  "nom": "Augustus De Morgan",
+  "description": "Mathématicien anglais. Ses lois de logique expliquent comment dire le contraire d'une phrase avec « et » ou « ou ».",
+  "date": "1806 – 1871"
+ },
+ {
+  "no": 615,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "⏳",
+  "nom": "Hermann Minkowski",
+  "description": "Mathématicien allemand, professeur d'Einstein. Il a réuni l'espace et le temps en un seul monde à quatre dimensions.",
+  "date": "1864 – 1909"
+ },
+ {
+  "no": 616,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "📏",
+  "nom": "Felix Hausdorff",
+  "description": "Mathématicien allemand. Il a inventé une façon de mesurer la dimension des fractales, qui n'est pas forcément un nombre entier.",
+  "date": "1868 – 1942"
+ },
+ {
+  "no": 617,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🌱",
+  "nom": "Gaston Julia",
+  "description": "Mathématicien français. Blessé à la guerre, il a étudié à l'hôpital les ensembles fractals qui portent son nom.",
+  "date": "1893 – 1978"
+ },
+ {
+  "no": 618,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "✉",
+  "nom": "Wolfgang Doeblin",
+  "description": "Mathématicien franco-allemand. Soldat en 1940, il a envoyé ses découvertes dans un pli cacheté ouvert seulement en 2000.",
+  "date": "1915 – 1940"
+ },
+ {
+  "no": 619,
+  "rarete": "C",
+  "type": "M",
+  "symbole": "🕷",
+  "nom": "Henry Dudeney",
+  "description": "Inventeur anglais de casse-têtes. Il a créé des centaines d'énigmes mathématiques, comme l'araignée et la mouche.",
+  "date": "1857 – 1930"
+ },
+ {
+  "no": 620,
+  "rarete": "L",
+  "type": "I",
+  "symbole": "🧬",
+  "nom": "Rosalind Franklin",
+  "description": "Chimiste anglaise. Sa célèbre « photo 51 », prise aux rayons X, a révélé la forme en double hélice de l'ADN.",
+  "date": "1920 – 1958"
+ },
+ {
+  "no": 621,
+  "rarete": "L",
+  "type": "I",
+  "symbole": "⚛",
+  "nom": "Chien-Shiung Wu",
+  "description": "Physicienne sino-américaine. En 1956, son expérience a montré que la nature ne se comporte pas toujours comme dans un miroir.",
+  "date": "1912 – 1997"
+ },
+ {
+  "no": 622,
+  "rarete": "L",
+  "type": "I",
+  "symbole": "💡",
+  "nom": "Albert Einstein",
+  "description": "Physicien, prix Nobel 1921. Sa relativité a changé notre idée de l'espace et du temps. E = mc² est sa formule la plus célèbre.",
+  "date": "1879 – 1955"
+ },
+ {
+  "no": 623,
+  "rarete": "L",
+  "type": "I",
+  "symbole": "☀",
+  "nom": "Nicolas Copernic",
+  "description": "Astronome polonais. Dans un livre publié en 1543, il a placé le Soleil au centre et fait tourner la Terre autour de lui.",
+  "date": "1473 – 1543"
+ },
+ {
+  "no": 624,
+  "rarete": "E",
+  "type": "I",
+  "symbole": "📡",
+  "nom": "Jocelyn Bell Burnell",
+  "description": "Astrophysicienne irlandaise. Étudiante, elle a découvert en 1967 les pulsars, des étoiles qui clignotent comme des phares.",
+  "date": "née en 1943"
+ },
+ {
+  "no": 625,
+  "rarete": "E",
+  "type": "I",
+  "symbole": "🌿",
+  "nom": "Tu Youyou",
+  "description": "Chimiste chinoise, prix Nobel 2015. En étudiant une plante médicinale, elle a trouvé un remède qui a sauvé des millions de vies du paludisme.",
+  "date": "née en 1930"
+ },
+ {
+  "no": 626,
+  "rarete": "E",
+  "type": "I",
+  "symbole": "🌏",
+  "nom": "Inge Lehmann",
+  "description": "Sismologue danoise. En étudiant les tremblements de terre, elle a découvert en 1936 que la Terre a un noyau solide.",
+  "date": "1888 – 1993"
+ },
+ {
+  "no": 627,
+  "rarete": "E",
+  "type": "I",
+  "symbole": "⠿",
+  "nom": "Louis Braille",
+  "description": "Aveugle depuis l'enfance, il a inventé à 15 ans une écriture à points en relief que l'on lit avec les doigts.",
+  "date": "1809 – 1852"
+ },
+ {
+  "no": 628,
+  "rarete": "E",
+  "type": "I",
+  "symbole": "🌐",
+  "nom": "Tim Berners-Lee",
+  "description": "Informaticien britannique. En 1989, au CERN, il a inventé le World Wide Web et l'a offert gratuitement au monde entier.",
+  "date": "né en 1955"
+ },
+ {
+  "no": 629,
+  "rarete": "E",
+  "type": "I",
+  "symbole": "🥁",
+  "nom": "Richard Feynman",
+  "description": "Physicien américain, prix Nobel 1965. Il expliquait la physique avec des dessins et jouait des bongos.",
+  "date": "1918 – 1988"
+ },
+ {
+  "no": 630,
+  "rarete": "E",
+  "type": "I",
+  "symbole": "🕳",
+  "nom": "Stephen Hawking",
+  "description": "Physicien britannique. Malgré une grave maladie, il a étudié les trous noirs et écrit des livres lus dans le monde entier.",
+  "date": "1942 – 2018"
+ },
+ {
+  "no": 631,
+  "rarete": "E",
+  "type": "I",
+  "symbole": "🖊",
+  "nom": "Urbain Le Verrier",
+  "description": "Astronome français. En 1846, il a découvert Neptune par le calcul, avant même qu'on la voie au télescope.",
+  "date": "1811 – 1877"
+ },
+ {
+  "no": 632,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "☢",
+  "nom": "Irène Joliot-Curie",
+  "description": "Physicienne française, fille de Marie Curie. Avec Frédéric Joliot, elle a reçu le prix Nobel de chimie en 1935.",
+  "date": "1897 – 1956"
+ },
+ {
+  "no": 633,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🚀",
+  "nom": "Valentina Terechkova",
+  "description": "Cosmonaute russe. En 1963, elle est devenue la première femme à voyager dans l'espace, à bord de Vostok 6.",
+  "date": "née en 1937"
+ },
+ {
+  "no": 634,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🛰",
+  "nom": "Sally Ride",
+  "description": "Physicienne et astronaute américaine. En 1983, elle a été la première Américaine dans l'espace.",
+  "date": "1951 – 2012"
+ },
+ {
+  "no": 635,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🗺",
+  "nom": "Marie Tharp",
+  "description": "Géologue américaine. Elle a dessiné la première carte du fond des océans et découvert une immense chaîne de montagnes sous-marine.",
+  "date": "1920 – 2006"
+ },
+ {
+  "no": 636,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "💻",
+  "nom": "Lynn Conway",
+  "description": "Ingénieure américaine. Ses méthodes ont permis de dessiner des puces électroniques contenant des millions de transistors.",
+  "date": "1938 – 2024"
+ },
+ {
+  "no": 637,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🕳",
+  "nom": "Andrea Ghez",
+  "description": "Astronome américaine, prix Nobel 2020. Elle a prouvé qu'un trou noir géant se cache au centre de notre galaxie.",
+  "date": "née en 1965"
+ },
+ {
+  "no": 638,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🔭",
+  "nom": "Tycho Brahe",
+  "description": "Astronome danois. Sans lunette, il a mesuré la position des planètes avec une précision incroyable, que Kepler a utilisée.",
+  "date": "1546 – 1601"
+ },
+ {
+  "no": 639,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🧲",
+  "nom": "James Clerk Maxwell",
+  "description": "Physicien écossais. Ses quatre équations décrivent l'électricité, le magnétisme et la lumière, qui est une onde.",
+  "date": "1831 – 1879"
+ },
+ {
+  "no": 640,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🔋",
+  "nom": "Michael Faraday",
+  "description": "Physicien anglais autodidacte. Il a découvert qu'un aimant qui bouge crée un courant électrique, la base de nos centrales.",
+  "date": "1791 – 1867"
+ },
+ {
+  "no": 641,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "💡",
+  "nom": "Thomas Edison",
+  "description": "Inventeur américain aux plus de mille brevets. Il a mis au point le phonographe et une ampoule électrique durable.",
+  "date": "1847 – 1931"
+ },
+ {
+  "no": 642,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "✈",
+  "nom": "Les frères Wright",
+  "description": "Orville et Wilbur Wright, Américains, ont réalisé en 1903 le premier vol d'un avion à moteur contrôlé par un pilote.",
+  "date": "1903"
+ },
+ {
+  "no": 643,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🌕",
+  "nom": "Neil Armstrong",
+  "description": "Ingénieur et astronaute américain. Le 21 juillet 1969, il a été le premier humain à marcher sur la Lune.",
+  "date": "1930 – 2012"
+ },
+ {
+  "no": 644,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🧪",
+  "nom": "Dmitri Mendeleïev",
+  "description": "Chimiste russe. En 1869, il a rangé les éléments dans un tableau et prédit des éléments encore inconnus.",
+  "date": "1834 – 1907"
+ },
+ {
+  "no": 645,
+  "rarete": "R",
+  "type": "I",
+  "symbole": "🌌",
+  "nom": "Edwin Hubble",
+  "description": "Astronome américain. Il a découvert que l'univers contient d'autres galaxies et qu'elles s'éloignent de nous.",
+  "date": "1889 – 1953"
+ },
+ {
+  "no": 646,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "📓",
+  "nom": "Mileva Marić",
+  "description": "Physicienne et mathématicienne serbe, première épouse d'Einstein. Elle a étudié avec lui à l'École polytechnique de Zurich.",
+  "date": "1875 – 1948"
+ },
+ {
+  "no": 647,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🔬",
+  "nom": "Ada Yonath",
+  "description": "Chimiste israélienne, prix Nobel 2009. Elle a dessiné atome par atome le ribosome, l'usine à protéines des cellules.",
+  "date": "née en 1939"
+ },
+ {
+  "no": 648,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🦺",
+  "nom": "Stephanie Kwolek",
+  "description": "Chimiste américaine. Elle a inventé le Kevlar, une fibre cinq fois plus résistante que l'acier à poids égal.",
+  "date": "1923 – 2014"
+ },
+ {
+  "no": 649,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🎲",
+  "nom": "Elizabeth Magie",
+  "description": "Inventrice américaine. Son jeu de 1904, le Landlord's Game, est l'ancêtre du Monopoly.",
+  "date": "1866 – 1948"
+ },
+ {
+  "no": 650,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🔭",
+  "nom": "Nancy Grace Roman",
+  "description": "Astronome américaine surnommée « la mère de Hubble ». Elle a préparé le télescope spatial Hubble à la NASA.",
+  "date": "1925 – 2018"
+ },
+ {
+  "no": 651,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🌡",
+  "nom": "Eunice Foote",
+  "description": "Scientifique américaine. En 1856, elle a montré que le gaz carbonique fait chauffer l'air : le début de la science du climat.",
+  "date": "1819 – 1888"
+ },
+ {
+  "no": 652,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "💎",
+  "nom": "Kathleen Lonsdale",
+  "description": "Cristallographe irlandaise. En 1929, elle a montré avec les rayons X que la molécule de benzène est un hexagone plat.",
+  "date": "1903 – 1971"
+ },
+ {
+  "no": 653,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "✈",
+  "nom": "Elsie MacGill",
+  "description": "Ingénieure canadienne, première femme ingénieure en aéronautique. Elle a dirigé la construction d'avions pendant la guerre.",
+  "date": "1905 – 1980"
+ },
+ {
+  "no": 654,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "📱",
+  "nom": "Sophie Wilson",
+  "description": "Informaticienne anglaise. Avec Steve Furber, elle a conçu le processeur ARM, présent aujourd'hui dans presque tous les téléphones.",
+  "date": "née en 1957"
+ },
+ {
+  "no": 655,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🗂",
+  "nom": "Jean Sammet",
+  "description": "Informaticienne américaine. Elle a participé à la création du langage COBOL, utilisé par les banques depuis 1959.",
+  "date": "1928 – 2017"
+ },
+ {
+  "no": 656,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🖲",
+  "nom": "Betty Holberton",
+  "description": "Une des six programmeuses de l'ordinateur ENIAC en 1946. Elle a ensuite aidé à créer les langages COBOL et FORTRAN.",
+  "date": "1917 – 2001"
+ },
+ {
+  "no": 657,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🧑‍🚀",
+  "nom": "Peggy Whitson",
+  "description": "Biochimiste et astronaute américaine. Elle a passé plus de 600 jours dans l'espace, un record pour une Américaine.",
+  "date": "née en 1960"
+ },
+ {
+  "no": 658,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🔭",
+  "nom": "Maria Margaretha Kirch",
+  "description": "Astronome allemande. En 1702, elle a découvert une comète et calculé des calendriers astronomiques.",
+  "date": "1670 – 1720"
+ },
+ {
+  "no": 659,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🧪",
+  "nom": "Frances Arnold",
+  "description": "Ingénieure chimiste américaine, prix Nobel 2018. Elle fait évoluer des protéines comme la nature, mais beaucoup plus vite.",
+  "date": "née en 1956"
+ },
+ {
+  "no": 660,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🔦",
+  "nom": "Donna Strickland",
+  "description": "Physicienne canadienne, prix Nobel 2018. Elle a inventé une façon de produire des éclairs laser ultra-courts et puissants.",
+  "date": "née en 1959"
+ },
+ {
+  "no": 661,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "⏱",
+  "nom": "Anne L'Huillier",
+  "description": "Physicienne franco-suédoise, prix Nobel 2023. Elle étudie des éclairs de lumière d'une attoseconde, un milliardième de milliardième de seconde.",
+  "date": "née en 1958"
+ },
+ {
+  "no": 662,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🔋",
+  "nom": "Alessandro Volta",
+  "description": "Physicien italien. Il a inventé la pile électrique en 1800, en empilant des disques de métal et du carton mouillé.",
+  "date": "1745 – 1827"
+ },
+ {
+  "no": 663,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "📞",
+  "nom": "Alexander Graham Bell",
+  "description": "Inventeur écossais installé en Amérique. En 1876, il a breveté le téléphone.",
+  "date": "1847 – 1922"
+ },
+ {
+  "no": 664,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "📡",
+  "nom": "Samuel Morse",
+  "description": "Peintre et inventeur américain. Il a créé le télégraphe électrique et un code fait de points et de traits.",
+  "date": "1791 – 1872"
+ },
+ {
+  "no": 665,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🧮",
+  "nom": "Konrad Zuse",
+  "description": "Ingénieur allemand. En 1941, il a construit le Z3, l'un des premiers ordinateurs programmables, qui calculait en binaire.",
+  "date": "1910 – 1995"
+ },
+ {
+  "no": 666,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🚀",
+  "nom": "Sergueï Korolev",
+  "description": "Ingénieur russe. Il a dirigé la construction de Spoutnik, le premier satellite, et de la fusée du premier vol humain en 1961.",
+  "date": "1907 – 1966"
+ },
+ {
+  "no": 667,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🕰",
+  "nom": "Su Song",
+  "description": "Savant chinois. Il a construit une immense horloge astronomique à eau, avec une sphère qui suivait le ciel.",
+  "date": "1020 – 1101"
+ },
+ {
+  "no": 668,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🐉",
+  "nom": "Zhang Heng",
+  "description": "Savant chinois. Il a inventé un détecteur de séismes : une bille tombait de la bouche d'un dragon dans celle d'un crapaud.",
+  "date": "78 – 139"
+ },
+ {
+  "no": 669,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "⚗",
+  "nom": "Antoine Lavoisier",
+  "description": "Chimiste français. Il a montré qu'en chimie rien ne se perd et rien ne se crée : tout se transforme.",
+  "date": "1743 – 1794"
+ },
+ {
+  "no": 670,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "⚛",
+  "nom": "Niels Bohr",
+  "description": "Physicien danois, prix Nobel 1922. Il a imaginé l'atome avec des électrons sur des orbites, comme des planètes.",
+  "date": "1885 – 1962"
+ },
+ {
+  "no": 671,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🔆",
+  "nom": "Max Planck",
+  "description": "Physicien allemand, prix Nobel 1918. En 1900, il a découvert que la lumière est échangée par petits paquets : les quanta.",
+  "date": "1858 – 1947"
+ },
+ {
+  "no": 672,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🧮",
+  "nom": "Enrico Fermi",
+  "description": "Physicien italien, prix Nobel 1938. Il aimait les « problèmes de Fermi » : estimer une grandeur avec quelques calculs simples.",
+  "date": "1901 – 1954"
+ },
+ {
+  "no": 673,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🌍",
+  "nom": "Léon Foucault",
+  "description": "Physicien français. En 1851, son grand pendule au Panthéon a montré à tous que la Terre tourne.",
+  "date": "1819 – 1868"
+ },
+ {
+  "no": 674,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "🔭",
+  "nom": "William Herschel",
+  "description": "Astronome et musicien anglo-allemand. En 1781, il a découvert la planète Uranus. Sa sœur Caroline l'aidait dans ses observations.",
+  "date": "1738 – 1822"
+ },
+ {
+  "no": 675,
+  "rarete": "U",
+  "type": "I",
+  "symbole": "☄",
+  "nom": "Edmond Halley",
+  "description": "Astronome anglais. Il a prédit le retour de la comète qui porte son nom, revenue en 1758, après sa mort.",
+  "date": "1656 – 1742"
+ },
+ {
+  "no": 676,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🌧",
+  "nom": "Mary Anderson",
+  "description": "Inventrice américaine. En 1903, elle a inventé l'essuie-glace pour que les conducteurs voient sous la pluie.",
+  "date": "1866 – 1953"
+ },
+ {
+  "no": 677,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🛍",
+  "nom": "Margaret Knight",
+  "description": "Inventrice américaine. Elle a créé une machine qui fabrique des sacs en papier à fond plat, comme ceux des boulangeries.",
+  "date": "1838 – 1914"
+ },
+ {
+  "no": 678,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🍽",
+  "nom": "Josephine Cochrane",
+  "description": "Inventrice américaine. Elle a mis au point l'un des premiers lave-vaisselle pratiques, présenté en 1893.",
+  "date": "1839 – 1913"
+ },
+ {
+  "no": 679,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🎆",
+  "nom": "Martha Coston",
+  "description": "Inventrice américaine. Ses fusées éclairantes de couleur permettaient aux navires de communiquer la nuit.",
+  "date": "1826 – 1904"
+ },
+ {
+  "no": 680,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🏍",
+  "nom": "Beatrice Shilling",
+  "description": "Ingénieure anglaise et pilote de moto. Elle a réglé un défaut des moteurs d'avions avec une simple pièce percée.",
+  "date": "1909 – 1990"
+ },
+ {
+  "no": 681,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "⚙",
+  "nom": "Kate Gleason",
+  "description": "Ingénieure américaine. Elle a vendu des machines à tailler les engrenages et construit des maisons à bas prix.",
+  "date": "1865 – 1933"
+ },
+ {
+  "no": 682,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🚂",
+  "nom": "Olive Dennis",
+  "description": "Ingénieure américaine des chemins de fer. Elle a rendu les trains plus confortables, avec des fenêtres et des sièges réglables.",
+  "date": "1885 – 1957"
+ },
+ {
+  "no": 683,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🪟",
+  "nom": "Adele Goldberg",
+  "description": "Informaticienne américaine. Elle a créé le langage Smalltalk, qui a inspiré les fenêtres et les icônes de nos ordinateurs.",
+  "date": "née en 1945"
+ },
+ {
+  "no": 684,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "📞",
+  "nom": "Shirley Ann Jackson",
+  "description": "Physicienne américaine. Première Afro-Américaine docteure du MIT en 1973, elle a dirigé l'autorité de sûreté nucléaire des États-Unis.",
+  "date": "née en 1946"
+ },
+ {
+  "no": 685,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🧪",
+  "nom": "Mary Sherman Morgan",
+  "description": "Chimiste américaine. Elle a inventé le carburant de la fusée qui a lancé le premier satellite américain en 1958.",
+  "date": "1921 – 2004"
+ },
+ {
+  "no": 686,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🔌",
+  "nom": "Kay McNulty",
+  "description": "Mathématicienne irlandaise, une des six programmeuses de l'ENIAC. Elle a programmé l'ordinateur en branchant des câbles.",
+  "date": "1921 – 2006"
+ },
+ {
+  "no": 687,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "⌨",
+  "nom": "Ida Rhodes",
+  "description": "Mathématicienne américaine. Pionnière de la programmation, elle a conçu un des premiers langages pour l'ordinateur UNIVAC.",
+  "date": "1900 – 1986"
+ },
+ {
+  "no": 688,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🏢",
+  "nom": "Stephanie Shirley",
+  "description": "Informaticienne britannique. En 1962, elle a fondé une entreprise de logiciels où les femmes pouvaient travailler depuis chez elles.",
+  "date": "née en 1933"
+ },
+ {
+  "no": 689,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🌠",
+  "nom": "Claudie Haigneré",
+  "description": "Médecin et astronaute française. En 1996, elle est devenue la première Française dans l'espace.",
+  "date": "née en 1957"
+ },
+ {
+  "no": 690,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🧫",
+  "nom": "Marie-Anne Lavoisier",
+  "description": "Chimiste et dessinatrice française. Elle a dessiné les instruments et traduit les livres qui ont aidé son mari à fonder la chimie.",
+  "date": "1758 – 1836"
+ },
+ {
+  "no": 691,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🌒",
+  "nom": "Jeanne Dumée",
+  "description": "Astronome française. Elle a écrit un livre pour expliquer simplement les idées de Copernic sur le mouvement de la Terre.",
+  "date": "vers 1660 – 1706"
+ },
+ {
+  "no": 692,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🌙",
+  "nom": "Aglaonice de Thessalie",
+  "description": "Astronome grecque. Elle savait prédire les éclipses de Lune, si bien qu'on la disait capable de faire disparaître la Lune.",
+  "date": "IIe siècle av. J.-C."
+ },
+ {
+  "no": 693,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🪞",
+  "nom": "Katharine Blodgett",
+  "description": "Physicienne américaine. Elle a inventé le verre antireflet, utilisé pour les lunettes et les appareils photo.",
+  "date": "1898 – 1979"
+ },
+ {
+  "no": 694,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "☀",
+  "nom": "Mária Telkes",
+  "description": "Scientifique américaine d'origine hongroise. Surnommée « la reine du soleil », elle a construit une maison chauffée à l'énergie solaire.",
+  "date": "1900 – 1995"
+ },
+ {
+  "no": 695,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "👁",
+  "nom": "Patricia Bath",
+  "description": "Ophtalmologue américaine. Elle a inventé une technique au laser pour opérer la cataracte et rendre la vue.",
+  "date": "1942 – 2019"
+ },
+ {
+  "no": 696,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "📺",
+  "nom": "Valerie Thomas",
+  "description": "Scientifique américaine de la NASA. Elle a inventé un émetteur d'illusion qui crée des images en trois dimensions.",
+  "date": "née en 1943"
+ },
+ {
+  "no": 697,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "☎",
+  "nom": "Marian Croak",
+  "description": "Ingénieure américaine. Ses inventions permettent de téléphoner par Internet, comme dans nos appels vidéo.",
+  "date": "née en 1955"
+ },
+ {
+  "no": 698,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🔥",
+  "nom": "Sadi Carnot",
+  "description": "Ingénieur français. Il a calculé le meilleur rendement possible d'une machine à vapeur, le début de la thermodynamique.",
+  "date": "1796 – 1832"
+ },
+ {
+  "no": 699,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "⚡",
+  "nom": "André-Marie Ampère",
+  "description": "Physicien et mathématicien français. Il a étudié le courant électrique, dont l'unité d'intensité porte son nom.",
+  "date": "1775 – 1836"
+ },
+ {
+  "no": 700,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "📻",
+  "nom": "Guglielmo Marconi",
+  "description": "Inventeur italien. En 1901, il a envoyé un message radio à travers l'océan Atlantique, sans aucun fil.",
+  "date": "1874 – 1937"
+ },
+ {
+  "no": 701,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🎈",
+  "nom": "Les frères Montgolfier",
+  "description": "Joseph et Étienne de Montgolfier, Français, ont inventé la montgolfière. En 1783, des humains ont volé pour la première fois.",
+  "date": "1783"
+ },
+ {
+  "no": 702,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "📨",
+  "nom": "Vint Cerf",
+  "description": "Informaticien américain. Avec Bob Kahn, il a créé les règles qui permettent aux ordinateurs de se parler sur Internet.",
+  "date": "né en 1943"
+ },
+ {
+  "no": 703,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🐧",
+  "nom": "Linus Torvalds",
+  "description": "Informaticien finlandais. Étudiant, il a créé Linux, un système d'exploitation libre utilisé par la plupart des serveurs.",
+  "date": "né en 1969"
+ },
+ {
+  "no": 704,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🍏",
+  "nom": "Steve Wozniak",
+  "description": "Ingénieur américain. Il a conçu seul l'Apple I et l'Apple II, parmi les premiers ordinateurs personnels.",
+  "date": "né en 1950"
+ },
+ {
+  "no": 705,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "⌨",
+  "nom": "Dennis Ritchie",
+  "description": "Informaticien américain. Il a créé le langage C et participé à Unix, à la base de très nombreux logiciels.",
+  "date": "1941 – 2011"
+ },
+ {
+  "no": 706,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🔐",
+  "nom": "Tommy Flowers",
+  "description": "Ingénieur anglais. Il a construit Colossus, l'ordinateur électronique qui décodait les messages secrets pendant la guerre.",
+  "date": "1905 – 1998"
+ },
+ {
+  "no": 707,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🛰",
+  "nom": "Thomas Pesquet",
+  "description": "Ingénieur et astronaute français. Il a passé plus de 390 jours dans la Station spatiale internationale.",
+  "date": "né en 1978"
+ },
+ {
+  "no": 708,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "📜",
+  "nom": "Cai Lun",
+  "description": "Fonctionnaire chinois. On lui attribue l'invention du papier fait avec des fibres de plantes, vers l'an 105.",
+  "date": "vers 50 – 121"
+ },
+ {
+  "no": 709,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "♨",
+  "nom": "Denis Papin",
+  "description": "Physicien français. Il a inventé l'autocuiseur, l'ancêtre de la cocotte-minute, et imaginé un moteur à vapeur.",
+  "date": "1647 – 1713"
+ },
+ {
+  "no": 710,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🚙",
+  "nom": "Nicolas-Joseph Cugnot",
+  "description": "Ingénieur français. En 1769, son fardier à vapeur a été le premier véhicule à rouler par sa propre force.",
+  "date": "1725 – 1804"
+ },
+ {
+  "no": 711,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "📐",
+  "nom": "Paul Dirac",
+  "description": "Physicien anglais, prix Nobel 1933. Son équation a prédit l'antimatière avant même qu'on la découvre.",
+  "date": "1902 – 1984"
+ },
+ {
+  "no": 712,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "💥",
+  "nom": "Georges Lemaître",
+  "description": "Prêtre et astronome belge. Il a proposé l'idée que l'univers est né d'un « atome primitif » : le futur Big Bang.",
+  "date": "1894 – 1966"
+ },
+ {
+  "no": 713,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🪐",
+  "nom": "Carl Sagan",
+  "description": "Astronome américain. Il a fait aimer l'univers au grand public et préparé les messages envoyés par les sondes Voyager.",
+  "date": "1934 – 1996"
+ },
+ {
+  "no": 714,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🐈",
+  "nom": "Erwin Schrödinger",
+  "description": "Physicien autrichien, prix Nobel 1933. Son chat imaginaire, à la fois vivant et mort, illustre les bizarreries de la physique quantique.",
+  "date": "1887 – 1961"
+ },
+ {
+  "no": 715,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🚑",
+  "nom": "Christian Doppler",
+  "description": "Physicien autrichien. Il a expliqué pourquoi la sirène d'une ambulance change de son quand elle passe devant nous.",
+  "date": "1803 – 1853"
+ },
+ {
+  "no": 716,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "💡",
+  "nom": "Ole Rømer",
+  "description": "Astronome danois. En 1676, en observant une lune de Jupiter, il a montré que la lumière met du temps à voyager.",
+  "date": "1644 – 1710"
+ },
+ {
+  "no": 717,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🗼",
+  "nom": "Claude Chappe",
+  "description": "Ingénieur français. En 1794, son télégraphe à bras articulés envoyait des messages de tour en tour à travers la France.",
+  "date": "1763 – 1805"
+ },
+ {
+  "no": 718,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🌦",
+  "nom": "Edward Lorenz",
+  "description": "Météorologue américain. Il a découvert l'effet papillon : un petit changement peut avoir de grandes conséquences sur la météo.",
+  "date": "1917 – 2008"
+ },
+ {
+  "no": 719,
+  "rarete": "C",
+  "type": "I",
+  "symbole": "🌉",
+  "nom": "Eugène Freyssinet",
+  "description": "Ingénieur français. Il a inventé le béton précontraint, qui permet de construire des ponts très longs et légers.",
+  "date": "1879 – 1962"
+ },
+ {
+  "no": 720,
+  "rarete": "L",
+  "type": "T",
+  "symbole": "🌱",
+  "nom": "Théorème fondamental de l'algèbre",
+  "description": "Toute équation polynomiale a au moins une solution, si l'on accepte les nombres complexes. Gauss l'a démontré dans sa thèse.",
+  "date": "1799"
+ },
+ {
+  "no": 721,
+  "rarete": "L",
+  "type": "T",
+  "symbole": "🍊",
+  "nom": "Paradoxe de Banach-Tarski",
+  "description": "En théorie, on peut découper une boule en morceaux et les réassembler en deux boules identiques à la première !",
+  "date": "1924"
+ },
+ {
+  "no": 722,
+  "rarete": "E",
+  "type": "T",
+  "symbole": "🔍",
+  "nom": "Théorème de Bayes",
+  "description": "Une formule pour mettre à jour une probabilité quand on apprend quelque chose de nouveau. Elle sert aux filtres anti-spam et aux diagnostics.",
+  "date": "1763"
+ },
+ {
+  "no": 723,
+  "rarete": "E",
+  "type": "T",
+  "symbole": "4²",
+  "nom": "Théorème des quatre carrés",
+  "description": "Lagrange a prouvé que tout nombre entier est la somme de quatre carrés au plus. Par exemple : 7 = 4 + 1 + 1 + 1.",
+  "date": "1770"
+ },
+ {
+  "no": 724,
+  "rarete": "E",
+  "type": "T",
+  "symbole": "🌈",
+  "nom": "Théorème de Green-Tao",
+  "description": "Il existe des suites de nombres premiers régulièrement espacés aussi longues qu'on veut, comme 3, 5, 7 ou 5, 11, 17, 23, 29.",
+  "date": "2004"
+ },
+ {
+  "no": 725,
+  "rarete": "E",
+  "type": "T",
+  "symbole": "🪡",
+  "nom": "Aiguille de Buffon",
+  "description": "En lançant une aiguille sur un parquet et en comptant combien de fois elle touche une rainure, on peut estimer π !",
+  "date": "1777"
+ },
+ {
+  "no": 726,
+  "rarete": "E",
+  "type": "T",
+  "symbole": "🎲",
+  "nom": "Problème des partis",
+  "description": "Comment partager la mise d'un jeu interrompu ? Pascal et Fermat ont résolu ce problème et inventé le calcul des probabilités.",
+  "date": "1654"
+ },
+ {
+  "no": 727,
+  "rarete": "E",
+  "type": "T",
+  "symbole": "🎮",
+  "nom": "Équilibre de Nash",
+  "description": "Une situation où aucun joueur n'a intérêt à changer seul de stratégie. John Nash a reçu un prix Nobel pour cette idée.",
+  "date": "1950"
+ },
+ {
+  "no": 728,
+  "rarete": "E",
+  "type": "T",
+  "symbole": "🔢",
+  "nom": "Hypothèse du continu",
+  "description": "Existe-t-il un infini plus grand que celui des entiers mais plus petit que celui des réels ? On a prouvé qu'on ne peut pas trancher.",
+  "date": "1878"
+ },
+ {
+  "no": 729,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "👑",
+  "nom": "Théorème de Napoléon",
+  "description": "Dessine un triangle équilatéral sur chaque côté d'un triangle : leurs trois centres forment toujours un triangle équilatéral.",
+  "date": "XIXe siècle"
+ },
+ {
+  "no": 730,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🥧",
+  "nom": "Formule de Leibniz pour π",
+  "description": "1 − 1/3 + 1/5 − 1/7 + … = π/4. Une façon très simple, mais très lente, de calculer π.",
+  "date": "1674"
+ },
+ {
+  "no": 731,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🔺",
+  "nom": "Binôme de Newton",
+  "description": "Une formule pour développer (a + b)ⁿ. Ses coefficients sont ceux du triangle de Pascal.",
+  "date": "1665"
+ },
+ {
+  "no": 732,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🧱",
+  "nom": "Décomposition en facteurs premiers",
+  "description": "Tout nombre entier se décompose en produit de nombres premiers d'une seule façon : 60 = 2 × 2 × 3 × 5.",
+  "date": "1801"
+ },
+ {
+  "no": 733,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🥧",
+  "nom": "Transcendance de π",
+  "description": "Lindemann a prouvé que π n'est solution d'aucune équation à coefficients entiers. La quadrature du cercle est donc impossible.",
+  "date": "1882"
+ },
+ {
+  "no": 734,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🔱",
+  "nom": "Trisection de l'angle",
+  "description": "Couper n'importe quel angle en trois parties égales avec la règle et le compas est impossible, comme l'a prouvé Pierre Wantzel.",
+  "date": "1837"
+ },
+ {
+  "no": 735,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🎲",
+  "nom": "Duplication du cube",
+  "description": "Le problème de Délos : construire un cube deux fois plus gros avec la règle et le compas. Wantzel a prouvé que c'est impossible.",
+  "date": "1837"
+ },
+ {
+  "no": 736,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "📉",
+  "nom": "Théorème des nombres premiers",
+  "description": "Il dit combien il y a environ de nombres premiers jusqu'à un nombre donné. Ils deviennent de plus en plus rares, mais sans fin.",
+  "date": "1896"
+ },
+ {
+  "no": 737,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🎯",
+  "nom": "Théorème de Mihăilescu",
+  "description": "8 et 9 sont les seules puissances entières qui se suivent : 2³ = 8 et 3² = 9. C'était la conjecture de Catalan.",
+  "date": "2002"
+ },
+ {
+  "no": 738,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🎉",
+  "nom": "Théorème de Ramsey",
+  "description": "Dans un groupe de 6 personnes, il y en a forcément 3 qui se connaissent toutes ou 3 qui ne se connaissent pas du tout.",
+  "date": "1930"
+ },
+ {
+  "no": 739,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🔔",
+  "nom": "Courbe de Gauss",
+  "description": "La courbe en cloche des statistiques : la taille des gens ou les erreurs de mesure se répartissent souvent selon cette forme.",
+  "date": "1809"
+ },
+ {
+  "no": 740,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "📶",
+  "nom": "Théorème de Shannon",
+  "description": "Il fixe la quantité maximale d'informations qu'on peut envoyer sans erreur sur un canal bruité, comme une ligne de téléphone.",
+  "date": "1948"
+ },
+ {
+  "no": 741,
+  "rarete": "R",
+  "type": "T",
+  "symbole": "🛣",
+  "nom": "Algorithme de Dijkstra",
+  "description": "Une méthode pour trouver le plus court chemin entre deux villes d'une carte. Les calculs d'itinéraire s'en inspirent encore.",
+  "date": "1959"
+ },
+ {
+  "no": 742,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "²",
+  "nom": "Sommes de deux carrés",
+  "description": "Fermat a découvert quels nombres premiers sont la somme de deux carrés : ceux qui donnent 1 quand on les divise par 4, comme 13 = 4 + 9.",
+  "date": "1640"
+ },
+ {
+  "no": 743,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "🔺",
+  "nom": "Théorème de Desargues",
+  "description": "Si deux triangles sont en perspective depuis un point, les côtés correspondants se croisent sur une même droite.",
+  "date": "1639"
+ },
+ {
+  "no": 744,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "🦋",
+  "nom": "Théorème du papillon",
+  "description": "Trace une corde dans un cercle, son milieu M et un « papillon » de cordes passant par M : M est aussi le milieu d'un autre segment.",
+  "date": "XIXe siècle"
+ },
+ {
+  "no": 745,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "📐",
+  "nom": "Inégalité de Cauchy-Schwarz",
+  "description": "Une inégalité qui compare des produits et des sommes de carrés. On la retrouve partout, de la géométrie à la physique.",
+  "date": "1821"
+ },
+ {
+  "no": 746,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "❗",
+  "nom": "Formule de Stirling",
+  "description": "Elle donne une très bonne approximation de la factorielle des grands nombres, avec π et le nombre e.",
+  "date": "1730"
+ },
+ {
+  "no": 747,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "✖",
+  "nom": "Produit de Wallis",
+  "description": "(2/1)·(2/3)·(4/3)·(4/5)·(6/5)… s'approche de π/2. L'un des premiers produits infinis découverts.",
+  "date": "1656"
+ },
+ {
+  "no": 748,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "5️⃣",
+  "nom": "Théorème d'Abel-Ruffini",
+  "description": "Il n'existe pas de formule générale avec des racines pour résoudre les équations du cinquième degré.",
+  "date": "1824"
+ },
+ {
+  "no": 749,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "↔",
+  "nom": "Postulat de Bertrand",
+  "description": "Entre un nombre plus grand que 1 et son double, il y a toujours au moins un nombre premier. Tchebychev l'a démontré en 1852.",
+  "date": "1845"
+ },
+ {
+  "no": 750,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "🎰",
+  "nom": "Théorème de Dirichlet",
+  "description": "Toute suite comme 3, 7, 11, 15, 19… (on ajoute 4) contient une infinité de nombres premiers, si son début et son pas n'ont pas de diviseur commun.",
+  "date": "1837"
+ },
+ {
+  "no": 751,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "⭕",
+  "nom": "Problème d'Apollonius",
+  "description": "Trouver les cercles qui touchent trois cercles donnés. Il y a en général huit solutions !",
+  "date": "vers 200 av. J.-C."
+ },
+ {
+  "no": 752,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "🤥",
+  "nom": "Paradoxe du menteur",
+  "description": "« Cette phrase est fausse. » Si elle est vraie, elle est fausse, et si elle est fausse, elle est vraie !",
+  "date": "Antiquité"
+ },
+ {
+  "no": 753,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "📊",
+  "nom": "Paradoxe de Simpson",
+  "description": "Un traitement peut être meilleur dans chaque groupe et pourtant moins bon quand on réunit tous les groupes.",
+  "date": "1951"
+ },
+ {
+  "no": 754,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "🔭",
+  "nom": "Paradoxe de Galilée",
+  "description": "Il y a autant de carrés (1, 4, 9, 16…) que de nombres entiers, alors que les carrés semblent bien plus rares.",
+  "date": "1638"
+ },
+ {
+  "no": 755,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "⚔",
+  "nom": "Problème de Josèphe",
+  "description": "Des personnes en cercle sont éliminées une sur deux : laquelle restera la dernière ? Il y a une astuce en binaire.",
+  "date": "Ier siècle"
+ },
+ {
+  "no": 756,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "🗳",
+  "nom": "Théorème d'Arrow",
+  "description": "Aucune méthode de vote parfaite n'existe pour classer trois candidats ou plus en respectant des règles très raisonnables.",
+  "date": "1951"
+ },
+ {
+  "no": 757,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "♟",
+  "nom": "Théorème du minimax",
+  "description": "Von Neumann a prouvé que dans les jeux à deux joueurs où l'un gagne ce que l'autre perd, il existe une meilleure stratégie prudente.",
+  "date": "1928"
+ },
+ {
+  "no": 758,
+  "rarete": "U",
+  "type": "T",
+  "symbole": "⛓",
+  "nom": "Dilemme du prisonnier",
+  "description": "Deux joueurs gagneraient à coopérer, mais chacun a intérêt à trahir l'autre. Un jeu célèbre pour comprendre la confiance.",
+  "date": "1950"
+ },
+ {
+  "no": 759,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "❗",
+  "nom": "Théorème de Wilson",
+  "description": "Un nombre p est premier si et seulement si (p − 1)! + 1 est divisible par p. Joli, mais trop lent pour tester de grands nombres !",
+  "date": "1770"
+ },
+ {
+  "no": 760,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "📏",
+  "nom": "Théorème de Ménélaüs",
+  "description": "Une droite qui traverse un triangle coupe ses côtés selon des rapports dont le produit vaut 1.",
+  "date": "vers 100"
+ },
+ {
+  "no": 761,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🔻",
+  "nom": "Théorème de Céva",
+  "description": "Trois droites partant des sommets d'un triangle se croisent en un seul point quand le produit de certains rapports vaut 1.",
+  "date": "1678"
+ },
+ {
+  "no": 762,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "▱",
+  "nom": "Théorème de Varignon",
+  "description": "En reliant les milieux des côtés de n'importe quel quadrilatère, on obtient toujours un parallélogramme.",
+  "date": "1731"
+ },
+ {
+  "no": 763,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "📍",
+  "nom": "Théorème de Viviani",
+  "description": "Dans un triangle équilatéral, la somme des distances d'un point intérieur aux trois côtés est toujours la même.",
+  "date": "XVIIe siècle"
+ },
+ {
+  "no": 764,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "↩",
+  "nom": "Réciproque de Pythagore",
+  "description": "Si a² + b² = c² pour les côtés d'un triangle, alors ce triangle est rectangle. Pratique pour vérifier un angle droit.",
+  "date": "vers 300 av. J.-C."
+ },
+ {
+  "no": 765,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🔶",
+  "nom": "Formule de Brahmagupta",
+  "description": "Elle donne l'aire d'un quadrilatère inscrit dans un cercle à partir de la longueur de ses quatre côtés.",
+  "date": "628"
+ },
+ {
+  "no": 766,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "⚖",
+  "nom": "Inégalité des moyennes",
+  "description": "La moyenne de deux nombres positifs est toujours supérieure ou égale à la racine carrée de leur produit.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 767,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "➗",
+  "nom": "Série géométrique",
+  "description": "1/2 + 1/4 + 1/8 + 1/16 + … = 1. On peut additionner une infinité de nombres et obtenir un résultat fini.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 768,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "📈",
+  "nom": "Théorème de Taylor",
+  "description": "Près d'un point, une fonction lisse ressemble à un polynôme. C'est une des façons de calculer sinus et logarithmes.",
+  "date": "1715"
+ },
+ {
+  "no": 769,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🎯",
+  "nom": "Règle de L'Hôpital",
+  "description": "Une astuce pour calculer la limite d'une fraction quand le haut et le bas s'approchent tous les deux de zéro.",
+  "date": "1696"
+ },
+ {
+  "no": 770,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "⛰",
+  "nom": "Théorème de Rolle",
+  "description": "Une courbe lisse qui part d'une hauteur et y revient a forcément un sommet ou un creux où la pente est nulle.",
+  "date": "1691"
+ },
+ {
+  "no": 771,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🚗",
+  "nom": "Théorème des accroissements finis",
+  "description": "Si une voiture fait 120 km en 2 heures, elle a forcément roulé à exactement 60 km/h à un moment du trajet.",
+  "date": "XVIIIe siècle"
+ },
+ {
+  "no": 772,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "❓",
+  "nom": "Conjecture de Legendre",
+  "description": "Y a-t-il toujours un nombre premier entre deux carrés qui se suivent, comme entre 25 et 36 ? On pense que oui, sans preuve.",
+  "date": "vers 1800"
+ },
+ {
+  "no": 773,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🏋",
+  "nom": "Problème de Waring",
+  "description": "Tout nombre est-il la somme d'un petit nombre de cubes, de puissances quatrièmes… ? Hilbert a prouvé que oui en 1909.",
+  "date": "1770"
+ },
+ {
+  "no": 774,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "⬡",
+  "nom": "Théorème de Pappus",
+  "description": "Place trois points sur une droite et trois sur une autre, puis relie-les en croisant : trois points d'intersection s'alignent.",
+  "date": "vers 340"
+ },
+ {
+  "no": 775,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "⑨",
+  "nom": "Théorème de Feuerbach",
+  "description": "Le cercle des neuf points d'un triangle touche le cercle inscrit et les trois cercles exinscrits.",
+  "date": "1822"
+ },
+ {
+  "no": 776,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🔵",
+  "nom": "Théorème de Miquel",
+  "description": "Avec un point sur chaque côté d'un triangle, on trace trois cercles qui se croisent toujours en un même point.",
+  "date": "1838"
+ },
+ {
+  "no": 777,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🤝",
+  "nom": "Lemme des poignées de main",
+  "description": "Dans une fête, le nombre de personnes ayant serré un nombre impair de mains est toujours pair.",
+  "date": "1736"
+ },
+ {
+  "no": 778,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "💰",
+  "nom": "Paradoxe de Saint-Pétersbourg",
+  "description": "Un jeu de pile ou face dont le gain moyen est infini, mais que personne ne voudrait payer très cher pour jouer.",
+  "date": "1713"
+ },
+ {
+  "no": 779,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🏖",
+  "nom": "Paradoxe du tas de sable",
+  "description": "Un grain n'est pas un tas, et ajouter un grain ne fait pas un tas. Alors, à partir de quand y a-t-il un tas ?",
+  "date": "Antiquité"
+ },
+ {
+  "no": 780,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🐒",
+  "nom": "Théorème du singe savant",
+  "description": "Un singe qui tape au hasard sur un clavier pendant un temps infini finira presque sûrement par écrire n'importe quel livre.",
+  "date": "1913"
+ },
+ {
+  "no": 781,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🎖",
+  "nom": "Problème des 36 officiers",
+  "description": "Euler a cherché à ranger 36 officiers de 6 grades et 6 régiments dans un carré sans répétition. C'est impossible !",
+  "date": "1782"
+ },
+ {
+  "no": 782,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🔁",
+  "nom": "Paradoxe de Condorcet",
+  "description": "A peut battre B, B battre C et C battre A : une majorité peut tourner en rond, comme à pierre-feuille-ciseaux.",
+  "date": "1785"
+ },
+ {
+  "no": 783,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🌀",
+  "nom": "Formule de Moivre",
+  "description": "(cos x + i sin x)ⁿ = cos nx + i sin nx. Elle relie les puissances des nombres complexes aux rotations.",
+  "date": "1722"
+ },
+ {
+  "no": 784,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🎒",
+  "nom": "Problème du sac à dos",
+  "description": "Quels objets mettre dans un sac pour avoir la plus grande valeur sans dépasser son poids maximal ? Un problème très difficile.",
+  "date": "1897"
+ },
+ {
+  "no": 785,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "🌗",
+  "nom": "Théorème des lunules",
+  "description": "Hippocrate de Chios a montré que certaines lunules, des croissants entre deux arcs, ont la même aire qu'un triangle.",
+  "date": "vers 440 av. J.-C."
+ },
+ {
+  "no": 786,
+  "rarete": "C",
+  "type": "T",
+  "symbole": "📏",
+  "nom": "Théorème de Stewart",
+  "description": "Une formule qui donne la longueur d'un segment qui part d'un sommet d'un triangle jusqu'au côté opposé.",
+  "date": "1746"
+ },
+ {
+  "no": 787,
+  "rarete": "L",
+  "type": "H",
+  "symbole": "📚",
+  "nom": "Les Neuf Chapitres",
+  "description": "Le grand livre de mathématiques de la Chine ancienne : 246 problèmes de champs, de commerce, d'impôts et d'équations.",
+  "date": "vers 100 av. J.-C. – 100"
+ },
+ {
+  "no": 788,
+  "rarete": "L",
+  "type": "H",
+  "symbole": "📗",
+  "nom": "Les Éléments d'Euclide",
+  "description": "Treize livres qui démontrent la géométrie pas à pas. Après la Bible, c'est l'un des livres les plus imprimés de l'histoire.",
+  "date": "vers 300 av. J.-C."
+ },
+ {
+  "no": 789,
+  "rarete": "L",
+  "type": "H",
+  "symbole": "📋",
+  "nom": "Problèmes de Hilbert",
+  "description": "À Paris, David Hilbert a présenté 23 grands problèmes pour le siècle à venir. Certains ne sont toujours pas résolus.",
+  "date": "1900"
+ },
+ {
+  "no": 790,
+  "rarete": "L",
+  "type": "H",
+  "symbole": "🏅",
+  "nom": "Médaille Fields",
+  "description": "La plus célèbre récompense des mathématiques, remise tous les quatre ans à des chercheurs de moins de 40 ans.",
+  "date": "1936"
+ },
+ {
+  "no": 791,
+  "rarete": "L",
+  "type": "H",
+  "symbole": "🌕",
+  "nom": "Programme Apollo",
+  "description": "Il a fallu des millions de calculs pour aller sur la Lune. En 1969, Apollo 11 y a déposé les premiers humains.",
+  "date": "1961 – 1972"
+ },
+ {
+  "no": 792,
+  "rarete": "E",
+  "type": "H",
+  "symbole": "√",
+  "nom": "Tablette YBC 7289",
+  "description": "Une petite tablette babylonienne où un élève a dessiné un carré et sa diagonale, avec une valeur de √2 juste à six décimales près.",
+  "date": "vers 1800 av. J.-C."
+ },
+ {
+  "no": 793,
+  "rarete": "E",
+  "type": "H",
+  "symbole": "🏛",
+  "nom": "Bibliothèque d'Alexandrie",
+  "description": "La plus grande bibliothèque de l'Antiquité, en Égypte. Ératosthène, qui a mesuré la Terre, en a été le bibliothécaire.",
+  "date": "IIIe siècle av. J.-C."
+ },
+ {
+  "no": 794,
+  "rarete": "E",
+  "type": "H",
+  "symbole": "🕌",
+  "nom": "Maison de la Sagesse",
+  "description": "À Bagdad, des savants y traduisaient les livres grecs et indiens et inventaient de nouvelles mathématiques, comme l'algèbre.",
+  "date": "IXe siècle"
+ },
+ {
+  "no": 795,
+  "rarete": "E",
+  "type": "H",
+  "symbole": "📕",
+  "nom": "Liber Abaci",
+  "description": "Le livre de Fibonacci qui a fait connaître en Europe les chiffres indo-arabes, avec le fameux problème des lapins.",
+  "date": "1202"
+ },
+ {
+  "no": 796,
+  "rarete": "E",
+  "type": "H",
+  "symbole": "🌙",
+  "nom": "Disque de Nebra",
+  "description": "Un disque de bronze trouvé en Allemagne, avec le Soleil, la Lune et les Pléiades. La plus ancienne image précise du ciel connue.",
+  "date": "vers 1600 av. J.-C."
+ },
+ {
+  "no": 797,
+  "rarete": "E",
+  "type": "H",
+  "symbole": "🐪",
+  "nom": "Mesure de la Terre",
+  "description": "Ératosthène a mesuré le tour de la Terre avec des ombres, un puits et la distance entre deux villes. Il ne s'est pas beaucoup trompé !",
+  "date": "vers 240 av. J.-C."
+ },
+ {
+  "no": 798,
+  "rarete": "E",
+  "type": "H",
+  "symbole": "🔐",
+  "nom": "Bletchley Park",
+  "description": "Un manoir anglais où des milliers de femmes et d'hommes, dont Alan Turing, ont déchiffré les messages secrets ennemis.",
+  "date": "1939 – 1945"
+ },
+ {
+  "no": 799,
+  "rarete": "E",
+  "type": "H",
+  "symbole": "🪨",
+  "nom": "Pierre de Rosette",
+  "description": "Une pierre gravée du même texte en trois écritures. Grâce à elle, Champollion a déchiffré les hiéroglyphes en 1822.",
+  "date": "196 av. J.-C."
+ },
+ {
+  "no": 800,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "•",
+  "nom": "Manuscrit de Bakhshali",
+  "description": "Un manuscrit indien sur écorce de bouleau. On y voit un petit point utilisé comme zéro, l'un des plus anciens connus.",
+  "date": "IIIe – IVe siècle"
+ },
+ {
+  "no": 801,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🗓",
+  "nom": "Compte long maya",
+  "description": "Le calendrier des Mayas comptait les jours depuis une date de départ lointaine, avec des cycles de 20 et 360 jours.",
+  "date": "vers le Ier siècle av. J.-C."
+ },
+ {
+  "no": 802,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🛁",
+  "nom": "Eurêka !",
+  "description": "Archimède aurait crié « J'ai trouvé ! » dans son bain, en comprenant comment mesurer le volume de la couronne du roi.",
+  "date": "IIIe siècle av. J.-C."
+ },
+ {
+  "no": 803,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "⭐",
+  "nom": "Les pythagoriciens",
+  "description": "L'école de Pythagore pensait que tout est nombre. Leur symbole secret était le pentagramme, l'étoile à cinq branches.",
+  "date": "VIe siècle av. J.-C."
+ },
+ {
+  "no": 804,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🚪",
+  "nom": "Académie de Platon",
+  "description": "L'école de Platon à Athènes. On raconte qu'il était écrit à l'entrée : « Que nul n'entre ici s'il n'est géomètre ».",
+  "date": "vers 387 av. J.-C."
+ },
+ {
+  "no": 805,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🗓",
+  "nom": "Calendrier grégorien",
+  "description": "Le calendrier du pape Grégoire XIII. On a sauté dix jours d'un coup : le 4 octobre a été suivi du 15 octobre 1582 !",
+  "date": "1582"
+ },
+ {
+  "no": 806,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🏆",
+  "nom": "Prix Abel",
+  "description": "Un grand prix norvégien qui récompense chaque année toute une vie de mathématiques.",
+  "date": "2003"
+ },
+ {
+  "no": 807,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "💵",
+  "nom": "Problèmes du millénaire",
+  "description": "Sept grands problèmes, avec un million de dollars pour chaque solution. Un seul est résolu : la conjecture de Poincaré.",
+  "date": "2000"
+ },
+ {
+  "no": 808,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "✉",
+  "nom": "Lettre de Galois",
+  "description": "La veille d'un duel, à 20 ans, Évariste Galois a écrit une lettre résumant ses découvertes. Elles ont changé l'algèbre.",
+  "date": "1832"
+ },
+ {
+  "no": 809,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "📨",
+  "nom": "Lettre de Ramanujan",
+  "description": "Un jeune Indien inconnu a envoyé des pages de formules à G. H. Hardy, à Cambridge. Hardy l'a aussitôt invité.",
+  "date": "1913"
+ },
+ {
+  "no": 810,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "📝",
+  "nom": "La note G",
+  "description": "Dans une note de traduction, Ada Lovelace a décrit un programme pour la machine de Babbage, souvent appelé le premier programme.",
+  "date": "1843"
+ },
+ {
+  "no": 811,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🔒",
+  "nom": "Chiffre de Vigenère",
+  "description": "Un code qui décale les lettres selon un mot-clé. On l'a cru indéchiffrable pendant presque trois siècles.",
+  "date": "1586"
+ },
+ {
+  "no": 812,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "♟",
+  "nom": "Deep Blue contre Kasparov",
+  "description": "Pour la première fois, un ordinateur d'IBM a battu le champion du monde d'échecs dans un match.",
+  "date": "1997"
+ },
+ {
+  "no": 813,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "♟",
+  "nom": "Jeu d'échecs",
+  "description": "Né en Inde sous le nom de chaturanga, il est arrivé en Europe par la Perse et le monde arabe. 64 cases, 32 pièces.",
+  "date": "vers le VIe siècle"
+ },
+ {
+  "no": 814,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "⚫",
+  "nom": "Jeu de go",
+  "description": "Un jeu chinois de pierres noires et blanches sur une grille de 19 × 19. Il y a plus de parties possibles que d'atomes dans l'univers.",
+  "date": "il y a plus de 2 500 ans"
+ },
+ {
+  "no": 815,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🧩",
+  "nom": "Stomachion",
+  "description": "Un puzzle de 14 pièces étudié par Archimède. En 2003, on a compté 536 façons de former un carré.",
+  "date": "IIIe siècle av. J.-C."
+ },
+ {
+  "no": 816,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🦴",
+  "nom": "Os de Lebombo",
+  "description": "Un os de babouin entaillé de 29 traits, trouvé en Afrique du Sud. L'un des plus vieux objets de calcul connus.",
+  "date": "il y a environ 43 000 ans"
+ },
+ {
+  "no": 817,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🖨",
+  "nom": "Imprimerie de Gutenberg",
+  "description": "Grâce à l'imprimerie, les livres de mathématiques ont pu être copiés à des milliers d'exemplaires.",
+  "date": "vers 1450"
+ },
+ {
+  "no": 818,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "💻",
+  "nom": "Naissance d'Internet",
+  "description": "Le 29 octobre 1969, deux ordinateurs américains ont échangé le premier message du réseau ARPANET, l'ancêtre d'Internet.",
+  "date": "1969"
+ },
+ {
+  "no": 819,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "📐",
+  "nom": "Disquisitiones arithmeticae",
+  "description": "Les Recherches arithmétiques de Gauss, publiées à 24 ans, ont fondé la théorie moderne des nombres.",
+  "date": "1801"
+ },
+ {
+  "no": 820,
+  "rarete": "R",
+  "type": "H",
+  "symbole": "🌟",
+  "nom": "Fields au féminin",
+  "description": "Maryam Mirzakhani est devenue la première femme à recevoir la médaille Fields, 78 ans après sa création.",
+  "date": "2014"
+ },
+ {
+  "no": 821,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "📜",
+  "nom": "Papyrus de Moscou",
+  "description": "Un papyrus égyptien de problèmes. On y trouve le calcul du volume d'une pyramide tronquée, un vrai exploit pour l'époque.",
+  "date": "vers 1850 av. J.-C."
+ },
+ {
+  "no": 822,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🌸",
+  "nom": "Lilavati",
+  "description": "Un livre de calcul de Bhaskara II, écrit sous forme de problèmes en poèmes. La légende dit qu'il porte le nom de sa fille.",
+  "date": "1150"
+ },
+ {
+  "no": 823,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🪨",
+  "nom": "Stèle de Sambor",
+  "description": "Une pierre gravée au Cambodge qui porte la date 605 écrite avec un point pour le zéro, l'un des plus anciens zéros datés.",
+  "date": "683"
+ },
+ {
+  "no": 824,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "📕",
+  "nom": "Codex de Dresde",
+  "description": "Un livre maya en écorce plié en accordéon. Il contient des tables de calcul de Vénus et des éclipses, en base 20.",
+  "date": "vers 1200 – 1250"
+ },
+ {
+  "no": 825,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🗿",
+  "nom": "Stonehenge",
+  "description": "Un cercle de pierres géantes en Angleterre, aligné avec le lever du Soleil au solstice d'été.",
+  "date": "vers 2500 av. J.-C."
+ },
+ {
+  "no": 826,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "⚔",
+  "nom": "Mort d'Archimède",
+  "description": "Selon la légende, il dessinait des cercles dans le sable quand un soldat romain l'a interrompu : « Ne dérange pas mes cercles ! »",
+  "date": "212 av. J.-C."
+ },
+ {
+  "no": 827,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "⚖",
+  "nom": "Le mot algèbre",
+  "description": "Il vient d'al-jabr, « remettre en place », un mot du titre du livre d'Al-Khwarizmi sur les équations.",
+  "date": "vers 820"
+ },
+ {
+  "no": 828,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🟰",
+  "nom": "Signe égal",
+  "description": "Robert Recorde a inventé le signe = en 1557, « parce que rien n'est plus égal que deux traits parallèles ».",
+  "date": "1557"
+ },
+ {
+  "no": 829,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "❌",
+  "nom": "La lettre x",
+  "description": "Descartes a pris l'habitude de noter les inconnues avec les dernières lettres de l'alphabet : x, y et z.",
+  "date": "1637"
+ },
+ {
+  "no": 830,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🔟",
+  "nom": "La virgule décimale",
+  "description": "Simon Stevin a expliqué comment écrire et calculer avec les nombres décimaux dans un petit livre, La Disme.",
+  "date": "1585"
+ },
+ {
+  "no": 831,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "♾",
+  "nom": "Symbole infini",
+  "description": "John Wallis a utilisé le signe ∞ pour l'infini. Il ressemble à un 8 couché, une boucle qui ne finit jamais.",
+  "date": "1655"
+ },
+ {
+  "no": 832,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🐸",
+  "nom": "Années bissextiles",
+  "description": "Jules César a ajouté un jour tous les quatre ans, car la Terre tourne autour du Soleil en un peu plus de 365 jours.",
+  "date": "46 av. J.-C."
+ },
+ {
+  "no": 833,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🥧",
+  "nom": "Journée de π",
+  "description": "Le 14 mars, noté 3/14 en anglais, on fête π avec des tartes. L'idée est née en 1988 dans un musée de San Francisco.",
+  "date": "1988"
+ },
+ {
+  "no": 834,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🗡",
+  "nom": "Duel de Tartaglia",
+  "description": "Tartaglia et Fior se sont lancé 30 problèmes d'équations. Tartaglia, qui avait trouvé la méthode, a tout résolu.",
+  "date": "1535"
+ },
+ {
+  "no": 835,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🎓",
+  "nom": "École polytechnique",
+  "description": "Une grande école française créée pendant la Révolution, où ont enseigné Monge, Lagrange et Cauchy.",
+  "date": "1794"
+ },
+ {
+  "no": 836,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🥇",
+  "nom": "Olympiades internationales",
+  "description": "La compétition de maths des lycéens du monde entier, organisée pour la première fois en Roumanie en 1959.",
+  "date": "1959"
+ },
+ {
+  "no": 837,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🚀",
+  "nom": "Échec d'Ariane 5",
+  "description": "Le premier vol d'Ariane 5 a échoué à cause d'un nombre trop grand pour la place prévue dans la mémoire de l'ordinateur.",
+  "date": "1996"
+ },
+ {
+  "no": 838,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🔴",
+  "nom": "Mars Climate Orbiter",
+  "description": "Une sonde perdue près de Mars parce qu'une équipe calculait en unités anglaises et l'autre en unités métriques.",
+  "date": "1999"
+ },
+ {
+  "no": 839,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🦋",
+  "nom": "Le premier bug",
+  "description": "Un papillon de nuit coincé dans l'ordinateur Mark II. L'équipe de Grace Hopper l'a collé dans son carnet : « premier vrai bug ».",
+  "date": "1947"
+ },
+ {
+  "no": 840,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🔑",
+  "nom": "Chiffre de César",
+  "description": "Jules César codait ses messages en décalant chaque lettre de trois rangs : A devient D, B devient E…",
+  "date": "Ier siècle av. J.-C."
+ },
+ {
+  "no": 841,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🏺",
+  "nom": "Linéaire B",
+  "description": "Une écriture de la Grèce ancienne, déchiffrée par Michael Ventris grâce à des tableaux et de la logique, comme un code secret.",
+  "date": "déchiffré en 1952"
+ },
+ {
+  "no": 842,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🗺",
+  "nom": "Carte de Cassini",
+  "description": "La première carte de toute la France faite avec précision, grâce à des milliers de triangles mesurés sur le terrain.",
+  "date": "1756 – 1815"
+ },
+ {
+  "no": 843,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🥧",
+  "nom": "Record de π",
+  "description": "En 2022, un ordinateur a calculé 100 000 milliards de décimales de π. Personne n'a besoin d'autant de chiffres, mais quel défi !",
+  "date": "2022"
+ },
+ {
+  "no": 844,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🔢",
+  "nom": "Sudoku",
+  "description": "Ce jeu de logique est paru aux États-Unis en 1979 sous le nom de Number Place, puis a pris son nom au Japon.",
+  "date": "1979"
+ },
+ {
+  "no": 845,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🫘",
+  "nom": "Awalé",
+  "description": "Un jeu africain de graines et de trous qui demande de compter et de prévoir. Il fait partie de la grande famille des mancalas.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 846,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🌺",
+  "nom": "Kolam",
+  "description": "Chaque matin, des femmes dessinent devant leur maison des motifs de points et de boucles à la poudre de riz, pleins de symétries.",
+  "date": "Inde du Sud, tradition"
+ },
+ {
+  "no": 847,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🏜",
+  "nom": "Sona",
+  "description": "Des dessins tracés d'un seul trait autour de points dans le sable par les Tchokwés, pour raconter des histoires.",
+  "date": "Angola, tradition"
+ },
+ {
+  "no": 848,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🔭",
+  "nom": "Observatoire de Samarcande",
+  "description": "Le grand observatoire du savant Ulugh Beg, en Ouzbékistan, avec un immense arc pour mesurer la position des étoiles.",
+  "date": "1420"
+ },
+ {
+  "no": 849,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🌍",
+  "nom": "Tour du monde de Magellan",
+  "description": "Au retour du premier tour du monde, les marins ont découvert qu'ils avaient « perdu » un jour en voyageant toujours vers l'ouest.",
+  "date": "1519 – 1522"
+ },
+ {
+  "no": 850,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "⏳",
+  "nom": "Méridien de Greenwich",
+  "description": "Une conférence internationale a choisi Greenwich, près de Londres, comme ligne de départ des longitudes et des fuseaux horaires.",
+  "date": "1884"
+ },
+ {
+  "no": 851,
+  "rarete": "U",
+  "type": "H",
+  "symbole": "🧾",
+  "nom": "Système métrique",
+  "description": "La France a adopté le mètre, le litre et le gramme, tous liés entre eux et comptés en base 10.",
+  "date": "1795"
+ },
+ {
+  "no": 852,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🪢",
+  "nom": "Sulba Sutras",
+  "description": "Des textes indiens qui expliquent comment construire des autels avec des cordes. On y trouve le théorème de Pythagore.",
+  "date": "vers 800 – 500 av. J.-C."
+ },
+ {
+  "no": 853,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🛕",
+  "nom": "Inscription de Gwalior",
+  "description": "Sur un mur de temple en Inde, le nombre 270 est écrit avec un zéro rond, comme le nôtre. Un des plus anciens zéros encore visibles.",
+  "date": "876"
+ },
+ {
+  "no": 854,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "➕",
+  "nom": "Signes plus et moins",
+  "description": "Les signes + et − apparaissent imprimés pour la première fois dans un livre de Johannes Widmann, en Allemagne.",
+  "date": "1489"
+ },
+ {
+  "no": 855,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "✖",
+  "nom": "Signe fois",
+  "description": "Le signe × a été utilisé par William Oughtred, l'inventeur de la règle à calcul.",
+  "date": "1631"
+ },
+ {
+  "no": 856,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "➗",
+  "nom": "Signe diviser",
+  "description": "Le signe ÷ a été imprimé par le Suisse Johann Rahn. On l'appelle l'obélus.",
+  "date": "1659"
+ },
+ {
+  "no": 857,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "√",
+  "nom": "Signe racine carrée",
+  "description": "Christoph Rudolff a utilisé le signe √ dans un livre allemand. Il ressemblerait à un petit r, pour « radix », racine.",
+  "date": "1525"
+ },
+ {
+  "no": 858,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "💯",
+  "nom": "Signe pour cent",
+  "description": "Le signe % vient de l'abréviation italienne de « per cento » qui, recopiée à la main, a fini par se tordre en %.",
+  "date": "XVe siècle"
+ },
+ {
+  "no": 859,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🌐",
+  "nom": "Mesure du méridien",
+  "description": "Delambre et Méchain ont mesuré la distance de Dunkerque à Barcelone pour définir le mètre.",
+  "date": "1792 – 1798"
+ },
+ {
+  "no": 860,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "⚖",
+  "nom": "Kilogramme",
+  "description": "D'abord la masse d'un litre d'eau, puis celle d'un cylindre de métal gardé près de Paris. Depuis 2019, il est défini par une constante.",
+  "date": "1795"
+ },
+ {
+  "no": 861,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "⏰",
+  "nom": "Minutes et secondes",
+  "description": "Une heure de 60 minutes et une minute de 60 secondes : c'est un héritage de la base 60 des Babyloniens.",
+  "date": "Babylone, Antiquité"
+ },
+ {
+  "no": 862,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🌍",
+  "nom": "Congrès des mathématiciens",
+  "description": "Tous les quatre ans, des milliers de mathématiciens du monde entier se réunissent. On y remet la médaille Fields.",
+  "date": "1897"
+ },
+ {
+  "no": 863,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🎉",
+  "nom": "Journée des mathématiques",
+  "description": "Depuis 2020, l'UNESCO fête les mathématiques chaque 14 mars dans le monde entier.",
+  "date": "2020"
+ },
+ {
+  "no": 864,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🤺",
+  "nom": "Querelle du calcul infinitésimal",
+  "description": "Newton et Leibniz ont inventé le calcul chacun de leur côté. Pendant des années, leurs partisans se sont disputés.",
+  "date": "1711"
+ },
+ {
+  "no": 865,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "📚",
+  "nom": "L'Encyclopédie",
+  "description": "Diderot et d'Alembert ont réuni tous les savoirs de leur temps. D'Alembert a écrit de nombreux articles de mathématiques.",
+  "date": "1751"
+ },
+ {
+  "no": 866,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🏛",
+  "nom": "Institut Henri-Poincaré",
+  "description": "La maison des mathématiques à Paris. On y trouve aujourd'hui un musée sur les mathématiques.",
+  "date": "1928"
+ },
+ {
+  "no": 867,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🦘",
+  "nom": "Concours Kangourou",
+  "description": "Un jeu-concours de maths à choix multiples. Chaque année, des millions d'élèves y participent dans le monde.",
+  "date": "1991"
+ },
+ {
+  "no": 868,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🔬",
+  "nom": "Palais de la découverte",
+  "description": "Un musée des sciences à Paris, célèbre pour sa salle π, dont les murs portent des centaines de décimales.",
+  "date": "1937"
+ },
+ {
+  "no": 869,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "⚙",
+  "nom": "Musée des Arts et Métiers",
+  "description": "Un musée parisien qui garde la Pascaline, le pendule de Foucault et des machines à calculer anciennes.",
+  "date": "1794"
+ },
+ {
+  "no": 870,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🧩",
+  "nom": "Mathematikum",
+  "description": "Un musée allemand à Giessen où l'on manipule les mathématiques : puzzles, bulles géantes et miroirs.",
+  "date": "2002"
+ },
+ {
+  "no": 871,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "📆",
+  "nom": "Bug de l'an 2000",
+  "description": "Beaucoup d'ordinateurs écrivaient les années avec deux chiffres : 2000 risquait de devenir 1900. On a corrigé à temps.",
+  "date": "2000"
+ },
+ {
+  "no": 872,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🥢",
+  "nom": "Jeu de Nim",
+  "description": "Deux joueurs retirent des allumettes à tour de rôle. Charles Bouton a trouvé la stratégie gagnante en base 2.",
+  "date": "1901"
+ },
+ {
+  "no": 873,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🌀",
+  "nom": "Labyrinthe de Chartres",
+  "description": "Un labyrinthe dessiné sur le sol de la cathédrale, avec un seul chemin de plus de 260 mètres jusqu'au centre.",
+  "date": "vers 1200"
+ },
+ {
+  "no": 874,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🏺",
+  "nom": "Mosaïques romaines",
+  "description": "Les Romains décoraient les sols avec des pavages de petits carrés colorés, pleins de symétries et de motifs géométriques.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 875,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🪨",
+  "nom": "Table de Salamine",
+  "description": "Une tablette de marbre grecque avec des lignes gravées, sur laquelle on posait des cailloux pour calculer.",
+  "date": "vers 300 av. J.-C."
+ },
+ {
+  "no": 876,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🏫",
+  "nom": "Écoles de scribes",
+  "description": "En Mésopotamie, les élèves apprenaient à calculer en recopiant des tables sur des tablettes d'argile.",
+  "date": "vers 2000 av. J.-C."
+ },
+ {
+  "no": 877,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🌾",
+  "nom": "Arpenteurs égyptiens",
+  "description": "Après chaque crue du Nil, on remesurait les champs avec des cordes. La géométrie est née en partie de ces mesures.",
+  "date": "Égypte ancienne"
+ },
+ {
+  "no": 878,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🔭",
+  "nom": "Jantar Mantar",
+  "description": "Un observatoire géant en pierre construit à Jaipur, en Inde. Son cadran solaire est l'un des plus grands du monde.",
+  "date": "1734"
+ },
+ {
+  "no": 879,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "📖",
+  "nom": "Premier livre de maths imprimé",
+  "description": "L'Arithmétique de Trévise, en Italie, enseignait le calcul aux marchands. Le plus ancien livre d'arithmétique imprimé connu en Europe.",
+  "date": "1478"
+ },
+ {
+  "no": 880,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "💰",
+  "nom": "Lettre de change",
+  "description": "Les marchands italiens ont inventé des papiers pour payer de loin sans transporter d'or, et appris à calculer les intérêts.",
+  "date": "Moyen Âge"
+ },
+ {
+  "no": 881,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🧭",
+  "nom": "Problème de la longitude",
+  "description": "Les marins ne savaient pas où ils étaient d'est en ouest. L'Angleterre a offert un prix énorme pour une solution.",
+  "date": "1714"
+ },
+ {
+  "no": 882,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🕐",
+  "nom": "Fuseaux horaires",
+  "description": "La Terre est découpée en 24 tranches d'une heure. Quand il est midi à Paris, il est 6 heures du matin à New York.",
+  "date": "1884"
+ },
+ {
+  "no": 883,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🧮",
+  "nom": "Calculateurs prodiges",
+  "description": "Des enfants comme Henri Mondeux ou Jacques Inaudi faisaient de tête des calculs énormes devant le public.",
+  "date": "XIXe siècle"
+ },
+ {
+  "no": 884,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🕰",
+  "nom": "Heure décimale",
+  "description": "Pendant la Révolution, on a essayé des journées de 10 heures de 100 minutes. Ça n'a pas plu et a vite été abandonné.",
+  "date": "1793"
+ },
+ {
+  "no": 885,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "📏",
+  "nom": "Pied du roi",
+  "description": "Avant le mètre, on mesurait en pieds, en pouces et en lignes. Chaque région avait parfois les siennes !",
+  "date": "Ancien Régime"
+ },
+ {
+  "no": 886,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🥖",
+  "nom": "Poids et mesures de marché",
+  "description": "Les villes gardaient des mesures officielles gravées dans la pierre pour vérifier le grain et le vin vendus.",
+  "date": "Moyen Âge"
+ },
+ {
+  "no": 887,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🎓",
+  "nom": "Première femme docteure en maths",
+  "description": "Sofia Kovalevskaïa a obtenu son doctorat à Göttingen, sans y avoir suivi les cours : les femmes n'y étaient pas admises.",
+  "date": "1874"
+ },
+ {
+  "no": 888,
+  "rarete": "C",
+  "type": "H",
+  "symbole": "🏅",
+  "nom": "Prix Abel au féminin",
+  "description": "Karen Uhlenbeck est devenue la première femme à recevoir le prix Abel, pour ses travaux sur les formes et les équations.",
+  "date": "2019"
+ },
+ {
+  "no": 889,
+  "rarete": "L",
+  "type": "O",
+  "symbole": "🔲",
+  "nom": "Microprocesseur",
+  "description": "L'Intel 4004 réunissait tout le cerveau d'un ordinateur sur une seule puce, avec environ 2 300 transistors.",
+  "date": "1971"
+ },
+ {
+  "no": 890,
+  "rarete": "L",
+  "type": "O",
+  "symbole": "⚛",
+  "nom": "Ordinateur quantique",
+  "description": "Il calcule avec des qubits, qui peuvent être 0 et 1 à la fois. En 2019, l'un d'eux a réussi un calcul hors de portée des autres machines.",
+  "date": "2019"
+ },
+ {
+  "no": 891,
+  "rarete": "E",
+  "type": "O",
+  "symbole": "⚙",
+  "nom": "Machine de Leibniz",
+  "description": "Une machine à cylindres cannelés qui savait additionner, soustraire, multiplier et diviser. Son idée a servi pendant 300 ans.",
+  "date": "1694"
+ },
+ {
+  "no": 892,
+  "rarete": "E",
+  "type": "O",
+  "symbole": "⚙",
+  "nom": "Machine à différences",
+  "description": "La machine de Babbage pour calculer automatiquement des tables de nombres sans erreur. Une version a été construite en 1991 : elle marche !",
+  "date": "1822"
+ },
+ {
+  "no": 893,
+  "rarete": "E",
+  "type": "O",
+  "symbole": "🏎",
+  "nom": "Supercalculateur",
+  "description": "Le Cray-1 était l'ordinateur le plus rapide du monde. Aujourd'hui, les supercalculateurs prévoient la météo et simulent l'univers.",
+  "date": "1976"
+ },
+ {
+  "no": 894,
+  "rarete": "E",
+  "type": "O",
+  "symbole": "⌚",
+  "nom": "Chronomètre de marine",
+  "description": "L'horloge de John Harrison gardait l'heure exacte en mer. Elle a permis aux marins de calculer leur longitude.",
+  "date": "1761"
+ },
+ {
+  "no": 895,
+  "rarete": "E",
+  "type": "O",
+  "symbole": "🔐",
+  "nom": "Chiffrement RSA",
+  "description": "Un code secret fondé sur la difficulté de décomposer un très grand nombre en facteurs premiers. Il protège les achats sur Internet.",
+  "date": "1977"
+ },
+ {
+  "no": 896,
+  "rarete": "E",
+  "type": "O",
+  "symbole": "💣",
+  "nom": "Bombe de Turing",
+  "description": "Une machine électromécanique conçue par Alan Turing pour trouver chaque jour les réglages de la machine Enigma.",
+  "date": "1940"
+ },
+ {
+  "no": 897,
+  "rarete": "R",
+  "type": "O",
+  "symbole": "🧵",
+  "nom": "Métier Jacquard",
+  "description": "Un métier à tisser commandé par des cartes perforées. Il a inspiré Babbage pour programmer ses machines à calculer.",
+  "date": "1804"
+ },
+ {
+  "no": 898,
+  "rarete": "R",
+  "type": "O",
+  "symbole": "🖩",
+  "nom": "Calculatrice HP-35",
+  "description": "La première calculatrice scientifique de poche. Elle a rendu les règles à calcul inutiles en quelques années.",
+  "date": "1972"
+ },
+ {
+  "no": 899,
+  "rarete": "R",
+  "type": "O",
+  "symbole": "🔭",
+  "nom": "Télescope de Newton",
+  "description": "Newton a remplacé les lentilles par un miroir courbe, pour des images plus nettes. On en fabrique encore aujourd'hui.",
+  "date": "1668"
+ },
+ {
+  "no": 900,
+  "rarete": "R",
+  "type": "O",
+  "symbole": "🔬",
+  "nom": "Microscope",
+  "description": "Des lunetiers hollandais ont combiné des lentilles pour voir l'infiniment petit. Leeuwenhoek y a découvert les microbes.",
+  "date": "vers 1590"
+ },
+ {
+  "no": 901,
+  "rarete": "R",
+  "type": "O",
+  "symbole": "🕰",
+  "nom": "Horloge à pendule",
+  "description": "Huygens a utilisé le balancement régulier d'un pendule pour construire une horloge bien plus précise que les autres.",
+  "date": "1656"
+ },
+ {
+  "no": 902,
+  "rarete": "R",
+  "type": "O",
+  "symbole": "⚙",
+  "nom": "Analyseur différentiel",
+  "description": "Une immense machine à arbres et engrenages de Vannevar Bush qui résolvait des équations en tournant.",
+  "date": "1931"
+ },
+ {
+  "no": 903,
+  "rarete": "R",
+  "type": "O",
+  "symbole": "💳",
+  "nom": "Carte à puce",
+  "description": "Roland Moreno a inventé une carte avec une puce électronique. Elle sert pour les cartes bancaires et les cartes de transport.",
+  "date": "1974"
+ },
+ {
+  "no": 904,
+  "rarete": "R",
+  "type": "O",
+  "symbole": "📡",
+  "nom": "Radar",
+  "description": "Il envoie des ondes et mesure le temps de leur retour pour calculer la distance d'un avion ou d'un bateau.",
+  "date": "1935"
+ },
+ {
+  "no": 905,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🖱",
+  "nom": "Souris d'ordinateur",
+  "description": "Douglas Engelbart a présenté une boîte en bois avec deux roues pour déplacer un pointeur sur l'écran.",
+  "date": "1968"
+ },
+ {
+  "no": 906,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🗄",
+  "nom": "Disque dur",
+  "description": "Le premier disque dur d'IBM pesait près d'une tonne et ne gardait que 5 millions de caractères.",
+  "date": "1956"
+ },
+ {
+  "no": 907,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "📶",
+  "nom": "Wi-Fi",
+  "description": "Une façon d'envoyer des données par ondes radio, sans fil. Elle utilise des calculs astucieux pour corriger les erreurs.",
+  "date": "1997"
+ },
+ {
+  "no": 908,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "💡",
+  "nom": "Fibre optique",
+  "description": "Un fil de verre plus fin qu'un cheveu qui transporte des informations sous forme de lumière, presque sans pertes.",
+  "date": "1970"
+ },
+ {
+  "no": 909,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🌡",
+  "nom": "Baromètre",
+  "description": "Torricelli a mesuré la pression de l'air avec un tube de mercure. Quand le baromètre baisse, la pluie approche souvent.",
+  "date": "1643"
+ },
+ {
+  "no": 910,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🌧",
+  "nom": "Pluviomètre",
+  "description": "En Corée, sous le roi Sejong, on a installé des pluviomètres dans tout le royaume pour mesurer la pluie et prévoir les récoltes.",
+  "date": "1441"
+ },
+ {
+  "no": 911,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "⚔",
+  "nom": "Bâton de Jacob",
+  "description": "Un bâton avec une traverse coulissante pour mesurer l'angle entre deux étoiles ou entre l'horizon et le Soleil.",
+  "date": "XIVe siècle"
+ },
+ {
+  "no": 912,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🪢",
+  "nom": "Loch",
+  "description": "Une corde à nœuds jetée à la mer : on comptait les nœuds qui défilaient pendant un sablier. D'où la vitesse en « nœuds » !",
+  "date": "XVIe siècle"
+ },
+ {
+  "no": 913,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🌐",
+  "nom": "Sphère armillaire",
+  "description": "Des anneaux emboîtés qui représentent les cercles du ciel autour de la Terre, pour suivre le mouvement des astres.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 914,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🌀",
+  "nom": "Spirographe",
+  "description": "Un jouet à roues dentées qui trace des rosaces magnifiques. Les courbes dépendent du nombre de dents des roues.",
+  "date": "1965"
+ },
+ {
+  "no": 915,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "📉",
+  "nom": "Nomogramme",
+  "description": "Un dessin de plusieurs échelles graduées : on tend une règle et on lit le résultat d'un calcul compliqué.",
+  "date": "1884"
+ },
+ {
+  "no": 916,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🖥",
+  "nom": "UNIVAC I",
+  "description": "Le premier ordinateur vendu dans le commerce aux États-Unis. En 1952, il a prédit à la télévision le résultat d'une élection.",
+  "date": "1951"
+ },
+ {
+  "no": 917,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🐱",
+  "nom": "Scratch",
+  "description": "Un langage de programmation en blocs colorés à emboîter, créé au MIT pour que les enfants inventent leurs propres jeux.",
+  "date": "2007"
+ },
+ {
+  "no": 918,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🐢",
+  "nom": "Langage Logo",
+  "description": "Un langage où l'on fait avancer une tortue qui dessine : « avance 100, tourne 90 ». Idéal pour apprendre la géométrie.",
+  "date": "1967"
+ },
+ {
+  "no": 919,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🎡",
+  "nom": "Disque d'Alberti",
+  "description": "Deux disques de lettres qui tournent l'un sur l'autre pour coder un message. L'ancêtre des machines de chiffrement.",
+  "date": "1467"
+ },
+ {
+  "no": 920,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🧮",
+  "nom": "Soroban",
+  "description": "Le boulier japonais, avec une boule en haut et quatre en bas. Des champions calculent si vite qu'ils l'imaginent sans le toucher.",
+  "date": "XVIIe siècle"
+ },
+ {
+  "no": 921,
+  "rarete": "U",
+  "type": "O",
+  "symbole": "🔦",
+  "nom": "Laser",
+  "description": "Une lumière très concentrée. On l'utilise pour mesurer des distances, lire des codes-barres ou même la distance Terre-Lune.",
+  "date": "1960"
+ },
+ {
+  "no": 922,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🔢",
+  "nom": "Comptomètre",
+  "description": "Une machine à touches où il suffisait d'appuyer sur les chiffres pour additionner très vite. Les comptables l'ont adorée.",
+  "date": "1887"
+ },
+ {
+  "no": 923,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📈",
+  "nom": "Calculatrice graphique",
+  "description": "Une calculatrice qui trace des courbes. Les élèves de lycée l'utilisent pour voir les fonctions.",
+  "date": "1985"
+ },
+ {
+  "no": 924,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🍎",
+  "nom": "Apple I",
+  "description": "Un ordinateur vendu sous forme de carte électronique, assemblé dans un garage. Le début d'Apple.",
+  "date": "1976"
+ },
+ {
+  "no": 925,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "💾",
+  "nom": "Disquette",
+  "description": "Un petit disque magnétique pour transporter des fichiers. On le voit encore dans l'icône « enregistrer » !",
+  "date": "1971"
+ },
+ {
+  "no": 926,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🔑",
+  "nom": "Clé USB",
+  "description": "Une petite mémoire qu'on branche partout. Les premières contenaient 8 mégaoctets, mille fois moins que les clés d'aujourd'hui.",
+  "date": "2000"
+ },
+ {
+  "no": 927,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🦾",
+  "nom": "Robot industriel",
+  "description": "Unimate, le premier robot industriel, soulevait des pièces brûlantes dans une usine de voitures américaine.",
+  "date": "1961"
+ },
+ {
+  "no": 928,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🔔",
+  "nom": "Horloge mécanique",
+  "description": "Les premières horloges à poids et à engrenages sonnaient les heures dans les clochers d'Europe.",
+  "date": "XIIIe siècle"
+ },
+ {
+  "no": 929,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📏",
+  "nom": "Pied à coulisse",
+  "description": "Pierre Vernier a inventé une petite règle mobile qui permet de mesurer au dixième de millimètre près.",
+  "date": "1631"
+ },
+ {
+  "no": 930,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🫧",
+  "nom": "Niveau à bulle",
+  "description": "Une bulle d'air dans un tube de liquide indique si une surface est parfaitement horizontale.",
+  "date": "1661"
+ },
+ {
+  "no": 931,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "⬇",
+  "nom": "Fil à plomb",
+  "description": "Un poids au bout d'une ficelle indique la verticale. Les bâtisseurs des pyramides l'utilisaient déjà.",
+  "date": "Égypte ancienne"
+ },
+ {
+  "no": 932,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🔭",
+  "nom": "Théodolite",
+  "description": "Un instrument pour mesurer des angles horizontaux et verticaux. Il sert à faire des cartes et à construire des routes.",
+  "date": "XVIe siècle"
+ },
+ {
+  "no": 933,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🛞",
+  "nom": "Odomètre",
+  "description": "Héron d'Alexandrie a décrit une roue qui faisait tomber un caillou dans une boîte tous les mille pas.",
+  "date": "Ier siècle"
+ },
+ {
+  "no": 934,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "✝",
+  "nom": "Groma",
+  "description": "Une croix avec des fils à plomb qui permettait aux arpenteurs romains de tracer des routes et des champs bien droits.",
+  "date": "Antiquité romaine"
+ },
+ {
+  "no": 935,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "⛓",
+  "nom": "Chaîne d'arpenteur",
+  "description": "Edmund Gunter a créé une chaîne de 100 maillons pour mesurer les terrains. Elle a servi pendant des siècles.",
+  "date": "1620"
+ },
+ {
+  "no": 936,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🌬",
+  "nom": "Anémomètre",
+  "description": "Un instrument pour mesurer la vitesse du vent. Les modèles à coupelles qui tournent sont apparus au XIXe siècle.",
+  "date": "vers 1450"
+ },
+ {
+  "no": 937,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📐",
+  "nom": "Quadrant",
+  "description": "Un quart de cercle gradué pour mesurer la hauteur des étoiles ou d'un bâtiment, en visant le long de son bord.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 938,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🧶",
+  "nom": "Kamal",
+  "description": "Une planchette et une ficelle à nœuds. Les navigateurs arabes s'en servaient pour mesurer la hauteur de l'étoile Polaire.",
+  "date": "Moyen Âge"
+ },
+ {
+  "no": 939,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "⏲",
+  "nom": "Torquetum",
+  "description": "Un instrument d'astronomie à plateaux inclinés, capable de convertir des positions d'étoiles d'un système à un autre.",
+  "date": "XIIIe siècle"
+ },
+ {
+  "no": 940,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🌃",
+  "nom": "Nocturlabe",
+  "description": "Un disque pour lire l'heure la nuit, en visant l'étoile Polaire et les étoiles de la Grande Ourse.",
+  "date": "XVIe siècle"
+ },
+ {
+  "no": 941,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📐",
+  "nom": "Compas de proportion",
+  "description": "Galilée a vendu des compas gradués qui faisaient des multiplications, des racines et des conversions d'un coup de branches.",
+  "date": "1597"
+ },
+ {
+  "no": 942,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "✍",
+  "nom": "Pantographe",
+  "description": "Un assemblage de règles articulées qui recopie un dessin en l'agrandissant ou en le réduisant.",
+  "date": "1603"
+ },
+ {
+  "no": 943,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🪙",
+  "nom": "Table de compte",
+  "description": "Une table rayée sur laquelle on déplaçait des jetons pour calculer. Elle a donné le mot « comptoir ».",
+  "date": "Moyen Âge"
+ },
+ {
+  "no": 944,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📏",
+  "nom": "Réglettes de Genaille-Lucas",
+  "description": "Des réglettes à triangles qui font les multiplications sans retenue à calculer : il suffit de suivre les flèches.",
+  "date": "1891"
+ },
+ {
+  "no": 945,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🗺",
+  "nom": "Planimètre",
+  "description": "En suivant le bord d'une figure avec une pointe, cet instrument donne son aire, même pour une forme toute tordue.",
+  "date": "1854"
+ },
+ {
+  "no": 946,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📟",
+  "nom": "Minitel",
+  "description": "Un petit terminal français relié au téléphone. Avant Internet, il permettait de consulter l'annuaire ou de réserver un train.",
+  "date": "1982"
+ },
+ {
+  "no": 947,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📲",
+  "nom": "Tablette tactile",
+  "description": "Un ordinateur plat qu'on commande avec les doigts, répandu à partir de 2010. Chaque geste demande des calculs de position très rapides.",
+  "date": "2010"
+ },
+ {
+  "no": 948,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📐",
+  "nom": "GeoGebra",
+  "description": "Un logiciel gratuit pour faire de la géométrie et tracer des courbes, utilisé dans les classes du monde entier.",
+  "date": "2001"
+ },
+ {
+  "no": 949,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🐍",
+  "nom": "Python",
+  "description": "Un langage de programmation simple à lire, créé par Guido van Rossum. On l'utilise en sciences, au lycée et pour l'intelligence artificielle.",
+  "date": "1991"
+ },
+ {
+  "no": 950,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🪵",
+  "nom": "Scytale",
+  "description": "Les Spartiates enroulaient une bande de cuir autour d'un bâton pour écrire un message. Déroulé, il devenait illisible.",
+  "date": "Ve siècle av. J.-C."
+ },
+ {
+  "no": 951,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🔒",
+  "nom": "Cadenas à code",
+  "description": "Avec trois molettes de 0 à 9, il y a 1 000 combinaisons possibles : de 000 à 999.",
+  "date": ""
+ },
+ {
+  "no": 952,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "⚖",
+  "nom": "Balance Roberval",
+  "description": "Une balance à deux plateaux qui restent horizontaux. Elle a été utilisée dans tous les commerces pendant des siècles.",
+  "date": "1669"
+ },
+ {
+  "no": 953,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🪝",
+  "nom": "Balance romaine",
+  "description": "Un levier avec un poids qu'on fait glisser : plus l'objet est lourd, plus il faut éloigner le poids. Un vrai calcul de levier !",
+  "date": "Antiquité"
+ },
+ {
+  "no": 954,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🔳",
+  "nom": "Géoplan",
+  "description": "Une planche avec des clous où l'on tend des élastiques pour former des polygones et calculer leur aire.",
+  "date": "années 1950"
+ },
+ {
+  "no": 955,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🟧",
+  "nom": "Réglettes Cuisenaire",
+  "description": "Des réglettes de couleurs et de longueurs de 1 à 10 pour manipuler les nombres et comprendre les additions.",
+  "date": "1952"
+ },
+ {
+  "no": 956,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🔮",
+  "nom": "Kaléidoscope",
+  "description": "Des miroirs placés en triangle multiplient de petits objets colorés en figures parfaitement symétriques.",
+  "date": "1816"
+ },
+ {
+  "no": 957,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "⏱",
+  "nom": "Métronome",
+  "description": "Un balancier qui bat la mesure pour les musiciens. On règle sa vitesse en battements par minute.",
+  "date": "1815"
+ },
+ {
+  "no": 958,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🗺",
+  "nom": "Carte topographique",
+  "description": "Des lignes de niveau relient les points de même altitude. Plus elles sont serrées, plus la pente est raide.",
+  "date": "XVIIIe siècle"
+ },
+ {
+  "no": 959,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🌊",
+  "nom": "Sonar",
+  "description": "Comme les chauves-souris et les dauphins, il envoie des sons sous l'eau et écoute l'écho pour mesurer la profondeur.",
+  "date": "1915"
+ },
+ {
+  "no": 960,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "📷",
+  "nom": "Appareil photo numérique",
+  "description": "Le premier pesait près de 4 kilos et prenait 23 secondes pour enregistrer une image en noir et blanc de 0,01 mégapixel.",
+  "date": "1975"
+ },
+ {
+  "no": 961,
+  "rarete": "C",
+  "type": "O",
+  "symbole": "🛰",
+  "nom": "Altimètre",
+  "description": "Un instrument qui calcule l'altitude d'un avion à partir de la pression de l'air ou d'ondes renvoyées par le sol.",
+  "date": "1928"
+ },
+ {
+  "no": 962,
+  "rarete": "L",
+  "type": "N",
+  "symbole": "🌉",
+  "nom": "Quaternions",
+  "description": "Des nombres à quatre parties inventés par Hamilton, qui les a gravés sur un pont de Dublin. Ils font tourner les objets des jeux vidéo.",
+  "date": "1843"
+ },
+ {
+  "no": 963,
+  "rarete": "L",
+  "type": "N",
+  "symbole": "ℵ",
+  "nom": "Aleph zéro",
+  "description": "La taille de l'infini des nombres entiers, notée avec la lettre hébraïque aleph. Cantor a prouvé qu'il existe des infinis encore plus grands.",
+  "date": "1895"
+ },
+ {
+  "no": 964,
+  "rarete": "E",
+  "type": "N",
+  "symbole": "6174",
+  "nom": "Constante de Kaprekar",
+  "description": "Range les chiffres d'un nombre à 4 chiffres du plus grand au plus petit, soustrais l'inverse et recommence : on tombe sur 6174 !",
+  "date": "1949"
+ },
+ {
+  "no": 965,
+  "rarete": "E",
+  "type": "N",
+  "symbole": "♻",
+  "nom": "Nombre cyclique 142857",
+  "description": "Multiplie 142857 par 2, 3, 4, 5 ou 6 : les mêmes chiffres reviennent dans le même ordre, juste décalés. Et × 7 = 999999 !",
+  "date": ""
+ },
+ {
+  "no": 966,
+  "rarete": "E",
+  "type": "N",
+  "symbole": "🌌",
+  "nom": "Gogolplex",
+  "description": "Un 1 suivi d'un gogol de zéros. Il n'y a pas assez de place dans l'univers pour l'écrire en entier.",
+  "date": "1938"
+ },
+ {
+  "no": 967,
+  "rarete": "E",
+  "type": "N",
+  "symbole": "🐘",
+  "nom": "Nombre de Graham",
+  "description": "Un nombre si gigantesque qu'on ne peut l'écrire qu'avec des flèches empilées. Il sert dans un problème de coloriage.",
+  "date": "1971"
+ },
+ {
+  "no": 968,
+  "rarete": "E",
+  "type": "N",
+  "symbole": "🦋",
+  "nom": "Constante de Feigenbaum",
+  "description": "4,669… Un nombre mystérieux qui apparaît chaque fois qu'un système bascule vers le chaos.",
+  "date": "1975"
+ },
+ {
+  "no": 969,
+  "rarete": "E",
+  "type": "N",
+  "symbole": "🌠",
+  "nom": "Nombres transcendants",
+  "description": "Des nombres qui ne sont solution d'aucune équation à coefficients entiers, comme π et e. Il y en a infiniment plus que les autres !",
+  "date": "1844"
+ },
+ {
+  "no": 970,
+  "rarete": "E",
+  "type": "N",
+  "symbole": "🍀",
+  "nom": "355/113",
+  "description": "Zu Chongzhi a trouvé cette fraction pour π : 3,1415929… Elle est juste jusqu'à la sixième décimale !",
+  "date": "Ve siècle"
+ },
+ {
+  "no": 971,
+  "rarete": "R",
+  "type": "N",
+  "symbole": "1089",
+  "nom": "Le nombre 1089",
+  "description": "Prends 532, retourne-le (235) et soustrais : 297. Ajoute son retourné (792) : 1089 ! Ça marche avec presque tous les nombres à 3 chiffres.",
+  "date": "tour de magie"
+ },
+ {
+  "no": 972,
+  "rarete": "R",
+  "type": "N",
+  "symbole": "17",
+  "nom": "Dix-sept",
+  "description": "À 18 ans, Gauss a montré qu'on peut construire un polygone régulier à 17 côtés avec la règle et le compas.",
+  "date": "1796"
+ },
+ {
+  "no": 973,
+  "rarete": "R",
+  "type": "N",
+  "symbole": "💡",
+  "nom": "Vitesse de la lumière",
+  "description": "299 792 458 mètres par seconde, exactement : depuis 1983, c'est elle qui définit la longueur du mètre.",
+  "date": "1983"
+ },
+ {
+  "no": 974,
+  "rarete": "R",
+  "type": "N",
+  "symbole": "ℂ",
+  "nom": "Nombres complexes",
+  "description": "Des nombres de la forme a + bi, avec i² = −1. Ils servent à décrire l'électricité, les ondes et les rotations.",
+  "date": "XVIe siècle"
+ },
+ {
+  "no": 975,
+  "rarete": "R",
+  "type": "N",
+  "symbole": "🔢",
+  "nom": "Nombres de Fermat",
+  "description": "2 puissance (2ⁿ) + 1 : 3, 5, 17, 257, 65537… Fermat pensait qu'ils étaient tous premiers. Euler a montré que non.",
+  "date": "1640"
+ },
+ {
+  "no": 976,
+  "rarete": "R",
+  "type": "N",
+  "symbole": "𓂀",
+  "nom": "Fractions égyptiennes",
+  "description": "Les Égyptiens écrivaient les fractions comme des sommes de fractions de numérateur 1 : 3/4 = 1/2 + 1/4.",
+  "date": "vers 1650 av. J.-C."
+ },
+ {
+  "no": 977,
+  "rarete": "R",
+  "type": "N",
+  "symbole": "📉",
+  "nom": "Logarithme",
+  "description": "Le logarithme compte combien de fois il faut multiplier : log₁₀(1000) = 3. Napier l'a inventé pour simplifier les calculs.",
+  "date": "1614"
+ },
+ {
+  "no": 978,
+  "rarete": "R",
+  "type": "N",
+  "symbole": "🏖",
+  "nom": "L'Arénaire",
+  "description": "Archimède a estimé combien de grains de sable rempliraient l'univers : environ 10⁶³. Il a dû inventer un système pour les très grands nombres.",
+  "date": "IIIe siècle av. J.-C."
+ },
+ {
+  "no": 979,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "🔺",
+  "nom": "Pyramide de 1",
+  "description": "1 × 1 = 1, 11 × 11 = 121, 111 × 111 = 12321… jusqu'à 111111111² = 12345678987654321.",
+  "date": ""
+ },
+ {
+  "no": 980,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "2520",
+  "nom": "Deux mille cinq cent vingt",
+  "description": "Le plus petit nombre divisible par tous les nombres de 1 à 10. Parfait pour partager sans reste !",
+  "date": ""
+ },
+ {
+  "no": 981,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "153",
+  "nom": "Cent cinquante-trois",
+  "description": "1³ + 5³ + 3³ = 1 + 125 + 27 = 153. Un nombre égal à la somme des cubes de ses chiffres : un nombre narcissique !",
+  "date": ""
+ },
+ {
+  "no": 982,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "ζ",
+  "nom": "Constante d'Apéry",
+  "description": "1 + 1/8 + 1/27 + 1/64 + … = 1,202… Roger Apéry a prouvé en 1978 qu'elle est irrationnelle, à la surprise générale.",
+  "date": "1978"
+ },
+ {
+  "no": 983,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "📏",
+  "nom": "Nombres de Liouville",
+  "description": "Les premiers nombres dont on a prouvé qu'ils sont transcendants, comme 0,110001000000000000000001…",
+  "date": "1844"
+ },
+ {
+  "no": 984,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "♣",
+  "nom": "Nombres surréels",
+  "description": "John Conway a inventé ces nombres en étudiant des jeux. Ils contiennent les entiers, les réels et même des infinis.",
+  "date": "1974"
+ },
+ {
+  "no": 985,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "🎖",
+  "nom": "Nombres premiers de Sophie Germain",
+  "description": "Un nombre premier p tel que 2p + 1 est aussi premier, comme 11 (car 23 est premier). Sophie Germain les a utilisés pour Fermat.",
+  "date": "vers 1825"
+ },
+ {
+  "no": 986,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "🌳",
+  "nom": "Nombres de Catalan",
+  "description": "1, 1, 2, 5, 14, 42… Ils comptent les façons de bien placer des parenthèses ou de découper un polygone en triangles.",
+  "date": "1838"
+ },
+ {
+  "no": 987,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "😊",
+  "nom": "Nombres heureux",
+  "description": "Prends 19 : 1² + 9² = 82, puis 8² + 2² = 68, puis 100, puis 1. Un nombre qui finit par arriver à 1 est heureux !",
+  "date": ""
+ },
+ {
+  "no": 988,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "1️⃣",
+  "nom": "Répunits",
+  "description": "Des nombres faits uniquement de 1 : 11, 111, 1111… Certains sont premiers, comme 11 et 1111111111111111111 (19 uns).",
+  "date": ""
+ },
+ {
+  "no": 989,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "2025",
+  "nom": "Deux mille vingt-cinq",
+  "description": "2025 = 45² et (20 + 25)² = 2025. C'est aussi la somme des cubes de 1 à 9 !",
+  "date": ""
+ },
+ {
+  "no": 990,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "#️⃣",
+  "nom": "Hexadécimal",
+  "description": "La base 16, avec les chiffres 0 à 9 puis A à F. Les ordinateurs l'utilisent pour écrire les couleurs, comme #FF0000 pour le rouge.",
+  "date": "XXe siècle"
+ },
+ {
+  "no": 991,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "🤯",
+  "nom": "0,999… = 1",
+  "description": "Avec une infinité de 9 après la virgule, 0,999… est exactement égal à 1. Un tiers fois trois le prouve : 0,333… × 3.",
+  "date": ""
+ },
+ {
+  "no": 992,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "📈",
+  "nom": "Exponentielle",
+  "description": "Une croissance qui double régulièrement, comme des bactéries ou une épidémie. Elle grandit de plus en plus vite.",
+  "date": "XVIIe siècle"
+ },
+ {
+  "no": 993,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "🌌",
+  "nom": "Année-lumière",
+  "description": "La distance parcourue par la lumière en un an : environ 9 460 milliards de kilomètres.",
+  "date": "XIXe siècle"
+ },
+ {
+  "no": 994,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "🥧",
+  "nom": "Vingt-deux septièmes",
+  "description": "22/7 = 3,1428… Une approximation de π connue d'Archimède, juste au centième près.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 995,
+  "rarete": "U",
+  "type": "N",
+  "symbole": "♾",
+  "nom": "Infini potentiel et actuel",
+  "description": "Aristote distinguait l'infini qui grandit sans fin (compter toujours plus loin) de l'infini déjà là, tout entier.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 996,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "28",
+  "nom": "Vingt-huit",
+  "description": "Le deuxième nombre parfait : 1 + 2 + 4 + 7 + 14 = 28. C'est aussi à peu près le nombre de jours d'un cycle de la Lune.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 997,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "37",
+  "nom": "Trente-sept",
+  "description": "37 × 3 = 111, 37 × 6 = 222, 37 × 9 = 333… Une table de 37 pleine de chiffres répétés.",
+  "date": ""
+ },
+ {
+  "no": 998,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "♟",
+  "nom": "Soixante-quatre",
+  "description": "Les 64 cases de l'échiquier. C'est 2⁶ et 4³ : à la fois une puissance de 2 et un cube.",
+  "date": ""
+ },
+ {
+  "no": 999,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "💾",
+  "nom": "Deux cent cinquante-six",
+  "description": "2⁸ = 256. Un octet, 8 bits, peut prendre 256 valeurs différentes, de 0 à 255.",
+  "date": ""
+ },
+ {
+  "no": 1000,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🖥",
+  "nom": "Mille vingt-quatre",
+  "description": "2¹⁰ = 1024, presque mille. C'est pourquoi un kilo-octet valait autrefois 1024 octets.",
+  "date": ""
+ },
+ {
+  "no": 1001,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "1001",
+  "nom": "Mille un",
+  "description": "1001 = 7 × 11 × 13. Écris un nombre à 3 chiffres deux fois (abcabc) : il est toujours divisible par 7, 11 et 13 !",
+  "date": ""
+ },
+ {
+  "no": 1002,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "√3",
+  "nom": "Racine de 3",
+  "description": "1,732… La hauteur d'un triangle équilatéral de côté 2. Comme √2, elle a une infinité de décimales sans motif.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1003,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🥈",
+  "nom": "Nombre d'argent",
+  "description": "1 + √2 = 2,414… Le cousin du nombre d'or. On le retrouve dans l'octogone régulier.",
+  "date": ""
+ },
+ {
+  "no": 1004,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "0,1",
+  "nom": "Constante de Champernowne",
+  "description": "0,123456789101112131415… On écrit tous les entiers à la suite après la virgule. Toutes les suites de chiffres y apparaissent.",
+  "date": "1933"
+ },
+ {
+  "no": 1005,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🌀",
+  "nom": "Nombres de Lucas",
+  "description": "2, 1, 3, 4, 7, 11, 18… Comme Fibonacci, chaque nombre est la somme des deux précédents, mais on commence par 2 et 1.",
+  "date": "1878"
+ },
+ {
+  "no": 1006,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "⬠",
+  "nom": "Nombres pentagonaux",
+  "description": "1, 5, 12, 22, 35… Le nombre de points qu'il faut pour dessiner des pentagones emboîtés de plus en plus grands.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1007,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🔺",
+  "nom": "Nombres tétraédriques",
+  "description": "1, 4, 10, 20, 35… Le nombre de boulets qu'il faut pour empiler une pyramide à base triangulaire.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1008,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🏯",
+  "nom": "Nombres pyramidaux",
+  "description": "1, 5, 14, 30, 55… Le nombre d'oranges d'une pyramide à base carrée : 1 + 4 + 9 + 16 + 25…",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1009,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🍰",
+  "nom": "Nombres abondants",
+  "description": "Un nombre est abondant si la somme de ses diviseurs dépasse le nombre lui-même. 12 est le premier : 1 + 2 + 3 + 4 + 6 = 16.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1010,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🥄",
+  "nom": "Nombres déficients",
+  "description": "Un nombre est déficient si la somme de ses diviseurs est plus petite que lui. Tous les nombres premiers sont déficients.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1011,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🪞",
+  "nom": "Nombres narcissiques",
+  "description": "Égaux à la somme des puissances de leurs chiffres, comme 153 = 1³ + 5³ + 3³ ou 9474 = 9⁴ + 4⁴ + 7⁴ + 4⁴.",
+  "date": ""
+ },
+ {
+  "no": 1012,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🎊",
+  "nom": "Nombres Harshad",
+  "description": "Des nombres divisibles par la somme de leurs chiffres, comme 18 (1 + 8 = 9). Harshad veut dire « grande joie » en sanskrit.",
+  "date": "1955"
+ },
+ {
+  "no": 1013,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "2⁹",
+  "nom": "Puissances de 2",
+  "description": "1, 2, 4, 8, 16, 32, 64… On double à chaque fois. En 10 étapes on dépasse 1000, en 20 étapes un million.",
+  "date": ""
+ },
+ {
+  "no": 1014,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "10ⁿ",
+  "nom": "Puissances de 10",
+  "description": "10, 100, 1000… Chaque zéro de plus multiplie par 10. C'est la base de notre façon d'écrire les nombres.",
+  "date": ""
+ },
+ {
+  "no": 1015,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🔬",
+  "nom": "Notation scientifique",
+  "description": "Pour écrire de très grands ou très petits nombres : la Terre pèse environ 6 × 10²⁴ kilogrammes.",
+  "date": ""
+ },
+ {
+  "no": 1016,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "⚖",
+  "nom": "Proportion",
+  "description": "Deux rapports égaux, comme 2/3 = 4/6. Une recette pour 4 personnes se double pour 8 en gardant les proportions.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1017,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "✂",
+  "nom": "Fraction irréductible",
+  "description": "Une fraction qu'on ne peut plus simplifier, comme 2/3. 6/9 se simplifie en 2/3 en divisant en haut et en bas par 3.",
+  "date": ""
+ },
+ {
+  "no": 1018,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "3️⃣",
+  "nom": "Base 3",
+  "description": "Le système ternaire n'utilise que 0, 1 et 2. En 1958, un ordinateur russe, le Setun, calculait en base 3.",
+  "date": "1958"
+ },
+ {
+  "no": 1019,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "7",
+  "nom": "Un septième",
+  "description": "1/7 = 0,142857142857… Les six chiffres se répètent sans fin, et ce sont ceux du nombre cyclique 142857.",
+  "date": ""
+ },
+ {
+  "no": 1020,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🔁",
+  "nom": "Décimaux périodiques",
+  "description": "Les fractions donnent des décimales qui finissent par se répéter : 1/3 = 0,333…, 1/11 = 0,0909…",
+  "date": ""
+ },
+ {
+  "no": 1021,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🤝",
+  "nom": "PGCD",
+  "description": "Le plus grand diviseur commun de deux nombres. Celui de 12 et 18 est 6. Euclide a donné une méthode pour le trouver.",
+  "date": "vers 300 av. J.-C."
+ },
+ {
+  "no": 1022,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🔗",
+  "nom": "PPCM",
+  "description": "Le plus petit multiple commun de deux nombres. Pour 4 et 6, c'est 12 : utile pour additionner 1/4 et 1/6.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1023,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "💑",
+  "nom": "Nombres premiers entre eux",
+  "description": "Deux nombres qui n'ont aucun diviseur commun à part 1, comme 8 et 15.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1024,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "√",
+  "nom": "Racine carrée",
+  "description": "Le nombre qui, multiplié par lui-même, donne le nombre de départ. La racine carrée de 49 est 7.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1025,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "±",
+  "nom": "Valeur absolue",
+  "description": "La distance d'un nombre à zéro, sans son signe : la valeur absolue de −5 est 5. Weierstrass l'a notée entre deux barres verticales.",
+  "date": "1841"
+ },
+ {
+  "no": 1026,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🔬",
+  "nom": "Infiniment petit",
+  "description": "Une quantité plus petite que tout nombre positif. Leibniz et Newton les ont utilisés pour inventer le calcul.",
+  "date": "XVIIe siècle"
+ },
+ {
+  "no": 1027,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🌅",
+  "nom": "Mille quatre cent quarante",
+  "description": "Le nombre de minutes dans une journée : 24 × 60 = 1440.",
+  "date": ""
+ },
+ {
+  "no": 1028,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "⏱",
+  "nom": "86 400 secondes",
+  "description": "Le nombre de secondes dans une journée : 24 × 60 × 60 = 86 400.",
+  "date": ""
+ },
+ {
+  "no": 1029,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🏛",
+  "nom": "Myriade",
+  "description": "Le plus grand nombre qui avait un nom chez les Grecs : 10 000. On parle encore d'une « myriade » d'étoiles.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1030,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🪔",
+  "nom": "Lakh et crore",
+  "description": "En Inde, on compte en lakhs (100 000) et en crores (10 millions). On écrit 1,00,000 au lieu de 100 000.",
+  "date": "Inde, tradition"
+ },
+ {
+  "no": 1031,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "1️⃣4️⃣",
+  "nom": "Quatorze",
+  "description": "Le nombre de vers d'un sonnet et de jours de deux semaines. 14 = 2 × 7.",
+  "date": ""
+ },
+ {
+  "no": 1032,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🍩",
+  "nom": "Soixante",
+  "description": "60 est divisible par 1, 2, 3, 4, 5, 6, 10, 12, 15, 20 et 30. C'est pour cela que les Babyloniens l'aimaient tant.",
+  "date": ""
+ },
+ {
+  "no": 1033,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "⌛",
+  "nom": "Cent vingt",
+  "description": "120 = 5! = 1 × 2 × 3 × 4 × 5. C'est le nombre de façons de ranger 5 livres sur une étagère.",
+  "date": ""
+ },
+ {
+  "no": 1034,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "➗",
+  "nom": "Reste",
+  "description": "Ce qui reste après une division : 17 ÷ 5 = 3 reste 2. Les restes servent à savoir quel jour de la semaine il sera.",
+  "date": ""
+ },
+ {
+  "no": 1035,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "⚛",
+  "nom": "Nombre d'Avogadro",
+  "description": "Environ 602 000 milliards de milliards : le nombre d'atomes dans 12 grammes de carbone.",
+  "date": "1909"
+ },
+ {
+  "no": 1036,
+  "rarete": "C",
+  "type": "N",
+  "symbole": "🔐",
+  "nom": "Clés à 2048 bits",
+  "description": "Les codes secrets d'Internet utilisent des nombres de plus de 600 chiffres, impossibles à décomposer avec nos ordinateurs actuels.",
+  "date": "XXIe siècle"
+ },
+ {
+  "no": 1037,
+  "rarete": "L",
+  "type": "F",
+  "symbole": "⚽",
+  "nom": "Solides d'Archimède",
+  "description": "Treize solides faits de plusieurs sortes de polygones réguliers, comme le ballon de football, l'icosaèdre tronqué.",
+  "date": "IIIe siècle av. J.-C."
+ },
+ {
+  "no": 1038,
+  "rarete": "L",
+  "type": "F",
+  "symbole": "🌿",
+  "nom": "Ensembles de Julia",
+  "description": "Des fractales dessinées par une formule toute simple répétée à l'infini. Chacune est une petite œuvre d'art.",
+  "date": "1918"
+ },
+ {
+  "no": 1039,
+  "rarete": "E",
+  "type": "F",
+  "symbole": "✴",
+  "nom": "Polyèdres de Kepler-Poinsot",
+  "description": "Des solides en forme d'étoiles en trois dimensions. Kepler en a trouvé deux en 1619, Poinsot deux autres en 1809.",
+  "date": "1619"
+ },
+ {
+  "no": 1040,
+  "rarete": "E",
+  "type": "F",
+  "symbole": "🧽",
+  "nom": "Éponge de Menger",
+  "description": "Un cube troué à l'infini : son volume tend vers zéro alors que sa surface devient infinie.",
+  "date": "1926"
+ },
+ {
+  "no": 1041,
+  "rarete": "E",
+  "type": "F",
+  "symbole": "🦎",
+  "nom": "Gravures d'Escher",
+  "description": "M. C. Escher, artiste néerlandais, a dessiné des pavages de lézards et d'oiseaux et des mondes impossibles, très aimés des mathématiciens.",
+  "date": "1898 – 1972"
+ },
+ {
+  "no": 1042,
+  "rarete": "E",
+  "type": "F",
+  "symbole": "🎮",
+  "nom": "Tetris",
+  "description": "Un jeu russe où tombent des pièces de 4 carrés. Il faut les tourner et les glisser pour compléter des lignes.",
+  "date": "1984"
+ },
+ {
+  "no": 1043,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "⭐",
+  "nom": "Pentagramme",
+  "description": "L'étoile à cinq branches qu'on trace d'un seul trait. Ses segments se coupent selon le nombre d'or.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1044,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "🎡",
+  "nom": "Cycloïde",
+  "description": "La courbe tracée par une valve de roue de vélo qui roule. C'est aussi le toboggan le plus rapide !",
+  "date": "XVIIe siècle"
+ },
+ {
+  "no": 1045,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "⛓",
+  "nom": "Chaînette",
+  "description": "La forme d'une chaîne qui pend entre deux clous. Retournée, elle donne des arches très solides.",
+  "date": "1691"
+ },
+ {
+  "no": 1046,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "➖",
+  "nom": "Ensemble de Cantor",
+  "description": "Coupe un segment en trois et enlève le milieu, puis recommence à l'infini. Il reste une poussière de points.",
+  "date": "1883"
+ },
+ {
+  "no": 1047,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "🌿",
+  "nom": "Fougère de Barnsley",
+  "description": "Quatre règles de calcul répétées des milliers de fois dessinent une fougère plus vraie que nature.",
+  "date": "1988"
+ },
+ {
+  "no": 1048,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "🔻",
+  "nom": "Triangle de Penrose",
+  "description": "Un triangle impossible : chaque coin semble correct, mais l'ensemble ne peut pas exister en vrai.",
+  "date": "1958"
+ },
+ {
+  "no": 1049,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "🖼",
+  "nom": "Perspective",
+  "description": "Les peintres de la Renaissance ont appris à dessiner la profondeur. Alberti a expliqué la méthode dans un livre en 1435.",
+  "date": "1435"
+ },
+ {
+  "no": 1050,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "🐌",
+  "nom": "Spirale logarithmique",
+  "description": "Une spirale qui garde toujours la même forme en grandissant. Jacques Bernoulli l'appelait la « spirale merveilleuse ».",
+  "date": "1638"
+ },
+ {
+  "no": 1051,
+  "rarete": "R",
+  "type": "F",
+  "symbole": "🏟",
+  "nom": "Dôme géodésique",
+  "description": "Une sphère faite de triangles, rendue célèbre par Buckminster Fuller. Très solide et légère, comme la Géode à Paris.",
+  "date": "1954"
+ },
+ {
+  "no": 1052,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🎲",
+  "nom": "Dodécaèdre",
+  "description": "Un solide de Platon à 12 faces pentagonales. Les dés à 12 faces ont cette forme.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1053,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "💠",
+  "nom": "Cuboctaèdre",
+  "description": "Un solide de 8 triangles et 6 carrés. Archimède l'a étudié, avec douze autres solides semi-réguliers.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1054,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🍀",
+  "nom": "Nœud de trèfle",
+  "description": "Le nœud le plus simple qu'on ne peut pas défaire sans couper la ficelle. Les mathématiciens étudient les nœuds avec des dessins.",
+  "date": ""
+ },
+ {
+  "no": 1055,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "⭕",
+  "nom": "Anneaux borroméens",
+  "description": "Trois anneaux liés ensemble, mais si on en coupe un seul, les deux autres se séparent !",
+  "date": ""
+ },
+ {
+  "no": 1056,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🍦",
+  "nom": "Coniques",
+  "description": "Cercle, ellipse, parabole et hyperbole : les courbes qu'on obtient en coupant un cône. Apollonius leur a donné leurs noms.",
+  "date": "vers 200 av. J.-C."
+ },
+ {
+  "no": 1057,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "∞",
+  "nom": "Lemniscate",
+  "description": "Une courbe en forme de 8 couché, étudiée par Jacques Bernoulli. Elle ressemble au symbole de l'infini.",
+  "date": "1694"
+ },
+ {
+  "no": 1058,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "❤",
+  "nom": "Cardioïde",
+  "description": "Une courbe en forme de cœur, tracée par un point d'un cercle qui roule autour d'un autre. On la retrouve au cœur de la fractale de Mandelbrot.",
+  "date": "XVIIIe siècle"
+ },
+ {
+  "no": 1059,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "✏",
+  "nom": "Courbes de Bézier",
+  "description": "Des courbes douces dessinées avec quelques points. Pierre Bézier les a inventées chez Renault ; elles tracent aussi nos lettres à l'écran.",
+  "date": "1962"
+ },
+ {
+  "no": 1060,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🐉",
+  "nom": "Courbe du dragon",
+  "description": "Plie une bande de papier en deux plusieurs fois, puis déplie-la à angle droit : elle dessine un dragon fractal.",
+  "date": "1966"
+ },
+ {
+  "no": 1061,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🌳",
+  "nom": "Arbre de Pythagore",
+  "description": "Une fractale faite de carrés et de triangles rectangles qui se ramifient comme un arbre.",
+  "date": "1942"
+ },
+ {
+  "no": 1062,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🥦",
+  "nom": "Chou romanesco",
+  "description": "Chaque bouquet de ce chou est une copie plus petite du chou entier, avec des spirales de Fibonacci. Une fractale qui se mange !",
+  "date": ""
+ },
+ {
+  "no": 1063,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🔺",
+  "nom": "Triangle de Reuleaux",
+  "description": "Une forme qui a la même largeur dans toutes les directions, comme un cercle. Elle permet de percer des trous presque carrés !",
+  "date": "XIXe siècle"
+ },
+ {
+  "no": 1064,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🪜",
+  "nom": "Escalier de Penrose",
+  "description": "Un escalier impossible qui monte toujours et revient pourtant à son point de départ.",
+  "date": "1958"
+ },
+ {
+  "no": 1065,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🧊",
+  "nom": "Faces, arêtes, sommets",
+  "description": "Un cube a 6 faces, 12 arêtes et 8 sommets. Euler a trouvé une relation entre ces trois nombres pour tous les polyèdres.",
+  "date": "1758"
+ },
+ {
+  "no": 1066,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "💀",
+  "nom": "Anamorphose",
+  "description": "Une image déformée qu'on ne reconnaît qu'en la regardant de biais. Dans un tableau de Holbein, un crâne se cache ainsi.",
+  "date": "1533"
+ },
+ {
+  "no": 1067,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "👀",
+  "nom": "Illusion de Müller-Lyer",
+  "description": "Deux segments de même longueur paraissent différents à cause de flèches dessinées à leurs bouts.",
+  "date": "1889"
+ },
+ {
+  "no": 1068,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🖼",
+  "nom": "Rectangle d'or",
+  "description": "Un rectangle dont la longueur divisée par la largeur donne le nombre d'or. Enlève un carré : il reste un rectangle d'or plus petit.",
+  "date": "Antiquité"
+ },
+ {
+  "no": 1069,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🐚",
+  "nom": "Nautile",
+  "description": "Ce coquillage grandit en ajoutant des loges de plus en plus grandes, selon une spirale presque logarithmique.",
+  "date": ""
+ },
+ {
+  "no": 1070,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🧩",
+  "nom": "Pentominos",
+  "description": "Douze pièces faites de 5 carrés collés. On peut les assembler en rectangle de 6 × 10 de 2339 façons différentes !",
+  "date": "1953"
+ },
+ {
+  "no": 1071,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🦢",
+  "nom": "Origami",
+  "description": "L'art japonais du papier plié. Des mathématiciens l'utilisent pour plier des panneaux solaires de satellites.",
+  "date": ""
+ },
+ {
+  "no": 1072,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🧭",
+  "nom": "Rose des vents",
+  "description": "Une étoile qui montre les directions : nord, est, sud, ouest et les directions intermédiaires. On la trouve sur les cartes marines.",
+  "date": "Moyen Âge"
+ },
+ {
+  "no": 1073,
+  "rarete": "U",
+  "type": "F",
+  "symbole": "🔺",
+  "nom": "Triangulation",
+  "description": "Mesurer un seul côté et les angles de triangles enchaînés permet de cartographier tout un pays.",
+  "date": "1533"
+ },
+ {
+  "no": 1074,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "7️⃣",
+  "nom": "Heptagone",
+  "description": "Un polygone à 7 côtés. La pièce britannique de 50 pence a cette forme, avec des côtés légèrement arrondis pour bien rouler.",
+  "date": ""
+ },
+ {
+  "no": 1075,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🔟",
+  "nom": "Décagone",
+  "description": "Un polygone à 10 côtés. Dix triangles isocèles identiques, réunis par leur pointe, forment un décagone régulier.",
+  "date": ""
+ },
+ {
+  "no": 1076,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🕛",
+  "nom": "Dodécagone",
+  "description": "Un polygone à 12 côtés, comme le cadran de certaines horloges. Ses angles mesurent chacun 150 degrés.",
+  "date": ""
+ },
+ {
+  "no": 1077,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🔷",
+  "nom": "Polygone régulier",
+  "description": "Tous ses côtés et tous ses angles sont égaux. Plus il a de côtés, plus il ressemble à un cercle.",
+  "date": ""
+ },
+ {
+  "no": 1078,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🔦",
+  "nom": "Prisme",
+  "description": "Un solide avec deux bases identiques reliées par des rectangles. Un prisme en verre décompose la lumière en arc-en-ciel.",
+  "date": ""
+ },
+ {
+  "no": 1079,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🔺",
+  "nom": "Pyramide",
+  "description": "Un solide dont la base est un polygone et dont toutes les faces triangulaires se rejoignent en un sommet.",
+  "date": ""
+ },
+ {
+  "no": 1080,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📦",
+  "nom": "Pavé droit",
+  "description": "Une boîte à six faces rectangulaires, comme une boîte à chaussures. Son volume : longueur × largeur × hauteur.",
+  "date": ""
+ },
+ {
+  "no": 1081,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "〽",
+  "nom": "Hyperbole",
+  "description": "Une courbe à deux branches qui s'éloignent à l'infini. On l'obtient en coupant un cône double par un plan vertical.",
+  "date": "vers 200 av. J.-C."
+ },
+ {
+  "no": 1082,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "〰",
+  "nom": "Sinusoïde",
+  "description": "La courbe qui monte et descend régulièrement, comme une vague. Elle décrit les sons, la lumière et les marées.",
+  "date": ""
+ },
+ {
+  "no": 1083,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "〽",
+  "nom": "Courbe de Hilbert",
+  "description": "Une ligne qui se replie sans fin et finit par remplir tout un carré. Elle sert à ranger des images en mémoire.",
+  "date": "1891"
+ },
+ {
+  "no": 1084,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "⬡",
+  "nom": "Pavage hexagonal",
+  "description": "Des hexagones qui recouvrent le plan sans trou. C'est le pavage qui utilise le moins de bordures, comme les alvéoles des abeilles.",
+  "date": ""
+ },
+ {
+  "no": 1085,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🧱",
+  "nom": "Pavages du plan",
+  "description": "Recouvrir une surface sans trou ni chevauchement. Seuls trois polygones réguliers y arrivent seuls : triangle, carré et hexagone.",
+  "date": ""
+ },
+ {
+  "no": 1086,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "〰",
+  "nom": "Frises",
+  "description": "Des motifs qui se répètent sur une bande. Les mathématiciens ont prouvé qu'il n'existe que 7 sortes de frises.",
+  "date": ""
+ },
+ {
+  "no": 1087,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🏵",
+  "nom": "Rosace",
+  "description": "Une figure qui tourne autour d'un centre, comme les vitraux des cathédrales. Elle a une symétrie de rotation.",
+  "date": ""
+ },
+ {
+  "no": 1088,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🔄",
+  "nom": "Symétrie centrale",
+  "description": "Une figure qui reste la même après un demi-tour autour d'un point, comme la lettre S ou le chiffre 8.",
+  "date": ""
+ },
+ {
+  "no": 1089,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "➡",
+  "nom": "Vecteur",
+  "description": "Une flèche qui indique une direction, un sens et une longueur. Elle sert à décrire les déplacements et les forces.",
+  "date": ""
+ },
+ {
+  "no": 1090,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📐",
+  "nom": "Bissectrice",
+  "description": "La droite qui coupe un angle en deux angles égaux. Les trois bissectrices d'un triangle se croisent au centre du cercle inscrit.",
+  "date": ""
+ },
+ {
+  "no": 1091,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "✂",
+  "nom": "Médiatrice",
+  "description": "La droite qui coupe un segment en son milieu à angle droit. Chacun de ses points est à égale distance des deux extrémités.",
+  "date": ""
+ },
+ {
+  "no": 1092,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📍",
+  "nom": "Médiane d'un triangle",
+  "description": "Le segment qui relie un sommet au milieu du côté opposé. Les trois médianes se croisent au centre de gravité.",
+  "date": ""
+ },
+ {
+  "no": 1093,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "⬆",
+  "nom": "Hauteur d'un triangle",
+  "description": "Le segment qui part d'un sommet et tombe à angle droit sur le côté opposé. Il sert à calculer l'aire.",
+  "date": ""
+ },
+ {
+  "no": 1094,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "⭕",
+  "nom": "Cercle circonscrit",
+  "description": "Le cercle qui passe par les trois sommets d'un triangle. Son centre est sur les médiatrices.",
+  "date": ""
+ },
+ {
+  "no": 1095,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🔘",
+  "nom": "Cercle inscrit",
+  "description": "Le plus grand cercle qu'on peut dessiner à l'intérieur d'un triangle. Il touche ses trois côtés.",
+  "date": ""
+ },
+ {
+  "no": 1096,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📏",
+  "nom": "Tangente",
+  "description": "Une droite qui touche un cercle en un seul point, sans le traverser. Comme une roue posée sur la route.",
+  "date": ""
+ },
+ {
+  "no": 1097,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🎻",
+  "nom": "Corde",
+  "description": "Un segment qui relie deux points d'un cercle. La plus longue corde est le diamètre.",
+  "date": ""
+ },
+ {
+  "no": 1098,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🌈",
+  "nom": "Arc de cercle",
+  "description": "Un morceau de cercle entre deux points. Les ponts et les portes en arc utilisent cette forme solide.",
+  "date": ""
+ },
+ {
+  "no": 1099,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "➖",
+  "nom": "Angle plat",
+  "description": "Un angle de 180 degrés : ses deux côtés forment une ligne droite.",
+  "date": ""
+ },
+ {
+  "no": 1100,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🧩",
+  "nom": "Angles complémentaires",
+  "description": "Deux angles dont la somme fait 90 degrés, comme 30° et 60°. S'ils font 180°, ils sont supplémentaires.",
+  "date": ""
+ },
+ {
+  "no": 1101,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🪁",
+  "nom": "Cerf-volant",
+  "description": "Un quadrilatère avec deux paires de côtés égaux qui se touchent. Ses diagonales sont perpendiculaires.",
+  "date": ""
+ },
+ {
+  "no": 1102,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "❎",
+  "nom": "Diagonale",
+  "description": "Un segment qui relie deux sommets non voisins d'un polygone. Un carré en a 2, un hexagone 9.",
+  "date": ""
+ },
+ {
+  "no": 1103,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🔪",
+  "nom": "Section d'un solide",
+  "description": "Ce qu'on voit en coupant un solide. Couper une sphère donne toujours un cercle, couper un cube peut donner un hexagone !",
+  "date": ""
+ },
+ {
+  "no": 1104,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🛤",
+  "nom": "Point de fuite",
+  "description": "En perspective, les lignes parallèles semblent se rejoindre en un point à l'horizon, comme des rails de train.",
+  "date": "XVe siècle"
+ },
+ {
+  "no": 1105,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🫧",
+  "nom": "Bulle de savon",
+  "description": "Une bulle prend la forme d'une sphère car c'est la surface la plus petite qui entoure un volume donné.",
+  "date": ""
+ },
+ {
+  "no": 1106,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🏭",
+  "nom": "Hyperboloïde",
+  "description": "Une surface courbe faite de lignes droites. Les tours de refroidissement des centrales ont souvent cette forme.",
+  "date": ""
+ },
+ {
+  "no": 1107,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📡",
+  "nom": "Paraboloïde",
+  "description": "La forme des antennes paraboliques : elle renvoie tous les signaux vers un même point, le foyer.",
+  "date": ""
+ },
+ {
+  "no": 1108,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🥔",
+  "nom": "Selle de cheval",
+  "description": "Une surface qui monte dans un sens et descend dans l'autre, comme certaines chips. On l'appelle paraboloïde hyperbolique.",
+  "date": ""
+ },
+ {
+  "no": 1109,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📊",
+  "nom": "Histogramme",
+  "description": "Un graphique en barres collées qui montre comment des données se répartissent, par exemple les tailles des élèves.",
+  "date": ""
+ },
+ {
+  "no": 1110,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📶",
+  "nom": "Diagramme en barres",
+  "description": "Des barres plus ou moins hautes pour comparer des quantités. Facile à lire d'un seul coup d'œil.",
+  "date": ""
+ },
+ {
+  "no": 1111,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📦",
+  "nom": "Boîte à moustaches",
+  "description": "Un graphique qui résume des données avec la médiane, les quartiles et les extrêmes. Inventé par John Tukey.",
+  "date": "1977"
+ },
+ {
+  "no": 1112,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "⚬",
+  "nom": "Nuage de points",
+  "description": "Des points placés sur un graphique pour voir si deux grandeurs sont liées, comme la taille et l'âge.",
+  "date": ""
+ },
+ {
+  "no": 1113,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "➗",
+  "nom": "Médiane",
+  "description": "La valeur du milieu quand on range les données dans l'ordre. Pour 2, 5, 9, la médiane est 5.",
+  "date": ""
+ },
+ {
+  "no": 1114,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🗺",
+  "nom": "Échelle",
+  "description": "Sur une carte au 1/25 000, 1 centimètre représente 25 000 centimètres, soit 250 mètres en vrai.",
+  "date": ""
+ },
+ {
+  "no": 1115,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "📈",
+  "nom": "Proportionnalité",
+  "description": "Quand une quantité double, l'autre double aussi. Le prix des pommes est proportionnel à leur poids.",
+  "date": ""
+ },
+ {
+  "no": 1116,
+  "rarete": "C",
+  "type": "F",
+  "symbole": "🏠",
+  "nom": "Plan d'une maison",
+  "description": "Un dessin vu de dessus, à l'échelle, qui montre les pièces, les portes et les fenêtres.",
+  "date": ""
+ },
+ {
+  "no": 1117,
+  "rarete": "L",
+  "type": "A",
+  "symbole": "🌾",
+  "nom": "Multiplication égyptienne",
+  "description": "Pour 13 × 6 : double 6 (12, 24, 48) puis additionne les doubles qui font 1 + 4 + 8 = 13 : 6 + 24 + 48 = 78.",
+  "date": "vers 1650 av. J.-C."
+ },
+ {
+  "no": 1118,
+  "rarete": "E",
+  "type": "A",
+  "symbole": "🕉",
+  "nom": "Produits proches de 100",
+  "description": "97 × 96 : il manque 3 et 4 pour 100. 97 − 4 = 93, puis 3 × 4 = 12. Résultat : 9312 !",
+  "date": ""
+ },
+ {
+  "no": 1119,
+  "rarete": "E",
+  "type": "A",
+  "symbole": "📅",
+  "nom": "Le jour de la semaine",
+  "description": "La méthode du jour pivot de John Conway : le 4/4, 6/6, 8/8, 10/10 et 12/12 tombent toujours le même jour de la semaine.",
+  "date": "1973"
+ },
+ {
+  "no": 1120,
+  "rarete": "R",
+  "type": "A",
+  "symbole": "🪟",
+  "nom": "Multiplication par jalousie",
+  "description": "On écrit les produits des chiffres dans une grille coupée de diagonales, puis on additionne en suivant les diagonales.",
+  "date": "Moyen Âge"
+ },
+ {
+  "no": 1121,
+  "rarete": "R",
+  "type": "A",
+  "symbole": "🥢",
+  "nom": "Multiplication japonaise",
+  "description": "On dessine des traits pour chaque chiffre, on les croise et on compte les points d'intersection par zones.",
+  "date": ""
+ },
+ {
+  "no": 1122,
+  "rarete": "R",
+  "type": "A",
+  "symbole": "✋",
+  "nom": "Tables de 6 à 10 sur les doigts",
+  "description": "Pour 7 × 8 : 2 doigts levés à gauche, 3 à droite, soit 5 dizaines, et 3 × 2 = 6 doigts baissés : 56.",
+  "date": ""
+ },
+ {
+  "no": 1123,
+  "rarete": "R",
+  "type": "A",
+  "symbole": "7",
+  "nom": "Divisibilité par 7",
+  "description": "Enlève le double du dernier chiffre au reste du nombre : 343 → 34 − 6 = 28, et 28 = 4 × 7. Donc 343 l'est aussi !",
+  "date": ""
+ },
+ {
+  "no": 1124,
+  "rarete": "R",
+  "type": "A",
+  "symbole": "📈",
+  "nom": "Règle de 72",
+  "description": "Divise 72 par le taux d'augmentation pour savoir en combien de temps une somme double : à 6 % par an, en 12 ans.",
+  "date": "1494"
+ },
+ {
+  "no": 1125,
+  "rarete": "R",
+  "type": "A",
+  "symbole": "🖐",
+  "nom": "Compter en binaire sur ses doigts",
+  "description": "Chaque doigt levé vaut une puissance de 2 : 1, 2, 4, 8, 16… Avec 10 doigts, on compte en binaire jusqu'à 1023.",
+  "date": ""
+ },
+ {
+  "no": 1126,
+  "rarete": "R",
+  "type": "A",
+  "symbole": "🎂",
+  "nom": "Deviner l'âge",
+  "description": "Multiplie ton âge par 2, ajoute 5, multiplie par 50 et retire 250 : le résultat donne ton âge suivi de deux zéros !",
+  "date": ""
+ },
+ {
+  "no": 1127,
+  "rarete": "R",
+  "type": "A",
+  "symbole": "🧠",
+  "nom": "Calculer de tête avec des images",
+  "description": "Les champions de calcul mental imaginent un boulier dans leur tête et voient les boules bouger : c'est l'anzan.",
+  "date": ""
+ },
+ {
+  "no": 1128,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "×99",
+  "nom": "Multiplier par 99",
+  "description": "Multiplie par 100 puis enlève le nombre : 47 × 99 = 4700 − 47 = 4653.",
+  "date": ""
+ },
+ {
+  "no": 1129,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "×101",
+  "nom": "Multiplier par 101",
+  "description": "Un nombre à deux chiffres fois 101 s'écrit deux fois de suite : 37 × 101 = 3737 !",
+  "date": ""
+ },
+ {
+  "no": 1130,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "⚖",
+  "nom": "Doubler et diviser par deux",
+  "description": "Double un facteur et divise l'autre par deux, le produit ne change pas : 16 × 25 = 8 × 50 = 4 × 100 = 400.",
+  "date": ""
+ },
+ {
+  "no": 1131,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "50²",
+  "nom": "Carrés autour de 50",
+  "description": "52² = 2500 + 2 × 100 + 2² = 2704. Pour 50 + n, ajoute n centaines à 2500, puis n².",
+  "date": ""
+ },
+ {
+  "no": 1132,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "100²",
+  "nom": "Carrés proches de 100",
+  "description": "98² : 98 − 2 = 96, puis 2² = 04. Résultat : 9604.",
+  "date": ""
+ },
+ {
+  "no": 1133,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "±",
+  "nom": "Différence de carrés",
+  "description": "19 × 21 = 20² − 1² = 400 − 1 = 399. Utile quand deux nombres sont à égale distance d'un nombre rond.",
+  "date": ""
+ },
+ {
+  "no": 1134,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "1x",
+  "nom": "Multiplier deux nombres de 11 à 19",
+  "description": "13 × 14 : ajoute 13 et 4 (17), écris un 0 (170), puis ajoute 3 × 4 = 12. Résultat : 182.",
+  "date": ""
+ },
+ {
+  "no": 1135,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "💯",
+  "nom": "Compléments à 100",
+  "description": "Pour 37, cherche ce qui manque pour faire 100 : 3 + 6 = 9 et 7 + 3 = 10, donc 63.",
+  "date": ""
+ },
+ {
+  "no": 1136,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "999",
+  "nom": "Tous à 9, le dernier à 10",
+  "description": "Pour 1000 − 347 : chaque chiffre va à 9, le dernier à 10. 9 − 3 = 6, 9 − 4 = 5, 10 − 7 = 3 : 653.",
+  "date": ""
+ },
+ {
+  "no": 1137,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "8",
+  "nom": "Divisibilité par 8",
+  "description": "Regarde les trois derniers chiffres : s'ils forment un multiple de 8, tout le nombre l'est. 5 120 → 120 = 8 × 15.",
+  "date": ""
+ },
+ {
+  "no": 1138,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "🔍",
+  "nom": "Premier ou pas ?",
+  "description": "Pour savoir si 97 est premier, essaie de le diviser par 2, 3, 5 et 7 seulement, car 10 × 10 dépasse déjà 97. Il est premier !",
+  "date": ""
+ },
+ {
+  "no": 1139,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "2ⁿ",
+  "nom": "Les doublements",
+  "description": "Double 10 fois et tu passes de 1 à 1024 : 10 doublements multiplient environ par mille.",
+  "date": ""
+ },
+ {
+  "no": 1140,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "🫳",
+  "nom": "Compter jusqu'à 12 sur une main",
+  "description": "Avec le pouce, touche les 3 phalanges de chacun des 4 autres doigts : 12 ! Une méthode très ancienne.",
+  "date": ""
+ },
+ {
+  "no": 1141,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "🔮",
+  "nom": "Le nombre pensé",
+  "description": "Pense à un nombre, double-le, ajoute 10, divise par 2 et retire le nombre de départ : tu trouves toujours 5 !",
+  "date": ""
+ },
+ {
+  "no": 1142,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "🔟",
+  "nom": "Quand les unités font 10",
+  "description": "23 × 27 : même dizaine (2) et 3 + 7 = 10. Fais 2 × 3 = 6, puis 3 × 7 = 21 : résultat 621.",
+  "date": ""
+ },
+ {
+  "no": 1143,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "🥧",
+  "nom": "Retenir π en poème",
+  "description": "« Que j'aime à faire apprendre un nombre utile aux sages ! » Compte les lettres de chaque mot : 3,1415926535…",
+  "date": ""
+ },
+ {
+  "no": 1144,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "5678",
+  "nom": "56 = 7 × 8",
+  "description": "5, 6, 7, 8 : 56 = 7 × 8. Une astuce pour ne plus jamais se tromper dans la table de 7 !",
+  "date": ""
+ },
+ {
+  "no": 1145,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "💯",
+  "nom": "Ajouter 101 et 99",
+  "description": "+101, c'est +100 puis +1. +99, c'est +100 puis −1 : 245 + 99 = 344.",
+  "date": ""
+ },
+ {
+  "no": 1146,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "🧮",
+  "nom": "Multiplier 123 par 11",
+  "description": "Pour 123 × 11 : garde le 1, puis 1 + 2 = 3, 2 + 3 = 5, et le 3 : 1353.",
+  "date": ""
+ },
+ {
+  "no": 1147,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "🎲",
+  "nom": "Somme des faces opposées d'un dé",
+  "description": "Sur un dé, les faces opposées font toujours 7 : 1 et 6, 2 et 5, 3 et 4. Pratique pour deviner la face cachée.",
+  "date": ""
+ },
+ {
+  "no": 1148,
+  "rarete": "U",
+  "type": "A",
+  "symbole": "📏",
+  "nom": "Mesurer avec son corps",
+  "description": "Une main ouverte mesure environ 20 cm, un grand pas environ 1 m. De quoi estimer une longueur sans règle !",
+  "date": ""
+ },
+ {
+  "no": 1149,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×9",
+  "nom": "Multiplier par 9",
+  "description": "Multiplie par 10 puis enlève le nombre une fois : 23 × 9 = 230 − 23 = 207.",
+  "date": ""
+ },
+ {
+  "no": 1150,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×25",
+  "nom": "Multiplier par 25",
+  "description": "Multiplie par 100 puis divise par 4 : 36 × 25 = 3600 ÷ 4 = 900.",
+  "date": ""
+ },
+ {
+  "no": 1151,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×50",
+  "nom": "Multiplier par 50",
+  "description": "Multiplie par 100 puis prends la moitié : 64 × 50 = 6400 ÷ 2 = 3200.",
+  "date": ""
+ },
+ {
+  "no": 1152,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×15",
+  "nom": "Multiplier par 15",
+  "description": "Multiplie par 10, puis ajoute la moitié du résultat : 18 × 15 = 180 + 90 = 270.",
+  "date": ""
+ },
+ {
+  "no": 1153,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×12",
+  "nom": "Multiplier par 12",
+  "description": "Multiplie par 10 puis ajoute le double : 14 × 12 = 140 + 28 = 168.",
+  "date": ""
+ },
+ {
+  "no": 1154,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×1,5",
+  "nom": "Une fois et demie",
+  "description": "Ajoute la moitié du nombre : 1,5 × 40 = 40 + 20 = 60.",
+  "date": ""
+ },
+ {
+  "no": 1155,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×0,5",
+  "nom": "Multiplier par 0,5",
+  "description": "Multiplier par 0,5, c'est prendre la moitié : 86 × 0,5 = 43.",
+  "date": ""
+ },
+ {
+  "no": 1156,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "÷5",
+  "nom": "Diviser par 5",
+  "description": "Multiplie par 2 puis divise par 10 : 340 ÷ 5 = 680 ÷ 10 = 68.",
+  "date": ""
+ },
+ {
+  "no": 1157,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "÷25",
+  "nom": "Diviser par 25",
+  "description": "Multiplie par 4 puis divise par 100 : 1500 ÷ 25 = 6000 ÷ 100 = 60.",
+  "date": ""
+ },
+ {
+  "no": 1158,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "÷0,5",
+  "nom": "Diviser par 0,5",
+  "description": "Diviser par une demie, c'est doubler : combien de demi-pizzas dans 7 pizzas ? 7 ÷ 0,5 = 14.",
+  "date": ""
+ },
+ {
+  "no": 1159,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "9",
+  "nom": "Les chiffres de la table de 9",
+  "description": "09, 18, 27, 36, 45… Les dizaines montent de 1 et les unités descendent de 1, et la somme des chiffres fait 9.",
+  "date": ""
+ },
+ {
+  "no": 1160,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "1️⃣",
+  "nom": "Passer au carré suivant",
+  "description": "Pour aller de 40² à 41², ajoute 40 et 41 : 1600 + 40 + 41 = 1681.",
+  "date": ""
+ },
+ {
+  "no": 1161,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "+19",
+  "nom": "Ajouter 19, 29, 39",
+  "description": "Ajoute la dizaine du dessus puis enlève 1 : 47 + 29 = 47 + 30 − 1 = 76.",
+  "date": ""
+ },
+ {
+  "no": 1162,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "−9",
+  "nom": "Soustraire 9",
+  "description": "Enlève 10 puis rajoute 1 : 63 − 9 = 53 + 1 = 54.",
+  "date": ""
+ },
+ {
+  "no": 1163,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🪜",
+  "nom": "Soustraire en avançant",
+  "description": "Pour 62 − 38, compte de 38 à 62 : +2 pour 40, +22 pour 62. Résultat : 24.",
+  "date": ""
+ },
+ {
+  "no": 1164,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "⬅",
+  "nom": "Additionner de gauche à droite",
+  "description": "Pour 456 + 237 : 400 + 200 = 600, puis 50 + 30 = 80, puis 6 + 7 = 13. Total : 693.",
+  "date": ""
+ },
+ {
+  "no": 1165,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🧩",
+  "nom": "Décomposer un nombre",
+  "description": "36 + 47, c'est 36 + 40 + 7 = 76 + 7 = 83. On ajoute les dizaines puis les unités.",
+  "date": ""
+ },
+ {
+  "no": 1166,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🎯",
+  "nom": "Arrondir puis corriger",
+  "description": "298 + 145 = 300 + 145 − 2 = 443. On calcule avec un nombre rond puis on rectifie.",
+  "date": ""
+ },
+ {
+  "no": 1167,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🤝",
+  "nom": "Les paires qui font 10",
+  "description": "Pour 7 + 8 + 3 + 2, réunis 7 + 3 et 8 + 2 : 10 + 10 = 20. Cherche toujours les amis de 10 !",
+  "date": ""
+ },
+ {
+  "no": 1168,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "%",
+  "nom": "Les pourcentages qui s'échangent",
+  "description": "8 % de 50 = 50 % de 8 = 4. On peut échanger le pourcentage et le nombre !",
+  "date": ""
+ },
+ {
+  "no": 1169,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "10%",
+  "nom": "Calculer 10 %",
+  "description": "10 % d'un nombre, c'est le diviser par 10 : 10 % de 230 = 23. Ensuite, 20 % c'est le double.",
+  "date": ""
+ },
+ {
+  "no": 1170,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "¼",
+  "nom": "50 % et 25 %",
+  "description": "50 %, c'est la moitié. 25 %, c'est la moitié de la moitié : 25 % de 80 = 20.",
+  "date": ""
+ },
+ {
+  "no": 1171,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🏷",
+  "nom": "Calculer une réduction",
+  "description": "Un jeu à 40 € soldé à −20 % : 10 % de 40 = 4, donc 20 % = 8. Prix final : 32 €.",
+  "date": ""
+ },
+ {
+  "no": 1172,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "6",
+  "nom": "Divisibilité par 6",
+  "description": "Un nombre est divisible par 6 s'il est pair et divisible par 3. 114 : pair, et 1 + 1 + 4 = 6, donc oui !",
+  "date": ""
+ },
+ {
+  "no": 1173,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "0️⃣",
+  "nom": "Divisibilité par 10, 100, 1000",
+  "description": "Un nombre se termine par 0 ? Il est divisible par 10. Par 00 ? par 100. Par 000 ? par 1000.",
+  "date": ""
+ },
+ {
+  "no": 1174,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "12",
+  "nom": "Divisibilité par 12",
+  "description": "Un nombre est divisible par 12 s'il l'est par 3 et par 4. 312 : 3 + 1 + 2 = 6, et 12 est un multiple de 4, donc oui.",
+  "date": ""
+ },
+ {
+  "no": 1175,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "25",
+  "nom": "Divisibilité par 25",
+  "description": "Un nombre est divisible par 25 s'il se termine par 00, 25, 50 ou 75, comme 1 375.",
+  "date": ""
+ },
+ {
+  "no": 1176,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🌍",
+  "nom": "Ordre de grandeur",
+  "description": "Pour 48 × 21, pense 50 × 20 = 1000. Le vrai résultat (1008) doit être proche : utile pour repérer une erreur.",
+  "date": ""
+ },
+ {
+  "no": 1177,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "✊",
+  "nom": "Les mois sur les poings",
+  "description": "Compte les mois sur tes jointures : les bosses ont 31 jours, les creux 30 ou moins. Juillet et août sont deux bosses voisines.",
+  "date": ""
+ },
+ {
+  "no": 1178,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "⏰",
+  "nom": "Calculer une durée",
+  "description": "De 8 h 45 à 11 h 20 : 15 min pour 9 h, 2 h pour 11 h, puis 20 min. Total : 2 h 35 min.",
+  "date": ""
+ },
+ {
+  "no": 1179,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🪙",
+  "nom": "Rendre la monnaie",
+  "description": "Pour un achat de 6,30 € payé avec 10 €, compte en avançant : 6,30 → 6,50 → 7 → 10. On rend 0,20 + 0,50 + 3 = 3,70 €.",
+  "date": ""
+ },
+ {
+  "no": 1180,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "1/9",
+  "nom": "Les neuvièmes",
+  "description": "1/9 = 0,111…, 2/9 = 0,222…, 7/9 = 0,777… Le chiffre se répète sans fin !",
+  "date": ""
+ },
+ {
+  "no": 1181,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "⅓",
+  "nom": "Fractions et pourcentages",
+  "description": "1/2 = 50 %, 1/4 = 25 %, 3/4 = 75 %, 1/5 = 20 %, 1/10 = 10 %. À connaître par cœur !",
+  "date": ""
+ },
+ {
+  "no": 1182,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "⚖",
+  "nom": "Comparer deux fractions",
+  "description": "2/3 ou 3/5 ? Multiplie en croix : 2 × 5 = 10 et 3 × 3 = 9. Comme 10 > 9, 2/3 est plus grand.",
+  "date": ""
+ },
+ {
+  "no": 1183,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "✂",
+  "nom": "Simplifier une fraction",
+  "description": "Divise le haut et le bas par le même nombre : 12/18 = 6/9 = 2/3.",
+  "date": ""
+ },
+ {
+  "no": 1184,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "➕",
+  "nom": "Additionner des fractions",
+  "description": "Avec le même dénominateur, on additionne les numérateurs : 2/7 + 3/7 = 5/7.",
+  "date": ""
+ },
+ {
+  "no": 1185,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🔢",
+  "nom": "Multiplier des décimaux",
+  "description": "Pour 0,3 × 0,4 : calcule 3 × 4 = 12, puis place autant de chiffres après la virgule qu'au départ (2) : 0,12.",
+  "date": ""
+ },
+ {
+  "no": 1186,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "➡",
+  "nom": "Multiplier par 10, 100, 1000",
+  "description": "Chaque zéro décale les chiffres d'un rang vers la gauche : 3,47 × 100 = 347.",
+  "date": ""
+ },
+ {
+  "no": 1187,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "⬅",
+  "nom": "Diviser par 10, 100, 1000",
+  "description": "Chaque zéro décale les chiffres d'un rang vers la droite : 52 ÷ 100 = 0,52.",
+  "date": ""
+ },
+ {
+  "no": 1188,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "↩",
+  "nom": "Vérifier avec l'opération inverse",
+  "description": "Pour vérifier 84 − 37 = 47, calcule 47 + 37 : si on retrouve 84, c'est juste !",
+  "date": ""
+ },
+ {
+  "no": 1189,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×8",
+  "nom": "Multiplier par 8",
+  "description": "Double trois fois : 13 × 8 → 26 → 52 → 104.",
+  "date": ""
+ },
+ {
+  "no": 1190,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "÷8",
+  "nom": "Diviser par 8",
+  "description": "Prends la moitié trois fois : 200 ÷ 8 → 100 → 50 → 25.",
+  "date": ""
+ },
+ {
+  "no": 1191,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "×20",
+  "nom": "Multiplier par 20, 30, 40",
+  "description": "Multiplie par 2, 3 ou 4, puis par 10 : 17 × 30 = 51 × 10 = 510.",
+  "date": ""
+ },
+ {
+  "no": 1192,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "卌",
+  "nom": "Compter par paquets de 5",
+  "description": "Pour compter des points, trace 4 bâtons et barre-les avec le cinquième. On compte ensuite de 5 en 5.",
+  "date": ""
+ },
+ {
+  "no": 1193,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🐇",
+  "nom": "Compter de 2 en 2 et de 5 en 5",
+  "description": "2, 4, 6, 8… ou 5, 10, 15, 20… Compter par bonds va bien plus vite que compter un par un.",
+  "date": ""
+ },
+ {
+  "no": 1194,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "👯",
+  "nom": "Les presque-doubles",
+  "description": "7 + 8, c'est 7 + 7 + 1 = 15. Les doubles se retiennent bien, alors on s'en sert.",
+  "date": ""
+ },
+ {
+  "no": 1195,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🖐",
+  "nom": "Passer par 5",
+  "description": "6 + 7, c'est (5 + 1) + (5 + 2) = 10 + 3 = 13. Comme sur un boulier japonais !",
+  "date": ""
+ },
+ {
+  "no": 1196,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🔟",
+  "nom": "Passer par la dizaine",
+  "description": "8 + 5 : complète d'abord 8 jusqu'à 10 (+2), puis ajoute le reste (+3) : 13.",
+  "date": ""
+ },
+ {
+  "no": 1197,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🍕",
+  "nom": "Partager équitablement",
+  "description": "Pour partager 3 pizzas entre 4 enfants, chacun reçoit 3/4 de pizza : coupe chaque pizza en 4 et donne 3 parts à chacun.",
+  "date": ""
+ },
+ {
+  "no": 1198,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🌡",
+  "nom": "Estimer un pourboire",
+  "description": "Pour 10 % d'une addition de 47 €, décale la virgule : 4,70 €. Pour 15 %, ajoute la moitié : 7,05 €.",
+  "date": ""
+ },
+ {
+  "no": 1199,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "🏃",
+  "nom": "Calculer une vitesse",
+  "description": "Vitesse = distance ÷ temps : 30 km en 2 heures, c'est 15 km/h. Pour 30 minutes, multiplie la distance par 2.",
+  "date": ""
+ },
+ {
+  "no": 1200,
+  "rarete": "C",
+  "type": "A",
+  "symbole": "📐",
+  "nom": "Vérifier un angle droit",
+  "description": "Mesure 3 sur un côté, 4 sur l'autre : si la diagonale fait 5, l'angle est droit. Les maçons l'utilisent encore.",
+  "date": "Antiquité"
  }
 ]
