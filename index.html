@@ -166,7 +166,6 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .durs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line)}
 .dur{padding:9px 2px;border-radius:999px;font-weight:800;font-size:16px;color:var(--mist);white-space:nowrap}
 .dur[aria-pressed="true"]{background:var(--ink);color:var(--plum)}
-.durs.gender{grid-template-columns:repeat(3,minmax(0,1fr))}
 .durs.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .durs.two .dur{font-size:15px}
 .rules{margin:0 4px;text-align:center;color:var(--mist);font-size:14px;line-height:1.35;text-wrap:balance}
@@ -940,14 +939,6 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <small class="field-hint">Un prénom, un pseudo… ce que tu veux. Il sera visible par tous les joueurs.</small>
       </div>
       <div class="field">
-        <span class="label" id="genderLabel">Tu es</span>
-        <div class="durs gender" id="genderSeg" role="group" aria-labelledby="genderLabel">
-          <button class="dur" type="button" data-g="f">Femme</button>
-          <button class="dur" type="button" data-g="m">Homme</button>
-          <button class="dur" type="button" data-g="n">Neutre</button>
-        </div>
-      </div>
-      <div class="field">
         <span class="label">Choisis ton avatar <small id="avCount">· glisse pour en voir plus</small></span>
         <div class="avgrid" id="avGrid"></div>
       </div>
@@ -1069,12 +1060,10 @@ const AVATARS = [
   ['🍓', '#ffd2d6'], ['🍭', '#f6d6ff'], ['🐞', '#ffe0d8'], ['🐢', '#d2f5dc'], ['🐬', '#c8eeff'], ['🦕', '#d8f7c8']
 ];
 const NB = ' ';
-// Plain strings are invariable; arrays are [homme, femme, neutre].
+// Every word suits every player: the game does not ask whether you are a girl or a boy.
 const WORDS = ['Yeah', 'Top', 'Complètement crêpe', 'Kinoutisant', 'Licornissime', 'Paillettes', 'Magique', 'Féerique',
   'Au galop', 'Waouh', 'Arc-en-ciel', 'Hennissant',
-  ['Trop fort', 'Trop forte', 'Trop fort·e'], ['Scintillant', 'Scintillante', 'Scintillant·e'],
-  ['Pailleté', 'Pailletée', 'Pailleté·e'], ['Champion', 'Championne', 'Champion·ne'],
-  ['Brillant', 'Brillante', 'Brillant·e'], ['Super lutin', 'Super fée', 'Super étoile']];
+  'Génial', 'Fantastique', 'Extra', 'Ça brille', 'Super étoile', 'Pluie d’étoiles'];
 
 const MODES = [
   { id: 'add', tier: 1, name: 'Additions', sym: '+', ops: ['+'] , color: '#8dffc4' },
@@ -1104,8 +1093,8 @@ let currentId = store.get(K.current, null);
 let level = (() => { const v = store.get(K.level, 'add'); const id = LEGACY[v] || v; return MODES.some(m => m.id === id) ? id : 'add'; })();
 let soundOn = store.get(K.sound, true) !== false;
 const current = () => profiles.find(p => p.id === currentId) || null;
-const genderOf = p => (p && ['m', 'f', 'n'].includes(p.gender)) ? p.gender : 'n';
-const accord = (p, m, f, n) => ({ m, f, n })[genderOf(p)];
+// v28: the girl / boy / neutral choice was removed; it is also erased from profiles saved before.
+if (profiles.some(p => p && 'gender' in p)) { profiles.forEach(p => { delete p.gender; }); store.set(K.profiles, profiles); }
 if (!current() && profiles.length) currentId = profiles[0].id;
 
 /* ---------- helpers ---------- */
@@ -1637,7 +1626,7 @@ function renderMenu(dir = 0) {
   const card = $('#playerCard'); card.textContent = '';
   const p = current();
   const meta = el('span', 'meta');
-  const lab = el('span', 'label'); lab.textContent = p ? accord(p, 'Joueur', 'Joueuse', 'Joueur·euse') : 'Bienvenue !';
+  const lab = el('span', 'label'); lab.textContent = p ? 'À toi de jouer' : 'Bienvenue !';
   const nm = el('div', 'name'); nm.textContent = p ? p.name : 'Qui joue ?';
   meta.append(lab, nm);
   const chip = el('span', 'chip'); chip.textContent = p ? 'Changer' : 'Créer';
@@ -2040,7 +2029,7 @@ function flashFrame(cls) {
 function fxGood() {
   sfxGood();
   let w; do { w = pick(WORDS); } while (w === lastWord); lastWord = w;
-  showWord((Array.isArray(w) ? accord(current(), ...w) : w) + NB + '!', 'good');
+  showWord(w + NB + '!', 'good');
   const r = frame.getBoundingClientRect();
   burst(r.left + r.width / 2, r.top + r.height / 2, reduceMotion ? 18 : 70);
   flashFrame('ok');
@@ -2433,13 +2422,11 @@ function openEditor(p, thenStart = false) {
     id: p ? p.id : null,
     avatar: p ? Object.assign({}, p.avatar) : { kind: 'emoji', i: rnd(AVATARS.length) },
     photo: p && p.avatar.kind === 'photo' ? p.avatar.src : null,
-    gender: p ? genderOf(p) : 'n',
     emote: p ? emoteOf(p) : rnd(AVATARS.length),
     public: !!(p && p.public),
     thenStart
   };
   $('#pubConfirm').hidden = true;
-  renderGender();
   $('#editTitle').textContent = p ? 'Modifier le profil' : 'Nouveau profil';
   $('#nameInput').value = p ? p.name : '';
   $('#nameErr').hidden = true; $('#photoErr').hidden = true;
@@ -2538,16 +2525,12 @@ function readPhoto(file) {
 }));
 $('#nameInput').addEventListener('input', () => { $('#nameErr').hidden = true; if (draft && draft.avatar.kind !== 'photo' && draft.avatar.kind !== 'emoji') renderAvGrid(); });
 $('#nameInput').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); saveProfile(); } });
-function renderGender() {
-  document.querySelectorAll('#genderSeg .dur').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.g === draft.gender)));
-}
-document.querySelectorAll('#genderSeg .dur').forEach(b => b.addEventListener('click', () => { draft.gender = b.dataset.g; renderGender(); }));
 function saveProfile() {
   const name = $('#nameInput').value.trim().replace(/\s+/g, ' ').slice(0, 16);
   if (!name) { $('#nameErr').hidden = false; $('#nameInput').focus(); return; }
   const pub = draft.avatar.kind === 'photo' && draft.public;
-  if (draft.id) { const p = profiles.find(x => x.id === draft.id); if (p) { p.name = name; p.avatar = draft.avatar; p.gender = draft.gender; p.emote = draft.emote; p.public = pub; } }
-  else { const p = { id: uid(), name, avatar: draft.avatar, gender: draft.gender, emote: draft.emote, public: pub }; profiles.push(p); draft.id = p.id; }
+  if (draft.id) { const p = profiles.find(x => x.id === draft.id); if (p) { p.name = name; p.avatar = draft.avatar; p.emote = draft.emote; p.public = pub; } }
+  else { const p = { id: uid(), name, avatar: draft.avatar, emote: draft.emote, public: pub }; profiles.push(p); draft.id = p.id; }
   currentId = draft.id;
   if (!store.set(K.profiles, profiles) && draft.avatar.kind === 'photo') {
     const pe = $('#photoErr'); pe.textContent = 'La photo est trop lourde pour être gardée sur cet appareil. Choisis un avatar ou une autre image.'; pe.hidden = false;
@@ -2579,7 +2562,7 @@ $('#eraseYes').addEventListener('click', async () => {
   if (profiles.length) { renderWho(); whoP.hidden = false; editP.hidden = true; } else { closeSheet(); show('intro'); }
   infoToast(res === 'all' ? '🗑️ Toutes tes données ont été effacées, sur ce téléphone et sur le serveur.'
     : res === 'local' ? '🗑️ Toutes tes données ont été effacées de ce téléphone.'
-    : '🗑️ Effacé de ce téléphone. Le serveur sera nettoyé dès que tu seras connecté·e.');
+    : '🗑️ Effacé de ce téléphone. Le serveur sera nettoyé à la prochaine connexion.');
   if (!profiles.length && res === 'all') forgetDevice();
   else if (!profiles.length && res === 'later') store.set('cae.forget', true);
 });
@@ -3119,7 +3102,7 @@ function msToMidnight() {
   while (hi - lo > 60e3) { const mid = (lo + hi) / 2; if (dayKey(mid) === today) lo = mid; else hi = mid; }
   return hi - now;
 }
-const ordinalF = (n, p) => n === 1 ? accord(p, '1er', '1re', '1er·ère') : n + 'e';
+const ordinalF = n => (n === 1 ? '1re' : n + 'e') + ' place';
 
 /* rewards, granted once per profile and per finished day (last 7 days), when fresh scores are loaded */
 function claimDailyRewards() {
@@ -3164,7 +3147,7 @@ function showDailyRewards(list) {
   box.append(medal, h);
   list.forEach(x => {
     const p = el('p'); const d = new Date(x.day + 'T12:00:00');
-    p.textContent = (list.length > 1 ? d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' : ' : 'Hier, tu as fini ') + ordinalF(x.rank, x.p) + ' avec ' + x.pts + ' points' + NB + '!';
+    p.textContent = (list.length > 1 ? d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' : ' : 'Hier, tu as fini à la ') + ordinalF(x.rank) + ' avec ' + x.pts + ' points' + NB + '!';
     box.append(p, rewardChips(x.r));
   });
   const acts = el('div', 'op-actions');
@@ -3179,7 +3162,7 @@ function showDailyRewards(list) {
 /* board view */
 function dailyRows(ol, list, hiKey) {
   ol.textContent = '';
-  if (!list.length) { const li = el('li', 'empty'); li.textContent = 'Personne n’a encore joué aujourd’hui. Sois le premier ou la première' + NB + '!'; ol.appendChild(li); return; }
+  if (!list.length) { const li = el('li', 'empty'); li.textContent = 'Personne n’a encore joué aujourd’hui. Lance la première partie' + NB + '!'; ol.appendChild(li); return; }
   list.slice(0, 20).forEach((e, i) => {
     const s = e.s, p = localProfile(s), name = p ? p.name : s.name;
     const li = el('li', 'row' + (e.key === hiKey ? ' me' : ''));
@@ -3209,7 +3192,7 @@ function renderDaily() {
   dailyRows(ol, list, myKey);
   box.append(info, panel);
   const me = list.findIndex(e => e.key === myKey);
-  if (me >= 20) { const pl = el('p', 'board-mode'); pl.style.fontSize = '16px'; pl.textContent = 'Toi : ' + ordinalF(me + 1, p) + ' avec ' + list[me].pts + ' points'; box.appendChild(pl); }
+  if (me >= 20) { const pl = el('p', 'board-mode'); pl.style.fontSize = '16px'; pl.textContent = 'Toi : ' + ordinalF(me + 1) + ' avec ' + list[me].pts + ' points'; box.appendChild(pl); }
   const yk = dayKey(nowMs() - 86400e3), y = dailyBoard(yk, true).slice(0, 3);
   if (y.length) {
     const yh = el('p', 'daily-yh'); yh.textContent = 'Podium d’hier';
@@ -3221,7 +3204,7 @@ function dailyGainLine(rec) {
   const today = dayKey(nowMs()), list = dailyBoard(today), k = pkey(rec);
   const i = list.findIndex(e => e.key === k);
   if (i < 0) return null;
-  const s = el('span', 'gift'); s.textContent = '☀️ +' + dayPoints(rec) + ' points du jour · ' + ordinalF(i + 1, current()) + ' aujourd’hui';
+  const s = el('span', 'gift'); s.textContent = '☀️ +' + dayPoints(rec) + ' points du jour · ' + ordinalF(i + 1) + ' aujourd’hui';
   return s;
 }
 
