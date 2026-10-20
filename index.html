@@ -934,10 +934,10 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
       </div>
       <div class="preview" id="editPreview"></div>
       <div class="field">
-        <label class="label" for="nameInput">Ton prénom</label>
-        <input id="nameInput" type="text" maxlength="16" autocomplete="off" placeholder="Ex. Léa">
-        <span class="err" id="nameErr" hidden>Écris ton prénom pour qu’il apparaisse dans les scores.</span>
-        <small class="field-hint">Visible par tous les joueurs : ton prénom ou un surnom, jamais ton nom de famille.</small>
+        <label class="label" for="nameInput">Ton pseudonyme</label>
+        <input id="nameInput" type="text" maxlength="16" autocomplete="off" placeholder="Ex. Licorne Turbo">
+        <span class="err" id="nameErr" hidden>Écris ton pseudonyme pour qu’il apparaisse dans les scores.</span>
+        <small class="field-hint">Visible par tous les joueurs : invente un pseudonyme, jamais ton vrai nom.</small>
       </div>
       <div class="field">
         <span class="label" id="genderLabel">Tu es</span>
@@ -1385,10 +1385,10 @@ function legalMine(p) {
   const f = profileFootprint(p), d = el('div', 'legal-mine');
   const h = el('h4'); h.textContent = 'Ce que le jeu garde sur ' + p.name;
   const pl = (n, w) => n + ' ' + w + (n > 1 ? 's' : '');
-  d.append(h, legalLine('📱', 'Sur ce téléphone', 'ton profil (prénom, avatar' + (f.photo ? ', photo' : '') + '), ' + pl(f.scores, 'score') + ', ' + pl(f.cards, 'carte') + ', ' + pl(f.figs, 'figurine') + ', tes jetons et tes gemmes.'));
+  d.append(h, legalLine('📱', 'Sur ce téléphone', 'ton profil (pseudonyme, avatar' + (f.photo ? ', photo' : '') + '), ' + pl(f.scores, 'score') + ', ' + pl(f.cards, 'carte') + ', ' + pl(f.figs, 'figurine') + ', tes jetons et tes gemmes.'));
   if (sharedOn()) {
     const fiche = fb && typeof playerDocs === 'object' && playerDocs[fb.uid + '_' + p.id];
-    d.appendChild(legalLine('🌍', 'En ligne, visible par tous', 'ton prénom, ' + pl(f.online, 'score') + (fiche ? ', ta fiche joueur (la liste de tes cartes)' : '') + (f.pub ? ', ta photo publique' : '') + '.' + (f.photo && !f.pub ? ' Ta photo reste privée.' : '')));
+    d.appendChild(legalLine('🌍', 'En ligne, visible par tous', 'ton pseudonyme, ' + pl(f.online, 'score') + (fiche ? ', ta fiche joueur (la liste de tes cartes)' : '') + (f.pub ? ', ta photo publique' : '') + '.' + (f.photo && !f.pub ? ' Ta photo reste privée.' : '')));
   } else d.appendChild(legalLine('🌍', 'En ligne', 'rien : ici, les scores restent sur ce téléphone.'));
   const del = el('button', 'textbtn del'); del.type = 'button'; del.textContent = '🗑️ Supprimer mes données';
   del.addEventListener('click', () => {
