@@ -1040,7 +1040,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 31</p>
+      <p class="credits-ver" id="credVer">Version 32</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -1706,6 +1706,7 @@ addEventListener('resize', fitMenu);
 if (window.ResizeObserver) new ResizeObserver(() => requestAnimationFrame(fitMenu)).observe($('#menu'));
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMenu);
 function renderMenu(dir = 0) {
+  if (currentId && currentId !== giftCheckedFor) { giftCheckedFor = currentId; setTimeout(() => checkGifts(), 300); }   // a newly chosen player gets their gifts
   const card = $('#playerCard'); card.textContent = '';
   const p = current();
   const meta = el('span', 'meta');
@@ -3431,7 +3432,7 @@ function openPlayer(key, s, keepAll) {
 const GIFT_FROM = 'Marckorel';
 const GIFT_PACKS = [['promo', '🎁', 'Sachet promo'], ['classic', '🎴', 'Sachet de cartes'], ['star', '⭐', 'Sachet étoilé'], ['box', '📦', 'Boîte figurine']];
 const GIFT_MAX = { g: 9999, r: 999, m: 99, promo: 20, classic: 20, star: 20, box: 20 };
-var giftBusy = false, giftShow = [], giftSentUnsub = null, giftSent = [];
+var giftBusy = false, giftShow = [], giftSentUnsub = null, giftSent = [], giftCheckedFor = null;
 const giftInt = (v, k) => Math.max(0, Math.min(GIFT_MAX[k], Math.floor(Number(v) || 0)));
 function giftCards(str) {
   return String(str || '').split(',').map(x => x.split(':').map(Number)).filter(([n]) => n >= 1 && n <= CARDS.length)
@@ -3455,16 +3456,19 @@ function applyGift(w, v) {
     return { c, fx, isNew };
   });
 }
+// A gift is received only by its own profile, when that profile is the one playing (gifts for the other
+// profiles of the device wait until they are chosen).
 async function checkGifts() {
-  if (!fb || giftBusy || !profiles.length) return;
+  const me = current();
+  if (!fb || giftBusy || !me) return;
   giftBusy = true;
   const received = [];
   try {
     const snap = await withTimeout(fb.db.collection('gifts').where('uid', '==', fb.uid).get(), 15000);
     const list = []; snap.forEach(d => { const v = d.data(); if (v && !v.done) list.push({ id: d.id, v }); });
     for (const { id, v } of list) {
-      const p = profiles.find(x => x.id === v.pid);
-      if (!p) continue;                                   // this profile is not on this device any more: left for the admin
+      if (v.pid !== me.id) continue;                      // another profile: waits until it is chosen
+      const p = me;
       const w = wallet(p); w.giftsIn = w.giftsIn || {};
       if (!w.giftsIn[id]) { const cards = applyGift(w, v); w.giftsIn[id] = Date.now(); saveColl(); received.push({ p, v, cards }); }
       try {
@@ -3688,7 +3692,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 31;
+const APP_VERSION = 32;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
