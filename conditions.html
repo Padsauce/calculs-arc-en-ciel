@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#170d33">
+<title>Conditions et données</title>
+<meta name="description" content="Conditions d'utilisation de Calculs Arc-en-ciel et données personnelles gardées par le jeu.">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Sniglet:wght@400;800&display=swap">
+<style>
+:root{--night:#170d33;--dusk:#25164d;--ink:#fff6fd;--mist:#cbbcf2;--gold:#ffd86b;--aqua:#72f1ff;--pink:#ff79d6;--line:rgba(255,255,255,.15);
+  --f-display:"Sniglet","Baloo 2",ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;--f-body:"Baloo 2",ui-rounded,system-ui,sans-serif}
+html{background:var(--night)}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5;
+  background:radial-gradient(120% 60% at 50% 0%,#3a1d73 0%,var(--night) 60%) fixed;padding:max(20px,env(safe-area-inset-top)) 16px 48px}
+.page{max-width:680px;margin:0 auto}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--ink);text-decoration:none;font-weight:800;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid var(--line)}
+.back:hover{background:rgba(255,255,255,.16)}
+.page > h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,7vw,40px);line-height:1.05;margin:22px 0 4px}
+.holo{background:linear-gradient(90deg,#ff9ad8,#ffd86b,#9dffb0,#72f1ff,#a99bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+</style>
+<!-- Styles of the text itself: the game reuses this block when it shows the conditions in its own window. -->
+<style data-cgu>
+.cgu{color:var(--ink,#fff6fd);font-size:16.5px;line-height:1.5}
+.cgu .cgu-date{margin:0 0 18px;color:var(--mist,#cbbcf2);font-size:14px}
+.cgu h2{font-family:var(--f-display,system-ui);font-weight:800;font-size:22px;line-height:1.15;margin:30px 0 10px}
+.cgu h3{font-family:var(--f-display,system-ui);font-weight:800;font-size:18.5px;line-height:1.2;margin:24px 0 6px;color:var(--gold,#ffd86b)}
+.cgu p{margin:8px 0}
+.cgu ul{margin:8px 0;padding-left:22px}
+.cgu li{margin:5px 0}
+.cgu a{color:var(--aqua,#72f1ff)}
+.cgu b{font-weight:800}
+.cgu .cgu-key{list-style:none;padding:14px 16px;margin:0;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid var(--line,rgba(255,255,255,.15));display:flex;flex-direction:column;gap:10px}
+.cgu .cgu-key li{display:flex;gap:12px;align-items:flex-start;margin:0}
+.cgu .cgu-key li > span:first-child{font-size:24px;line-height:1.15;flex:none;width:30px;text-align:center}
+.cgu .cgu-data{display:flex;flex-direction:column;gap:10px;margin:12px 0}
+.cgu .cgu-item{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid var(--line,rgba(255,255,255,.15))}
+.cgu .cgu-item b{display:block;font-size:16.5px}
+.cgu .cgu-item p{margin:2px 0 6px;color:var(--mist,#cbbcf2);font-size:15px}
+.cgu .cgu-item dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0;font-size:15px}
+.cgu .cgu-item dt{color:var(--mist,#cbbcf2)}
+.cgu .cgu-item dd{margin:0}
+.cgu .cgu-tag{display:inline-block;padding:1px 9px;border-radius:999px;font-size:13px;font-weight:800;background:rgba(141,255,196,.16);color:#9dffc9}
+.cgu .cgu-tag.on{background:rgba(255,216,107,.18);color:var(--gold,#ffd86b)}
+.cgu .cgu-note{padding:10px 14px;border-radius:14px;background:rgba(114,241,255,.08);border:1px solid rgba(114,241,255,.25);font-size:15.5px}
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="./">← Retour au jeu</a>
+  <h1>Calculs <span class="holo">Arc-en-ciel</span></h1>
+
+<article class="cgu" id="cgu">
+  <p class="cgu-date">Conditions d’utilisation et données personnelles · mise à jour le 20 octobre 2026</p>
+
+  <h2>L’essentiel</h2>
+  <ul class="cgu-key">
+    <li><span aria-hidden="true">🎁</span><span>Le jeu est <b>gratuit</b>. Il n’y a <b>pas de publicité</b> et <b>rien à acheter</b> avec de l’argent.</span></li>
+    <li><span aria-hidden="true">🪙</span><span>Les jetons, les gemmes, les cartes et les figurines se gagnent en jouant. Ils ne valent pas d’argent et restent sur ton téléphone.</span></li>
+    <li><span aria-hidden="true">👀</span><span>Ton <b>prénom</b>, ton <b>avatar</b>, tes <b>scores</b> et la liste de tes cartes sont <b>visibles par tous les joueurs</b> qui ont le lien du jeu. Choisis ton prénom ou un surnom, jamais ton nom de famille, ton adresse ou ton école.</span></li>
+    <li><span aria-hidden="true">🔒</span><span>Ta <b>photo reste sur ton téléphone</b>. Elle n’est envoyée que si tu touches « Rendre l’avatar public ». Si tu as moins de 15&nbsp;ans, demande d’abord à un parent.</span></li>
+    <li><span aria-hidden="true">🗑️</span><span>Tu peux <b>tout effacer</b> quand tu veux : <b>« Supprimer mes données »</b> dans ton profil.</span></li>
+    <li><span aria-hidden="true">💬</span><span>Une question&nbsp;? Demande à un adulte de nous écrire : <a href="mailto:amarck.pro@gmail.com">amarck.pro@gmail.com</a>.</span></li>
+  </ul>
+
+  <h2>Les détails, pour les parents</h2>
+
+  <h3>1. Qui propose le jeu</h3>
+  <p>Calculs Arc-en-ciel est un jeu de calcul mental gratuit, créé à titre personnel et non commercial par <b>Marckorel</b> (idée, conception et tests), avec l’aide de Claude (Anthropic) pour le développement. Il est hébergé sur GitHub Pages.</p>
+  <p>Contact : <a href="mailto:amarck.pro@gmail.com">amarck.pro@gmail.com</a>.</p>
+
+  <h3>2. Accepter ces conditions</h3>
+  <p>Utiliser le jeu, c’est accepter ces conditions. Le jeu s’adresse surtout aux enfants : nous vous invitons à les lire avec votre enfant et à l’accompagner, en particulier pour le choix du prénom et de la photo.</p>
+
+  <h3>3. Utiliser le jeu</h3>
+  <ul>
+    <li>Pas de compte : ni adresse e-mail, ni mot de passe.</li>
+    <li>Le prénom choisi doit être respectueux et ne pas permettre d’identifier l’enfant (pas de nom de famille, d’adresse, d’école ou de numéro de téléphone).</li>
+    <li>Une photo de profil doit montrer le joueur lui-même ou une image qu’il a le droit d’utiliser. Pas de photo d’une autre personne sans son accord.</li>
+    <li>Il est interdit de tricher en modifiant le jeu ou en envoyant de faux scores, d’essayer d’accéder aux données des autres joueurs et de perturber le service.</li>
+    <li>L’administrateur peut cacher un joueur, effacer des scores ou des photos qui ne respectent pas ces règles, sans prévenir.</li>
+  </ul>
+
+  <h3>4. Monnaies, cartes et figurines</h3>
+  <ul>
+    <li>Les jetons dorés, les jetons arc-en-ciel, les gemmes, les sachets de cartes et les boîtes de figurines se gagnent <b>uniquement en jouant</b>. Ils ne sont jamais vendus contre de l’argent réel, n’ont aucune valeur en argent et ne peuvent être ni échangés ni remboursés.</li>
+    <li>Ils sont enregistrés <b>seulement sur l’appareil</b>, dans le navigateur. Ils disparaissent si le profil est supprimé, si les données du navigateur sont effacées ou si l’on change d’appareil : ils ne peuvent pas être transférés.</li>
+    <li>Les prix, les chances d’obtenir une carte et les récompenses peuvent évoluer avec les versions du jeu.</li>
+  </ul>
+
+  <h3>5. Disponibilité et responsabilité</h3>
+  <p>Le jeu est fourni gratuitement, tel quel. Il peut être modifié, interrompu ou arrêté à tout moment, et il se met à jour tout seul entre deux parties. Les classements peuvent être remis à zéro. Nous soignons le contenu des cartes, mais des erreurs restent possibles : n’hésitez pas à nous les signaler.</p>
+
+  <h3>6. Propriété intellectuelle</h3>
+  <p>Le jeu, ses textes (dont les 500 cartes) et ses illustrations sont protégés. Vous pouvez y jouer et partager son lien, mais pas le copier pour le diffuser ou le vendre. Les emojis sont dessinés par le système de votre appareil (Apple, Google…). Les polices Baloo&nbsp;2 et Sniglet sont sous licence libre (SIL Open Font License).</p>
+
+  <h3>7. Données personnelles</h3>
+  <p>Le jeu garde le moins de données possible : <b>pas de compte, pas d’adresse e-mail, pas de publicité, pas de mesure d’audience, aucune revente</b>. Le responsable des données est Marckorel (contact ci-dessus).</p>
+
+  <p><b>Ce que le jeu garde</b></p>
+  <div class="cgu-data">
+    <div class="cgu-item">
+      <b>Le profil</b>
+      <p>Prénom, choix Femme / Homme / Neutre, avatar, et la photo si vous en avez pris une.</p>
+      <dl><dt>Où</dt><dd><span class="cgu-tag">Sur l’appareil</span></dd>
+      <dt>Qui le voit</dt><dd>Personne d’autre. Le prénom et l’avatar (un emoji) accompagnent les scores en ligne, voir plus bas. Le choix Femme / Homme / Neutre ne quitte jamais l’appareil : il sert seulement à accorder les messages (« Championne », « Champion »).</dd>
+      <dt>Durée</dt><dd>Jusqu’à ce que vous le supprimiez.</dd></dl>
+    </div>
+    <div class="cgu-item">
+      <b>La collection et les réglages</b>
+      <p>Jetons, gemmes, cartes, figurines, cadeaux reçus, son, dernier niveau et dernier mode choisis.</p>
+      <dl><dt>Où</dt><dd><span class="cgu-tag">Sur l’appareil</span></dd>
+      <dt>Qui les voit</dt><dd>Personne (la liste des cartes est partagée, voir « La fiche joueur »).</dd>
+      <dt>Durée</dt><dd>Jusqu’à ce que vous les supprimiez.</dd></dl>
+    </div>
+    <div class="cgu-item">
+      <b>Les scores</b>
+      <p>Pour chaque partie : prénom, numéro de l’avatar, niveau, mode, temps, points, erreurs, bonnes réponses et date (donnée par le serveur).</p>
+      <dl><dt>Où</dt><dd><span class="cgu-tag">Sur l’appareil</span> <span class="cgu-tag on">En ligne</span></dd>
+      <dt>Qui les voit</dt><dd>Tous les joueurs qui ont le lien du jeu (classements et classement du jour).</dd>
+      <dt>Durée</dt><dd>Tant que le jeu existe, sauf si vous les effacez ou si les classements sont remis à zéro.</dd></dl>
+    </div>
+    <div class="cgu-item">
+      <b>La fiche joueur</b>
+      <p>Prénom, numéro de l’avatar, liste des cartes et des figurines possédées.</p>
+      <dl><dt>Où</dt><dd><span class="cgu-tag on">En ligne</span></dd>
+      <dt>Qui la voit</dt><dd>Tous les joueurs, en touchant un nom dans un classement.</dd>
+      <dt>Durée</dt><dd>Comme les scores.</dd></dl>
+    </div>
+    <div class="cgu-item">
+      <b>L’identifiant anonyme de l’appareil</b>
+      <p>Une suite de lettres et de chiffres créée automatiquement, sans lien avec votre identité. Elle sert à savoir quels scores cet appareil a le droit d’effacer.</p>
+      <dl><dt>Où</dt><dd><span class="cgu-tag">Sur l’appareil</span> <span class="cgu-tag on">En ligne</span></dd>
+      <dt>Qui le voit</dt><dd>Personne ne peut savoir à qui il appartient.</dd>
+      <dt>Durée</dt><dd>Jusqu’à la suppression du dernier profil de l’appareil : il est alors effacé de l’appareil et n’est plus relié à aucune donnée.</dd></dl>
+    </div>
+    <div class="cgu-item">
+      <b>La photo publique</b>
+      <p>Seulement si vous touchez « Rendre l’avatar public », après un avertissement : une petite image de 160 × 160 pixels.</p>
+      <dl><dt>Où</dt><dd><span class="cgu-tag on">En ligne</span></dd>
+      <dt>Qui la voit</dt><dd>Tous les joueurs, à côté des scores.</dd>
+      <dt>Durée</dt><dd>Jusqu’à ce que vous la rendiez privée ou supprimiez le profil.</dd></dl>
+    </div>
+    <div class="cgu-item">
+      <b>Les joueurs cachés par l’administrateur</b>
+      <p>Le prénom caché, l’adresse e-mail de l’administrateur et la date.</p>
+      <dl><dt>Où</dt><dd><span class="cgu-tag on">En ligne</span></dd>
+      <dt>À quoi ça sert</dt><dd>Retirer ce prénom des classements des autres joueurs.</dd>
+      <dt>Durée</dt><dd>Jusqu’à ce que l’administrateur montre à nouveau le joueur.</dd></dl>
+    </div>
+  </div>
+
+  <p><b>Pourquoi</b></p>
+  <ul>
+    <li>Faire fonctionner le jeu, les classements communs, le classement du jour et la fiche joueur : c’est le service que vous utilisez.</li>
+    <li>Publier une photo : uniquement avec votre accord, que vous pouvez retirer à tout moment (« Rendre ma photo privée »). Pour un enfant de moins de 15&nbsp;ans, cet accord doit être donné avec un parent.</li>
+  </ul>
+
+  <p><b>Les services utilisés</b></p>
+  <ul>
+    <li><b>Google Firebase</b> (Google) garde les données en ligne : scores, fiches joueur, photos publiques et identifiants anonymes. Ses serveurs peuvent se trouver hors de l’Union européenne, notamment aux États-Unis ; ces transferts sont encadrés par le cadre de protection des données UE–États-Unis et les clauses contractuelles types de la Commission européenne.</li>
+    <li><b>GitHub Pages</b> (GitHub, États-Unis) héberge le jeu. Comme pour tout site web, il reçoit l’adresse IP et des informations techniques du navigateur à chaque chargement.</li>
+    <li><b>Google Fonts</b> (les polices d’écriture), <b>gstatic.com</b> (le code de Firebase) et <b>jsDelivr</b> (l’animation 3D des grands records) reçoivent aussi l’adresse IP de l’appareil quand ils envoient leurs fichiers.</li>
+  </ul>
+  <p>Nous ne recevons pas ces adresses IP : ces services les traitent selon leurs propres règles de confidentialité.</p>
+
+  <p><b>Cookies</b></p>
+  <p>Le jeu n’utilise aucun cookie publicitaire ni outil de mesure d’audience. Il range ses données dans le stockage du navigateur (localStorage et IndexedDB) seulement pour fonctionner : c’est pour cela qu’il ne vous demande pas d’accepter des cookies.</p>
+
+  <p><b>Vos droits</b></p>
+  <p>Vous pouvez consulter, corriger et effacer vos données, et vous opposer à leur utilisation. Directement dans le jeu :</p>
+  <ul>
+    <li><b>Changer le prénom ou l’avatar</b> : ✎ à côté du profil. Les scores déjà envoyés gardent l’ancien prénom : effacez-les si besoin.</li>
+    <li><b>Effacer un score</b> : 🗑 dans le tableau des scores.</li>
+    <li><b>Retirer la photo du serveur</b> : « Rendre ma photo privée » dans le profil.</li>
+    <li><b>Tout effacer</b> : « Supprimer mes données » dans le profil efface, sur l’appareil et sur le serveur, le profil, ses scores, sa fiche joueur, sa photo publique et sa collection. Si l’appareil n’a pas de connexion, l’effacement sur le serveur se fait à la connexion suivante. Si l’enfant a joué sur plusieurs appareils, faites-le sur chacun d’eux.</li>
+  </ul>
+  <p>Pour tout le reste (par exemple des scores faits sur un appareil perdu), écrivez-nous à <a href="mailto:amarck.pro@gmail.com">amarck.pro@gmail.com</a> : nous répondons dans un délai d’un mois. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>).</p>
+
+  <h3>8. Modifications</h3>
+  <p>Ces conditions peuvent changer avec les nouvelles versions du jeu. La date en haut de la page indique la dernière mise à jour. La version à jour est toujours dans le jeu : ☰ puis « Conditions et données ».</p>
+
+  <h3>9. Droit applicable</h3>
+  <p>Ces conditions sont soumises au droit français.</p>
+</article>
+</div>
+</body>
+</html>

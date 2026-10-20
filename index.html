@@ -423,6 +423,25 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .small-row{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .textbtn{font-weight:700;font-size:15px;color:var(--mist);padding:8px 4px}
 .textbtn.del{color:var(--rose)}
+.field-hint{color:var(--mist);font-size:13px;line-height:1.3}
+.linkbtn{display:inline;padding:0;font:inherit;color:var(--aqua);text-decoration:underline;text-underline-offset:2px}
+.intro-legal{margin:0;font-size:13px;line-height:1.35;color:var(--mist);text-wrap:balance}
+@media (max-height:700px){.intro-in{gap:8px}.intro-rules{gap:6px}.intro-rules li{padding:6px 10px}.intro-hero{font-size:clamp(34px,6vh,60px)}}
+@media (max-height:600px){.intro-in{gap:6px;padding-block:4px}.intro-rules p{font-size:13.5px;line-height:1.25}.intro-lead{font-size:15px}.intro-rules span{font-size:22px}}
+.erase-box{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:20px;background:rgba(255,107,139,.1);border:1px solid rgba(255,107,139,.45)}
+.erase-box p{margin:0;font-size:14.5px;line-height:1.4}
+.erase-box ul{margin:0;padding-left:20px;font-size:14.5px;line-height:1.4}
+.erase-box .dur.danger{background:var(--rose);color:#fff}
+.erase-box .dur:disabled{opacity:.6}
+.legal-mine{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid var(--line)}
+.legal-mine h4{margin:0;font-family:var(--f-display);font-weight:800;font-size:19px}
+.legal-mine p{margin:0;font-size:14.5px;line-height:1.4}
+.legal-mine b{color:var(--gold)}
+.legal-mine .textbtn{align-self:flex-start;padding:4px 0}
+.legal-new{margin:0;padding:12px 14px;border-radius:18px;background:linear-gradient(90deg,rgba(255,154,216,.18),rgba(114,241,255,.18));font-weight:700;font-size:15px;line-height:1.35}
+.legal-text .cgu h2:first-of-type{margin-top:6px}
+.card-sheet > .start,.card-sheet > .legal-mine,.card-sheet > .legal-new,.card-sheet > .legal-text{flex:none}
+.info-toast{white-space:normal;text-align:center;max-width:calc(100vw - 32px);width:max-content;line-height:1.3}
 .add{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:20px;border:2px dashed rgba(255,255,255,.3);font-family:var(--f-display);font-weight:800;font-size:19px}
 
 @media (prefers-reduced-motion: reduce){
@@ -759,6 +778,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">⏱️</span><p>Atteins <b>10&nbsp;points</b> le plus vite possible, ou fais un maximum de points en <b>15&nbsp;s, 30&nbsp;s ou 1&nbsp;min</b>.</p></li>
         <li><span aria-hidden="true">🌈</span><p>5 niveaux, des additions aux 4 opérations. Bats tes records pour une fête encore plus folle&nbsp;!</p></li>
       </ul>
+      <p class="intro-legal">📜 En créant ton profil, tu acceptes les <button class="linkbtn" id="introLegal" type="button">conditions d’utilisation</button>.</p>
       <button id="introBtn" class="start" type="button">Créer mon profil</button>
     </div>
   </section>
@@ -917,6 +937,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <label class="label" for="nameInput">Ton prénom</label>
         <input id="nameInput" type="text" maxlength="16" autocomplete="off" placeholder="Ex. Léa">
         <span class="err" id="nameErr" hidden>Écris ton prénom pour qu’il apparaisse dans les scores.</span>
+        <small class="field-hint">Visible par tous les joueurs : ton prénom ou un surnom, jamais ton nom de famille.</small>
       </div>
       <div class="field">
         <span class="label" id="genderLabel">Tu es</span>
@@ -943,7 +964,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         </div>
         <button class="pub-btn" id="pubBtn" type="button"></button>
         <div class="pub-confirm" id="pubConfirm" hidden>
-          <p>⚠️ Ta photo va être <b>envoyée sur un serveur en ligne</b> et deviendra <b>publique</b> : toutes les personnes qui ont le lien du jeu pourront la voir à côté de tes scores.</p>
+          <p>⚠️ Ta photo va être <b>envoyée sur un serveur en ligne</b> et deviendra <b>publique</b> : toutes les personnes qui ont le lien du jeu pourront la voir à côté de tes scores. Si tu as moins de 15&nbsp;ans, demande d’abord l’accord d’un parent.</p>
           <div class="fam-actions">
             <button class="dur" id="pubYes" type="button">Oui, rendre publique</button>
             <button class="dur" id="pubNo" type="button">Annuler</button>
@@ -954,7 +975,14 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <button id="saveBtn" class="start" type="button">Enregistrer</button>
         <div class="small-row">
           <button id="backWho" class="textbtn" type="button">← Autres joueurs</button>
-          <button id="delBtn" class="textbtn del" type="button">Supprimer ce profil</button>
+          <button id="delBtn" class="textbtn del" type="button">🗑️ Supprimer mes données</button>
+        </div>
+        <div class="erase-box" id="eraseBox" hidden>
+          <div id="eraseText"></div>
+          <div class="fam-actions">
+            <button class="dur danger" id="eraseYes" type="button">Oui, tout effacer</button>
+            <button class="dur" id="eraseNo" type="button">Annuler</button>
+          </div>
         </div>
       </div>
     </div>
@@ -972,6 +1000,11 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
       <span class="opt-label">Son</span>
       <button class="switch" id="soundSwitch" type="button" role="switch" aria-checked="true" aria-label="Son"><i></i></button>
     </div>
+    <button class="opt-row" id="legalBtn" type="button">
+      <span class="opt-ico" aria-hidden="true">📜</span>
+      <span class="opt-label" style="text-align:left">Conditions et données</span>
+      <span aria-hidden="true" style="color:var(--mist)">›</span>
+    </button>
     <div class="credits">
       <span class="label">Crédits</span>
       <p class="credits-title">Calculs <span class="holo-text">Arc-en-ciel</span></p>
@@ -979,13 +1012,14 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 27</p>
+      <p class="credits-ver" id="credVer">Version 28</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
 </div>
 <div class="sheet" id="cardSheet" hidden><div class="sheet-card card-sheet" id="cardSheetIn" role="dialog" aria-modal="true"></div></div>
 <div class="opener" id="opener" hidden></div>
+<div class="update-toast info-toast" id="infoToast" role="status" hidden></div>
 <div class="update-toast" id="updateToast" hidden><span>✨</span> Nouvelle version, mise à jour…</div>
 <div class="bust" id="bust" aria-hidden="true" hidden></div>
 <div class="starwrap" id="starWrap" aria-hidden="true" hidden></div>
@@ -1135,10 +1169,15 @@ const isHiddenScore = s => hiddenNames.has(hkey(s));
 K.remote = 'cae.remote'; K.admin = 'cae.admin';
 if (fbReady()) { const c = store.get(K.remote, null); if (Array.isArray(c)) remote = c; }
 const sharedOn = () => fbReady() && remoteState !== 'failed';
+// Profiles erased with « Supprimer mes données » whose server part is still to do (see eraseProfile).
+K.erase = 'cae.erase';
+let eraseQueue = store.get(K.erase, []); if (!Array.isArray(eraseQueue)) eraseQueue = [];
+let erasing = null;
+const erasedScore = s => eraseQueue.some(j => j.pid === s.pid && !!s.uid && s.uid === (j.uid || (fb && fb.uid)));
 function allScores() {
   if (!sharedOn()) return scores;
   const ids = new Set(remote.map(s => s.id));
-  const vis = fbAdmin ? remote : remote.filter(s => !isHiddenScore(s) || ownScore(s));
+  const vis = (fbAdmin ? remote : remote.filter(s => !isHiddenScore(s) || ownScore(s))).filter(s => !eraseQueue.length || !erasedScore(s));
   return vis.concat(scores.filter(s => !s.sent && !ids.has(s.id)));
 }
 const pendingCount = () => sharedOn() ? scores.filter(s => !s.sent).length : 0;
@@ -1201,13 +1240,13 @@ async function initShared() {
       publicPhotos = out; refreshViews();
     }, () => {});
     if (store.get(K.admin, false)) restoreAdmin();
-    syncPending(); syncAvatars();
+    syncPending(); syncAvatars(); processErase();
   } catch (e) {
     sharedErr = (e && (e.code || e.message)) || 'erreur'; remoteState = fbReady() ? 'off' : 'failed'; refreshViews();
     setTimeout(() => { if (!fb) initShared(); }, 20000);
   }
 }
-setInterval(() => { if (fb && pendingCount()) syncPending(); }, 30000);
+setInterval(() => { if (fb && pendingCount()) syncPending(); if (fb && eraseQueue.length) processErase(); }, 30000);
 function withTimeout(pr, ms) { return Promise.race([pr, new Promise((_, rej) => setTimeout(() => rej({ code: 'timeout' }), ms))]); }
 let lastSync = '';
 async function syncPending() {
@@ -1235,7 +1274,163 @@ async function syncPending() {
   if (changed) store.set(K.scores, scores);
   refreshViews();
 }
-addEventListener('online', () => { syncPending(); syncAvatars(); });
+addEventListener('online', () => { syncPending(); syncAvatars(); processErase(); });
+
+/* ---------- "Supprimer mes données": erase a profile on this device and on the server ----------
+   On the server, a device can only delete what it sent itself (its anonymous uid): the profile's scores,
+   its shared collection (players/<uid>_<profile>) and its public photo (avatars/<uid>_<profile>).
+   Offline, the server part waits in cae.erase and runs at the next connection; meanwhile those scores are not shown. */
+function profileFootprint(p) {
+  const mine = new Set(scores.filter(s => s.pid === p.id).map(s => s.id));
+  remote.forEach(s => { if (s.pid === p.id && fb && s.uid === fb.uid) mine.add(s.id); });
+  const w = colls[p.id] || null;
+  return {
+    scores: mine.size,
+    online: remote.filter(s => s.pid === p.id && fb && s.uid === fb.uid).length,
+    cards: w ? Object.keys(w.cards || {}).length : 0,
+    figs: w ? Object.values(w.figs || {}).filter(n => n > 0).length : 0,
+    coins: w ? (w.g || 0) + (w.r || 0) + (w.m || 0) : 0,
+    photo: p.avatar && p.avatar.kind === 'photo', pub: !!p.public
+  };
+}
+function renderEraseText(p) {
+  const f = profileFootprint(p), box = $('#eraseText'); box.textContent = '';
+  const intro = el('p'); intro.innerHTML = '<b>Tout va être effacé pour toujours</b>, sur ce téléphone' + (sharedOn() ? ' et sur le serveur' : '') + ' :';
+  const ul = el('ul');
+  const items = ['ton profil « ' + p.name + ' »' + (f.photo ? ' et ta photo' + (f.pub ? ' publique' : '') : ''),
+    f.scores + ' score' + (f.scores > 1 ? 's' : ''),
+    'ta collection : ' + f.cards + ' carte' + (f.cards > 1 ? 's' : '') + ', ' + f.figs + ' figurine' + (f.figs > 1 ? 's' : '') + ', tes jetons et tes gemmes'];
+  if (sharedOn()) items.push('ta fiche joueur en ligne');
+  items.forEach(t => { const li = el('li'); li.textContent = t; ul.appendChild(li); });
+  const end = el('p'); end.textContent = 'Impossible de revenir en arrière. Si tu as joué sur un autre appareil, fais-le aussi là-bas.';
+  box.append(intro, ul, end);
+}
+async function eraseProfile(p) {
+  // the device identity that sent this profile's data
+  const sentUid = (scores.find(s => s.pid === p.id && s.sent && s.uid) || {}).uid;
+  const job = { pid: p.id, uid: (fb && fb.uid) || sentUid || '', at: Date.now() };
+  // 1. this device
+  unpublishProfile(p);
+  scores = scores.filter(s => s.pid !== p.id); store.set(K.scores, scores);
+  if (colls[p.id]) { delete colls[p.id]; saveColl(); }
+  try { delete lastPushed[p.id]; } catch (e) {}
+  profiles = profiles.filter(x => x.id !== p.id); store.set(K.profiles, profiles);
+  if (currentId === p.id) { currentId = profiles[0] ? profiles[0].id : null; store.set(K.current, currentId); }
+  if (!fbReady()) return 'local';
+  // 2. the server (now, or at the next connection)
+  eraseQueue.push(job); store.set(K.erase, eraseQueue);
+  remote = remote.filter(s => !erasedScore(s)); store.set(K.remote, remote);
+  refreshViews();
+  if (navigator.onLine === false || !fb) { processErase(); return 'later'; }
+  await Promise.race([processErase(), new Promise(r => setTimeout(r, 25000))]);
+  return eraseQueue.includes(job) ? 'later' : 'all';
+}
+async function eraseOnline(job) {
+  const db = fb.db, uid = fb.uid, ids = [];
+  const snap = await withTimeout(db.collection('scores').where('uid', '==', uid).get({ source: 'server' }), 15000);
+  snap.forEach(d => { const v = d.data(); if (v && v.pid === job.pid) ids.push(d.id); });
+  await Promise.all(ids.map(id => withTimeout(db.collection('scores').doc(id).delete(), 15000)));
+  await withTimeout(db.collection('players').doc(uid + '_' + job.pid).delete(), 15000);
+  await withTimeout(db.collection('avatars').doc(uid + '_' + job.pid).delete(), 15000);
+}
+function processErase() {
+  if (!fb || !eraseQueue.length) return Promise.resolve();
+  if (erasing) return erasing;
+  erasing = (async () => {
+    try {
+      for (const job of eraseQueue.slice()) {
+        // Data sent under another identity cannot be deleted from here (only by an admin).
+        if (job.uid && job.uid !== fb.uid) { eraseQueue = eraseQueue.filter(j => j !== job); continue; }
+        try { await eraseOnline(job); eraseQueue = eraseQueue.filter(j => j !== job); } catch (e) {}
+      }
+      store.set(K.erase, eraseQueue);
+      remote = remote.filter(s => !erasedScore(s)); store.set(K.remote, remote);
+    } finally { erasing = null; }
+    refreshViews();
+    if (!profiles.length && !eraseQueue.length && store.get('cae.forget', false)) forgetDevice();
+  })();
+  return erasing;
+}
+// Last profile gone and the server cleaned: drop this device's anonymous identity too, then start afresh.
+async function forgetDevice() {
+  store.set('cae.forget', true);
+  if (!fb || eraseQueue.length || profiles.length) return;
+  const auth = fb.app.auth(), u = auth.currentUser;
+  try { if (u && typeof u.delete === 'function') await withTimeout(u.delete(), 12000); } catch (e) {
+    try { await auth.signOut(); } catch (e2) {}
+  }
+  store.set('cae.forget', false);
+  ['cae.remote', 'cae.erase', 'cae.coll', 'cae.scores', 'cae.current'].forEach(k => { try { localStorage.removeItem(k); } catch (e) {} });
+  setTimeout(() => location.reload(), 2600);
+}
+/* ---------- Conditions d'utilisation et données (text in conditions.html, shown inside the game) ---------- */
+const LEGAL_URL = 'conditions.html', LEGAL_DATE = '2026-10-20';
+K.legal = 'cae.legal';
+let legalCache = null;
+async function loadLegal() {
+  if (legalCache) return legalCache;
+  const r = await fetch(LEGAL_URL + '?d=' + LEGAL_DATE, { cache: 'no-cache' });
+  if (!r.ok) throw new Error('http ' + r.status);
+  const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
+  const art = doc.getElementById('cgu'); if (!art) throw new Error('cgu');
+  const st = doc.querySelector('style[data-cgu]');
+  if (st && !document.getElementById('cguStyle')) { const x = document.createElement('style'); x.id = 'cguStyle'; x.textContent = st.textContent; document.head.appendChild(x); }
+  art.querySelectorAll('a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+  return legalCache = art;
+}
+function legalLine(icon, title, text) {
+  const p = el('p'); const b = el('b'); b.textContent = title; p.append(icon + ' ', b, ' : ' + text); return p;
+}
+function legalMine(p) {
+  const f = profileFootprint(p), d = el('div', 'legal-mine');
+  const h = el('h4'); h.textContent = 'Ce que le jeu garde sur ' + p.name;
+  const pl = (n, w) => n + ' ' + w + (n > 1 ? 's' : '');
+  d.append(h, legalLine('📱', 'Sur ce téléphone', 'ton profil (prénom, avatar' + (f.photo ? ', photo' : '') + '), ' + pl(f.scores, 'score') + ', ' + pl(f.cards, 'carte') + ', ' + pl(f.figs, 'figurine') + ', tes jetons et tes gemmes.'));
+  if (sharedOn()) {
+    const fiche = fb && typeof playerDocs === 'object' && playerDocs[fb.uid + '_' + p.id];
+    d.appendChild(legalLine('🌍', 'En ligne, visible par tous', 'ton prénom, ' + pl(f.online, 'score') + (fiche ? ', ta fiche joueur (la liste de tes cartes)' : '') + (f.pub ? ', ta photo publique' : '') + '.' + (f.photo && !f.pub ? ' Ta photo reste privée.' : '')));
+  } else d.appendChild(legalLine('🌍', 'En ligne', 'rien : ici, les scores restent sur ce téléphone.'));
+  const del = el('button', 'textbtn del'); del.type = 'button'; del.textContent = '🗑️ Supprimer mes données';
+  del.addEventListener('click', () => {
+    closeCard(); $('#optSheet').hidden = true; openEditor(p);
+    renderEraseText(p); $('#eraseBox').hidden = false;
+    setTimeout(() => $('#eraseBox').scrollIntoView({ block: 'nearest' }), 300);
+  });
+  d.appendChild(del);
+  return d;
+}
+function openLegal(first = false) {
+  const box = $('#cardSheetIn'); box.textContent = '';
+  const top = el('div', 'sheet-top'); const h = el('h3'); h.textContent = 'Conditions et données';
+  const x = el('button', 'close'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Fermer'); x.addEventListener('click', closeCard);
+  top.append(h, x); box.appendChild(top);
+  if (first) { const n = el('p', 'legal-new'); n.textContent = '📜 Nouveau : voici les règles du jeu et ce qu’il garde sur toi. Lis-les avec un adulte.'; box.appendChild(n); }
+  const p = current(); if (p) box.appendChild(legalMine(p));
+  if (first) { const ok = el('button', 'start'); ok.type = 'button'; ok.textContent = 'J’ai compris'; ok.addEventListener('click', closeCard); box.appendChild(ok); }
+  const txt = el('div', 'legal-text'); const wait = el('p', 'help'); wait.textContent = 'Chargement…'; txt.appendChild(wait); box.appendChild(txt);
+  loadLegal().then(art => { txt.textContent = ''; txt.appendChild(art.cloneNode(true)); }).catch(() => {
+    txt.textContent = ''; const q = el('p', 'help'); q.append('Le texte complet n’a pas pu être chargé. ');
+    const a = el('a'); a.href = LEGAL_URL; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Ouvrir les conditions d’utilisation'; a.style.color = 'var(--aqua)';
+    q.appendChild(a); txt.appendChild(q);
+  });
+  $('#cardSheet').hidden = false; box.scrollTop = 0;
+  store.set(K.legal, LEGAL_DATE);
+}
+// Players who already had a profile see the conditions once, on the menu.
+function maybeLegalNotice() {
+  if (store.get(K.legal, '') === LEGAL_DATE || !profiles.length) return;
+  const busy = $('#menu').hidden || !$('#opener').hidden || !$('#sheet').hidden || !$('#cardSheet').hidden || !$('#optSheet').hidden;
+  if (busy) { setTimeout(maybeLegalNotice, 4000); return; }
+  openLegal(true);
+}
+setTimeout(maybeLegalNotice, 2500);
+$('#legalBtn').addEventListener('click', () => openLegal());
+$('#introLegal').addEventListener('click', () => openLegal());
+let toastT = 0;
+function infoToast(text) {
+  const t = $('#infoToast'); t.textContent = text; t.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 4200);
+}
 
 /* Who may delete a score: the device that made it, or a signed-in admin. */
 function canDelete(s) {
@@ -1487,7 +1682,7 @@ $('#optBtn').addEventListener('click', () => { renderOpts(); renderDiag(); $('#o
 $('#optClose').addEventListener('click', () => { $('#optSheet').hidden = true; });
 $('#optSheet').addEventListener('click', e => { if (e.target.id === 'optSheet') $('#optSheet').hidden = true; });
 $('#soundSwitch').addEventListener('click', () => { soundOn = !soundOn; store.set(K.sound, soundOn); renderOpts(); if (soundOn) sfxGood(); });
-$('#introBtn').addEventListener('click', () => openEditor(null));
+$('#introBtn').addEventListener('click', () => { store.set(K.legal, LEGAL_DATE); openEditor(null); });
 $('#playerCard').addEventListener('click', openWho);
 $('#startBtn').addEventListener('click', startGame);
 $('#bestSlider').addEventListener('click', e => { if (e.target.closest('[data-board]')) openBoard(); });
@@ -2248,7 +2443,7 @@ function openEditor(p, thenStart = false) {
   $('#editTitle').textContent = p ? 'Modifier le profil' : 'Nouveau profil';
   $('#nameInput').value = p ? p.name : '';
   $('#nameErr').hidden = true; $('#photoErr').hidden = true;
-  $('#delBtn').hidden = !p; delArmed = false; $('#delBtn').textContent = 'Supprimer ce profil';
+  $('#delBtn').hidden = !p; $('#eraseBox').hidden = true;
   $('#backWho').hidden = !profiles.length;
   $('#saveBtn').textContent = thenStart ? 'Enregistrer et jouer' : 'Enregistrer';
   renderAvGrid();
@@ -2367,13 +2562,26 @@ $('#saveBtn').addEventListener('click', saveProfile);
 $('#addBtn').addEventListener('click', () => openEditor(null));
 $('#backWho').addEventListener('click', () => { renderWho(); whoP.hidden = false; editP.hidden = true; });
 $('#delBtn').addEventListener('click', () => {
-  if (!delArmed) { delArmed = true; $('#delBtn').textContent = 'Touche encore pour supprimer'; return; }
-  const gone = profiles.find(p => p.id === draft.id); if (gone) unpublishProfile(gone);
-  if (colls[draft.id]) { delete colls[draft.id]; saveColl(); }
-  profiles = profiles.filter(p => p.id !== draft.id); store.set(K.profiles, profiles);
-  if (currentId === draft.id) { currentId = profiles[0] ? profiles[0].id : null; store.set(K.current, currentId); }
+  const p = profiles.find(x => x.id === draft.id); if (!p) return;
+  const box = $('#eraseBox');
+  if (!box.hidden) { box.hidden = true; return; }
+  renderEraseText(p); box.hidden = false;
+  $('#eraseYes').disabled = false; $('#eraseYes').textContent = 'Oui, tout effacer';
+  requestAnimationFrame(() => box.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+});
+$('#eraseNo').addEventListener('click', () => { $('#eraseBox').hidden = true; });
+$('#eraseYes').addEventListener('click', async () => {
+  const p = profiles.find(x => x.id === draft.id); if (!p) return;
+  const b = $('#eraseYes'); b.disabled = true; b.textContent = 'Effacement…';
+  const res = await eraseProfile(p);
+  $('#eraseBox').hidden = true;
   renderMenu();
   if (profiles.length) { renderWho(); whoP.hidden = false; editP.hidden = true; } else { closeSheet(); show('intro'); }
+  infoToast(res === 'all' ? '🗑️ Toutes tes données ont été effacées, sur ce téléphone et sur le serveur.'
+    : res === 'local' ? '🗑️ Toutes tes données ont été effacées de ce téléphone.'
+    : '🗑️ Effacé de ce téléphone. Le serveur sera nettoyé dès que tu seras connecté·e.');
+  if (!profiles.length && res === 'all') forgetDevice();
+  else if (!profiles.length && res === 'later') store.set('cae.forget', true);
 });
 sheet.addEventListener('click', e => { if (e.target === sheet || e.target.closest('[data-close]')) closeSheet(); });
 
@@ -3043,6 +3251,7 @@ function watchPlayers() {
   try {
     fb.db.collection('players').onSnapshot(snap => {
       const out = {}; snap.forEach(d => { const v = d.data(); if (v && typeof v.name === 'string' && typeof v.cards === 'string') out[d.id] = v; });
+      eraseQueue.forEach(j => { delete out[(j.uid || (fb && fb.uid)) + '_' + j.pid]; });
       playerDocs = out;
     }, () => {});
   } catch (e) {}
@@ -3154,7 +3363,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 27;
+const APP_VERSION = 28;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
