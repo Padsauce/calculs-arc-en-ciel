@@ -653,6 +653,15 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .left{font-weight:800;color:var(--mist);font-size:14px}
 .summary{width:100%;max-width:440px;max-height:62vh;overflow-y:auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 8px;padding:14px 6px 8px}
 .summary.five{grid-template-columns:repeat(3,minmax(0,1fr))}
+.summary .slot{cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .15s}
+.summary .slot:active{transform:scale(.96)}
+/* one card of the summary, seen big: tap anywhere to go back to the summary */
+.op-zoom{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px));background:rgba(10,4,30,.86);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);cursor:pointer;animation:zoomIn .22s ease-out both}
+.op-zoom .zc{position:relative;width:min(78vw,320px,calc((100vh - 170px) * 63 / 88))}
+.op-zoom .zc .tcw{width:100%}
+.op-zoom .new-tag{font-size:13px;top:-10px}
+@keyframes zoomIn{from{opacity:0;transform:scale(.92)}}
 .rar-flash{position:absolute;top:calc(env(safe-area-inset-top,0px) + 7vh);left:0;right:0;text-align:center;font-family:var(--f-display);font-weight:800;font-size:clamp(28px,9vw,44px);color:var(--rc);text-shadow:0 0 18px var(--rc),0 3px 0 var(--plum);animation:subin 1.6s ease-out forwards}
 
 /* 3D figurine box (CSS cuboid) */
@@ -1062,7 +1071,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 34</p>
+      <p class="credits-ver" id="credVer">Version 35</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -3210,7 +3219,25 @@ function revealCards(o, rays, drawn) {
     const t = hint(nNew ? nNew + ' nouvelle' + (nNew > 1 ? 's' : '') + ' carte' + (nNew > 1 ? 's' : '') + NB + '!' : 'Que des doubles : fusionne-les' + NB + '!');
     t.style.animation = 'none';
     const g = el('div', 'summary' + (drawn.length <= 6 && drawn.length % 4 ? ' five' : ''));
-    drawn.forEach(d => { const s = el('div', 'slot mini'); s.appendChild(cardNode(d.c)); if (d.isNew) { const nt = el('span', 'new-tag'); nt.textContent = 'NEW'; s.appendChild(nt); } g.appendChild(s); });
+    drawn.forEach(d => {
+      const s = el('div', 'slot mini'); s.appendChild(cardNode(d.c));
+      if (d.isNew) { const nt = el('span', 'new-tag'); nt.textContent = 'NEW'; s.appendChild(nt); }
+      s.setAttribute('role', 'button'); s.tabIndex = 0; s.setAttribute('aria-label', 'Voir la carte ' + d.c.name);
+      s.addEventListener('click', () => zoomCard(d));
+      s.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); zoomCard(d); } });
+      g.appendChild(s);
+    });
+    // Tap a card of the summary to see it big; tap again to come back.
+    const zoomCard = d => {
+      const w = wallet(), have = w && w.cards[d.c.no];
+      const z = el('div', 'op-zoom'); z.setAttribute('role', 'dialog'); z.setAttribute('aria-label', d.c.name);
+      const zc = el('div', 'zc'); zc.appendChild(cardNode(d.c, { fx: have ? have[1] || 0 : 0, tag: true }));
+      if (d.isNew) { const t = el('span', 'new-tag'); t.textContent = 'NOUVELLE' + NB + '!'; zc.appendChild(t); }
+      const hz = el('div', 'hint'); hz.textContent = 'Touche pour revenir au sachet';
+      z.append(zc, hz); o.appendChild(z); pop(.12);
+      const close = e => { if (e) e.stopPropagation(); z.remove(); };
+      z.addEventListener('click', close);
+    };
     const acts = el('div', 'op-actions'); const ok = el('button', 'start'); ok.type = 'button'; ok.textContent = 'Super' + NB + '!';
     ok.addEventListener('click', closeOpener);
     const bk = el('button', 'ghost'); bk.type = 'button'; bk.textContent = 'Voir mon carnet'; bk.addEventListener('click', () => { collTab = 'book'; bookType = ''; closeOpener(); });
@@ -3834,7 +3861,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 34;
+const APP_VERSION = 35;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
