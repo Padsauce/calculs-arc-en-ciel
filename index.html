@@ -811,6 +811,64 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .stats-sum{margin:0;color:var(--mist);font-size:14.5px;font-weight:700;text-align:center}
 .stats-list .tm{font-size:15px;white-space:nowrap}
 .pl-games{font-weight:800;font-size:14px;color:var(--mist)}
+/* v36 — Home: « Changer » and « 📈 Stats » stacked on the right of the player card (two buttons, never nested), so the name keeps its room on phones */
+.player-box{display:flex;align-items:center;gap:8px;width:100%;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid var(--line);padding-right:8px}
+.player-box .player{flex:1;min-width:0;background:none;border:0;border-radius:24px}
+#menu .player-box .player{padding-right:0}
+.player-acts{display:flex;flex-direction:column;gap:4px;flex:none}
+.player-acts .chip{display:flex;align-items:center;justify-content:center;gap:4px;min-height:28px;padding:3px 12px;line-height:1.2;font-size:13.5px;cursor:pointer}
+.stats-chip{background:linear-gradient(rgba(255,255,255,.13),rgba(255,255,255,.13)) padding-box,linear-gradient(var(--dusk),var(--dusk)) padding-box,var(--holo) border-box;border:1.5px solid transparent;color:var(--ink)}
+.stats-chip .ic{font-size:14px;line-height:1}
+/* v36 — « Tes progrès » sheet: filters, stat tiles, one line chart (one level and mode at a time), detail table */
+.card-sheet > .pg{flex:none}
+.pg{display:flex;flex-direction:column;gap:12px}
+.pg-who{display:flex;align-items:center;gap:10px;margin:-4px 0 0}
+.pg-who .av{width:38px;height:38px;font-size:22px}
+.pg-who b{font-family:var(--f-display);font-size:19px;font-weight:800;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pg-who .cnt{color:var(--mist);font-weight:700;font-size:14px;margin-left:auto;white-space:nowrap}
+.pg .tabs{padding:4px;border-radius:20px}
+.pg .tab{padding:6px 2px 5px}
+.pg .tab b{font-size:18px}
+.pg .tab.boss b{font-size:12.5px;line-height:1.6}
+.pg .tab.empty:not([aria-selected="true"]),.pg .dur.empty:not([aria-pressed="true"]){opacity:.45}
+.pg .durs .dur{font-size:14.5px;padding:8px 2px}
+.pg-per{background:rgba(114,241,255,.08)}
+.pg-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pg-tile{display:flex;flex-direction:column;gap:1px;padding:9px 10px 8px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid var(--line);min-width:0}
+.pg-tile .label{font-size:10.5px;letter-spacing:.1em}
+.pg-tile b{font-family:var(--f-display);font-weight:800;font-size:clamp(17px,5vw,22px);line-height:1.15;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pg-tile small{color:var(--mist);font-size:12px;font-weight:600;line-height:1.2}
+.pg-card{display:flex;flex-direction:column;gap:6px;padding:12px 10px 10px}
+.pg-head{display:flex;align-items:center;gap:6px}
+.pg-sel{flex:1;min-width:0;margin:0;font-weight:800;font-size:14.5px;line-height:1.25}
+.pg-sel .l1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;max-width:calc(100% - 18px);vertical-align:bottom}
+.pg-sel i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--lc);margin-right:6px;vertical-align:1px}
+.pg-sel small{display:block;color:var(--mist);font-weight:600;font-size:12.5px}
+.pg-nav{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);font-size:20px;font-weight:800;line-height:1;flex:none}
+.pg-nav:disabled{opacity:.3;cursor:default}
+.pg-chart{position:relative;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.pg-chart svg{display:block;width:100%;overflow:visible}
+.pg-chart svg:focus{outline:none}
+.pg-chart svg.kbd:focus-visible{outline:3px solid var(--aqua);outline-offset:2px;border-radius:8px}
+.pg-tick{fill:var(--mist);font-family:var(--f-body);font-size:11px;font-weight:700}
+.pg-tick.sub{font-size:10px;font-weight:600;opacity:.85}
+.pg-tick.now{fill:var(--ink)}
+.pg-unit{fill:var(--mist);font-family:var(--f-body);font-size:10.5px;font-weight:700;letter-spacing:.06em}
+.pg-tip{position:absolute;z-index:2;pointer-events:none;min-width:116px;max-width:190px;padding:7px 10px 8px;border-radius:14px;background:#120a2b;border:1px solid rgba(255,255,255,.28);box-shadow:0 6px 18px rgba(0,0,0,.4);line-height:1.25}
+.pg-tip b{display:block;font-family:var(--f-display);font-size:19px;font-weight:800;font-variant-numeric:tabular-nums}
+.pg-tip span,.pg-tip small{display:block;font-size:12.5px;color:var(--mist);font-weight:600}
+.pg-tip span{color:var(--ink);font-weight:700}
+.pg-empty{min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:10px}
+.pg-empty p{margin:0;font-family:var(--f-display);font-weight:800;font-size:17px;line-height:1.25;text-wrap:balance}
+.pg-empty small{color:var(--mist);font-size:13px}
+.pg h4{margin:4px 0 0;font-family:var(--f-display);font-weight:800;font-size:18px}
+.pg-table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.pg-table th{text-align:right;color:var(--mist);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;padding:0 6px 6px}
+.pg-table td{text-align:right;padding:7px 6px;border-top:1px solid rgba(255,255,255,.1);font-weight:700;white-space:nowrap}
+.pg-table th:first-child,.pg-table td:first-child{text-align:left;padding-left:2px;white-space:normal}
+.pg-table td:first-child{font-weight:600;color:var(--mist)}
+.pg-table td.best{color:var(--gold)}
+.pg-table tr.now td:first-child{color:var(--ink)}
 </style>
 
 </head>
@@ -847,7 +905,13 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
       <button id="optBtn" class="icon-btn" type="button" aria-label="Options et crédits">☰</button>
     </header>
 
-    <button id="playerCard" class="player" type="button"></button>
+    <div class="player-box" id="playerBox">
+      <button id="playerCard" class="player" type="button"></button>
+      <div class="player-acts">
+        <button id="whoBtn" class="chip" type="button">Changer</button>
+        <button id="myStatsBtn" class="chip stats-chip" type="button" hidden><span class="ic" aria-hidden="true">📈</span>Stats</button>
+      </div>
+    </div>
 
     <button id="collBtn" class="coll-btn" type="button" hidden></button>
 
@@ -1071,7 +1135,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 35</p>
+      <p class="credits-ver" id="credVer">Version 36</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -1369,6 +1433,7 @@ async function eraseProfile(p) {
   // 1. this device
   unpublishProfile(p);
   scores = scores.filter(s => s.pid !== p.id); store.set(K.scores, scores);
+  histDrop(h => h[1] === p.id);
   if (colls[p.id]) { delete colls[p.id]; saveColl(); }
   try { delete lastPushed[p.id]; } catch (e) {}
   profiles = profiles.filter(x => x.id !== p.id); store.set(K.profiles, profiles);
@@ -1422,7 +1487,7 @@ async function forgetDevice() {
     try { await auth.signOut(); } catch (e2) {}
   }
   store.set('cae.forget', false);
-  ['cae.remote', 'cae.erase', 'cae.coll', 'cae.scores', 'cae.current'].forEach(k => { try { localStorage.removeItem(k); } catch (e) {} });
+  ['cae.remote', 'cae.erase', 'cae.coll', 'cae.scores', 'cae.current', 'cae.hist'].forEach(k => { try { localStorage.removeItem(k); } catch (e) {} });
   setTimeout(() => location.reload(), 2600);
 }
 /* ---------- Conditions d'utilisation et données (text in conditions.html, shown inside the game) ---------- */
@@ -1579,6 +1644,7 @@ async function deleteScore(s) {
     catch (e) { return e && e.code === 'permission-denied' ? 'Suppression refusée par le serveur.' : 'Pas de connexion : réessaie quand tu es en ligne.'; }
   }
   scores = scores.filter(x => x.id !== s.id); store.set(K.scores, scores);
+  histDrop(h => h[0] === s.id);
   remote = remote.filter(x => x.id !== s.id); store.set(K.remote, remote);
   refreshViews(); return '';
 }
@@ -1774,8 +1840,9 @@ function renderMenu(dir = 0) {
   const lab = el('span', 'label'); lab.textContent = p ? 'À toi de jouer' : 'Bienvenue !';
   const nm = el('div', 'name'); nm.textContent = p ? p.name : 'Qui joue ?';
   meta.append(lab, nm);
-  const chip = el('span', 'chip'); chip.textContent = p ? 'Changer' : 'Créer';
-  card.append(p ? avatarNode(p.avatar, p.name) : (() => { const a = avatarNode({ kind: 'emoji', i: 6 }); return a; })(), meta, chip);
+  card.append(p ? avatarNode(p.avatar, p.name) : (() => { const a = avatarNode({ kind: 'emoji', i: 6 }); return a; })(), meta);
+  const wb = $('#whoBtn'); wb.textContent = p ? 'Changer' : 'Créer'; wb.setAttribute('aria-label', p ? 'Changer de joueur' : 'Créer un joueur');
+  $('#myStatsBtn').hidden = !p;
 
   const d = durById(dur);
   swapBestPane(dir);
@@ -1818,6 +1885,8 @@ $('#optSheet').addEventListener('click', e => { if (e.target.id === 'optSheet') 
 $('#soundSwitch').addEventListener('click', () => { soundOn = !soundOn; store.set(K.sound, soundOn); renderOpts(); if (soundOn) sfxGood(); });
 $('#introBtn').addEventListener('click', () => { store.set(K.legal, LEGAL_DATE); openEditor(null); });
 $('#playerCard').addEventListener('click', openWho);
+$('#whoBtn').addEventListener('click', openWho);
+$('#myStatsBtn').addEventListener('click', () => openProgress());
 $('#startBtn').addEventListener('click', startGame);
 $('#bestSlider').addEventListener('click', e => { if (e.target.closest('[data-board]')) openBoard(); });
 $('#menu').addEventListener('pointerdown', e => {
@@ -2228,7 +2297,7 @@ function finish() {
   rec.sent = false;
   const prevMine = before.find(s => pkey(s) === pkey(rec));
   const better = (a, b) => timed ? a.points > b.points : a.time < b.time;
-  scores.push(rec);
+  scores.push(rec); histAdd(rec);
   MODES.forEach(({ id }) => DURS.forEach(({ id: did }) => {
     const keep = new Set(levelScores(id, did, scores).slice(0, 100).map(s => s.id));
     scores = scores.filter(s => s.level !== id || durOf(s) !== did || keep.has(s.id) || (sharedOn() && !s.sent));
@@ -2521,7 +2590,8 @@ function renderBoard() {
 function disarmClear() { clearArmed = false; const cb = $('#clearBtn'); cb.classList.remove('armed'); cb.textContent = 'Effacer ces scores'; }
 $('#clearBtn').addEventListener('click', () => {
   if (!clearArmed) { clearArmed = true; const cb = $('#clearBtn'); cb.classList.add('armed'); cb.textContent = 'Touche encore pour tout effacer'; return; }
-  scores = scores.filter(s => s.level !== boardLevel || durOf(s) !== boardDur); store.set(K.scores, scores); renderBoard();
+  scores = scores.filter(s => s.level !== boardLevel || durOf(s) !== boardDur); store.set(K.scores, scores);
+  histDrop(h => h[2] === boardLevel && (h[3] || 'pts10') === boardDur); renderBoard();
 });
 $('#boardBack').addEventListener('click', () => { renderMenu(); show('menu'); });
 
@@ -3833,6 +3903,336 @@ function openStats() {
   box.append(top, sum, panel, help);
   $('#cardSheet').hidden = false; box.scrollTop = 0;
 }
+/* ---------- v36 — « Tes progrès » (📈 next to « Changer » on the home screen) ----------
+   One curve per level and mode: the player's best result of each day, week, month or year, with the average and the number of games.
+   10 points = best time (lower is better); 15 s / 30 s / 1 min = best points. Empty periods are left empty (no invented values):
+   a dashed line only links two games across days without a game. */
+K.hist = 'cae.hist';
+const HIST_MAX = 8000;
+// Compact log of the games finished on this device, so the curve keeps old games that the leaderboards drop
+// (they keep the best 100 here and the last 3000 online): [id, profile id, level, mode, time ms, points, date]
+let hist = store.get(K.hist, null);
+if (!Array.isArray(hist)) { hist = scores.filter(s => s && s.pid && s.date).map(s => [s.id, s.pid, s.level, durOf(s), s.time, s.points, s.date]); store.set(K.hist, hist); }
+function histAdd(r) {
+  hist.push([r.id, r.pid, r.level, r.dur, r.time, r.points, r.date]);
+  if (hist.length > HIST_MAX) hist = hist.slice(-HIST_MAX);
+  if (!store.set(K.hist, hist)) { hist = hist.slice(-Math.floor(hist.length / 2)); store.set(K.hist, hist); }
+}
+function histDrop(fn) { const n = hist.length; hist = hist.filter(h => !fn(h)); if (hist.length !== n) store.set(K.hist, hist); }
+// Every game of a player: this device's log + the scores still in the leaderboards (other devices with the same name too).
+function myGames(p) {
+  const key = String(p.name || '').trim().toLowerCase(), by = new Map();
+  hist.forEach(h => { if (h[1] === p.id && h[6]) by.set(h[0], { level: h[2], dur: h[3] || 'pts10', time: h[4], points: h[5], date: h[6] }); });
+  allScores().concat(scores).forEach(s => {
+    if (s && s.date && !by.has(s.id) && pkey(s) === key) by.set(s.id, { level: s.level, dur: durOf(s), time: s.time, points: s.points, date: s.date });
+  });
+  return [...by.values()];
+}
+const PG_PER = [
+  { id: 'day', label: 'Jours', n: 14, span: 'ces 14 jours', two: '2 jours différents' },
+  { id: 'week', label: 'Semaines', n: 12, span: 'ces 12 semaines', two: '2 semaines différentes' },
+  { id: 'month', label: 'Mois', n: 12, span: 'ces 12 mois', two: '2 mois différents' },
+  { id: 'year', label: 'Années', n: 0, span: 'en tout', two: '2 années différentes' }
+];
+const MO = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+const MO_FULL = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+const MO_AX = ['jan', 'fév', 'mar', 'avr', 'mai', 'juin', 'juil', 'août', 'sep', 'oct', 'nov', 'déc'];
+const DOW = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
+const DAY_MS = 864e5;
+const ymdT = k => { const [y, m, d] = k.split('-').map(Number); return Date.UTC(y, (m || 1) - 1, d || 1, 12); };
+const isoDay = t => new Date(t).toISOString().slice(0, 10);
+// Buckets are calendar keys, compared as strings: 'YYYY-MM-DD' (day, or the Monday of a week), 'YYYY-MM', 'YYYY' (Paris dates).
+function bucketOf(per, day) {
+  if (per === 'day') return day;
+  if (per === 'week') { const t = ymdT(day); return isoDay(t - ((new Date(t).getUTCDay() + 6) % 7) * DAY_MS); }
+  return per === 'month' ? day.slice(0, 7) : day.slice(0, 4);
+}
+function bucketShift(per, key, k) {
+  if (per === 'day') return isoDay(ymdT(key) + k * DAY_MS);
+  if (per === 'week') return isoDay(ymdT(key) + k * 7 * DAY_MS);
+  if (per === 'month') { const [y, m] = key.split('-').map(Number), t = y * 12 + m - 1 + k; return Math.floor(t / 12) + '-' + String(t % 12 + 1).padStart(2, '0'); }
+  return String(Number(key) + k);
+}
+function bucketName(per, key, now) {
+  const here = key === now;
+  if (per === 'day') { const d = new Date(ymdT(key)); return (here ? 'aujourd’hui, ' : '') + DOW[d.getUTCDay()] + ' ' + d.getUTCDate() + ' ' + MO[d.getUTCMonth()]; }
+  if (per === 'week') {
+    const a = new Date(ymdT(key)), b = new Date(ymdT(key) + 6 * DAY_MS);
+    return (here ? 'cette semaine, ' : '') + 'du ' + a.getUTCDate() + (a.getUTCMonth() !== b.getUTCMonth() ? ' ' + MO[a.getUTCMonth()] : '') + ' au ' + b.getUTCDate() + ' ' + MO[b.getUTCMonth()];
+  }
+  if (per === 'month') { const [y, m] = key.split('-').map(Number); return (here ? 'ce mois-ci, ' : '') + MO_FULL[m - 1] + ' ' + y; }
+  return (here ? 'cette année, ' : '') + key;
+}
+// Two-line axis label of a slot: the number (or month) on top, the month (or year) below where it changes.
+function bucketAxis(per, key, prev) {
+  if (per === 'year') return [key, ''];
+  if (per === 'month') { const [y, m] = key.split('-').map(Number); return [MO_AX[m - 1], !prev || m === 1 ? String(y) : '']; }
+  const d = new Date(ymdT(key)), p = prev && new Date(ymdT(prev));
+  return [String(d.getUTCDate()), !p || p.getUTCMonth() !== d.getUTCMonth() ? MO_AX[d.getUTCMonth()] : ''];
+}
+function niceScale(lo, hi, minStep, whole) {
+  if (hi - lo < 1e-9) { lo -= minStep * 2; hi += minStep * 2; }
+  const raw = (hi - lo) / 4, mag = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / mag;
+  let step = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 && !whole ? 2.5 : f <= 5 ? 5 : 10) * mag;
+  if (step < minStep) step = minStep;
+  const a = Math.floor(lo / step + 1e-9) * step, b = Math.ceil(hi / step - 1e-9) * step, ticks = [];
+  for (let v = a; v <= b + step / 2; v += step) ticks.push(+v.toFixed(6));
+  return { lo: a, hi: b, ticks };
+}
+const SVGNS = 'http://www.w3.org/2000/svg';
+function svgEl(tag, at, txt) { const e = document.createElementNS(SVGNS, tag); for (const k in at) e.setAttribute(k, at[k]); if (txt != null) e.textContent = txt; return e; }
+const fmtDec = n => String(Math.round(n * 10) / 10).replace('.', ',');
+const fmtDM = k => { const d = new Date(ymdT(k)); return d.getUTCDate() + ' ' + MO[d.getUTCMonth()]; };
+const pg = { level: 'add', dur: 'pts10', per: 'day', page: 0, tip: -1 };
+function openProgress() {
+  const p = current(); if (!p) { openWho(); return; }
+  const games = myGames(p).sort((a, b) => b.date - a.date);
+  pg.level = games[0] ? games[0].level : level; pg.dur = games[0] ? games[0].dur : dur;
+  if (!MODES.some(m => m.id === pg.level)) pg.level = 'add';
+  if (!DURS.some(d => d.id === pg.dur)) pg.dur = 'pts10';
+  pg.per = 'day'; pg.page = 0; pg.tip = -1;
+  $('#cardSheet').hidden = false;
+  renderProgress(true);
+}
+function renderProgress(first) {
+  const p = current(), box = $('#cardSheetIn');
+  if (!p) { closeCard(); return; }
+  const keepScroll = first ? 0 : box.scrollTop;
+  box.textContent = '';
+  const top = el('div', 'sheet-top'); const h = el('h3'); h.textContent = '📈 Tes progrès';
+  const x = el('button', 'close'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Fermer'); x.addEventListener('click', closeCard);
+  top.append(h, x);
+  const wrap = el('div', 'pg');
+  const all = myGames(p);
+  const who = el('div', 'pg-who'); const nm = el('b'); nm.textContent = p.name;
+  const cnt = el('span', 'cnt'); cnt.textContent = all.length + NB + 'partie' + (all.length > 1 ? 's' : '') + ' jouée' + (all.length > 1 ? 's' : '');
+  who.append(avatarNode(p.avatar, p.name), nm, cnt);
+  wrap.appendChild(who);
+  if (!all.length) {
+    const e = el('div', 'panel pg-empty'); const t = el('p'); t.textContent = 'Pas encore de partie terminée.';
+    const s = el('small'); s.textContent = 'Joue une partie jusqu’au bout : ta courbe apparaîtra ici ✨';
+    e.append(t, s); wrap.appendChild(e); box.append(top, wrap); box.scrollTop = 0; return;
+  }
+  const mode = modeById(pg.level), d = durById(pg.dur), timed = !!d.sec;
+  const combo = all.filter(g => g.level === mode.id && g.dur === d.id);
+  // filters: level, mode, period
+  const tabs = el('div', 'tabs'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'Niveau');
+  MODES.forEach(m => {
+    const has = all.some(g => g.level === m.id);
+    const t = el('button', 'tab' + (m.tier === 5 ? ' boss' : '') + (has ? '' : ' empty')); t.type = 'button'; t.setAttribute('role', 'tab');
+    t.setAttribute('aria-selected', String(m.id === mode.id)); t.setAttribute('aria-label', 'Niveau ' + m.tier + ', ' + m.name + (has ? '' : ', pas encore joué'));
+    const b = el('b'); b.textContent = m.sym.replace(/ /g, ''); const s = el('small'); s.textContent = 'Niv. ' + m.tier;
+    t.append(b, s); t.addEventListener('click', () => { pg.level = m.id; pg.tip = -1; renderProgress(); });
+    tabs.appendChild(t);
+  });
+  const durs = el('div', 'durs'); durs.setAttribute('role', 'group'); durs.setAttribute('aria-label', 'Mode');
+  DURS.forEach(o => {
+    const has = all.some(g => g.level === mode.id && g.dur === o.id);
+    const b = el('button', 'dur' + (has ? '' : ' empty')); b.type = 'button'; b.textContent = o.short; b.setAttribute('aria-pressed', String(o.id === d.id));
+    b.setAttribute('aria-label', (o.sec ? 'Chrono ' + o.label : 'Course aux 10 points') + (has ? '' : ', pas encore joué'));
+    b.addEventListener('click', () => { pg.dur = o.id; pg.tip = -1; renderProgress(); });
+    durs.appendChild(b);
+  });
+  const pers = el('div', 'durs pg-per'); pers.setAttribute('role', 'group'); pers.setAttribute('aria-label', 'Période');
+  PG_PER.forEach(o => {
+    const b = el('button', 'dur'); b.type = 'button'; b.textContent = o.label; b.setAttribute('aria-pressed', String(o.id === pg.per));
+    b.addEventListener('click', () => { pg.per = o.id; pg.page = 0; pg.tip = -1; renderProgress(); });
+    pers.appendChild(b);
+  });
+  wrap.append(tabs, durs, pers);
+
+  // buckets of the window
+  const per = PG_PER.find(o => o.id === pg.per), today = dayKey(nowMs()), nowKey = bucketOf(per.id, today);
+  const firstAll = bucketOf(per.id, dayKey(Math.min(...(combo.length ? combo : all).map(g => g.date))));
+  let keys;
+  if (per.id === 'year') { keys = []; for (let y = Math.min(Number(firstAll), Number(nowKey)); y <= Number(nowKey); y++) keys.push(String(y)); if (keys.length > 10) keys = keys.slice(-10); }
+  else { const end = bucketShift(per.id, nowKey, -pg.page * per.n); keys = []; for (let i = per.n - 1; i >= 0; i--) keys.push(bucketShift(per.id, end, -i)); }
+  const canPrev = per.id !== 'year' && keys[0] > firstAll, canNext = per.id !== 'year' && pg.page > 0;
+  const val = g => timed ? g.points : g.time;
+  const better = (a, b) => timed ? a > b : a < b;
+  const agg = keys.map(() => null), idx = new Map(keys.map((k, i) => [k, i]));
+  let rec = null;
+  combo.forEach(g => {
+    const v = val(g); if (typeof v !== 'number' || !isFinite(v)) return;
+    if (!rec || better(v, rec.v) || (v === rec.v && g.date > rec.date)) rec = { v, date: g.date };
+    const i = idx.get(bucketOf(per.id, dayKey(g.date))); if (i == null) return;
+    const a = agg[i] || (agg[i] = { n: 0, sum: 0, best: v });
+    a.n++; a.sum += v; if (better(v, a.best)) a.best = v;
+  });
+  const recKey = rec ? bucketOf(per.id, dayKey(rec.date)) : '';
+  const fmtV = v => timed ? fmtPts(v) : fmtTime(v);
+  const fmtAvg = a => timed ? fmtDec(a.sum / a.n) + NB + 'pts' : fmtTime(Math.round(a.sum / a.n));
+  const pts = agg.map((a, i) => a ? i : -1).filter(i => i >= 0);
+  const inWin = pts.reduce((t, i) => t + agg[i].n, 0);
+
+  // stat tiles
+  const tiles = el('div', 'pg-tiles');
+  const tile = (lab, big, small) => { const t = el('div', 'pg-tile'); const l = el('span', 'label'); l.textContent = lab; const b = el('b'); b.textContent = big; const s = el('small'); s.textContent = small; t.append(l, b, s); tiles.appendChild(t); return t; };
+  tile('Parties', String(inWin), per.span);
+  tile('Record', rec ? fmtV(rec.v) : '—', rec ? 'le ' + fmtDate(rec.date) : 'pas encore');
+  if (pts.length >= 2) {
+    const a = agg[pts[0]].best, b = agg[pts[pts.length - 1]].best, diff = b - a;
+    const up = better(b, a), same = Math.abs(diff) < (timed ? .5 : 5);
+    const big = same ? '=' : (diff > 0 ? '+' : '−') + (timed ? fmtPts(Math.abs(diff)) : fmtTime(Math.abs(diff)));
+    tile('Progrès', big, same ? 'comme au début' : up ? (timed ? 'de mieux 🚀' : 'plus rapide 🚀') : (timed ? 'de moins 💪' : 'plus lent 💪'));
+  } else tile('Progrès', '—', 'joue sur ' + per.two);
+  wrap.appendChild(tiles);
+
+  // chart card
+  const card = el('div', 'panel pg-card');
+  const head = el('div', 'pg-head');
+  const prev = el('button', 'pg-nav'); prev.type = 'button'; prev.textContent = '‹'; prev.setAttribute('aria-label', 'Période précédente'); prev.disabled = !canPrev;
+  prev.addEventListener('click', () => { pg.page++; pg.tip = -1; renderProgress(); });
+  const next = el('button', 'pg-nav'); next.type = 'button'; next.textContent = '›'; next.setAttribute('aria-label', 'Période suivante'); next.disabled = !canNext;
+  next.addEventListener('click', () => { pg.page = Math.max(0, pg.page - 1); pg.tip = -1; renderProgress(); });
+  const sel = el('p', 'pg-sel'); sel.style.setProperty('--lc', mode.color);
+  const dot = el('i'); dot.setAttribute('aria-hidden', 'true');
+  const l1 = el('span', 'l1'); l1.textContent = 'Niv. ' + mode.tier + ' · ' + mode.name; sel.append(dot, l1);
+  const rng = el('small');
+  const span = (a, b) => {
+    if (per.id === 'year') return a === b ? a : a + ' → ' + b;
+    if (per.id === 'month') return MO[Number(a.slice(5)) - 1] + ' ' + a.slice(0, 4) + ' → ' + MO[Number(b.slice(5)) - 1] + ' ' + b.slice(0, 4);
+    const e = per.id === 'week' ? bucketShift('day', b, 6) : b;
+    return fmtDM(a) + (a.slice(0, 4) !== e.slice(0, 4) ? ' ' + a.slice(0, 4) : '') + ' → ' + fmtDM(e) + ' ' + e.slice(0, 4);
+  };
+  rng.textContent = (timed ? d.label : '10 points') + ' · ' + span(keys[0], keys[keys.length - 1]);
+  sel.appendChild(rng);
+  if (per.id === 'year') head.append(sel); else head.append(prev, sel, next);
+  card.appendChild(head);
+  const chart = el('div', 'pg-chart');
+  card.appendChild(chart);
+  const hint = el('p', 'help');
+  wrap.append(card);
+  if (!pts.length) {
+    const e = el('div', 'pg-empty'); const t = el('p');
+    t.textContent = combo.length ? 'Pas de partie sur cette période.' : 'Pas encore de partie à ce niveau dans ce mode.';
+    const s = el('small'); s.textContent = combo.length ? (per.id === 'year' ? '' : 'Touche ‹ pour remonter le temps, ou choisis « Mois » ou « Années ».') : 'Choisis-le dans le menu et lance une partie !';
+    e.append(t, s); chart.appendChild(e);
+  } else {
+    hint.textContent = (timed ? 'Plus la courbe monte, plus tu marques de points.' : 'Plus la courbe descend, plus tu vas vite.') + ' Touche un point pour le détail.';
+    card.appendChild(hint);
+  }
+
+  // detail table (most recent first): the same numbers as the chart, readable without the curve
+  if (pts.length) {
+    const h4 = el('h4'); h4.textContent = 'Détail';
+    const tb = el('table', 'pg-table');
+    const cap = el('caption'); cap.textContent = 'Détail par période'; cap.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)';
+    const thead = el('thead'), tr0 = el('tr');
+    [per.id === 'day' ? 'Jour' : per.id === 'week' ? 'Semaine' : per.id === 'month' ? 'Mois' : 'Année', 'Meilleur', 'Moyenne', 'Parties'].forEach(t => { const th = el('th'); th.scope = 'col'; th.textContent = t; tr0.appendChild(th); });
+    thead.appendChild(tr0);
+    const tbody = el('tbody');
+    pts.slice().reverse().forEach(i => {
+      const a = agg[i], tr = el('tr'); if (keys[i] === nowKey) tr.className = 'now';
+      const c0 = el('td'); c0.textContent = bucketName(per.id, keys[i], nowKey);
+      const c1 = el('td', keys[i] === recKey ? 'best' : ''); c1.textContent = (keys[i] === recKey ? '⭐ ' : '') + fmtV(a.best);
+      const c2 = el('td'); c2.textContent = fmtAvg(a);
+      const c3 = el('td'); c3.textContent = a.n;
+      tr.append(c0, c1, c2, c3); tbody.appendChild(tr);
+    });
+    tb.append(cap, thead, tbody);
+    wrap.append(h4, tb);
+  }
+  const foot = el('p', 'help'); foot.textContent = 'Fait avec tes parties terminées sur cet appareil et celles encore dans les classements en ligne.';
+  wrap.appendChild(foot);
+  box.append(top, wrap);
+  box.scrollTop = keepScroll;
+  if (pts.length) drawProgress(chart, { keys, agg, pts, per, nowKey, recKey, timed, color: mode.color, fmtV, fmtAvg });
+}
+function drawProgress(chart, o) {
+  const W = Math.max(240, Math.round(chart.clientWidth || 300)), H = 212;
+  const m = { l: 36, r: 10, t: 24, b: 34 }, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const n = o.keys.length, xs = i => m.l + pw * (i + .5) / n;
+  const vals = o.pts.map(i => o.agg[i].best).map(v => o.timed ? v : v / 1000);
+  let lo = Math.min(...vals), hi = Math.max(...vals); const pad = Math.max((hi - lo) * .15, o.timed ? 1 : .5);
+  lo -= pad; hi += pad; if (Math.min(...vals) >= 0 && lo < 0) lo = 0;
+  const sc = niceScale(lo, hi, o.timed ? 1 : .5, o.timed);
+  const ys = v => m.t + ph - (( (o.timed ? v : v / 1000) - sc.lo) / (sc.hi - sc.lo)) * ph;
+  const svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, tabindex: '0', role: 'img',
+    'aria-label': (o.timed ? 'Courbe de tes meilleurs scores' : 'Courbe de tes meilleurs temps') + ', ' + o.pts.length + ' période' + (o.pts.length > 1 ? 's' : '') + ' avec des parties. Le détail est dans le tableau.' });
+  // grid + y ticks
+  sc.ticks.forEach(t => {
+    const y = m.t + ph - ((t - sc.lo) / (sc.hi - sc.lo)) * ph;
+    svg.appendChild(svgEl('line', { x1: m.l, x2: W - m.r, y1: y, y2: y, stroke: 'rgba(255,255,255,.1)', 'stroke-width': 1, 'shape-rendering': 'crispEdges' }));
+    svg.appendChild(svgEl('text', { x: m.l - 6, y: y + 4, 'text-anchor': 'end', class: 'pg-tick' }, fmtDec(t)));
+  });
+  svg.appendChild(svgEl('text', { x: 2, y: 10, class: 'pg-unit' }, o.timed ? 'MEILLEUR SCORE (POINTS)' : 'MEILLEUR TEMPS (SECONDES)'));
+  // x labels (thinned when slots are narrow, always keeping the most recent one)
+  const slot = pw / n, widest = Math.max(...o.keys.map(k => bucketAxis(o.per.id, k)[0].length)) * 6.6 + 4, skip = Math.max(1, Math.ceil(widest / slot));
+  o.keys.forEach((k, i) => {
+    const [a, b] = bucketAxis(o.per.id, k, o.keys[i - 1]);
+    if ((n - 1 - i) % skip === 0) svg.appendChild(svgEl('text', { x: xs(i), y: m.t + ph + 15, 'text-anchor': 'middle', class: 'pg-tick' + (k === o.nowKey ? ' now' : '') }, a));
+    if (b) svg.appendChild(svgEl('text', { x: xs(i), y: m.t + ph + 29, 'text-anchor': i === 0 ? 'start' : 'middle', class: 'pg-tick sub' }, b));
+  });
+  // area wash under runs of consecutive periods, solid line between neighbours, dashed line across empty periods
+  let solid = '', dashed = '';
+  o.pts.forEach((i, j) => {
+    const x = xs(i), y = ys(o.agg[i].best);
+    if (j === 0) return;
+    const pi = o.pts[j - 1], px = xs(pi), py = ys(o.agg[pi].best);
+    if (pi === i - 1) solid += 'M' + px.toFixed(1) + ' ' + py.toFixed(1) + 'L' + x.toFixed(1) + ' ' + y.toFixed(1);
+    else dashed += 'M' + px.toFixed(1) + ' ' + py.toFixed(1) + 'L' + x.toFixed(1) + ' ' + y.toFixed(1);
+  });
+  let run = [];
+  const flush = () => {
+    if (run.length > 1) {
+      const base = (m.t + ph).toFixed(1);
+      const d = 'M' + xs(run[0]).toFixed(1) + ' ' + base + run.map(i => 'L' + xs(i).toFixed(1) + ' ' + ys(o.agg[i].best).toFixed(1)).join('') + 'L' + xs(run[run.length - 1]).toFixed(1) + ' ' + base + 'Z';
+      svg.appendChild(svgEl('path', { d, fill: o.color, 'fill-opacity': .1, stroke: 'none' }));
+    }
+    run = [];
+  };
+  o.pts.forEach((i, j) => { if (j && o.pts[j - 1] !== i - 1) flush(); run.push(i); }); flush();
+  if (dashed) svg.appendChild(svgEl('path', { d: dashed, fill: 'none', stroke: o.color, 'stroke-width': 2, 'stroke-dasharray': '2 6', 'stroke-linecap': 'round', 'stroke-opacity': .6 }));
+  if (solid) svg.appendChild(svgEl('path', { d: solid, fill: 'none', stroke: o.color, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+  // crosshair (under the markers)
+  const cross = svgEl('line', { x1: 0, x2: 0, y1: m.t - 4, y2: m.t + ph, stroke: 'rgba(255,255,255,.4)', 'stroke-width': 1, visibility: 'hidden' });
+  svg.appendChild(cross);
+  o.pts.forEach(i => {
+    svg.appendChild(svgEl('circle', { cx: xs(i), cy: ys(o.agg[i].best), r: 4.5, fill: o.color, stroke: '#25164d', 'stroke-width': 2 }));
+    if (o.keys[i] === o.recKey) svg.appendChild(svgEl('text', { x: xs(i), y: ys(o.agg[i].best) - 10, 'text-anchor': 'middle', 'font-size': 13 }, '⭐'));
+  });
+  const ring = svgEl('circle', { r: 7, fill: o.color, stroke: '#fff6fd', 'stroke-width': 2, visibility: 'hidden' });
+  svg.appendChild(ring);
+  const hit = svgEl('rect', { x: 0, y: 0, width: W, height: H, fill: 'transparent' });
+  svg.appendChild(hit);
+  chart.appendChild(svg);
+  const tip = el('div', 'pg-tip'); tip.hidden = true; tip.setAttribute('aria-live', 'polite'); chart.appendChild(tip);
+  const show = j => {
+    if (j < 0) { tip.hidden = true; cross.setAttribute('visibility', 'hidden'); ring.setAttribute('visibility', 'hidden'); pg.tip = -1; return; }
+    const i = o.pts[j], a = o.agg[i], x = xs(i), y = ys(a.best);
+    pg.tip = i;
+    cross.setAttribute('x1', x); cross.setAttribute('x2', x); cross.setAttribute('visibility', 'visible');
+    ring.setAttribute('cx', x); ring.setAttribute('cy', y); ring.setAttribute('visibility', 'visible');
+    tip.textContent = '';
+    const b = el('b'); b.textContent = (o.keys[i] === o.recKey ? '⭐ ' : '') + o.fmtV(a.best);
+    const s1 = el('span'); s1.textContent = o.timed ? 'meilleur score' : 'meilleur temps';
+    const s2 = el('small'); s2.textContent = 'moyenne ' + o.fmtAvg(a) + ' · ' + a.n + NB + 'partie' + (a.n > 1 ? 's' : '');
+    const s3 = el('small'); s3.textContent = bucketName(o.per.id, o.keys[i], o.nowKey);
+    tip.append(b, s1, s2, s3); tip.hidden = false;
+    const k = chart.clientWidth / W, tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = x * k - tw / 2; left = Math.max(0, Math.min(chart.clientWidth - tw, left));
+    let topY = y * k - th - 14; if (topY < -6) topY = y * k + 14;
+    tip.style.left = left + 'px'; tip.style.top = topY + 'px';
+  };
+  const nearest = ev => {
+    const r = svg.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width;
+    let best = 0, bd = Infinity; o.pts.forEach((i, j) => { const dd = Math.abs(xs(i) - x); if (dd < bd) { bd = dd; best = j; } });
+    return best;
+  };
+  svg.addEventListener('pointermove', ev => { if (ev.pointerType === 'mouse') show(nearest(ev)); });
+  svg.addEventListener('pointerdown', ev => { svg.classList.remove('kbd'); show(nearest(ev)); });
+  svg.addEventListener('pointerleave', ev => { if (ev.pointerType === 'mouse') show(-1); });
+  svg.addEventListener('keydown', ev => {
+    svg.classList.add('kbd');
+    const cur = o.pts.indexOf(pg.tip);
+    if (ev.key === 'ArrowLeft' || ev.key === 'ArrowRight') { ev.preventDefault(); show(Math.max(0, Math.min(o.pts.length - 1, cur < 0 ? o.pts.length - 1 : cur + (ev.key === 'ArrowLeft' ? -1 : 1)))); }
+    else if (ev.key === 'Escape' && cur >= 0) { ev.stopPropagation(); show(-1); }
+  });
+  svg.addEventListener('blur', () => show(-1));
+  if (pg.tip >= 0 && o.pts.includes(pg.tip)) show(o.pts.indexOf(pg.tip));
+}
+addEventListener('resize', () => { if (!$('#cardSheet').hidden && $('#cardSheetIn').querySelector('.pg-chart svg')) renderProgress(); });
 function viewCard(c, fx, back) {
   const box = $('#cardSheetIn'); box.textContent = '';
   const top = el('div', 'sheet-top'); const b = el('button', 'quit'); b.type = 'button'; b.textContent = '← Retour'; b.addEventListener('click', back);
@@ -3861,7 +4261,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 35;
+const APP_VERSION = 36;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
