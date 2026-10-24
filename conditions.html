@@ -54,7 +54,7 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--f-body);font-s
   <h1>Calculs <span class="holo">Arc-en-ciel</span></h1>
 
 <article class="cgu" id="cgu">
-  <p class="cgu-date">Conditions d’utilisation et données personnelles · mise à jour le 20 octobre 2026</p>
+  <p class="cgu-date">Conditions d’utilisation et données personnelles · mise à jour le 24 octobre 2026</p>
 
   <h2>L’essentiel</h2>
   <ul class="cgu-key">
@@ -79,6 +79,7 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--f-body);font-s
   <ul>
     <li>Pas de compte : ni adresse e-mail, ni mot de passe.</li>
     <li>Le nom de joueur est libre (un prénom, un pseudo…), mais il doit rester respectueux. Il est visible par tous les joueurs. Un nom ne sert qu’à un seul joueur : s’il existe déjà, le jeu demande s’il s’agit du même joueur sur un autre appareil ; sinon, il en propose un autre (par exemple « Léa 2 »).</li>
+    <li>Un joueur peut créer une famille ou en rejoindre une (une seule à la fois) pour avoir des classements entre proches. Le nom d’une famille est visible par tous les joueurs : il doit rester respectueux et il vaut mieux éviter le vrai nom de famille (« Les Licornes de Mamie » plutôt que « Famille Dupont »). Les responsables d’une famille peuvent accepter ou retirer des membres et la dissoudre ; l’administrateur peut supprimer une famille qui ne respecte pas ces règles.</li>
     <li>Une photo de profil doit montrer le joueur lui-même ou une image qu’il a le droit d’utiliser. Pas de photo d’une autre personne sans son accord.</li>
     <li>Il est interdit de tricher en modifiant le jeu ou en envoyant de faux scores, d’essayer d’accéder aux données des autres joueurs et de perturber le service.</li>
     <li>L’administrateur peut cacher un joueur, effacer des scores ou des photos qui ne respectent pas ces règles, sans prévenir.</li>
@@ -152,6 +153,13 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--f-body);font-s
       <dt>Durée</dt><dd>Jusqu’à ce que l’administrateur montre à nouveau le joueur.</dd></dl>
     </div>
     <div class="cgu-item">
+      <b>Les familles</b>
+      <p>Le nom de la famille, la façon d’y entrer (libre, code secret ou sur demande), la date de création, ses responsables, et pour chaque membre : son nom de joueur, le numéro de son avatar et sa demande pour entrer, s’il y en a une. Le code secret n’est jamais enregistré : le serveur garde seulement son empreinte (une suite de chiffres dont on ne peut pas retrouver le code), que personne ne peut lire.</p>
+      <dl><dt>Où</dt><dd><span class="cgu-tag on">En ligne</span></dd>
+      <dt>Qui les voit</dt><dd>Tous les joueurs voient la liste des familles et leurs membres. Les podiums de la famille sont calculés sur chaque appareil à partir des scores, déjà visibles par tous.</dd>
+      <dt>Durée</dt><dd>Jusqu’à ce que le joueur quitte la famille, en soit retiré ou supprime ses données ; la famille est effacée quand elle est dissoute ou quand son dernier membre part.</dd></dl>
+    </div>
+    <div class="cgu-item">
       <b>Les cadeaux de l’administrateur</b>
       <p>Quand l’administrateur offre des jetons, des sachets ou des cartes : le nom de joueur, le contenu du cadeau, son message et la date de réception.</p>
       <dl><dt>Où</dt><dd><span class="cgu-tag on">En ligne</span></dd>
@@ -162,13 +170,13 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--f-body);font-s
 
   <p><b>Pourquoi</b></p>
   <ul>
-    <li>Faire fonctionner le jeu, les classements communs, le classement du jour et la fiche joueur : c’est le service que vous utilisez.</li>
+    <li>Faire fonctionner le jeu, les classements communs, le classement du jour, les familles et la fiche joueur : c’est le service que vous utilisez.</li>
     <li>Publier une photo : uniquement avec votre accord, que vous pouvez retirer à tout moment (« Rendre ma photo privée »). Pour un enfant de moins de 15&nbsp;ans, cet accord doit être donné avec un parent.</li>
   </ul>
 
   <p><b>Les services utilisés</b></p>
   <ul>
-    <li><b>Google Firebase</b> (Google) garde les données en ligne : scores, fiches joueur, photos publiques et identifiants anonymes. Ses serveurs peuvent se trouver hors de l’Union européenne, notamment aux États-Unis ; ces transferts sont encadrés par le cadre de protection des données UE–États-Unis et les clauses contractuelles types de la Commission européenne.</li>
+    <li><b>Google Firebase</b> (Google) garde les données en ligne : scores, fiches joueur, familles, photos publiques et identifiants anonymes. Ses serveurs peuvent se trouver hors de l’Union européenne, notamment aux États-Unis ; ces transferts sont encadrés par le cadre de protection des données UE–États-Unis et les clauses contractuelles types de la Commission européenne.</li>
     <li><b>GitHub Pages</b> (GitHub, États-Unis) héberge le jeu. Comme pour tout site web, il reçoit l’adresse IP et des informations techniques du navigateur à chaque chargement.</li>
     <li><b>Google Fonts</b> (les polices d’écriture), <b>gstatic.com</b> (le code de Firebase) et <b>jsDelivr</b> (l’animation 3D des grands records) reçoivent aussi l’adresse IP de l’appareil quand ils envoient leurs fichiers.</li>
   </ul>
@@ -182,8 +190,9 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--f-body);font-s
   <ul>
     <li><b>Changer le nom de joueur ou l’avatar</b> : ✎ à côté du profil. Les scores déjà envoyés gardent l’ancien nom : effacez-les si besoin.</li>
     <li><b>Effacer un score</b> : 🗑 dans le tableau des scores.</li>
+    <li><b>Quitter une famille</b> : « 👪 Ma famille » sur l’accueil, puis « Quitter la famille ».</li>
     <li><b>Retirer la photo du serveur</b> : « Rendre ma photo privée » dans le profil.</li>
-    <li><b>Tout effacer</b> : « Supprimer mes données » dans le profil efface, sur l’appareil et sur le serveur, le profil, ses scores, sa fiche joueur, sa photo publique, ses cadeaux et sa collection. Si l’appareil n’a pas de connexion, l’effacement sur le serveur se fait à la connexion suivante. Si l’enfant a joué sur plusieurs appareils, faites-le sur chacun d’eux.</li>
+    <li><b>Tout effacer</b> : « Supprimer mes données » dans le profil efface, sur l’appareil et sur le serveur, le profil, ses scores, sa fiche joueur, sa photo publique, sa place dans une famille (la famille disparaît s’il en était le dernier membre), ses cadeaux et sa collection. Si l’appareil n’a pas de connexion, l’effacement sur le serveur se fait à la connexion suivante. Si l’enfant a joué sur plusieurs appareils, faites-le sur chacun d’eux.</li>
   </ul>
   <p>Pour tout le reste (par exemple des scores faits sur un appareil perdu), écrivez-nous à <a href="mailto:marckorel@gmail.com">marckorel@gmail.com</a> : nous répondons dans un délai d’un mois. Vous pouvez aussi adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>).</p>
 

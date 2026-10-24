@@ -446,7 +446,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .legal-new{margin:0;padding:12px 14px;border-radius:18px;background:linear-gradient(90deg,rgba(255,154,216,.18),rgba(114,241,255,.18));font-weight:700;font-size:15px;line-height:1.35}
 .legal-text .cgu h2:first-of-type{margin-top:6px}
 .card-sheet > .start,.card-sheet > .legal-mine,.card-sheet > .legal-new,.card-sheet > .legal-text{flex:none}
-.info-toast{white-space:normal;text-align:center;max-width:calc(100vw - 32px);width:max-content;line-height:1.3}
+.update-toast.info-toast{white-space:normal;text-align:center;max-width:calc(100vw - 32px);width:max-content;line-height:1.3;border-radius:22px}
 .add{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:20px;border:2px dashed rgba(255,255,255,.3);font-family:var(--f-display);font-weight:800;font-size:19px}
 
 @media (prefers-reduced-motion: reduce){
@@ -811,6 +811,67 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .stats-sum{margin:0;color:var(--mist);font-size:14.5px;font-weight:700;text-align:center}
 .stats-list .tm{font-size:15px;white-space:nowrap}
 .pl-games{font-weight:800;font-size:14px;color:var(--mist)}
+/* v37 — home score panel: fixed header (family chip, day / records switch, link) above the sliding pane */
+.sp-head{display:flex;align-items:center;gap:6px;padding:8px 10px 0 8px}
+.sp-head .link{margin-left:auto;font-size:14px}
+.fam-chip{position:relative;display:inline-flex;align-items:center;gap:4px;min-height:30px;padding:3px 11px;font-size:13.5px;font-weight:800;cursor:pointer;white-space:nowrap;
+  background:linear-gradient(rgba(255,255,255,.12),rgba(255,255,255,.12)) padding-box,linear-gradient(var(--dusk),var(--dusk)) padding-box,var(--holo) border-box;border:1.5px solid transparent;color:var(--ink)}
+.fam-chip .dot{position:absolute;top:-3px;right:-3px;width:10px;height:10px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 2px var(--dusk),0 0 8px var(--rose)}
+.sp-kind{display:flex;gap:2px;padding:2px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line)}
+.sp-kind button{width:34px;height:28px;border-radius:999px;font-size:15px;line-height:1;filter:grayscale(.7);opacity:.7}
+.sp-kind button[aria-pressed="true"]{background:var(--ink);filter:none;opacity:1}
+.slider > .pane{padding-top:4px}
+.ph-sub{display:flex;align-items:center;gap:6px;flex-wrap:wrap;color:var(--mist);font-size:12.5px;font-weight:700;line-height:1.3;min-width:0}
+.ph-sub .sc{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pane .ph-title{margin:0 4px 6px}
+.pane .ph-title h2{color:var(--lc,var(--ink));margin:0}
+/* v37 — family sheet */
+.card-sheet > .fam-sheet{flex:none}
+.fam-sheet{display:flex;flex-direction:column;gap:12px}
+.fam-sheet h4{margin:4px 0 -4px;font-family:var(--f-display);font-weight:800;font-size:18px}
+.fam-intro{margin:0;font-size:15px;line-height:1.4;color:var(--mist)}
+.fam-note{margin:0;padding:16px;border-radius:18px;background:rgba(255,255,255,.07);text-align:center;font-weight:700;line-height:1.4}
+.fam-err{margin:0}
+.fam-head{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:20px;background:linear-gradient(110deg,rgba(255,154,216,.2),rgba(114,241,255,.16));border:1px solid rgba(255,255,255,.2)}
+.fam-head b{font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1.15;overflow-wrap:anywhere}
+.fam-head small{color:var(--mist);font-weight:700;font-size:14px}
+.fam-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.fam-row{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:16px;background:rgba(255,255,255,.06);flex-wrap:wrap}
+.fam-row.me{background:rgba(255,121,214,.16);box-shadow:inset 0 0 0 1px rgba(255,121,214,.45)}
+.fam-row > .av{width:34px;height:34px;font-size:20px}
+.fam-row .nm{flex:1;min-width:90px}
+.fam-btn{flex:none;min-height:34px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-weight:800;font-size:13.5px}
+.fam-btn.ok{background:var(--mint);color:#0f3a2a}
+.fam-btn.no{color:var(--rose)}
+.fam-btn.armed{background:var(--rose);color:#2a0612}
+.fam-row.grp{padding:0;gap:0}
+.fam-grp{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:9px 10px;text-align:left;border-radius:16px}
+.fam-grp .ico{font-size:22px;width:30px;text-align:center;flex:none}
+.fam-row.grp > .fam-btn{margin-right:8px}
+.fam-row.open{background:rgba(114,241,255,.1);box-shadow:inset 0 0 0 1px rgba(114,241,255,.4)}
+.fam-join{flex:1 0 100%;display:flex;flex-direction:column;gap:8px;padding:0 12px 12px 50px}
+.fam-join p{margin:0;color:var(--mist);font-size:13.5px;line-height:1.35}
+.fam-join input,.fam-search input,.fam-field input{width:100%;font:inherit;font-size:18px;font-weight:700;padding:10px 14px;border-radius:16px;border:2px solid var(--line);background:rgba(0,0,0,.25);color:var(--ink)}
+.fam-save{background:var(--ink);color:var(--plum);padding:11px 16px;font-size:16px}
+.fam-save:disabled{opacity:.55}
+.fam-modes{display:flex;flex-direction:column;gap:6px;margin-top:-6px}
+.fam-mode{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:16px;background:rgba(255,255,255,.06);border:2px solid transparent;text-align:left}
+.fam-mode .ico{font-size:22px;flex:none}
+.fam-mode .t{display:flex;flex-direction:column;line-height:1.25}
+.fam-mode b{font-size:15.5px}
+.fam-mode small{color:var(--mist);font-size:12.5px}
+.fam-mode[aria-checked="true"]{border-color:var(--aqua);background:rgba(114,241,255,.12)}
+.fam-form{display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.fam-acts{display:flex;flex-direction:column;align-items:center;gap:10px}
+.fam-acts.row{flex-direction:row;justify-content:space-between}
+.fam-wait{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:18px;background:rgba(255,216,107,.12);border:1px solid rgba(255,216,107,.4)}
+.fam-wait p{margin:0;font-size:14.5px;line-height:1.4}
+.fam-wait .textbtn{align-self:flex-start;padding:4px 0}
+.fam-prize{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:18px;background:linear-gradient(110deg,rgba(255,216,107,.16),rgba(255,154,216,.1));border:1px solid rgba(255,216,107,.35)}
+.fam-prize b{font-family:var(--f-display);font-weight:800;font-size:16px;color:var(--gold)}
+.fam-prize span{font-weight:700;font-size:14px}
+.fam-prize small{color:var(--mist);font-size:12.5px;line-height:1.35}
+.fam-new{width:100%}
 /* v36 — Home: « Changer » and « 📈 Stats » stacked on the right of the player card (two buttons, never nested), so the name keeps its room on phones */
 .player-box{display:flex;align-items:center;gap:8px;width:100%;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid var(--line);padding-right:8px}
 .player-box .player{flex:1;min-width:0;background:none;border:0;border-radius:24px}
@@ -915,7 +976,15 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 
     <button id="collBtn" class="coll-btn" type="button" hidden></button>
 
-    <div class="panel score-panel">
+    <div class="panel score-panel" id="scorePanel">
+      <div class="sp-head">
+        <button id="famBtn" class="chip fam-chip" type="button" hidden>👪 Famille</button>
+        <div class="sp-kind" id="homeKind" role="group" aria-label="Classement affiché">
+          <button type="button" data-k="day" aria-label="Classement du jour" title="Classement du jour">☀️</button>
+          <button type="button" data-k="rec" aria-label="Records" title="Records">🏆</button>
+        </div>
+        <button class="link" type="button" data-board="1">Tout voir</button>
+      </div>
       <div class="slider" id="bestSlider" aria-live="polite"></div>
     </div>
 
@@ -1001,8 +1070,12 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
       </div>
     </div>
     <div class="durs two" id="boardKind" role="group" aria-label="Classement">
-      <button class="dur" type="button" data-kind="rec">🏆 Records</button>
       <button class="dur" type="button" data-kind="day">☀️ Du jour</button>
+      <button class="dur" type="button" data-kind="rec">🏆 Records</button>
+    </div>
+    <div class="durs two" id="boardScope" role="group" aria-label="Joueurs" hidden>
+      <button class="dur" type="button" data-scope="fam">👪 Ma famille</button>
+      <button class="dur" type="button" data-scope="all">🌍 Tous</button>
     </div>
     <div class="daily-box" id="dailyBox" hidden></div>
     <div class="tabs" id="tabs" role="tablist"></div>
@@ -1135,7 +1208,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 36</p>
+      <p class="credits-ver" id="credVer">Version 37</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -1303,7 +1376,7 @@ function allScores() {
 }
 const pendingCount = () => sharedOn() ? scores.filter(s => !s.sent).length : 0;
 function refreshViews() {
-  try { resolveNames(); maybeClaim(); watchPlayers(); } catch (e) {}
+  try { resolveNames(); maybeClaim(); watchPlayers(); watchFamilies(); } catch (e) {}
   if (!$('#menu').hidden) renderMenu();
   if (!$('#board').hidden) renderBoard();
 }
@@ -1348,6 +1421,7 @@ async function initShared() {
     try { db.settings({ experimentalAutoDetectLongPolling: true, merge: true }); } catch (e) {}
     const u = (await firstUser(auth)) || (await auth.signInAnonymously()).user;
     fb = { app, db, uid: u.uid }; sharedErr = "";
+    watchFamilies();
     db.collection('scores').orderBy('date', 'desc').limit(3000).onSnapshot(snap => {
       const out = []; snap.forEach(d => { const x = fromDoc(d.id, d.data({ serverTimestamps: 'estimate' })); if (x) out.push(x); });
       remote = out; remoteState = 'ok'; store.set(K.remote, remote); refreshViews();
@@ -1363,7 +1437,7 @@ async function initShared() {
     if (store.get(K.admin, false)) restoreAdmin();
     syncPending(); syncAvatars(); processErase(); setTimeout(checkGifts, 1500);
   } catch (e) {
-    sharedErr = (e && (e.code || e.message)) || 'erreur'; remoteState = fbReady() ? 'off' : 'failed'; refreshViews();
+    sharedErr = (e && (e.code || e.message)) || 'erreur'; remoteState = fbReady() ? 'off' : 'failed'; if (!fb) famState = 'off'; refreshViews();
     setTimeout(() => { if (!fb) initShared(); }, 20000);
   }
 }
@@ -1422,6 +1496,7 @@ function renderEraseText(p) {
     f.scores + ' score' + (f.scores > 1 ? 's' : ''),
     'ta collection : ' + f.cards + ' carte' + (f.cards > 1 ? 's' : '') + ', ' + f.figs + ' figurine' + (f.figs > 1 ? 's' : '') + ', tes jetons et tes gemmes'];
   if (sharedOn()) items.push('ta fiche joueur en ligne');
+  if (famIdOf(p)) items.push('ta place dans la famille « ' + famGroups[famIdOf(p)].name + ' »' + (famList(famIdOf(p)).length === 1 ? ' (tu es seul : la famille disparaît)' : ''));
   items.forEach(t => { const li = el('li'); li.textContent = t; ul.appendChild(li); });
   const end = el('p'); end.textContent = 'Impossible de revenir en arrière. Si tu as joué sur un autre appareil, fais-le aussi là-bas.';
   box.append(intro, ul, end);
@@ -1449,6 +1524,7 @@ async function eraseProfile(p) {
 }
 async function eraseOnline(job) {
   const db = fb.db, uid = fb.uid, ids = [];
+  await famReady(10000); await famForget(uid, job.pid);
   const snap = await withTimeout(db.collection('scores').where('uid', '==', uid).get({ source: 'server' }), 15000);
   snap.forEach(d => { const v = d.data(); if (v && v.pid === job.pid) ids.push(d.id); });
   await Promise.all(ids.map(id => withTimeout(db.collection('scores').doc(id).delete(), 15000)));
@@ -1491,7 +1567,7 @@ async function forgetDevice() {
   setTimeout(() => location.reload(), 2600);
 }
 /* ---------- Conditions d'utilisation et données (text in conditions.html, shown inside the game) ---------- */
-const LEGAL_URL = 'conditions.html', LEGAL_DATE = '2026-10-20';
+const LEGAL_URL = 'conditions.html', LEGAL_DATE = '2026-10-24';
 K.legal = 'cae.legal';
 let legalCache = null;
 async function loadLegal() {
@@ -1517,6 +1593,8 @@ function legalMine(p) {
     const fiche = fb && typeof playerDocs === 'object' && playerDocs[fb.uid + '_' + p.id];
     d.appendChild(legalLine('🌍', 'En ligne, visible par tous', 'ton nom de joueur, ' + pl(f.online, 'score') + (fiche ? ', ta fiche joueur (la liste de tes cartes)' : '') + (f.pub ? ', ta photo publique' : '') + '.' + (f.photo && !f.pub ? ' Ta photo reste privée.' : '')));
   } else d.appendChild(legalLine('🌍', 'En ligne', 'rien : ici, les scores restent sur ce téléphone.'));
+  const fg = famIdOf(p);
+  if (fg) d.appendChild(legalLine('👪', 'Ta famille, visible par tous', '« ' + famGroups[fg].name + ' » : ton nom de joueur et le numéro de ton avatar sont dans la liste de ses membres.'));
   const del = el('button', 'textbtn del'); del.type = 'button'; del.textContent = '🗑️ Supprimer mes données';
   del.addEventListener('click', () => {
     closeCard(); $('#optSheet').hidden = true; openEditor(p);
@@ -1780,34 +1858,46 @@ function show(id) {
 }
 
 /* ---------- menu ---------- */
+// v37: the home panel shows the day's ranking by default (☀️), or the records of the chosen level and mode (🏆),
+// for the player's family when they have one.
+let homeKind = 'day', kindSlide = false;
 function bestPane() {
-  const m = modeById(level), d = durById(dur);
-  const pane = el('div', 'pane');
-  // Row 1: label, coloured mode pill, link. Row 2: the level name in its colour, full width.
-  const head = el('div', 'panel-head'), t = el('div', 'ph-title'), top = el('div', 'ph-top');
-  const lab = el('span', 'label');
+  const pane = el('div', 'pane'), fam = famScope(), p = current();
   const pend = pendingCount();
-  lab.textContent = !sharedOn() ? 'Meilleurs scores' : 'Tous les joueurs'
-    + (remoteState === 'off' ? ' · ⚠️ hors ligne' : remoteState === 'idle' ? ' · connexion…' : '')
-    + (pend ? ' · ⏳ ' + pend + ' à envoyer' : '');
-  const pill = el('span', 'mode-pill'); pill.textContent = d.label; pill.style.setProperty('--c', d.color);
-  const link = el('button', 'link'); link.type = 'button'; link.dataset.board = '1'; link.textContent = 'Tout voir';
-  top.append(lab, pill, link);
-  const h = el('h2'); h.textContent = 'Niveau ' + m.tier + ' · ' + m.name; h.style.setProperty('--lc', m.color);
-  t.append(top, h); head.append(t);
+  const status = !sharedOn() ? '' : (remoteState === 'off' ? ' · ⚠️ hors ligne' : remoteState === 'idle' ? ' · connexion…' : '') + (pend ? ' · ⏳ ' + pend + ' à envoyer' : '');
+  const scope = fam ? '👪 ' + fam.name : sharedOn() ? 'Tous les joueurs' : 'Sur cet appareil';
+  const head = el('div', 'ph-title'), h = el('h2'), sub = el('div', 'ph-sub'), sc = el('span', 'sc');
+  head.append(h, sub);
   const ol = el('ol', 'rows');
-  const list = bestPerPlayer(levelScores(level, dur));
-  if (list.length) { renderRows(ol, list, { limit: 3 }); pane.append(head, ol); }
-  else {
-    const box = el('div', 'empty-cta');
-    const sm = el('small'); sm.textContent = 'Aucun score pour l’instant à ce niveau';
-    const msg = el('p'); msg.textContent = 'Sélectionne un niveau et un mode de jeu';
-    box.append(sm, msg);
-    box.insertAdjacentHTML('beforeend', '<svg class="hop" viewBox="0 0 34 40" aria-hidden="true"><defs><linearGradient id="hopG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9ad8"/><stop offset=".35" stop-color="#ffd86b"/><stop offset=".65" stop-color="#9dffb0"/><stop offset="1" stop-color="#72f1ff"/></linearGradient></defs><path d="M11 2h12a2 2 0 0 1 2 2v15h6.5a1.6 1.6 0 0 1 1.2 2.7L18.2 37.4a1.6 1.6 0 0 1-2.4 0L1.3 21.7A1.6 1.6 0 0 1 2.5 19H9V4a2 2 0 0 1 2-2z" fill="url(#hopG)"/></svg>');
-    pane.append(head, box);
+  let empty = '';
+  if (homeKind === 'day') {
+    h.textContent = '☀️ Classement du jour'; h.style.setProperty('--lc', 'var(--gold)');
+    const ms = msToMidnight(), hh = Math.floor(ms / 3600e3), mm = Math.floor(ms % 3600e3 / 60e3);
+    sc.textContent = scope + ' · fin dans ' + (hh ? hh + NB + 'h ' : '') + String(mm).padStart(hh ? 2 : 1, '0') + NB + 'min' + status;
+    sub.appendChild(sc);
+    const list = dailyBoard(dayKey(nowMs()), false, fam && fam.keys);
+    if (list.length) dailyRows(ol, list, p ? famKey(p.name) : '', { limit: 3, marks: fam ? famPrizeMarks(famSize(fam.g)) : DAY_MARKS });
+    else empty = fam ? 'Personne de ta famille n’a encore joué aujourd’hui' : 'Personne n’a encore joué aujourd’hui';
+  } else {
+    const m = modeById(level), d = durById(dur);
+    h.textContent = 'Niveau ' + m.tier + ' · ' + m.name; h.style.setProperty('--lc', m.color);
+    const pill = el('span', 'mode-pill'); pill.textContent = d.label; pill.style.setProperty('--c', d.color);
+    sc.textContent = scope + status; sub.append(pill, sc);
+    const list = bestPerPlayer(levelScores(level, dur, scopeScores(fam)));
+    if (list.length) renderRows(ol, list, { limit: 3 });
+    else empty = fam ? 'Personne de ta famille n’a encore de score ici' : 'Aucun score pour l’instant à ce niveau';
   }
+  if (!empty) { pane.append(head, ol); return pane; }
+  const box = el('div', 'empty-cta');
+  const sm = el('small'); sm.textContent = empty;
+  const msg = el('p'); msg.textContent = homeKind === 'day' ? 'Lance la première partie' + NB + '!' : 'Sélectionne un niveau et un mode de jeu';
+  box.append(sm, msg);
+  box.insertAdjacentHTML('beforeend', '<svg class="hop" viewBox="0 0 34 40" aria-hidden="true"><defs><linearGradient id="hopG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9ad8"/><stop offset=".35" stop-color="#ffd86b"/><stop offset=".65" stop-color="#9dffb0"/><stop offset="1" stop-color="#72f1ff"/></linearGradient></defs><path d="M11 2h12a2 2 0 0 1 2 2v15h6.5a1.6 1.6 0 0 1 1.2 2.7L18.2 37.4a1.6 1.6 0 0 1-2.4 0L1.3 21.7A1.6 1.6 0 0 1 2.5 19H9V4a2 2 0 0 1 2-2z" fill="url(#hopG)"/></svg>');
+  pane.append(head, box);
   return pane;
 }
+// Scores of the family (players whose name is in it), or every score.
+function scopeScores(fam) { const all = allScores(); return fam ? all.filter(s => fam.keys.has(pkey(s))) : all; }
 // dir > 0: a higher level or longer mode was picked, the new pane comes from the right.
 function swapBestPane(dir) {
   const slider = $('#bestSlider'), pane = bestPane();
@@ -1845,7 +1935,10 @@ function renderMenu(dir = 0) {
   $('#myStatsBtn').hidden = !p;
 
   const d = durById(dur);
-  swapBestPane(dir);
+  renderFamBtn();
+  document.querySelectorAll('#homeKind button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === homeKind)));
+  swapBestPane(homeKind === 'rec' || kindSlide ? dir : 0); kindSlide = false;
+  if (famState === 'ok') famReconcile();
   document.querySelectorAll('.lvl').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.level === level)));
   document.querySelectorAll('#durs .dur').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.dur === dur)));
   renderCollBtn();
@@ -1888,7 +1981,9 @@ $('#playerCard').addEventListener('click', openWho);
 $('#whoBtn').addEventListener('click', openWho);
 $('#myStatsBtn').addEventListener('click', () => openProgress());
 $('#startBtn').addEventListener('click', startGame);
-$('#bestSlider').addEventListener('click', e => { if (e.target.closest('[data-board]')) openBoard(); });
+$('#scorePanel').addEventListener('click', e => { if (e.target.closest('[data-board]')) openBoard(); });
+document.querySelectorAll('#homeKind button').forEach(b => b.addEventListener('click', () => { if (homeKind === b.dataset.k) return; homeKind = b.dataset.k; kindSlide = true; renderMenu(homeKind === 'rec' ? 1 : -1); }));
+$('#famBtn').addEventListener('click', () => { if (!current()) { openWho(); return; } openFamily(); });
 $('#menu').addEventListener('pointerdown', e => {
   const b = e.target.closest('button'); if (!b) return;
   b.classList.add('tap'); setTimeout(() => b.classList.remove('tap'), 170);
@@ -2566,11 +2661,16 @@ DURS.forEach(d => {
   b.addEventListener('click', () => { boardDur = d.id; renderBoard(); });
   $('#boardDurs').appendChild(b);
 });
-let boardAll = false, boardKind = 'rec';
+let boardAll = false, boardKind = 'day', boardScope = 'fam';
 document.querySelectorAll('#boardView .dur').forEach(b => b.addEventListener('click', () => { boardAll = b.dataset.all === '1'; renderBoard(); }));
-function openBoard() { boardLevel = level; boardDur = dur; boardAll = false; renderBoard(); show('board'); }
+function openBoard() { boardLevel = level; boardDur = dur; boardAll = false; boardKind = homeKind; boardScope = 'fam'; renderBoard(); show('board'); }
+document.querySelectorAll('#boardScope .dur').forEach(b => b.addEventListener('click', () => { boardScope = b.dataset.scope; renderBoard(); }));
+// The family of the current player when « 👪 Ma famille » is chosen in the board, else null (everyone).
+function boardFam() { const f = famScope(); return f && boardScope === 'fam' ? f : null; }
 function renderBoard() {
   document.querySelectorAll('#boardKind .dur').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.kind === boardKind)));
+  const myFam = famScope(); $('#boardScope').hidden = !myFam;
+  document.querySelectorAll('#boardScope .dur').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.scope === (myFam ? boardScope : 'all'))));
   const isDay = boardKind === 'day';
   ['#tabs', '#boardDurs', '#boardView', '#boardMode'].forEach(q => { $(q).hidden = isDay; });
   $('#boardList').parentElement.hidden = isDay; $('#dailyBox').hidden = !isDay;
@@ -2582,8 +2682,8 @@ function renderBoard() {
   const bm = $('#boardMode'), bd = durById(boardDur); bm.textContent = 'Niveau ' + m.tier + ' · ' + m.name + ' ';
   bm.style.color = m.color;
   const bp = el('span', 'mode-pill'); bp.textContent = bd.label; bp.style.setProperty('--c', bd.color); bp.style.verticalAlign = 'middle'; bm.appendChild(bp);
-  const all = levelScores(boardLevel, boardDur), list = boardAll ? all : bestPerPlayer(all);
-  renderRows($('#boardList'), list, { limit: boardAll ? 50 : 20, del: true, emptyText: 'Personne n’a encore fini ce niveau. À toi de galoper !' });
+  const bf = boardFam(), all = levelScores(boardLevel, boardDur, scopeScores(bf)), list = boardAll ? all : bestPerPlayer(all);
+  renderRows($('#boardList'), list, { limit: boardAll ? 50 : 20, del: true, emptyText: bf ? 'Personne de ta famille n’a encore fini ce niveau. À toi de galoper !' : 'Personne n’a encore fini ce niveau. À toi de galoper !' });
   const cb = $('#clearBtn'); cb.hidden = !list.length || sharedOn(); disarmClear();
   renderShare();
 }
@@ -3380,12 +3480,13 @@ const DAY_REWARDS = [
   { m: 0, classic: 0, promo: 1 }
 ];
 const dayPoints = s => Math.max(0, Math.round(s.points || 0)) * (modeById(s.level) ? modeById(s.level).tier : 1);
-function dailyBoard(day, fair = false) {
+// keys: only these players (a family), or everyone.
+function dailyBoard(day, fair = false, keys = null) {
   const by = new Map();
   allScores().forEach(s => {
     if (!s.date || dayKey(s.date) !== day) return;
     if (fair && isHiddenScore(s)) return;
-    const k = pkey(s); if (!k) return;
+    const k = pkey(s); if (!k || (keys && !keys.has(k))) return;
     let e = by.get(k); if (!e) by.set(k, e = { key: k, s, pts: 0, games: 0, last: 0 });
     e.pts += dayPoints(s); e.games++;
     if (s.date > e.last) { e.last = s.date; e.s = s; }
@@ -3413,12 +3514,16 @@ function claimDailyRewards() {
     days.forEach(d => {
       if (w.daily[d] || d < born) return;
       w.daily[d] = 1;
+      const me = String(p.name || '').trim().toLowerCase();
       const podium = dailyBoard(d, true).slice(0, 3);
-      const i = podium.findIndex(e => e.key === String(p.name || '').trim().toLowerCase());
-      if (i < 0) return;
-      const r = DAY_REWARDS[i];
-      w.m += r.m; w.packs = w.packs || {}; w.packs.classic = (w.packs.classic || 0) + r.classic; w.gift = (w.gift || 0) + r.promo;
-      won.push({ p, rank: i + 1, day: d, pts: podium[i].pts, r });
+      const i = podium.findIndex(e => e.key === me);
+      if (i >= 0) { const r = DAY_REWARDS[i]; grantReward(w, r); won.push({ p, rank: i + 1, day: d, pts: podium[i].pts, r }); }
+      // v37: the family podium (at least 2 players of the family that day; fewer winners in small families)
+      const fg = famIdOf(p);
+      if (fg) {
+        const fl = dailyBoard(d, true, famKeys(fg)), j = fl.findIndex(e => e.key === me);
+        if (fl.length >= 2 && j >= 0 && j < famPrized(famSize(fg))) { const r = FAM_REWARDS[j]; grantReward(w, r); won.push({ p, rank: j + 1, day: d, pts: fl[j].pts, r, fam: famGroups[fg].name }); }
+      }
     });
   });
   // Old days are not kept forever.
@@ -3428,8 +3533,10 @@ function claimDailyRewards() {
   if (mine.length) showDailyRewards(mine);
   if (!$('#menu').hidden) renderMenu();
 }
+function grantReward(w, r) { w.m += r.m || 0; w.g += r.g || 0; w.packs = w.packs || {}; w.packs.classic = (w.packs.classic || 0) + (r.classic || 0); w.gift = (w.gift || 0) + (r.promo || 0); }
 function rewardChips(r) {
   const box = el('div', 'gains');
+  if (r.g) box.appendChild(curNode('g', '+' + r.g));
   if (r.m) box.appendChild(curNode('m', '+' + r.m));
   if (r.classic) { const s = el('span', 'cur'); s.textContent = '🎴 Sachet de cartes'; box.appendChild(s); }
   if (r.promo) { const s = el('span', 'cur'); s.textContent = '🎁 Sachet promo'; box.appendChild(s); }
@@ -3442,9 +3549,13 @@ function showDailyRewards(list) {
   const medal = el('div', 'daily-medal'); medal.textContent = ['🥇', '🥈', '🥉'][list[0].rank - 1];
   const h = el('h3'); h.textContent = 'Classement du jour';
   box.append(medal, h);
+  const days = new Set(list.map(x => x.day)).size, anyFam = list.some(x => x.fam);
   list.forEach(x => {
     const p = el('p'); const d = new Date(x.day + 'T12:00:00');
-    p.textContent = (list.length > 1 ? d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ' : ' : 'Hier, tu as fini à la ') + ordinalF(x.rank) + ' avec ' + x.pts + ' points' + NB + '!';
+    const when = days > 1 ? d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) : 'Hier';
+    const who = x.fam ? 'famille « ' + x.fam + ' »' : 'tous les joueurs';
+    p.textContent = (days > 1 || anyFam) ? when + ' · ' + who + ' : ' + ordinalF(x.rank) + ' avec ' + x.pts + ' points' + NB + '!'
+      : 'Hier, tu as fini à la ' + ordinalF(x.rank) + ' avec ' + x.pts + ' points' + NB + '!';
     box.append(p, rewardChips(x.r));
   });
   const acts = el('div', 'op-actions');
@@ -3457,10 +3568,15 @@ function showDailyRewards(list) {
 }
 
 /* board view */
-function dailyRows(ol, list, hiKey) {
+const DAY_MARKS = ['💎 + 🎴', '💎 + 🎁', '🎁'];
+function dailyRows(ol, list, hiKey, { limit = 20, marks = DAY_MARKS, emptyText = 'Personne n’a encore joué aujourd’hui. Lance la première partie' + NB + '!' } = {}) {
   ol.textContent = '';
-  if (!list.length) { const li = el('li', 'empty'); li.textContent = 'Personne n’a encore joué aujourd’hui. Lance la première partie' + NB + '!'; ol.appendChild(li); return; }
-  list.slice(0, 20).forEach((e, i) => {
+  if (!list.length) { const li = el('li', 'empty'); li.textContent = emptyText; ol.appendChild(li); return; }
+  let shown = list.slice(0, limit);
+  const mine = hiKey ? list.findIndex(e => e.key === hiKey) : -1;
+  if (mine >= limit) shown = shown.slice(0, limit - 1).concat([list[mine]]);
+  shown.forEach(e => {
+    const i = list.indexOf(e);
     const s = e.s, p = localProfile(s), name = p ? p.name : s.name;
     const li = el('li', 'row' + (e.key === hiKey ? ' me' : ''));
     const rk = el('span', 'rank' + (i < 3 ? ' r' + (i + 1) : '')); rk.textContent = i + 1;
@@ -3469,39 +3585,45 @@ function dailyRows(ol, list, hiKey) {
     const aw = el('span', 'avwrap' + (i < 3 ? ' sun s' + (i + 1) : '')); aw.appendChild(avatarNode(av, name));
     if (i === 0) { const c = el('span', 'crown'); c.textContent = '👑'; aw.appendChild(c); }
     const nm = el('span', 'nm'); nm.textContent = name;
-    const sm = el('small'); sm.textContent = e.games + ' partie' + (e.games > 1 ? 's' : '') + (i < 3 ? ' · ' + ['💎 + 🎴', '💎 + 🎁', '🎁'][i] : ''); nm.appendChild(sm);
+    const sm = el('small'); sm.textContent = e.games + ' partie' + (e.games > 1 ? 's' : '') + (marks[i] ? ' · ' + marks[i] : ''); nm.appendChild(sm);
     const tm = el('span', 'tm'); tm.textContent = e.pts + NB + 'pts';
     li.append(rk, aw, nm, tm); li.classList.add('tap'); li.addEventListener('click', () => openPlayer(e.key, s)); ol.appendChild(li);
   });
 }
 function renderDaily() {
   const box = $('#dailyBox'); box.textContent = '';
-  const today = dayKey(nowMs()), list = dailyBoard(today);
+  const fam = boardFam(), keys = fam && fam.keys, size = fam ? famSize(fam.g) : 0;
+  const today = dayKey(nowMs()), list = dailyBoard(today, false, keys);
+  const marks = fam ? famPrizeMarks(size) : DAY_MARKS;
   const p = current(), myKey = p ? String(p.name).trim().toLowerCase() : '';
   const info = el('div', 'daily-info');
   const ms = msToMidnight(), hh = Math.floor(ms / 3600e3), mm = Math.floor(ms % 3600e3 / 60e3);
   const t = el('div', 'daily-time'); t.textContent = '☀️ Fin du jour dans ' + (hh ? hh + ' h ' : '') + String(mm).padStart(hh ? 2 : 1, '0') + ' min';
-  const rule = el('p'); rule.textContent = 'Toutes les parties du jour comptent : tes points × le numéro du niveau. Le podium gagne des cadeaux, à récupérer demain.';
+  const rule = el('p'); rule.textContent = 'Toutes les parties du jour comptent : tes points × le numéro du niveau. ' + (fam
+    ? 'Le podium de la famille « ' + fam.name + ' » gagne des cadeaux, à récupérer demain, s’il y a au moins 2 joueurs de la famille ce jour-là. Le podium de tous les joueurs continue en plus.'
+    : 'Le podium gagne des cadeaux, à récupérer demain.');
   const rw = el('div', 'daily-rw');
-  [['🥇', '💎 + 🎴 sachet de cartes'], ['🥈', '💎 + 🎁 sachet promo'], ['🥉', '🎁 sachet promo']].forEach(([m, txt]) => { const d = el('span'); d.textContent = m + ' ' + txt; rw.appendChild(d); });
+  (fam ? [['🥇', '🎁 sachet promo'], ['🥈', '🪙 30 jetons dorés'], ['🥉', '🪙 15 jetons dorés']].slice(0, famPrized(size))
+    : [['🥇', '💎 + 🎴 sachet de cartes'], ['🥈', '💎 + 🎁 sachet promo'], ['🥉', '🎁 sachet promo']]).forEach(([m, txt]) => { const d = el('span'); d.textContent = m + ' ' + txt; rw.appendChild(d); });
+  if (fam && famPrized(size) < 3) { const d = el('span'); d.textContent = famPrized(size) === 1 ? '🥈 dès 3 joueurs · 🥉 dès 6' : '🥉 dès 6 joueurs'; d.style.opacity = '.7'; rw.appendChild(d); }
   info.append(t, rule, rw);
   const panel = el('div', 'panel board-list'); const ol = el('ol', 'rows'); panel.appendChild(ol);
-  dailyRows(ol, list, myKey);
+  dailyRows(ol, list, myKey, { marks, emptyText: fam ? 'Personne de ta famille n’a encore joué aujourd’hui. Lance la première partie' + NB + '!' : undefined });
   box.append(info, panel);
   const me = list.findIndex(e => e.key === myKey);
   if (me >= 20) { const pl = el('p', 'board-mode'); pl.style.fontSize = '16px'; pl.textContent = 'Toi : ' + ordinalF(me + 1) + ' avec ' + list[me].pts + ' points'; box.appendChild(pl); }
-  const yk = dayKey(nowMs() - 86400e3), y = dailyBoard(yk, true).slice(0, 3);
+  const yk = dayKey(nowMs() - 86400e3), y = dailyBoard(yk, true, keys).slice(0, 3);
   if (y.length) {
-    const yh = el('p', 'daily-yh'); yh.textContent = 'Podium d’hier';
-    const yp = el('div', 'panel board-list'); const yol = el('ol', 'rows'); yp.appendChild(yol); dailyRows(yol, y, myKey);
+    const yh = el('p', 'daily-yh'); yh.textContent = fam ? 'Podium d’hier de la famille' : 'Podium d’hier';
+    const yp = el('div', 'panel board-list'); const yol = el('ol', 'rows'); yp.appendChild(yol); dailyRows(yol, y, myKey, { marks: fam && y.length < 2 ? [] : marks });
     box.append(yh, yp);
   }
 }
 function dailyGainLine(rec) {
-  const today = dayKey(nowMs()), list = dailyBoard(today), k = pkey(rec);
+  const fam = famScope(), today = dayKey(nowMs()), list = dailyBoard(today, false, fam && fam.keys), k = pkey(rec);
   const i = list.findIndex(e => e.key === k);
   if (i < 0) return null;
-  const s = el('span', 'gift'); s.textContent = '☀️ +' + dayPoints(rec) + ' points du jour · ' + ordinalF(i + 1) + ' aujourd’hui';
+  const s = el('span', 'gift'); s.textContent = '☀️ +' + dayPoints(rec) + ' points du jour · ' + ordinalF(i + 1) + (fam ? ' de ta famille' : ' aujourd’hui');
   return s;
 }
 
@@ -4233,6 +4355,413 @@ function drawProgress(chart, o) {
   if (pg.tip >= 0 && o.pts.includes(pg.tip)) show(o.pts.indexOf(pg.tip));
 }
 addEventListener('resize', () => { if (!$('#cardSheet').hidden && $('#cardSheetIn').querySelector('.pg-chart svg')) renderProgress(); });
+/* ---------- v37 — Familles : des classements entre proches ----------
+   groups/<id>    nom, façon d'entrer (free libre · code secret · ask sur demande), créateur, responsables (admins).
+   members/<uid>_<profil>  un joueur sur un appareil : sa famille (g) et sa demande en cours (ask).
+   Un seul groupe à la fois. Une famille sans responsable : tous ses membres le sont.
+   Le code secret ne quitte jamais l'appareil : seule son empreinte (SHA-256) est envoyée, et personne ne peut la lire.
+   Ces règles sont vérifiées par le serveur (firestore.rules) ; l'appareil ne fait qu'appliquer les mêmes. */
+let famGroups = {}, famMembers = {}, famWatching = false, famFixing = false;
+let famState = fbReady() ? 'idle' : 'off';   // idle (loading) | ok | denied (rules not online yet) | off
+const famPrev = {};
+const FAM_MODES = {
+  ask: { ico: '✋', name: 'Sur demande', help: 'un membre de la famille accepte chaque nouveau joueur' },
+  code: { ico: '🔑', name: 'Code secret', help: 'il faut le code pour entrer' },
+  free: { ico: '🔓', name: 'Libre', help: 'tout le monde peut entrer et sortir' }
+};
+// Family podium of the day: smaller gifts than the podium of everyone, and fewer winners in small families.
+const FAM_REWARDS = [{ promo: 1 }, { g: 30 }, { g: 15 }];
+const famPrized = n => n < 3 ? 1 : n < 6 ? 2 : 3;
+const famKey = n => String(n || '').trim().toLowerCase();
+const myMid = p => fb && p ? fb.uid + '_' + p.id : '';
+const famMember = p => famMembers[myMid(p)] || null;
+const famGroupOk = g => !!(g && famGroups[g] && !famGroups[g].dead);
+function famIdOf(p = current()) { const m = p && famMember(p); return m && famGroupOk(m.g) ? m.g : ''; }
+function famList(g) { return Object.keys(famMembers).filter(id => famMembers[id].g === g).map(id => Object.assign({ id }, famMembers[id])); }
+function famKeys(g) { return new Set(famList(g).map(m => famKey(m.name))); }
+const famSize = g => famKeys(g).size;
+const famAdmins = g => (famGroups[g] && Array.isArray(famGroups[g].admins) ? famGroups[g].admins : []);
+// Same test as the server once departed responsables are cleaned up: listed, or nobody is listed any more.
+function famIsResp(g, mid) { const a = famAdmins(g).filter(x => famMembers[x] && famMembers[x].g === g); return a.includes(mid) || !a.length; }
+function famRequests(g) { return Object.keys(famMembers).filter(id => famMembers[id].ask === g && famMembers[id].g !== g).map(id => Object.assign({ id }, famMembers[id])); }
+// The scores of the current player's family (or every score when they have none).
+function famScope(p = current()) { const g = famIdOf(p); return g ? { g, name: famGroups[g].name, keys: famKeys(g) } : null; }
+const famAvatar = m => m && Number.isInteger(m.av) && m.av >= 0 && m.av < AVATARS.length ? { kind: 'emoji', i: m.av } : null;
+function famPrizeMarks(n) { return ['🎁', '🪙 30', '🪙 15'].slice(0, famPrized(n)); }
+function famPrizeText(n) {
+  const k = famPrized(n), parts = ['🥇 🎁 sachet promo', '🥈 30 jetons dorés', '🥉 15 jetons dorés'].slice(0, k);
+  return parts.join(' · ') + (k < 3 ? ' (' + (k === 1 ? '2e place dès 3 joueurs, 3e dès 6' : '3e place dès 6 joueurs') + ')' : '');
+}
+
+function watchFamilies() {
+  if (!fb || famWatching) return;
+  famWatching = true;
+  let gotG = false, gotM = false;
+  const fail = e => { famState = e && e.code === 'permission-denied' ? 'denied' : (famState === 'ok' ? 'ok' : 'off'); famChanged(); };
+  try {
+    fb.db.collection('groups').onSnapshot(snap => {
+      const o = {}; snap.forEach(d => { const v = d.data(); if (v && typeof v.name === 'string') o[d.id] = v; });
+      famGroups = o; gotG = true; if (gotM) famState = 'ok'; famChanged();
+    }, fail);
+    fb.db.collection('members').onSnapshot(snap => {
+      const o = {}; snap.forEach(d => { const v = d.data(); if (v && typeof v.name === 'string' && typeof v.g === 'string') o[d.id] = v; });
+      famMembers = o; gotM = true; if (gotG) famState = 'ok'; famChanged();
+    }, fail);
+  } catch (e) { famState = 'off'; }
+}
+function famChanged() {
+  famNotices();
+  famReconcile();
+  if (!$('#menu').hidden) renderMenu();
+  if (!$('#board').hidden) renderBoard();
+  if (!$('#cardSheet').hidden && $('#cardSheetIn .fam-sheet') && !famBusyUI) renderFamily();
+  try { maybeClaim(); } catch (e) {}
+}
+// Tells the player when a request is accepted or when they are no longer in their family.
+function famNotices() {
+  if (famState !== 'ok') return;
+  profiles.forEach(p => {
+    const m = famMember(p), g = famIdOf(p), was = famPrev[p.id];
+    famPrev[p.id] = { g, ask: m ? m.ask : '' };
+    if (!was || p.id !== currentId) return;
+    if (g && g !== was.g && was.ask === g) infoToast('🎉 Bienvenue dans la famille « ' + famGroups[g].name + ' » !', 6000);
+    else if (!g && was.g && !famLeaving) infoToast('👪 Tu ne fais plus partie de la famille.', 6000);
+  });
+}
+// Keeps this device's member documents tidy: dissolved family, stale request, new name or avatar, departed responsables.
+async function famReconcile() {
+  if (!fb || famState !== 'ok' || famFixing) return;
+  famFixing = true;
+  try {
+    for (const p of profiles) {
+      const mid = myMid(p), m = famMembers[mid];
+      if (!m) continue;
+      const patch = {};
+      if (m.g && !famGroupOk(m.g)) patch.g = '';
+      if (m.ask && (!famGroupOk(m.ask) || famGroups[m.ask].mode !== 'ask')) patch.ask = '';
+      if (m.name !== String(p.name || '?').slice(0, 16)) patch.name = String(p.name || '?').slice(0, 16);
+      if (m.av !== emoteOf(p)) patch.av = emoteOf(p);
+      if (Object.keys(patch).length) { patch.by = mid; try { await withTimeout(famDoc('members', mid).update(patch), 12000); } catch (e) {} }
+      const g = famIdOf(p);
+      if (g) for (const a of famAdmins(g)) {
+        if (famMembers[a] && famMembers[a].g === g) continue;
+        try { await withTimeout(famDoc('groups', g).update({ admins: FV().arrayRemove(a), act: mid, last: a }), 12000); } catch (e) {}
+        break;
+      }
+    }
+  } finally { famFixing = false; }
+}
+
+/* actions (each one is checked again by the server) */
+const FV = () => firebase.firestore.FieldValue;
+const famDoc = (c, id) => fb.db.collection(c).doc(id);
+const famW = pr => withTimeout(pr, 12000);
+let famLeaving = false;
+async function famHash(g, code) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(g + ':' + String(code).trim().toLowerCase()));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+async function famSetMe(p, patch) {
+  const mid = myMid(p), base = { name: String(p.name || '?').slice(0, 16), av: emoteOf(p), by: mid };
+  if (famMembers[mid]) return famW(famDoc('members', mid).update(Object.assign(base, patch)));
+  return famW(famDoc('members', mid).set(Object.assign({ uid: fb.uid, pid: p.id, g: '', ask: '', at: FV().serverTimestamp() }, base, patch)));
+}
+// Removes responsables who already left (needed before a member can act as responsable of a family without any).
+async function famClean(mid, g) {
+  for (const a of famAdmins(g)) {
+    if (a === mid || (famMembers[a] && famMembers[a].g === g)) continue;
+    try { await famW(famDoc('groups', g).update({ admins: FV().arrayRemove(a), act: mid, last: a })); } catch (e) {}
+  }
+}
+// Leaves family g: the last member dissolves it; a responsable gives up the role (with no responsable left, everyone is one).
+async function famQuit(mid, g) {
+  const others = famList(g).filter(m => m.id !== mid);
+  if (!others.length) return famDissolve(mid, g);
+  if (famAdmins(g).includes(mid)) await famW(famDoc('groups', g).update({ admins: FV().arrayRemove(mid), act: mid }));
+}
+async function famDissolve(mid, g) {
+  await famClean(mid, g);
+  await famW(famDoc('groups', g).update({ dead: mid, act: mid }));
+  await famW(famDoc('groups', g).delete());
+  try { await famW(famDoc('secrets', g).delete()); } catch (e) {}
+}
+async function famLeave(p) {
+  const g = famIdOf(p); if (!g) return;
+  famLeaving = true;
+  try { await famQuit(myMid(p), g); await famSetMe(p, { g: '' }); } finally { setTimeout(() => { famLeaving = false; }, 3000); }
+}
+async function famCreate(p, name, mode, code) {
+  const g = 'f' + uid(), mid = myMid(p);
+  await famW(famDoc('groups', g).set({ name, mode, by: mid, admins: [mid], at: FV().serverTimestamp() }));
+  await famSetMe(p, { g, ask: '', at: FV().serverTimestamp() });
+  if (mode === 'code') await famW(famDoc('secrets', g).set({ h: await famHash(g, code), act: mid }));
+  return g;
+}
+async function famJoin(p, g, code) {
+  const G = famGroups[g];
+  if (!famGroupOk(g)) throw { code: 'gone' };
+  if (G.mode === 'ask') return famSetMe(p, { ask: g });
+  if (G.mode === 'code') await famW(famDoc('joins', myMid(p)).set({ g, h: await famHash(g, code) }));
+  return famSetMe(p, { g, ask: '', at: FV().serverTimestamp() });
+}
+const famAnswer = (p, rid, yes) => famW(famDoc('members', rid).update(yes ? { g: famIdOf(p), ask: '', by: myMid(p), at: FV().serverTimestamp() } : { ask: '', by: myMid(p) }));
+const famKick = (p, rid) => famW(famDoc('members', rid).update({ g: '', by: myMid(p) }));
+async function famPromote(p, rid) { const g = famIdOf(p); await famClean(myMid(p), g); return famW(famDoc('groups', g).update({ admins: FV().arrayUnion(rid), act: myMid(p), last: rid })); }
+async function famSettings(p, name, mode, code) {
+  const g = famIdOf(p), mid = myMid(p);
+  await famClean(mid, g);
+  if (mode === 'code' && code) await famW(famDoc('secrets', g).set({ h: await famHash(g, code), act: mid }));
+  return famW(famDoc('groups', g).update({ name, mode, act: mid }));
+}
+// « Supprimer mes données » : leave the family (dissolving it when last), then erase the member document and the code tried.
+async function famForget(uid, pid) {
+  const mid = uid + '_' + pid, m = famMembers[mid];
+  try {
+    if (m && famGroupOk(m.g)) await famQuit(mid, m.g);
+    await famW(fb.db.collection('members').doc(mid).delete());
+    await famW(fb.db.collection('joins').doc(mid).delete());
+  } catch (e) { if (!e || e.code !== 'permission-denied') throw e; }   // rules without families: nothing to erase
+}
+function famReady(ms) { return new Promise(res => { const t0 = Date.now(); (function w() { if (famState !== 'idle' || Date.now() - t0 > ms) return res(); setTimeout(w, 200); })(); }); }
+const famErr = e => e && e.code === 'permission-denied' ? 'Le serveur a refusé. Réessaie dans un instant.' : e && e.code === 'gone' ? 'Cette famille n’existe plus.' : 'Pas de connexion : réessaie quand tu es en ligne.';
+
+/* ---------- the family sheet ---------- */
+let famUI = { open: '', form: false, mode: 'ask', filter: '', msg: '' }, famBusyUI = false;
+function openFamily() { famUI = { open: '', form: false, mode: 'ask', filter: '', msg: '' }; renderFamily(); $('#cardSheet').hidden = false; $('#cardSheetIn').scrollTop = 0; }
+async function famRun(btn, job, okMsg) {
+  if (famBusyUI) return;
+  famBusyUI = true; famUI.msg = '';
+  const label = btn ? btn.textContent : ''; if (btn) { btn.disabled = true; btn.textContent = '…'; }
+  let err = '';
+  try { await job(); if (okMsg) infoToast(okMsg, 5000); } catch (e) { err = typeof e === 'string' ? e : famErr(e); }
+  famBusyUI = false; famUI.msg = err;
+  if (btn && btn.isConnected) { btn.disabled = false; btn.textContent = label; }
+  if (!$('#cardSheet').hidden && $('#cardSheetIn .fam-sheet')) renderFamily();
+}
+function armed(btn, text, act) {
+  btn.addEventListener('click', () => {
+    if (!btn.classList.contains('armed')) { const t = btn.textContent; btn.classList.add('armed'); btn.textContent = text; setTimeout(() => { if (btn.isConnected && btn.classList.contains('armed')) { btn.classList.remove('armed'); btn.textContent = t; } }, 4000); return; }
+    btn.classList.remove('armed'); act();
+  });
+}
+function famModePicker(cur, onPick) {
+  const box = el('div', 'fam-modes'); box.setAttribute('role', 'radiogroup'); box.setAttribute('aria-label', 'Pour entrer dans la famille');
+  ['ask', 'code', 'free'].forEach(k => {
+    const M = FAM_MODES[k], b = el('button', 'fam-mode'); b.type = 'button'; b.setAttribute('role', 'radio'); b.setAttribute('aria-checked', String(k === cur));
+    const i = el('span', 'ico'); i.textContent = M.ico; i.setAttribute('aria-hidden', 'true');
+    const t = el('span', 't'); const n = el('b'); n.textContent = M.name; const s = el('small'); s.textContent = M.help; t.append(n, s);
+    b.append(i, t); b.addEventListener('click', () => onPick(k)); box.appendChild(b);
+  });
+  return box;
+}
+function famField(label, input, hint) {
+  const f = el('label', 'field fam-field'); const l = el('span', 'label'); l.textContent = label; f.append(l, input);
+  if (hint) { const h = el('span', 'field-hint'); h.textContent = hint; f.appendChild(h); }
+  return f;
+}
+function famInput(ph, max, val = '') { const i = el('input'); i.type = 'text'; i.maxLength = max; i.placeholder = ph; i.value = val; i.autocomplete = 'off'; i.spellcheck = false; return i; }
+function famPerson(m, extra) {
+  const r = el('li', 'fam-row');
+  r.appendChild(avatarNode(famAvatar(m), m.name));
+  const nm = el('span', 'nm'); nm.textContent = m.name; if (extra) { const s = el('small'); s.textContent = extra; nm.appendChild(s); }
+  r.appendChild(nm);
+  return r;
+}
+function renderFamily() {
+  const box = $('#cardSheetIn'), keep = box.querySelector('.fam-sheet') ? box.scrollTop : 0;
+  box.textContent = '';
+  const p = current(), g = famIdOf(p), mid = myMid(p), G = g && famGroups[g];
+  const top = el('div', 'sheet-top'); const h = el('h3'); h.textContent = g ? '👪 Ma famille' : '👪 Famille';
+  const x = el('button', 'close'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Fermer'); x.addEventListener('click', closeCard);
+  top.append(h, x);
+  const wrap = el('div', 'fam-sheet');
+  box.append(top, wrap);
+  const say = (t, cls = 'help') => { const q = el('p', cls); q.textContent = t; wrap.appendChild(q); return q; };
+  if (!p) { say('Crée d’abord ton profil de joueur.'); return; }
+  if (!sharedOn() || !fb || famState === 'off') { say('Les familles ont besoin d’Internet : reviens quand tu es connecté.', 'fam-note'); return; }
+  if (famState === 'denied') { say('Les familles ne sont pas encore ouvertes sur ce jeu. Reviens bientôt !', 'fam-note'); return; }
+  if (famState !== 'ok') { say('Chargement des familles…', 'fam-note'); return; }
+  if (famUI.msg) say('⚠️ ' + famUI.msg, 'err fam-err');
+
+  if (g) {
+    const resp = famIsResp(g, mid), members = famList(g), reqs = famRequests(g);
+    const head = el('div', 'fam-head');
+    const nm = el('b'); nm.textContent = G.name;
+    const sm = el('small'); sm.textContent = FAM_MODES[G.mode].ico + ' ' + FAM_MODES[G.mode].name + ' · ' + famSize(g) + ' joueur' + (famSize(g) > 1 ? 's' : '');
+    head.append(nm, sm); wrap.appendChild(head);
+    if (reqs.length) {
+      const h4 = el('h4'); h4.textContent = '✋ Demandes (' + reqs.length + ')'; wrap.appendChild(h4);
+      const ul = el('ul', 'fam-list');
+      reqs.forEach(r => {
+        const li = famPerson(r, 'veut entrer dans la famille');
+        const yes = el('button', 'fam-btn ok'); yes.type = 'button'; yes.textContent = 'Accepter';
+        yes.addEventListener('click', () => famRun(yes, () => famAnswer(p, r.id, true), r.name + ' fait maintenant partie de la famille.'));
+        const no = el('button', 'fam-btn'); no.type = 'button'; no.textContent = 'Refuser';
+        no.addEventListener('click', () => famRun(no, () => famAnswer(p, r.id, false)));
+        li.append(yes, no); ul.appendChild(li);
+      });
+      wrap.appendChild(ul);
+    }
+    const h4 = el('h4'); h4.textContent = 'Membres'; wrap.appendChild(h4);
+    const ul = el('ul', 'fam-list');
+    members.sort((a, b) => (famIsResp(g, b.id) - famIsResp(g, a.id)) || a.name.localeCompare(b.name, 'fr')).forEach(m => {
+      const isR = famIsResp(g, m.id);
+      const li = famPerson(m, (m.id === mid ? 'toi' : '') + (isR ? (m.id === mid ? ' · ' : '') + '⭐ responsable' : ''));
+      if (m.id === mid) li.classList.add('me');
+      if (resp && m.id !== mid && !isR) {
+        const up = el('button', 'fam-btn'); up.type = 'button'; up.textContent = '⭐ Responsable'; up.setAttribute('aria-label', 'Nommer ' + m.name + ' responsable');
+        up.addEventListener('click', () => famRun(up, () => famPromote(p, m.id), m.name + ' est maintenant responsable.'));
+        const out = el('button', 'fam-btn no'); out.type = 'button'; out.textContent = 'Retirer'; out.setAttribute('aria-label', 'Retirer ' + m.name + ' de la famille');
+        armed(out, 'Sûr ?', () => famRun(out, () => famKick(p, m.id), m.name + ' ne fait plus partie de la famille.'));
+        li.append(up, out);
+      }
+      ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+    const prize = el('div', 'fam-prize');
+    const pt = el('b'); pt.textContent = '☀️ Podium de la famille, chaque jour';
+    const pr = el('span'); pr.textContent = famPrizeText(famSize(g));
+    const pn = el('small'); pn.textContent = 'Il faut au moins 2 joueurs de la famille qui ont joué ce jour-là. Le podium de tous les joueurs continue en plus.';
+    prize.append(pt, pr, pn); wrap.appendChild(prize);
+    if (resp) {
+      const h5 = el('h4'); h5.textContent = '⚙️ Réglages'; wrap.appendChild(h5);
+      if (!famUI.setMode) famUI.setMode = G.mode;
+      const name = famInput('Nom de la famille', 24, famUI.setName != null ? famUI.setName : G.name);
+      name.addEventListener('input', () => { famUI.setName = name.value; });
+      wrap.appendChild(famField('Nom de la famille', name));
+      const ml = el('span', 'label'); ml.textContent = 'Pour entrer'; wrap.appendChild(ml);
+      wrap.appendChild(famModePicker(famUI.setMode, k => { famUI.setMode = k; famUI.setName = name.value; renderFamily(); }));
+      let code = null;
+      if (famUI.setMode === 'code') {
+        code = famInput(G.mode === 'code' ? 'Laisse vide pour garder le code' : 'Au moins 4 lettres ou chiffres', 20);
+        wrap.appendChild(famField('Code secret', code, 'Donne-le seulement à ta famille. Il n’est jamais montré, même aux responsables : note-le.'));
+      }
+      const save = el('button', 'dur fam-save'); save.type = 'button'; save.textContent = 'Enregistrer';
+      save.addEventListener('click', () => {
+        const n = name.value.trim().replace(/\s+/g, ' '), c = code ? code.value.trim() : '';
+        if (n.length < 2) { famUI.msg = 'Le nom doit avoir au moins 2 lettres.'; renderFamily(); return; }
+        if (famUI.setMode === 'code' && G.mode !== 'code' && c.length < 4) { famUI.msg = 'Choisis un code secret d’au moins 4 caractères.'; renderFamily(); return; }
+        if (c && c.length < 4) { famUI.msg = 'Le code secret doit avoir au moins 4 caractères.'; renderFamily(); return; }
+        famRun(save, async () => { await famSettings(p, n, famUI.setMode, c); famUI.setName = null; famUI.setMode = null; }, 'Réglages enregistrés.');
+      });
+      wrap.appendChild(save);
+    }
+    const acts = el('div', 'fam-acts');
+    const others = members.filter(m => m.id !== mid), lastResp = resp && famAdmins(g).filter(a => a !== mid && famMembers[a] && famMembers[a].g === g).length === 0 && famAdmins(g).includes(mid);
+    if (!others.length) say('Tu es seul dans la famille : si tu pars, elle disparaît.', 'help');
+    else if (lastResp) say('Tu es le seul responsable : si tu pars, tous les autres membres deviendront responsables.', 'help');
+    const leave = el('button', 'danger'); leave.type = 'button'; leave.textContent = 'Quitter la famille';
+    armed(leave, 'Touche encore pour quitter', () => famRun(leave, () => famLeave(p), 'Tu as quitté la famille.'));
+    acts.appendChild(leave);
+    if (resp && others.length) {
+      const del = el('button', 'danger'); del.type = 'button'; del.textContent = 'Dissoudre la famille';
+      armed(del, 'Touche encore : tout le monde sort', () => famRun(del, async () => { famLeaving = true; await famDissolve(mid, g); await famSetMe(p, { g: '' }); }, 'La famille est dissoute.'));
+      acts.appendChild(del);
+    }
+    wrap.appendChild(acts);
+  } else {
+    const m = famMember(p), asking = m && famGroupOk(m.ask) ? m.ask : '';
+    say('Dans une famille, les classements montrent d’abord ta famille, et elle a son propre podium chaque jour. Les classements de tous les joueurs restent visibles.', 'fam-intro');
+    if (asking) {
+      const b = el('div', 'fam-wait');
+      const t = el('p'); t.textContent = '⏳ Ta demande pour « ' + famGroups[asking].name + ' » est envoyée. Un membre de la famille doit l’accepter.';
+      const c = el('button', 'textbtn'); c.type = 'button'; c.textContent = 'Annuler la demande';
+      c.addEventListener('click', () => famRun(c, () => famSetMe(p, { ask: '' })));
+      b.append(t, c); wrap.appendChild(b);
+    }
+    if (!famUI.form) {
+      const nb = el('button', 'add fam-new'); nb.type = 'button'; nb.textContent = '✨ Créer une famille';
+      nb.addEventListener('click', () => { famUI.form = true; famUI.msg = ''; renderFamily(); setTimeout(() => { const i = $('#cardSheetIn .fam-form input'); if (i) i.focus(); }, 50); });
+      wrap.appendChild(nb);
+    } else {
+      const f = el('div', 'fam-form');
+      const h4 = el('h4'); h4.textContent = '✨ Nouvelle famille'; f.appendChild(h4);
+      const name = famInput('Les Licornes de Mamie', 24, famUI.newName || '');
+      name.addEventListener('input', () => { famUI.newName = name.value; });
+      f.appendChild(famField('Nom de la famille', name, 'Visible par tous les joueurs. Évite votre vrai nom de famille : « Les Licornes de Mamie » plutôt que « Famille Dupont ».'));
+      const ml = el('span', 'label'); ml.textContent = 'Pour entrer'; f.appendChild(ml);
+      f.appendChild(famModePicker(famUI.mode, k => { famUI.mode = k; renderFamily(); }));
+      let code = null;
+      if (famUI.mode === 'code') { code = famInput('Au moins 4 lettres ou chiffres', 20); f.appendChild(famField('Code secret', code, 'Donne-le seulement à ta famille. Il n’est jamais montré ensuite : note-le.')); }
+      const row = el('div', 'fam-acts row');
+      const ok = el('button', 'dur fam-save'); ok.type = 'button'; ok.textContent = 'Créer la famille';
+      ok.addEventListener('click', () => {
+        const n = name.value.trim().replace(/\s+/g, ' '), c = code ? code.value.trim() : '';
+        if (n.length < 2) { famUI.msg = 'Le nom doit avoir au moins 2 lettres.'; renderFamily(); return; }
+        if (Object.values(famGroups).some(G2 => !G2.dead && famKey(G2.name) === famKey(n))) { famUI.msg = 'Une famille porte déjà ce nom : choisis-en un autre.'; renderFamily(); return; }
+        if (famUI.mode === 'code' && c.length < 4) { famUI.msg = 'Choisis un code secret d’au moins 4 caractères.'; renderFamily(); return; }
+        famRun(ok, async () => { if (asking) await famSetMe(p, { ask: '' }); await famCreate(p, n, famUI.mode, c); famUI.form = false; famUI.newName = ''; }, '👪 Famille « ' + n + ' » créée' + NB + '!');
+      });
+      const no = el('button', 'textbtn'); no.type = 'button'; no.textContent = 'Annuler';
+      no.addEventListener('click', () => { famUI.form = false; famUI.msg = ''; renderFamily(); });
+      row.append(ok, no); f.appendChild(row);
+      wrap.appendChild(f);
+    }
+    const all = Object.keys(famGroups).filter(id => famGroupOk(id) && (famSize(id) > 0 || fbAdmin))
+      .sort((a, b) => famSize(b) - famSize(a) || famGroups[a].name.localeCompare(famGroups[b].name, 'fr'));
+    const h4 = el('h4'); h4.textContent = 'Rejoindre une famille'; wrap.appendChild(h4);
+    if (all.length > 6) {
+      const s = famInput('🔍 Chercher un nom', 24, famUI.filter);
+      s.addEventListener('input', () => { famUI.filter = s.value; const pos = s.selectionStart; renderFamily(); const s2 = $('#cardSheetIn .fam-search input'); if (s2) { s2.focus(); s2.setSelectionRange(pos, pos); } });
+      const sw = el('div', 'fam-search'); sw.appendChild(s); wrap.appendChild(sw);
+    }
+    const q = famKey(famUI.filter);
+    const shown = all.filter(id => !q || famKey(famGroups[id].name).includes(q));
+    if (!shown.length) say(all.length ? 'Aucune famille ne porte ce nom.' : 'Aucune famille pour l’instant : crée la tienne !', 'help');
+    const ul = el('ul', 'fam-list groups');
+    shown.forEach(id => {
+      const G2 = famGroups[id], M = FAM_MODES[G2.mode] || FAM_MODES.ask, n = famSize(id);
+      const li = el('li', 'fam-row grp' + (famUI.open === id ? ' open' : ''));
+      const tap = el('button', 'fam-grp'); tap.type = 'button'; tap.setAttribute('aria-expanded', String(famUI.open === id));
+      const ico = el('span', 'ico'); ico.textContent = M.ico; ico.setAttribute('aria-hidden', 'true');
+      const nm = el('span', 'nm'); nm.textContent = G2.name; const sm = el('small'); sm.textContent = n + ' joueur' + (n > 1 ? 's' : '') + ' · ' + M.name; nm.appendChild(sm);
+      tap.append(ico, nm); tap.addEventListener('click', () => { famUI.open = famUI.open === id ? '' : id; famUI.msg = ''; renderFamily(); });
+      li.appendChild(tap);
+      if (fbAdmin) {
+        const del = el('button', 'fam-btn no'); del.type = 'button'; del.textContent = '🗑'; del.setAttribute('aria-label', 'Supprimer la famille ' + G2.name + ' (administrateur)');
+        armed(del, 'Sûr ?', () => famRun(del, async () => { await withTimeout(fbAdmin.db.collection('groups').doc(id).delete(), 12000); try { await withTimeout(fbAdmin.db.collection('secrets').doc(id).delete(), 12000); } catch (e) {} }, 'Famille supprimée.'));
+        li.appendChild(del);
+      }
+      if (famUI.open === id) {
+        const j = el('div', 'fam-join');
+        const who = famList(id).map(m => m.name).sort((a, b) => a.localeCompare(b, 'fr'));
+        const wl = el('p'); wl.textContent = who.length ? 'Avec ' + who.slice(0, 8).join(', ') + (who.length > 8 ? '…' : '') : 'Personne pour l’instant.'; j.appendChild(wl);
+        let code = null;
+        if (G2.mode === 'code') { code = famInput('Code secret', 20); j.appendChild(code); }
+        const go = el('button', 'dur fam-save'); go.type = 'button';
+        go.textContent = G2.mode === 'ask' ? (asking === id ? 'Demande envoyée' : 'Demander à entrer') : 'Entrer';
+        go.disabled = asking === id;
+        go.addEventListener('click', () => {
+          const c = code ? code.value.trim() : '';
+          if (G2.mode === 'code' && !c) { famUI.msg = 'Tape le code secret de la famille.'; renderFamily(); return; }
+          famRun(go, async () => {
+            try { await famJoin(p, id, c); }
+            catch (e) { if (G2.mode === 'code' && e && e.code === 'permission-denied') throw 'Ce n’est pas le bon code.'; throw e; }
+            famUI.open = '';
+          }, G2.mode === 'ask' ? 'Demande envoyée à « ' + G2.name + ' ».' : '🎉 Bienvenue dans la famille « ' + G2.name + ' » !');
+        });
+        j.appendChild(go);
+        li.appendChild(j);
+      }
+      ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+  }
+  box.scrollTop = keep;
+}
+// Home button: « 👪 Famille » to create or join one, « 👪 Ma famille » once inside (dot = requests to answer).
+function renderFamBtn() {
+  const b = $('#famBtn'), p = current();
+  const on = !!p && fbReady() && sharedOn() && (famState === 'ok' || famState === 'idle' || (famState === 'denied' && fbAdmin));
+  b.hidden = !on; if (!on) return;
+  const g = famIdOf(p), m = famMember(p);
+  b.textContent = g ? '👪 Ma famille' : '👪 Famille';
+  const waiting = !g && m && famGroupOk(m.ask);
+  if (waiting) b.append(' ⏳');
+  const n = g ? famRequests(g).length : 0;
+  if (n) { const d = el('span', 'dot'); d.setAttribute('aria-hidden', 'true'); b.appendChild(d); }
+  b.setAttribute('aria-label', (g ? 'Ma famille : ' + famGroups[g].name : 'Créer ou rejoindre une famille') + (n ? ', ' + n + ' demande' + (n > 1 ? 's' : '') + ' à valider' : '') + (waiting ? ', demande en attente' : ''));
+}
 function viewCard(c, fx, back) {
   const box = $('#cardSheetIn'); box.textContent = '';
   const top = el('div', 'sheet-top'); const b = el('button', 'quit'); b.type = 'button'; b.textContent = '← Retour'; b.addEventListener('click', back);
@@ -4248,6 +4777,7 @@ let claimMark = '';
 function maybeClaim() {
   if (!$('#game').hidden || !$('#opener').hidden) return;
   if (fbReady() && remoteState !== 'ok' && remoteState !== 'failed') return;
+  if (fbReady() && remoteState === 'ok' && famState === 'idle') return;   // the family podium needs the families
   if (!timeSynced && location.protocol !== 'file:') return;
   const k = dayKey(nowMs()); if (k === claimMark) return;
   claimMark = k; claimDailyRewards();
@@ -4261,7 +4791,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 36;
+const APP_VERSION = 37;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;

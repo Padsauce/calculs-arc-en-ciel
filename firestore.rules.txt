@@ -5,8 +5,8 @@ service cloud.firestore {
     // Administrateurs : comptes Google autorisés à supprimer n'importe quel score ou photo.
     function isAdmin() {
       return request.auth != null
-        && request.auth.token.email_verified == true
-        && request.auth.token.email in ['amarck.pro@gmail.com'];
+        && request.auth.token.get('email_verified', false) == true
+        && request.auth.token.get('email', '') in ['amarck.pro@gmail.com'];
     }
 
     // Scores : tout le monde lit ; chaque appareil (connexion anonyme) ajoute les siens ;
@@ -78,6 +78,126 @@ service cloud.firestore {
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['done', 'got'])
         && request.resource.data.done == true);
       allow delete: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid);
+    }
+  
+    // ---------- Familles (v37) ----------
+    // Un membre = un joueur sur un appareil : document "<uid>_<profil>" dans members.
+    // Rôles : responsable (liste admins du groupe) ou membre. Groupe sans responsable = tous responsables.
+    // Le code secret n'est jamais lisible : le jeu envoie une empreinte (sha-256), comparée à celle rangée dans secrets.
+    function signedIn() { return request.auth != null; }
+    function mine(id) { return signedIn() && id is string && id.split('_')[0] == request.auth.uid; }
+    function groupPath(g) { return /databases/$(database)/documents/groups/$(g); }
+    function memberPath(m) { return /databases/$(database)/documents/members/$(m); }
+    function memberOf(m, g) { return g is string && g != '' && exists(memberPath(m)) && get(memberPath(m)).data.g == g; }
+    function groupAdmin(m, g) {
+      return memberOf(m, g) && exists(groupPath(g))
+        && (get(groupPath(g)).data.admins.hasAny([m]) || get(groupPath(g)).data.admins.size() == 0);
+    }
+    function askable(g) { return g is string && g != '' && exists(groupPath(g)) && get(groupPath(g)).data.mode == 'ask'; }
+    function canEnter(m, g) {
+      let G = get(groupPath(g)).data;
+      return G.get('dead', '') == '' && (G.mode == 'free' || G.by == m
+        || (G.mode == 'code'
+          && get(/databases/$(database)/documents/joins/$(m)).data.g == g
+          && get(/databases/$(database)/documents/joins/$(m)).data.h == get(/databases/$(database)/documents/secrets/$(g)).data.h));
+    }
+    function groupName(n) { return n is string && n.size() >= 2 && n.size() <= 24; }
+
+    match /groups/{gid} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['name', 'mode', 'by', 'admins', 'at'])
+        && mine(request.resource.data.by)
+        && request.resource.data.admins == [request.resource.data.by]
+        && request.resource.data.mode in ['free', 'code', 'ask']
+        && groupName(request.resource.data.name)
+        && request.resource.data.at == request.time;
+      allow update: if isAdmin() || (mine(request.resource.data.get('act', '')) && groupUpdate(gid));
+      allow delete: if isAdmin() || mine(resource.data.get('dead', ''));
+    }
+    function groupUpdate(g) {
+      let d = request.resource.data;
+      let o = resource.data;
+      let k = d.diff(o).affectedKeys();
+      let a = d.act;
+      return d.keys().hasOnly(['name', 'mode', 'by', 'admins', 'at', 'act', 'last', 'dead'])
+        && d.by == o.by && d.at == o.at
+        && (
+          // un responsable renomme la famille ou change la façon d'entrer
+          (k.hasOnly(['name', 'mode', 'act']) && groupAdmin(a, g) && d.mode in ['free', 'code', 'ask'] && groupName(d.name))
+          // un responsable nomme un autre membre responsable
+          || (k.hasOnly(['admins', 'act', 'last']) && groupAdmin(a, g) && memberOf(d.last, g) && !o.admins.hasAny([d.last])
+            && d.admins.size() == o.admins.size() + 1 && d.admins.size() <= 50
+            && d.admins.toSet() == o.admins.toSet().union([d.last].toSet()))
+          // un responsable rend son rôle (par exemple en partant)
+          || (k.hasOnly(['admins', 'act']) && o.admins.hasAny([a])
+            && d.admins.size() == o.admins.size() - 1
+            && d.admins.toSet() == o.admins.toSet().difference([a].toSet()))
+          // un membre retire un responsable qui a déjà quitté la famille
+          || (k.hasOnly(['admins', 'act', 'last']) && memberOf(a, g) && o.admins.hasAny([d.last]) && !memberOf(d.last, g)
+            && d.admins.size() == o.admins.size() - 1
+            && d.admins.toSet() == o.admins.toSet().difference([d.last].toSet()))
+          // un responsable dissout la famille (le document est supprimé juste après)
+          || (k.hasOnly(['dead', 'act']) && d.dead == a && groupAdmin(a, g))
+        );
+    }
+
+    // Empreinte du code secret d'une famille : jamais lisible par les joueurs.
+    match /secrets/{gid} {
+      allow read: if false;
+      allow create, update: if mine(request.resource.data.get('act', '')) && groupAdmin(request.resource.data.act, gid)
+        && request.resource.data.keys().hasOnly(['h', 'act'])
+        && request.resource.data.h is string && request.resource.data.h.size() == 64;
+      allow delete: if isAdmin() || (signedIn() && !exists(groupPath(gid)));
+    }
+
+    // Code tapé par un joueur pour entrer (son empreinte), illisible lui aussi.
+    match /joins/{mid} {
+      allow read: if false;
+      allow create, update: if mine(mid)
+        && request.resource.data.keys().hasOnly(['g', 'h'])
+        && request.resource.data.g is string && request.resource.data.h is string && request.resource.data.h.size() == 64;
+      allow delete: if mine(mid) || isAdmin();
+    }
+
+    function memberShape(d) {
+      return d.keys().hasOnly(['uid', 'pid', 'name', 'av', 'g', 'ask', 'at', 'by'])
+        && d.uid is string && d.pid is string && d.name is string && d.name.size() > 0 && d.name.size() <= 16
+        && d.av is int && d.g is string && d.ask is string && d.by is string;
+    }
+    function ownUpdate(mid) {
+      let d = request.resource.data;
+      let o = resource.data;
+      return mine(mid) && d.by == mid
+        && (d.g == o.g || d.g == '' || canEnter(mid, d.g))
+        && (d.ask == o.ask || d.ask == '' || askable(d.ask))
+        && (d.at == o.at || d.at == request.time);
+    }
+    function otherUpdate(mid) {
+      let d = request.resource.data;
+      let o = resource.data;
+      let k = d.diff(o).affectedKeys();
+      return mine(d.by) && d.by != mid && (
+        // un membre accepte une demande (famille « sur demande »)
+        (k.hasOnly(['g', 'ask', 'by', 'at']) && askable(o.ask) && memberOf(d.by, o.ask) && d.g == o.ask && d.ask == '' && d.at == request.time)
+        // un membre refuse une demande
+        || (k.hasOnly(['ask', 'by']) && o.ask != '' && memberOf(d.by, o.ask) && d.ask == '')
+        // un responsable retire un membre qui n'est pas responsable
+        || (k.hasOnly(['g', 'by']) && groupAdmin(d.by, o.g) && !get(groupPath(o.g)).data.admins.hasAny([mid]) && d.g == '')
+      );
+    }
+    match /members/{mid} {
+      allow read: if true;
+      allow create: if mine(mid) && memberShape(request.resource.data)
+        && request.resource.data.uid == request.auth.uid
+        && mid == request.auth.uid + '_' + request.resource.data.pid
+        && request.resource.data.by == mid && request.resource.data.at == request.time
+        && (request.resource.data.g == '' || canEnter(mid, request.resource.data.g))
+        && (request.resource.data.ask == '' || askable(request.resource.data.ask));
+      allow update: if memberShape(request.resource.data)
+        && request.resource.data.uid == resource.data.uid && request.resource.data.pid == resource.data.pid
+        && (ownUpdate(mid) || otherUpdate(mid));
+      allow delete: if mine(mid) || isAdmin();
     }
   }
 }
