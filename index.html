@@ -940,6 +940,17 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .ch-row .nm{flex:1;min-width:0;font-weight:700;font-size:15px;line-height:1.2;overflow:hidden;text-overflow:ellipsis}
 .ch-row .nm small{display:block;color:var(--mist);font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ch-row .ch-icons{font-size:14px;gap:3px}
+.ch-grid{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0 4px;font-size:14px;font-variant-numeric:tabular-nums}
+.ch-grid thead th:first-child{width:20%;text-align:left;padding-left:8px}
+.ch-grid caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.ch-grid th{color:var(--mist);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:800;padding:0 4px 2px;text-align:center}
+.ch-grid tbody th{text-align:left;font-size:12.5px;letter-spacing:0;text-transform:none;padding:6px 8px;border-radius:12px 0 0 12px;background:rgba(255,255,255,.05)}
+.ch-grid td{text-align:center;padding:6px 4px;background:rgba(255,255,255,.05)}
+.ch-grid td:last-child{border-radius:0 12px 12px 0}
+.ch-grid tr.sel th,.ch-grid tr.sel td{background:rgba(255,216,107,.14)}
+.ch-grid tr.sel th{color:var(--gold)}
+.ch-grid .rw{display:inline-flex;align-items:center;gap:4px;font-weight:800;color:var(--ink);opacity:.5}
+.ch-grid .rw.got{opacity:1;color:var(--mint)}
 /* v36 — Home: « Changer » and « 📈 Stats » stacked on the right of the player card (two buttons, never nested), so the name keeps its room on phones */
 .player-box{display:flex;align-items:center;gap:8px;width:100%;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid var(--line);padding-right:8px}
 .player-box .player{flex:1;min-width:0;background:none;border:0;border-radius:24px}
@@ -1280,7 +1291,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 39</p>
+      <p class="credits-ver" id="credVer">Version 40</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -4871,7 +4882,7 @@ function renderFamBtn() {
    Rewards, once per challenge: finished = 15 gold tokens, no mistake = 1 rainbow token, no mistake and a good score = 1 gem.
    It can be replayed at will; the challenges of the last 7 days stay playable to catch up. Results are kept 40 days. */
 const HOLE = {};
-const CH_COINS = 15, CH_KEEP = 40, CH_BACK = 7;
+const CH_KEEP = 40, CH_BACK = 7;
 K.chLevel = 'cae.chlv';
 const chL = () => { const v = store.get(K.chLevel, 0); return v >= 1 && v <= 5 ? v : modeById(level).tier; };   // 1 … 5
 const between = (a, b) => a + rnd(b - a + 1);
@@ -5007,7 +5018,25 @@ function chResText(d, r) {
 function chLog(w) { if (!w.chal || typeof w.chal !== 'object') w.chal = {}; return w.chal; }
 function chDays() { const out = [], now = nowMs(); for (let i = 0; out.length < CH_BACK && i < CH_BACK + 2; i++) { const k = dayKey(now - i * DAY_MS); if (!out.includes(k)) out.push(k); } return out; }
 const chPlayable = day => chDays().includes(day);
-const GOT = { g: 1, r: 2, m: 4 };
+// v40: three prizes per level (finished, no mistake, good score), mostly gold tokens;
+// the rare token goes to a good score at the hard levels (🌈 at levels 3 and 4, 💎 at level 5).
+const CH_REWARDS = [null,
+  [{ g: 5 }, { g: 8 }, { g: 12 }],
+  [{ g: 6 }, { g: 10 }, { g: 15 }],
+  [{ g: 8 }, { g: 12 }, { r: 1 }],
+  [{ g: 10 }, { g: 15 }, { r: 1 }],
+  [{ g: 12 }, { g: 20 }, { m: 1 }]];
+const BIT = [1, 2, 4];
+const rwKind = r => r.g ? 'g' : r.r ? 'r' : 'm';
+const rwAmount = r => r.g || r.r || r.m;
+const rwName = r => r.g ? r.g + ' jetons dorés' : r.r ? '1 jeton arc-en-ciel' : '1 gemme';
+// A day's record: { id, tries, lv: { level: { got: bits, best } } }. v39 kept one « got » for every level: moved to the level of its best.
+function chNorm(rec) {
+  if (rec && !rec.lv) { rec.lv = {}; if (rec.got || rec.best) rec.lv[(rec.best && rec.best.L) || 1] = { got: rec.got || 0, best: rec.best || null }; delete rec.got; delete rec.best; }
+  return rec;
+}
+const chLv = (rec, L) => (rec && chNorm(rec).lv[L]) || { got: 0, best: null };
+const chCount = rec => rec ? Object.values(chNorm(rec).lv).reduce((t, x) => t + (x.got & 1) + (x.got >> 1 & 1) + (x.got >> 2 & 1), 0) : 0;
 
 /* playing */
 let chLast = null;
@@ -5030,15 +5059,17 @@ function chFinish() {
   const c = G.ch, d = c.d, L = c.L, p = current(), w = wallet(p), log = chLog(w);
   const res = { ms: d.kind === 'eclair' ? d.sec * 1000 : Math.round(elapsedMs()), n: G.good, e: G.errors, L };
   const st = chTiers(d, L, res);
-  const rec = log[c.day] || (log[c.day] = { id: d.id, got: 0, tries: 0, best: null });
+  const rec = chNorm(log[c.day] || (log[c.day] = { id: d.id, tries: 0, lv: {} }));
+  const lr = rec.lv[L] || (rec.lv[L] = { got: 0, best: null });
   rec.tries++;
-  const gain = { g: 0, r: 0, m: 0 };
-  if (st.done && !(rec.got & GOT.g)) { rec.got |= GOT.g; gain.g = CH_COINS; }
-  if (st.perfect && !(rec.got & GOT.r)) { rec.got |= GOT.r; gain.r = 1; }
-  if (st.good && !(rec.got & GOT.m)) { rec.got |= GOT.m; gain.m = 1; }
-  const newBest = chBetter(d, res, rec.best);
-  if (newBest) rec.best = res;
-  w.g += gain.g; w.r += gain.r; w.m += gain.m;
+  const won = [], ok = [st.done, st.perfect, st.good];
+  ok.forEach((yes, i) => {
+    if (!yes || (lr.got & BIT[i])) return;
+    const r = CH_REWARDS[L][i]; lr.got |= BIT[i]; won[i] = r;
+    w.g += r.g || 0; w.r += r.r || 0; w.m += r.m || 0;
+  });
+  const newBest = chBetter(d, res, lr.best);
+  if (newBest) lr.best = res;
   const days = Object.keys(log).sort(); days.slice(0, Math.max(0, days.length - CH_KEEP)).forEach(k => { delete log[k]; });
   saveColl();
   // the win screen, worded for a challenge
@@ -5050,20 +5081,23 @@ function chFinish() {
   else bt.textContent = fmtTime(res.ms);
   const badge = $('#winBadge'); badge.hidden = !st.perfect;
   badge.textContent = st.good ? 'Bon score' + NB + '!' : 'Sans faute' + NB + '!';
-  $('#winRank').textContent = chTitle(d, L) + (newBest && rec.tries > 1 ? ' · nouveau meilleur résultat' : '');
+  $('#winRank').textContent = chTitle(d, L) + (newBest && rec.tries > 1 && lr.best === res ? ' · nouveau meilleur résultat' : '');
   $('#winGood').textContent = G.good; $('#winBad').textContent = G.errors;
-  // the three rewards of the challenge, lit when won (now or before)
+  // the three prizes of this level, lit when won (now or before)
   const gains = $('#winGains'); gains.textContent = ''; gains.hidden = false;
   const goals = chGoals(d, L);
-  [['g', '+' + CH_COINS, st.done], ['r', '+1', st.perfect], ['m', '+1', st.good]].forEach(([k, n, ok], i) => {
-    const had = (rec.got & GOT[k]) && !gain[k];
-    const s = curNode(k, gain[k] ? n : had ? '✓' : '—', ' ch-goal' + (gain[k] ? ' won' : had ? ' had' : ' miss'));
-    s.title = goals[i] + (gain[k] ? ' : gagné !' : had ? ' : déjà gagné pour ce défi' : ' : pas encore');
+  CH_REWARDS[L].forEach((r, i) => {
+    const had = (lr.got & BIT[i]) && !won[i];
+    const s = curNode(rwKind(r), won[i] ? '+' + rwAmount(r) : had ? '✓' : String(rwAmount(r)), ' ch-goal' + (won[i] ? ' won' : had ? ' had' : ' miss'));
+    s.title = goals[i] + (won[i] ? ' : gagné !' : had ? ' : déjà gagné à ce niveau' : ' : pas encore');
     s.style.animationDelay = (.6 + i * .18) + 's';
     gains.appendChild(s);
   });
   const note = el('span', 'gift ch-note');
-  note.textContent = gain.g || gain.r || gain.m ? 'Récompenses gagnées pour ce défi' + NB + '!' : !st.done ? goals[0] + ' pour gagner les jetons.' : (rec.got === 7 ? 'Toutes les récompenses de ce défi sont gagnées.' : 'Prochain objectif : ' + (!(rec.got & GOT.r) ? goals[1] : goals[2]).toLowerCase() + '.');
+  note.textContent = won.some(Boolean) ? 'Lots du niveau ' + L + ' gagnés' + NB + '!'
+    : !st.done ? goals[0] + ' pour gagner un lot.'
+    : lr.got === 7 ? 'Tous les lots du niveau ' + L + ' sont gagnés' + (L < 5 ? ' : essaie le niveau ' + (L + 1) + NB + '!' : NB + '!')
+    : 'Prochain lot : ' + (!(lr.got & 2) ? goals[1] : goals[2]).toLowerCase() + '.';
   note.style.animationDelay = '1.2s'; gains.appendChild(note);
   $('#winList').textContent = '';
   const perf = st.good ? 1 : st.perfect ? .7 : st.done ? .45 : .1;
@@ -5119,30 +5153,34 @@ function posedPress(k) {
 
 /* home button and sheet */
 function chLeft(got) { return 3 - ((got & 1) + (got >> 1 & 1) + (got >> 2 & 1)); }
-function chStatus(got) { const n = chLeft(got); return n === 3 ? '3 récompenses à gagner' : n ? 'Encore ' + n + ' à gagner' : 'Tout gagné ✓'; }
-function chIcons(got) { const ic = el('span', 'ch-icons'); ic.setAttribute('aria-hidden', 'true'); ['g', 'r', 'm'].forEach(k => { const c = coinNode(k); if (!(got & GOT[k])) c.classList.add('off'); ic.appendChild(c); }); return ic; }
-function todayGot(p = current()) { const r = p && chLog(wallet(p))[dayKey(nowMs())]; return r ? r.got : 0; }
+function chStatus(got, L) { const n = chLeft(got); return 'Niv. ' + L + ' · ' + (n === 3 ? '3 lots à gagner' : n ? 'encore ' + n + ' à gagner' : 'tout gagné ✓'); }
+function chIcons(got, L) {
+  const ic = el('span', 'ch-icons'); ic.setAttribute('aria-hidden', 'true');
+  CH_REWARDS[L].forEach((r, i) => { const c = coinNode(rwKind(r)); if (!(got & BIT[i])) c.classList.add('off'); ic.appendChild(c); });
+  return ic;
+}
+function todayGot(p = current(), L = chL()) { return p ? chLv(chLog(wallet(p))[dayKey(nowMs())], L).got : 0; }
 // Home card under « Ma collection »: today's challenge, its three rewards, and whether something is left to win.
 function renderChalBtn() {
   const b = $('#chalBtn'), p = current();
   b.hidden = !p; if (!p) return;
-  const d = chFor(dayKey(nowMs())), L = chL(), got = todayGot(p), left = chLeft(got);
+  const d = chFor(dayKey(nowMs())), L = chL(), got = todayGot(p, L), left = chLeft(got);
   b.textContent = ''; b.classList.toggle('hot', left > 0); b.classList.toggle('done', !left);
   const t = el('span', 'ct'); const s = el('small'); s.textContent = '🎯 Défi du jour'; const n = el('b'); n.textContent = d.ico + ' ' + (d.kind === 'posed' ? d.name : chTitle(d, L));
-  const st = el('span', 'st'); const tx = el('span'); tx.textContent = chStatus(got); st.append(chIcons(got), tx);
+  const st = el('span', 'st'); const tx = el('span'); tx.textContent = chStatus(got, L); st.append(chIcons(got, L), tx);
   t.append(s, n, st);
   const go = el('span', 'go'); go.textContent = left ? 'Jouer ›' : 'Rejouer'; go.setAttribute('aria-hidden', 'true');
   b.append(t, go);
-  b.setAttribute('aria-label', 'Défi du jour : ' + chTitle(d, L) + '. ' + chStatus(got).replace('✓', ''));
+  b.setAttribute('aria-label', 'Défi du jour : ' + chTitle(d, L) + '. ' + chStatus(got, L).replace('✓', ''));
 }
 // End of a free game: a reminder while today's challenge still has something to win.
 function renderWinChal() {
-  const b = $('#winChal'), p = current(), got = todayGot(p), left = chLeft(got);
+  const b = $('#winChal'), p = current(), L = chL(), got = todayGot(p, L), left = chLeft(got);
   b.hidden = !p || !left || !!G.ch; if (b.hidden) return;
   const d = chFor(dayKey(nowMs()));
   b.textContent = '';
   const t = el('span', 'ct'); const s = el('small'); s.textContent = '🎯 Défi du jour'; const n = el('b'); n.textContent = d.ico + ' ' + d.name;
-  const st = el('span', 'st'); const tx = el('span'); tx.textContent = chStatus(got); st.append(chIcons(got), tx);
+  const st = el('span', 'st'); const tx = el('span'); tx.textContent = chStatus(got, L); st.append(chIcons(got, L), tx);
   t.append(s, n, st);
   const go = el('span', 'go'); go.textContent = 'Jouer ›'; go.setAttribute('aria-hidden', 'true');
   b.append(t, go);
@@ -5161,7 +5199,7 @@ function openChallenges() {
   top.append(h, x);
   const wrap = el('div', 'ch-sheet');
   const w = wallet(p), log = chLog(w), L = chL(), m = MODES[L - 1], days = chDays(), today = days[0];
-  const d = chFor(today), rec = log[today];
+  const d = chFor(today), rec = log[today], lr = chLv(rec, L);
   const card = el('div', 'ch-card');
   const ico = el('div', 'ch-ico'); ico.textContent = d.ico; ico.setAttribute('aria-hidden', 'true');
   const nm = el('h4'); nm.textContent = chTitle(d, L);
@@ -5177,19 +5215,37 @@ function openChallenges() {
   lv.append(ll, tabs);
   const rule = el('p'); rule.textContent = d.rule(L, today);
   const goals = el('ul', 'ch-goals'), gl = chGoals(d, L);
-  [['g', CH_COINS + ' jetons dorés'], ['r', '1 jeton arc-en-ciel'], ['m', '1 gemme']].forEach(([k, what], i) => {
-    const li = el('li', (rec && rec.got & GOT[k]) ? 'got' : '');
-    li.append(coinNode(k));
-    const t = el('span'); const b = el('b'); b.textContent = what; const s = el('small'); s.textContent = gl[i]; t.append(b, s);
-    const ok = el('span', 'ok'); ok.textContent = (rec && rec.got & GOT[k]) ? '✓' : ''; ok.setAttribute('aria-label', (rec && rec.got & GOT[k]) ? 'gagné' : 'pas encore');
+  CH_REWARDS[L].forEach((r, i) => {
+    const has = lr.got & BIT[i];
+    const li = el('li', has ? 'got' : '');
+    li.append(coinNode(rwKind(r)));
+    const t = el('span'); const b = el('b'); b.textContent = rwName(r); const s = el('small'); s.textContent = gl[i]; t.append(b, s);
+    const ok = el('span', 'ok'); ok.textContent = has ? '✓' : ''; ok.setAttribute('aria-label', has ? 'gagné' : 'pas encore');
     li.append(t, ok); goals.appendChild(li);
   });
-  const best = el('p', 'ch-best'); best.textContent = rec && rec.best ? 'Ton meilleur : ' + chResText(d, rec.best) + (rec.best.L && rec.best.L !== L ? ' (niv. ' + rec.best.L + ')' : '') : 'Pas encore joué aujourd’hui.';
-  const go = el('button', 'start'); go.type = 'button'; go.textContent = rec ? 'Rejouer le défi' : 'Jouer le défi';
+  const best = el('p', 'ch-best'); best.textContent = lr.best ? 'Ton meilleur au niveau ' + L + ' : ' + chResText(d, lr.best) : 'Pas encore joué au niveau ' + L + ' aujourd’hui.';
+  const go = el('button', 'start'); go.type = 'button'; go.textContent = lr.best ? 'Rejouer le défi' : 'Jouer le défi';
   go.addEventListener('click', () => startChallenge(today));
   card.append(ico, nm, lv, rule, goals, best, go);
   wrap.appendChild(card);
-  const help = el('p', 'help'); help.textContent = 'Rejoue autant que tu veux : chaque récompense se gagne une seule fois par défi, quel que soit le niveau.';
+  // every prize of today's challenge: 5 levels × 3 prizes
+  const gh = el('h4'); gh.textContent = 'Tous les lots du défi (' + chCount(rec) + '/15)'; wrap.appendChild(gh);
+  const tbl = el('table', 'ch-grid'); const cap = el('caption'); cap.textContent = 'Lots gagnés par niveau'; tbl.appendChild(cap);
+  const hr = el('tr'); ['Niveau', 'Terminé', 'Sans erreur', 'Bon score'].forEach(x => { const th = el('th'); th.scope = 'col'; th.textContent = x; hr.appendChild(th); });
+  const thead = el('thead'); thead.appendChild(hr); const tbody = el('tbody');
+  MODES.forEach(mm => {
+    const g = chLv(rec, mm.tier).got, tr = el('tr', mm.tier === L ? 'sel' : '');
+    const th = el('th'); th.scope = 'row'; th.textContent = 'Niv. ' + mm.tier; tr.appendChild(th);
+    CH_REWARDS[mm.tier].forEach((r, i) => {
+      const td = el('td'), sp = el('span', 'rw' + (g & BIT[i] ? ' got' : ''));
+      sp.append(coinNode(rwKind(r)), document.createTextNode(g & BIT[i] ? '✓' : String(rwAmount(r))));
+      sp.setAttribute('aria-label', rwName(r) + (g & BIT[i] ? ', gagné' : ''));
+      td.appendChild(sp); tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  tbl.append(thead, tbody); wrap.appendChild(tbl);
+  const help = el('p', 'help'); help.textContent = 'Rejoue autant que tu veux : chaque lot se gagne une seule fois par défi et par niveau. Plus le niveau est difficile, plus les lots sont gros.';
   wrap.appendChild(help);
   const h4 = el('h4'); h4.textContent = 'Défis précédents'; wrap.appendChild(h4);
   const sub = el('p', 'help left'); sub.textContent = 'Un défi manqué reste jouable pendant ' + CH_BACK + ' jours pour gagner ses récompenses.'; wrap.appendChild(sub);
@@ -5205,16 +5261,16 @@ function openChallenges() {
   $('#cardSheet').hidden = false; box.scrollTop = 0;
 }
 function chRow(day, rec, playable) {
-  const d = (rec && CHALLENGES.find(c => c.id === rec.id)) || chFor(day), L = chL(), got = rec ? rec.got : 0;
+  const d = (rec && CHALLENGES.find(c => c.id === rec.id)) || chFor(day), L = chL(), got = chLv(rec, L).got, n = chCount(rec);
   const li = el('li', 'ch-row');
   const ico = el('span', 'ico'); ico.textContent = d.ico; ico.setAttribute('aria-hidden', 'true');
-  const t = el('span', 'nm'); t.textContent = chTitle(d, rec && rec.best && rec.best.L || L);
-  const s = el('small'); s.textContent = chDayLabel(day) + (rec && rec.best ? ' · ' + chResText(d, rec.best) : ''); t.appendChild(s);
-  const ic = el('span', 'ch-icons'); ['g', 'r', 'm'].forEach(k => { const c = coinNode(k); if (!(got & GOT[k])) c.classList.add('off'); ic.appendChild(c); });
-  ic.setAttribute('aria-label', got === 7 ? 'toutes les récompenses gagnées' : (got ? 'récompenses en partie gagnées' : 'aucune récompense'));
+  const t = el('span', 'nm'); t.textContent = chTitle(d, L);
+  const s = el('small'); s.textContent = chDayLabel(day) + (n ? ' · ' + n + '/15 lots' : ''); t.appendChild(s);
+  const ic = chIcons(got, L); ic.removeAttribute('aria-hidden');
+  ic.setAttribute('aria-label', 'Niveau ' + L + ' : ' + (got === 7 ? 'tous les lots gagnés' : got ? 'lots en partie gagnés' : 'aucun lot'));
   li.append(ico, t, ic);
   if (playable) {
-    const b = el('button', 'fam-btn' + (got === 7 ? '' : ' ok')); b.type = 'button'; b.textContent = got === 7 ? 'Rejouer' : rec ? 'Rattraper' : 'Jouer';
+    const b = el('button', 'fam-btn' + (got === 7 ? '' : ' ok')); b.type = 'button'; b.textContent = got === 7 ? 'Rejouer' : n ? 'Rattraper' : 'Jouer';
     b.setAttribute('aria-label', b.textContent + ' le défi « ' + chTitle(d, L) + ' » de ' + chDayLabel(day).toLowerCase());
     b.addEventListener('click', () => startChallenge(day));
     li.appendChild(b);
@@ -5250,7 +5306,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 39;
+const APP_VERSION = 40;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
