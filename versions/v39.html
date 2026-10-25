@@ -880,11 +880,21 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .fam-prize small{color:var(--mist);font-size:12.5px;line-height:1.35}
 .fam-new{width:100%}
 /* v39 — défi du jour */
-.chal-btn{display:flex;align-items:center;gap:10px;width:100%;padding:8px 12px 8px 14px;border-radius:20px;text-align:left;cursor:pointer;
+.chal-btn{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px 8px 14px;border-radius:20px;text-align:left;cursor:pointer;
   background:linear-gradient(110deg,rgba(255,216,107,.16),rgba(114,241,255,.12)) padding-box,linear-gradient(var(--dusk),var(--dusk)) padding-box,var(--holo) border-box;border:2px solid transparent}
-.chal-btn .ct{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15}
+/* something left to win: the rainbow edge turns and glows; all won: a quiet card */
+.chal-btn.hot{animation:spin 5s linear infinite;box-shadow:0 0 18px rgba(255,216,107,.3),0 0 34px rgba(255,121,214,.18)}
+.chal-btn.done{background:rgba(255,255,255,.06);border:1px solid var(--line);padding:9px 11px 9px 15px}
+.chal-btn .ct{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;line-height:1.15}
 .chal-btn .ct small{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:800}
-.chal-btn .ct b{font-family:var(--f-display);font-weight:800;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chal-btn .ct b{font-family:var(--f-display);font-weight:800;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chal-btn .st{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:var(--mist);white-space:nowrap}
+.chal-btn .st .ch-icons{font-size:15px;gap:4px}
+.chal-btn .go{flex:none;padding:7px 12px;border-radius:999px;background:linear-gradient(90deg,#ffd86b,#ff9ad8);color:#3a1660;font-weight:800;font-size:14px;box-shadow:0 3px 0 #b05a9a}
+.chal-btn.done .go{background:rgba(255,255,255,.12);color:var(--ink);box-shadow:none}
+.win-chal{margin-top:2px}
+.ch-lv{display:flex;flex-direction:column;gap:6px;width:100%}
+.ch-lv .label{text-align:left}
 .ch-icons{display:inline-flex;align-items:center;gap:5px;font-size:18px;flex:none}
 .ch-icons .coin.off{filter:grayscale(1);opacity:.28}
 .op .hole{display:inline-block;min-width:1.1em;color:var(--pink);text-shadow:0 0 18px rgba(255,121,214,.6);border-bottom:.06em solid rgba(255,121,214,.55);text-align:center}
@@ -1034,6 +1044,8 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 
     <button id="collBtn" class="coll-btn" type="button" hidden></button>
 
+    <button id="chalBtn" class="chal-btn" type="button" hidden></button>
+
     <div class="panel score-panel" id="scorePanel">
       <div class="sp-head">
         <button id="famBtn" class="chip fam-chip" type="button" hidden>👪 Famille</button>
@@ -1052,7 +1064,6 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
       <p class="pick-label" id="durLabel">Et un mode de jeu</p>
       <div class="durs" id="durs" role="group" aria-labelledby="durLabel"></div>
       <p class="rules" id="rules"></p>
-      <button id="chalBtn" class="chal-btn" type="button" hidden></button>
       <button id="startBtn" class="start" type="button">C’est parti !</button>
     </div>
    </div>
@@ -1112,6 +1123,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
           <button id="retryBtn" class="start" type="button">Rejouer</button>
           <button id="menuBtn" class="ghost" type="button">Menu</button>
         </div>
+        <button id="winChal" class="chal-btn win-chal hot" type="button" hidden></button>
       </div>
     </div>
   </section>
@@ -2042,6 +2054,7 @@ $('#whoBtn').addEventListener('click', openWho);
 $('#myStatsBtn').addEventListener('click', () => openProgress());
 $('#startBtn').addEventListener('click', () => { G.ch = null; startGame(); });
 $('#chalBtn').addEventListener('click', () => openChallenges());
+$('#winChal').addEventListener('click', () => { clearCelebration(); renderMenu(); show('menu'); openChallenges(); });
 $('#scorePanel').addEventListener('click', e => { if (e.target.closest('[data-board]')) openBoard(); });
 document.querySelectorAll('#homeKind button').forEach(b => b.addEventListener('click', () => { if (homeKind === b.dataset.k) return; homeKind = b.dataset.k; kindSlide = true; renderMenu(homeKind === 'rec' ? 1 : -1); }));
 $('#famBtn').addEventListener('click', () => { if (!current()) { openWho(); return; } openFamily(); });
@@ -2313,7 +2326,7 @@ function startGame() {
   const who = $('#gWho'); who.textContent = '';
   const info = el('span', 'nm'); info.textContent = p.name;
   const m = modeById(level);
-  const lv = el('small'); lv.textContent = ch ? '🎯 Défi · Niv. ' + m.tier : 'Niv. ' + m.tier + ' · ' + G.dur.short; lv.className = 'label'; lv.style.display = 'block'; info.appendChild(lv);
+  const lv = el('small'); lv.textContent = ch ? '🎯 Défi · Niv. ' + ch.L : 'Niv. ' + m.tier + ' · ' + G.dur.short; lv.className = 'label'; lv.style.display = 'block'; info.appendChild(lv);
   who.append(avatarNode(p.avatar, p.name), info);
   $('#posed').hidden = true; $('#opLine').hidden = false; $('#opLine').className = 'op'; $('#opEq').hidden = false; answer.hidden = false;
   opText.textContent = ch ? '?' : '? ' + SYM[m.ops[m.ops.length - 1]] + ' ?'; renderAnswer();
@@ -2526,6 +2539,7 @@ function finish() {
   show('win');
   // A record, or a score close to the best a person can do, gets the full record celebration.
   celebrate(mode.tier, isRecord || excellent, gain, isRecord ? null : 'Score exceptionnel' + NB + '!', zero ? 0 : score);
+  renderWinChal();
   checkUpdate();
 }
 
@@ -4858,7 +4872,8 @@ function renderFamBtn() {
    It can be replayed at will; the challenges of the last 7 days stay playable to catch up. Results are kept 40 days. */
 const HOLE = {};
 const CH_COINS = 15, CH_KEEP = 40, CH_BACK = 7;
-const chL = () => modeById(level).tier;                      // 1 … 5
+K.chLevel = 'cae.chlv';
+const chL = () => { const v = store.get(K.chLevel, 0); return v >= 1 && v <= 5 ? v : modeById(level).tier; };   // 1 … 5
 const between = (a, b) => a + rnd(b - a + 1);
 const signed = n => n < 0 ? '−' + Math.abs(n) : String(n);
 const dayNum = day => Math.floor(ymdT(day) / DAY_MS);
@@ -5057,6 +5072,7 @@ function chFinish() {
   fx.textContent = '';
   show('win');
   celebrate(L, st.good, '', st.good ? 'Bon score' + NB + '!' : null, perf);
+  $('#winChal').hidden = true;
   checkUpdate();
 }
 
@@ -5102,17 +5118,34 @@ function posedPress(k) {
 }
 
 /* home button and sheet */
+function chLeft(got) { return 3 - ((got & 1) + (got >> 1 & 1) + (got >> 2 & 1)); }
+function chStatus(got) { const n = chLeft(got); return n === 3 ? '3 récompenses à gagner' : n ? 'Encore ' + n + ' à gagner' : 'Tout gagné ✓'; }
+function chIcons(got) { const ic = el('span', 'ch-icons'); ic.setAttribute('aria-hidden', 'true'); ['g', 'r', 'm'].forEach(k => { const c = coinNode(k); if (!(got & GOT[k])) c.classList.add('off'); ic.appendChild(c); }); return ic; }
+function todayGot(p = current()) { const r = p && chLog(wallet(p))[dayKey(nowMs())]; return r ? r.got : 0; }
+// Home card under « Ma collection »: today's challenge, its three rewards, and whether something is left to win.
 function renderChalBtn() {
   const b = $('#chalBtn'), p = current();
   b.hidden = !p; if (!p) return;
-  const day = dayKey(nowMs()), d = chFor(day), L = chL(), rec = chLog(wallet(p))[day], got = rec ? rec.got : 0;
-  b.textContent = '';
+  const d = chFor(dayKey(nowMs())), L = chL(), got = todayGot(p), left = chLeft(got);
+  b.textContent = ''; b.classList.toggle('hot', left > 0); b.classList.toggle('done', !left);
   const t = el('span', 'ct'); const s = el('small'); s.textContent = '🎯 Défi du jour'; const n = el('b'); n.textContent = d.ico + ' ' + (d.kind === 'posed' ? d.name : chTitle(d, L));
-  t.append(s, n);
-  const ic = el('span', 'ch-icons'); ic.setAttribute('aria-hidden', 'true');
-  ['g', 'r', 'm'].forEach(k => { const c = coinNode(k); if (!(got & GOT[k])) c.classList.add('off'); ic.appendChild(c); });
-  b.append(t, ic);
-  b.setAttribute('aria-label', 'Défi du jour : ' + chTitle(d, L) + ', ' + [got & 1 ? 'jetons gagnés' : '', got & 2 ? 'jeton arc-en-ciel gagné' : '', got & 4 ? 'gemme gagnée' : ''].filter(Boolean).join(', '));
+  const st = el('span', 'st'); const tx = el('span'); tx.textContent = chStatus(got); st.append(chIcons(got), tx);
+  t.append(s, n, st);
+  const go = el('span', 'go'); go.textContent = left ? 'Jouer ›' : 'Rejouer'; go.setAttribute('aria-hidden', 'true');
+  b.append(t, go);
+  b.setAttribute('aria-label', 'Défi du jour : ' + chTitle(d, L) + '. ' + chStatus(got).replace('✓', ''));
+}
+// End of a free game: a reminder while today's challenge still has something to win.
+function renderWinChal() {
+  const b = $('#winChal'), p = current(), got = todayGot(p), left = chLeft(got);
+  b.hidden = !p || !left || !!G.ch; if (b.hidden) return;
+  const d = chFor(dayKey(nowMs()));
+  b.textContent = '';
+  const t = el('span', 'ct'); const s = el('small'); s.textContent = '🎯 Défi du jour'; const n = el('b'); n.textContent = d.ico + ' ' + d.name;
+  const st = el('span', 'st'); const tx = el('span'); tx.textContent = chStatus(got); st.append(chIcons(got), tx);
+  t.append(s, n, st);
+  const go = el('span', 'go'); go.textContent = 'Jouer ›'; go.setAttribute('aria-hidden', 'true');
+  b.append(t, go);
 }
 function chDayLabel(day) {
   const t = dayKey(nowMs()), y = dayKey(nowMs() - DAY_MS);
@@ -5132,7 +5165,16 @@ function openChallenges() {
   const card = el('div', 'ch-card');
   const ico = el('div', 'ch-ico'); ico.textContent = d.ico; ico.setAttribute('aria-hidden', 'true');
   const nm = el('h4'); nm.textContent = chTitle(d, L);
-  const lv = el('span', 'mode-pill'); lv.textContent = 'Niv. ' + L + ' · ' + m.name; lv.style.setProperty('--c', m.color);
+  const lv = el('div', 'ch-lv'); const ll = el('span', 'label'); ll.textContent = 'Niveau du défi : ' + m.name.toLowerCase();
+  const tabs = el('div', 'tabs'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'Niveau du défi');
+  MODES.forEach(mm => {
+    const tb = el('button', 'tab' + (mm.tier === 5 ? ' boss' : '')); tb.type = 'button'; tb.setAttribute('role', 'tab');
+    tb.setAttribute('aria-selected', String(mm.tier === L)); tb.setAttribute('aria-label', 'Niveau ' + mm.tier + ', ' + mm.name);
+    const b1 = el('b'); b1.textContent = mm.sym.replace(/ /g, ''); const s1 = el('small'); s1.textContent = 'Niv. ' + mm.tier; tb.append(b1, s1);
+    tb.addEventListener('click', () => { store.set(K.chLevel, mm.tier); const y = $('#cardSheetIn').scrollTop; openChallenges(); $('#cardSheetIn').scrollTop = y; renderChalBtn(); });
+    tabs.appendChild(tb);
+  });
+  lv.append(ll, tabs);
   const rule = el('p'); rule.textContent = d.rule(L, today);
   const goals = el('ul', 'ch-goals'), gl = chGoals(d, L);
   [['g', CH_COINS + ' jetons dorés'], ['r', '1 jeton arc-en-ciel'], ['m', '1 gemme']].forEach(([k, what], i) => {
@@ -5147,7 +5189,7 @@ function openChallenges() {
   go.addEventListener('click', () => startChallenge(today));
   card.append(ico, nm, lv, rule, goals, best, go);
   wrap.appendChild(card);
-  const help = el('p', 'help'); help.textContent = 'Rejoue autant que tu veux : chaque récompense se gagne une seule fois par défi. Le défi suit le niveau choisi dans le menu.';
+  const help = el('p', 'help'); help.textContent = 'Rejoue autant que tu veux : chaque récompense se gagne une seule fois par défi, quel que soit le niveau.';
   wrap.appendChild(help);
   const h4 = el('h4'); h4.textContent = 'Défis précédents'; wrap.appendChild(h4);
   const sub = el('p', 'help left'); sub.textContent = 'Un défi manqué reste jouable pendant ' + CH_BACK + ' jours pour gagner ses récompenses.'; wrap.appendChild(sub);
