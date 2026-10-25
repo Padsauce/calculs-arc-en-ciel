@@ -18,7 +18,7 @@ service cloud.firestore {
         && request.resource.data.keys().hasOnly(['uid', 'pid', 'name', 'avatar', 'level', 'dur', 'time', 'points', 'errors', 'good', 'date'])
         && request.resource.data.name is string
         && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 16
-        && request.resource.data.level in ['add', 'sub', 'mix1', 'mul', 'mix2']
+        && request.resource.data.level in ['add', 'sub', 'mix1', 'mul', 'mix2', 'pow']
         && request.resource.data.dur in ['pts10', 't15', 't30', 't60']
         && request.resource.data.time is int && request.resource.data.time >= 0 && request.resource.data.time <= 86400000
         && request.resource.data.points is int && request.resource.data.points >= 0 && request.resource.data.points <= 1000

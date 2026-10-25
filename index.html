@@ -154,7 +154,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 
 .menu-bottom{margin-top:auto;display:flex;flex-direction:column;gap:10px}
 .pick-label{margin:0 0 -2px;text-align:center;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--mist)}
-.lvls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding-top:6px}
+.lvls{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:7px;padding-top:6px}
 .lvl{position:relative;height:58px;border-radius:20px;background:rgba(255,255,255,.07);border:3px solid var(--line);display:grid;place-items:center;font-weight:800;font-size:27px;line-height:1;color:var(--mist);white-space:nowrap;transition:transform .12s}
 .lvl.boss{font-size:13px;letter-spacing:.01em}
 .lvl i{position:absolute;top:-9px;right:-6px;font-style:normal;font-size:11px;font-weight:800;width:21px;height:21px;border-radius:50%;display:grid;place-items:center;background:var(--dusk);border:1px solid var(--line);color:var(--mist)}
@@ -340,7 +340,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 /* ---------- board ---------- */
 .board-head{display:flex;align-items:center;gap:10px}
 .board-head h2{flex:1;margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(26px,7.5vw,34px)}
-.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:5px;border-radius:22px;background:rgba(255,255,255,.08);border:1px solid var(--line)}
+.tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px;padding:5px;border-radius:22px;background:rgba(255,255,255,.08);border:1px solid var(--line)}
 .tab{padding:7px 2px 6px;border-radius:17px;color:var(--mist);display:flex;flex-direction:column;align-items:center;gap:1px;min-width:0}
 .tab b{font-size:20px;font-weight:800;line-height:1.1;white-space:nowrap}
 .tab.boss b{font-size:14px;line-height:1.55}
@@ -897,6 +897,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .ch-lv .label{text-align:left}
 .ch-icons{display:inline-flex;align-items:center;gap:5px;font-size:18px;flex:none}
 .ch-icons .coin.off{filter:grayscale(1);opacity:.28}
+.op sup.exp{font-size:.55em;vertical-align:.8em;line-height:0;margin-left:.04em;color:var(--gold)}
 .op .hole{display:inline-block;min-width:1.1em;color:var(--pink);text-shadow:0 0 18px rgba(255,121,214,.6);border-bottom:.06em solid rgba(255,121,214,.55);text-align:center}
 .op .hole.empty{color:rgba(255,255,255,.55);animation:blink 1.1s steps(2) infinite;text-shadow:none}
 .op.sz2{font-size:clamp(34px,10vw,64px)}
@@ -914,6 +915,9 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .posed .res .pd.cur{color:rgba(255,255,255,.4);text-shadow:none;border-bottom:.08em solid var(--gold);animation:blink 1.1s steps(2) infinite}
 .posed .res .pd.cur.bad{color:var(--rose);animation:posedBad .45s}
 @keyframes posedBad{0%,100%{transform:none}25%{transform:translateX(-.08em)}75%{transform:translateX(.08em)}}
+.qtimer{height:10px;margin:0 14px 10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.qtimer i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#8dffc4,#72f1ff);transform-origin:left center}
+.qtimer.low i{background:linear-gradient(90deg,#ffd86b,#ff6b8b)}
 .ch-goal.miss{opacity:.45;filter:grayscale(.6)}
 .ch-goal.won{background:rgba(141,255,196,.18);border-color:rgba(141,255,196,.55)}
 .card-sheet > .ch-sheet{flex:none}
@@ -1030,7 +1034,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🧮</span><p>Réponds aux calculs avec le pavé. Pas besoin de valider&nbsp;: chaque chiffre tapé compte tout de suite.</p></li>
         <li><span aria-hidden="true">✨</span><p>Bonne réponse&nbsp;: <b>+1&nbsp;point</b>. Erreur&nbsp;: <b>−1&nbsp;point</b> (jamais sous zéro), et on passe à la suivante.</p></li>
         <li><span aria-hidden="true">⏱️</span><p>Atteins <b>10&nbsp;points</b> le plus vite possible, ou fais un maximum de points en <b>15&nbsp;s, 30&nbsp;s ou 1&nbsp;min</b>.</p></li>
-        <li><span aria-hidden="true">🌈</span><p>5 niveaux, des additions aux 4 opérations. Bats tes records pour une fête encore plus folle&nbsp;!</p></li>
+        <li><span aria-hidden="true">🌈</span><p>6 niveaux, des additions aux puissances. Bats tes records pour une fête encore plus folle&nbsp;!</p></li>
       </ul>
       <p class="intro-legal">📜 En créant ton profil, tu acceptes les <button class="linkbtn" id="introLegal" type="button">conditions d’utilisation</button>.</p>
       <button id="introBtn" class="start" type="button">Créer mon profil</button>
@@ -1088,6 +1092,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
     </div>
     <div class="stage" id="stage">
       <div class="frame-wrap" id="frameWrap">
+        <div class="qtimer" id="qTimer" hidden><i id="qTimerFill"></i></div>
         <div class="frame" id="frame">
           <div class="frame-in">
             <div class="op" id="opLine" aria-live="polite">
@@ -1291,7 +1296,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 40</p>
+      <p class="credits-ver" id="credVer">Version 41</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -1358,7 +1363,9 @@ const MODES = [
   { id: 'sub', tier: 2, name: 'Soustractions', sym: '−', ops: ['-'] , color: '#72f1ff' },
   { id: 'mix1', tier: 3, name: 'Plus et moins', sym: '+ −', ops: ['+', '-'] , color: '#ffd86b' },
   { id: 'mul', tier: 4, name: 'Multiplications', sym: '×', ops: ['×'] , color: '#ff9ad8' },
-  { id: 'mix2', tier: 5, name: 'Les 4 opérations', sym: '+ − × ÷', ops: ['+', '-', '×', '÷'] , color: '#c9a8ff' }
+  { id: 'mix2', tier: 5, name: 'Les 4 opérations', sym: '+ − × ÷', ops: ['+', '-', '×', '÷'] , color: '#c9a8ff' },
+  // v41: powers, for free games only (the daily challenge stays on levels 1 to 5)
+  { id: 'pow', tier: 6, name: 'Puissances', sym: 'xⁿ', ops: ['^'] , color: '#9fb4ff' }
 ];
 const modeById = id => MODES.find(m => m.id === id) || MODES[0];
 const DURS = [
@@ -2305,15 +2312,22 @@ function step() {
 /* ---------- operations ---------- */
 const DIV_PAIRS = [];
 for (let a = 1; a <= 9; a++) for (let b = 2; b <= 9; b++) if (a % b === 0) DIV_PAIRS.push([a, b]);
-const SYM = { '+': '+', '-': '−', '×': '×', '÷': '÷' };
+const SYM = { '+': '+', '-': '−', '×': '×', '÷': '÷', '^': '^' };
+// Powers: bases and exponents from 1 to 10, keeping what can be worked out in one's head
+// (results up to 1 024, and every power of 10, up to 10¹⁰).
+const POW_LIST = [[1, 2], [1, 7]];
+for (let a = 2; a <= 10; a++) for (let e = 1; e <= 10; e++) if (a === 10 || Math.pow(a, e) <= 1024) POW_LIST.push([a, e]);
+const SUP = n => String(n).replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+const qText = q => q.op === '^' ? q.a + SUP(q.b) : q.a + ' ' + SYM[q.op] + ' ' + q.b;
 function makeQuestion(lv, prev) {
   const ops = modeById(lv).ops;
   let q, guard = 0;
   do {
     const op = pick(ops); let a, b;
     if (op === '÷') [a, b] = pick(DIV_PAIRS);
+    else if (op === '^') [a, b] = pick(POW_LIST);
     else { a = 1 + rnd(9); b = 1 + rnd(9); }
-    const r = op === '+' ? a + b : op === '-' ? a - b : op === '×' ? a * b : a / b;
+    const r = op === '+' ? a + b : op === '-' ? a - b : op === '×' ? a * b : op === '^' ? Math.pow(a, b) : a / b;
     q = { a, b, op, r, key: a + op + b };
   } while (prev && q.key === prev.key && ++guard < 20);
   return q;
@@ -2332,7 +2346,7 @@ function startGame() {
   ac(); requestWake();
   ensureBust().catch(() => {});
   const run = ++G.run;
-  const ch = G.ch;
+  const ch = G.ch; nfStop();
   Object.assign(G, { active: false, level, dur: ch ? { id: 'ch', sec: ch.d.kind === 'eclair' ? ch.d.sec : 0, short: '', label: '' } : durById(dur), score: 0, good: 0, errors: 0, typed: '', q: null });
   const who = $('#gWho'); who.textContent = '';
   const info = el('span', 'nm'); info.textContent = p.name;
@@ -2340,7 +2354,7 @@ function startGame() {
   const lv = el('small'); lv.textContent = ch ? '🎯 Défi · Niv. ' + ch.L : 'Niv. ' + m.tier + ' · ' + G.dur.short; lv.className = 'label'; lv.style.display = 'block'; info.appendChild(lv);
   who.append(avatarNode(p.avatar, p.name), info);
   $('#posed').hidden = true; $('#opLine').hidden = false; $('#opLine').className = 'op'; $('#opEq').hidden = false; answer.hidden = false;
-  opText.textContent = ch ? '?' : '? ' + SYM[m.ops[m.ops.length - 1]] + ' ?'; renderAnswer();
+  opText.textContent = ch ? '?' : m.id === 'pow' ? 'xⁿ' : '? ' + SYM[m.ops[m.ops.length - 1]] + ' ?'; renderAnswer();
   stage.classList.add('counting');
   fx.textContent = '';
   show('game');
@@ -2364,6 +2378,7 @@ function beginPlay() {
   $('#count').hidden = true; stage.classList.remove('counting');
   G.q = G.ch ? chQuestion(null) : makeQuestion(G.level, null); G.typed = ''; renderQ();
   G.t0 = performance.now(); G.w0 = Date.now(); G.active = true;
+  G.nf = G.ch && G.ch.d.kind === 'nofall' ? { limit: NF_START } : null; if (G.nf) nfArm();
   if (G.dur.sec) {
     const run = G.run;
     const tick = setInterval(() => {
@@ -2392,8 +2407,11 @@ function renderQ() {
     const n = q.parts.filter(t => t !== HOLE).join('').length + String(q.r).length;
     line.className = 'op' + (n > 18 ? ' sz4' : n > 13 ? ' sz3' : n > 9 ? ' sz2' : '');
   } else {
-    opText.textContent = q.a + ' ' + SYM[q.op] + ' ' + q.b;
-    $('#opEq').hidden = false; answer.hidden = false; line.className = 'op';
+    if (q.op === '^') { opText.textContent = String(q.a); const e = el('sup', 'exp'); e.textContent = q.b; opText.appendChild(e); }
+    else opText.textContent = q.a + ' ' + SYM[q.op] + ' ' + q.b;
+    $('#opEq').hidden = false; answer.hidden = false;
+    const n = String(q.a).length + String(q.b).length + String(q.r).length;
+    line.className = 'op' + (n > 12 ? ' sz3' : n > 8 ? ' sz2' : '');
   }
   opText.classList.remove('new'); void opText.offsetWidth; opText.classList.add('new');
   renderAnswer();
@@ -2418,7 +2436,9 @@ function correct() {
   G.score++; G.good++;
   if (G.ch) {
     if (G.ch.d.kind === 'q10' && G.good + G.errors >= 10) { fxGood(); chFinish(); return; }
-    fxGood(); next(); return;
+    fxGood(); next();
+    if (G.nf) { G.nf.limit = Math.max(NF_MIN, G.nf.limit - NF_STEP); nfArm(); }
+    return;
   }
   if (!G.dur.sec && G.score >= 10) { finish(); return; }
   fxGood(); next();
@@ -2459,11 +2479,11 @@ function fxGood() {
 function fxBad(q) {
   sfxBad();
   try { if (navigator.vibrate) navigator.vibrate(80); } catch (e) {}
-  showWord('Mauvaise réponse', 'bad', q.full || (q.a + ' ' + SYM[q.op] + ' ' + q.b + ' = ' + fmtNum(q.r)));
+  showWord('Mauvaise réponse', 'bad', q.full || (qText(q) + ' = ' + fmtNum(q.r)));
   flashFrame('ko');
 }
 function quitGame() {
-  G.run++; G.active = false; releaseWake();
+  G.run++; G.active = false; releaseWake(); nfStop();
   $('#count').hidden = true; stage.classList.remove('counting');
   fx.textContent = '';
   renderMenu(); show('menu');
@@ -2678,7 +2698,7 @@ function clearCelebration() {
 /* How good was the game, compared with a very fast adult?
    About 1 s per answer is automatic recall (Rocket Math: ~1 s oral, ~1.5 s written per fact);
    the times below add the taps on the keypad, slightly more for negatives and two-digit products. */
-const BEST_SEC = { add: .9, sub: 1.1, mix1: 1, mul: 1.1, mix2: 1.15 };
+const BEST_SEC = { add: .9, sub: 1.1, mix1: 1, mul: 1.1, mix2: 1.15, pow: 1.6 };
 function rating(levelId, durDef, ms, points) {
   const t = BEST_SEC[levelId] || 1;
   const r = durDef.sec ? points / (durDef.sec / t) : (10 * t * 1000) / Math.max(1, ms);
@@ -4884,7 +4904,7 @@ function renderFamBtn() {
 const HOLE = {};
 const CH_KEEP = 40, CH_BACK = 7;
 K.chLevel = 'cae.chlv';
-const chL = () => { const v = store.get(K.chLevel, 0); return v >= 1 && v <= 5 ? v : modeById(level).tier; };   // 1 … 5
+const chL = () => { const v = store.get(K.chLevel, 0); return v >= 1 && v <= 5 ? v : Math.min(5, modeById(level).tier); };   // 1 … 5
 const between = (a, b) => a + rnd(b - a + 1);
 const signed = n => n < 0 ? '−' + Math.abs(n) : String(n);
 const dayNum = day => Math.floor(ymdT(day) / DAY_MS);
@@ -4980,7 +5000,7 @@ const CHALLENGES = [
     rule(L) { return '20 secondes pour répondre au plus de calculs (' + MODES[L - 1].name.toLowerCase() + '). 5 bonnes réponses pour finir, ' + this.need[L - 1] + ' pour le bon score.'; },
     gen: L => fromNormal(L) },
   { id: 'nofall', ico: '💀', name: 'Sans filet', kind: 'nofall',
-    rule: L => 'Le plus de bonnes réponses d’affilée (' + MODES[L - 1].name.toLowerCase() + ') : la première erreur arrête tout. 5 pour finir, 10 pour le sans-faute, 20 pour le bon score.',
+    rule: L => 'Le plus de bonnes réponses d’affilée (' + MODES[L - 1].name.toLowerCase() + ') : une erreur ou le temps écoulé arrête tout. 5 secondes pour le premier calcul, puis 0,1 seconde de moins à chaque bonne réponse (jamais moins d’une seconde). 5 pour finir, 10 pour le sans-faute, 20 pour le bon score.',
     gen: L => fromNormal(L) },
   { id: 'big', ico: '🧮', name: 'Le grand calcul', kind: 'posed', digits: [3, 4, 6, 8, 10], targets: [12, 16, 24, 32, 40],
     size: L => ['centaines', 'milliers', 'centaines de milliers', 'dizaines de millions', 'milliards'][L - 1],
@@ -5054,7 +5074,33 @@ function chQuestion(prev) {
   do q = c.d.gen(c.L, c.day); while (prev && q.key === prev.key && ++guard < 20);
   return q;
 }
+// « Sans filet »: 5 s for the first operation, 0.1 s less after each right answer, never under 1 s.
+const NF_START = 5000, NF_STEP = 100, NF_MIN = 1000;
+function nfArm() {
+  const n = G.nf; if (!n) return;
+  n.deadline = performance.now() + n.limit; n.span = n.limit;
+  const run = G.run, bar = $('#qTimer'), fill = $('#qTimerFill');
+  bar.hidden = false;
+  if (n.raf) cancelAnimationFrame(n.raf);
+  const tick = () => {
+    if (G.run !== run || !G.active || G.nf !== n) return;
+    const left = n.deadline - performance.now();
+    fill.style.transform = 'scaleX(' + Math.max(0, left / n.span).toFixed(3) + ')';
+    bar.classList.toggle('low', left < n.span * .35);
+    if (left <= 0) { nfTimeout(); return; }
+    n.raf = requestAnimationFrame(tick);
+  };
+  n.raf = requestAnimationFrame(tick);
+}
+function nfTimeout() {
+  const q = G.q; G.active = false;
+  sfxBad(); flashFrame('ko');
+  showWord('Trop tard' + NB + '!', 'bad', q.full || (qText(q) + ' = ' + fmtNum(q.r)));
+  const run = G.run; setTimeout(() => { if (G.run === run) chFinish(); }, 1100);
+}
+function nfStop() { if (G.nf && G.nf.raf) cancelAnimationFrame(G.nf.raf); G.nf = null; $('#qTimer').hidden = true; }
 function chFinish() {
+  nfStop();
   G.active = false; releaseWake();
   const c = G.ch, d = c.d, L = c.L, p = current(), w = wallet(p), log = chLog(w);
   const res = { ms: d.kind === 'eclair' ? d.sec * 1000 : Math.round(elapsedMs()), n: G.good, e: G.errors, L };
@@ -5205,7 +5251,7 @@ function openChallenges() {
   const nm = el('h4'); nm.textContent = chTitle(d, L);
   const lv = el('div', 'ch-lv'); const ll = el('span', 'label'); ll.textContent = 'Niveau du défi : ' + m.name.toLowerCase();
   const tabs = el('div', 'tabs'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'Niveau du défi');
-  MODES.forEach(mm => {
+  MODES.slice(0, 5).forEach(mm => {
     const tb = el('button', 'tab' + (mm.tier === 5 ? ' boss' : '')); tb.type = 'button'; tb.setAttribute('role', 'tab');
     tb.setAttribute('aria-selected', String(mm.tier === L)); tb.setAttribute('aria-label', 'Niveau ' + mm.tier + ', ' + mm.name);
     const b1 = el('b'); b1.textContent = mm.sym.replace(/ /g, ''); const s1 = el('small'); s1.textContent = 'Niv. ' + mm.tier; tb.append(b1, s1);
@@ -5233,7 +5279,7 @@ function openChallenges() {
   const tbl = el('table', 'ch-grid'); const cap = el('caption'); cap.textContent = 'Lots gagnés par niveau'; tbl.appendChild(cap);
   const hr = el('tr'); ['Niveau', 'Terminé', 'Sans erreur', 'Bon score'].forEach(x => { const th = el('th'); th.scope = 'col'; th.textContent = x; hr.appendChild(th); });
   const thead = el('thead'); thead.appendChild(hr); const tbody = el('tbody');
-  MODES.forEach(mm => {
+  MODES.slice(0, 5).forEach(mm => {
     const g = chLv(rec, mm.tier).got, tr = el('tr', mm.tier === L ? 'sel' : '');
     const th = el('th'); th.scope = 'row'; th.textContent = 'Niv. ' + mm.tier; tr.appendChild(th);
     CH_REWARDS[mm.tier].forEach((r, i) => {
@@ -5306,7 +5352,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 40;
+const APP_VERSION = 41;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
