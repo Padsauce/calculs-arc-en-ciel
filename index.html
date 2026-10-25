@@ -491,8 +491,15 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .buy{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:9px 6px;border-radius:999px;font-weight:800;font-size:16px;
   background:linear-gradient(90deg,#ff9ad8,#ffd86b);color:#3a1660;box-shadow:0 4px 0 #b05a9a}
 .buy:active{transform:translateY(3px);box-shadow:0 1px 0 #b05a9a}
-.buy[disabled]{background:rgba(255,255,255,.12);color:var(--mist);box-shadow:none}
-.buy.free{background:linear-gradient(90deg,#9dffb0,#72f1ff)}
+.buy.free{background:linear-gradient(90deg,#9dffb0,#72f1ff);box-shadow:0 4px 0 #2a9db0}
+.buy.free:active{box-shadow:0 1px 0 #2a9db0}
+/* v38 — shop: what can be opened now shines (turquoise when free, holographic when it can be bought); the rest is grey and see-through */
+.shop .buy:not(.free):not([disabled]){background:linear-gradient(90deg,#ff9ad8,#ffd86b,#9dffb0,#72f1ff,#a99bff,#ff9ad8) 0 0/200% 100%;animation:slide 4s linear infinite;box-shadow:0 4px 0 #7a4cd8}
+.buy[disabled],.buy.free[disabled]{background:rgba(255,255,255,.07);color:rgba(203,188,242,.55);box-shadow:none;border:1px dashed rgba(255,255,255,.18);cursor:default;animation:none}
+.shop .item.on{border-color:rgba(114,241,255,.6);background:linear-gradient(180deg,rgba(114,241,255,.14),rgba(255,154,216,.06));box-shadow:0 0 18px rgba(114,241,255,.22)}
+.shop .item.off{background:rgba(255,255,255,.03)}
+.shop .item.off .pack,.shop .item.off .mini-box{filter:grayscale(1);opacity:.4;animation:none}
+.shop .item.off h3{opacity:.6}
 .shop-note{margin:0;text-align:center;color:var(--mist);font-size:13px;line-height:1.35}
 .earn{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:13.5px}
 .earn b{font-family:var(--f-display);font-size:15px}
@@ -1208,7 +1215,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 37</p>
+      <p class="credits-ver" id="credVer">Version 38</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -3133,7 +3140,7 @@ function renderColl() {
   else if (collTab === 'book') renderBook(body, w);
   else renderShelf(body, w);
 }
-function shopItem(visual, title, text, btn) { const it = el('div', 'item'); const h = el('h3'); h.textContent = title; const p = el('p'); p.textContent = text; it.append(visual, h, p, btn); return it; }
+function shopItem(visual, title, text, btn) { const it = el('div', 'item ' + (btn.disabled ? 'off' : 'on')); const h = el('h3'); h.textContent = title; const p = el('p'); p.textContent = text; it.append(visual, h, p, btn); return it; }
 function packVisual(kind, big) {
   const pk = el('div', 'pack ' + kind + (big ? ' big-pack' : ''));
   const s = el('span'); const i = el('i'); i.textContent = kind === 'star' ? '💎' : kind === 'promo' ? '🎁' : '🎴';
@@ -4791,7 +4798,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 37;
+const APP_VERSION = 38;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
