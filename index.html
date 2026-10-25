@@ -879,6 +879,57 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .fam-prize span{font-weight:700;font-size:14px}
 .fam-prize small{color:var(--mist);font-size:12.5px;line-height:1.35}
 .fam-new{width:100%}
+/* v39 — défi du jour */
+.chal-btn{display:flex;align-items:center;gap:10px;width:100%;padding:8px 12px 8px 14px;border-radius:20px;text-align:left;cursor:pointer;
+  background:linear-gradient(110deg,rgba(255,216,107,.16),rgba(114,241,255,.12)) padding-box,linear-gradient(var(--dusk),var(--dusk)) padding-box,var(--holo) border-box;border:2px solid transparent}
+.chal-btn .ct{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15}
+.chal-btn .ct small{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.chal-btn .ct b{font-family:var(--f-display);font-weight:800;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-icons{display:inline-flex;align-items:center;gap:5px;font-size:18px;flex:none}
+.ch-icons .coin.off{filter:grayscale(1);opacity:.28}
+.op .hole{display:inline-block;min-width:1.1em;color:var(--pink);text-shadow:0 0 18px rgba(255,121,214,.6);border-bottom:.06em solid rgba(255,121,214,.55);text-align:center}
+.op .hole.empty{color:rgba(255,255,255,.55);animation:blink 1.1s steps(2) infinite;text-shadow:none}
+.op.sz2{font-size:clamp(34px,10vw,64px)}
+.op.sz3{font-size:clamp(26px,7.6vw,48px)}
+.op.sz4{font-size:clamp(21px,6.2vw,38px);white-space:normal;flex-wrap:wrap;line-height:1.25}
+.posed{--cols:11;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.15;
+  font-size:min(54px,calc((min(100vw,480px) - 86px) / (var(--cols) * .66 + 1.2)))}
+.posed .pr{display:flex}
+.posed .pd{display:inline-block;width:.64em;text-align:center}
+.posed .pd.gap{margin-left:.24em}
+.posed .pr.b .pd:first-child{color:var(--aqua)}
+.posed .pline{width:100%;height:.09em;min-height:3px;border-radius:2px;background:rgba(255,255,255,.75);margin:.08em 0 .12em}
+.posed .res .pd{color:var(--pink);text-shadow:0 0 14px rgba(255,121,214,.55)}
+.posed .res .pd.todo{color:rgba(255,255,255,.22);text-shadow:none}
+.posed .res .pd.cur{color:rgba(255,255,255,.4);text-shadow:none;border-bottom:.08em solid var(--gold);animation:blink 1.1s steps(2) infinite}
+.posed .res .pd.cur.bad{color:var(--rose);animation:posedBad .45s}
+@keyframes posedBad{0%,100%{transform:none}25%{transform:translateX(-.08em)}75%{transform:translateX(.08em)}}
+.ch-goal.miss{opacity:.45;filter:grayscale(.6)}
+.ch-goal.won{background:rgba(141,255,196,.18);border-color:rgba(141,255,196,.55)}
+.card-sheet > .ch-sheet{flex:none}
+.ch-sheet{display:flex;flex-direction:column;gap:12px}
+.ch-sheet h4{margin:4px 0 -6px;font-family:var(--f-display);font-weight:800;font-size:18px}
+.ch-sheet .help.left{text-align:left;margin-top:0}
+.ch-card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 14px 14px;border-radius:24px;text-align:center;
+  background:linear-gradient(160deg,rgba(255,216,107,.16),rgba(255,154,216,.1) 50%,rgba(114,241,255,.12));border:1px solid rgba(255,255,255,.22)}
+.ch-ico{font-size:48px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.ch-card h4{margin:0;font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1.1;text-wrap:balance}
+.ch-card > p{margin:0;font-size:15px;line-height:1.4;color:var(--ink)}
+.ch-goals{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;width:100%;text-align:left}
+.ch-goals li{display:flex;align-items:center;gap:10px;padding:7px 12px;border-radius:14px;background:rgba(0,0,0,.18);font-size:20px}
+.ch-goals li span:not(.ok){display:flex;flex-direction:column;flex:1;line-height:1.2}
+.ch-goals b{font-size:15px}
+.ch-goals small{font-size:12.5px;color:var(--mist);font-weight:600}
+.ch-goals .ok{font-size:18px;font-weight:800;color:var(--mint);min-width:1em;text-align:center}
+.ch-goals li.got{background:rgba(141,255,196,.14);box-shadow:inset 0 0 0 1px rgba(141,255,196,.45)}
+.ch-best{margin:0;color:var(--mist);font-weight:700;font-size:14px}
+.ch-card .start{width:100%;font-size:22px;padding:13px}
+.ch-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ch-row{display:flex;align-items:center;gap:9px;padding:7px 8px 7px 10px;border-radius:16px;background:rgba(255,255,255,.06)}
+.ch-row .ico{font-size:22px;width:28px;text-align:center;flex:none}
+.ch-row .nm{flex:1;min-width:0;font-weight:700;font-size:15px;line-height:1.2;overflow:hidden;text-overflow:ellipsis}
+.ch-row .nm small{display:block;color:var(--mist);font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-row .ch-icons{font-size:14px;gap:3px}
 /* v36 — Home: « Changer » and « 📈 Stats » stacked on the right of the player card (two buttons, never nested), so the name keeps its room on phones */
 .player-box{display:flex;align-items:center;gap:8px;width:100%;border-radius:24px;background:rgba(255,255,255,.07);border:1px solid var(--line);padding-right:8px}
 .player-box .player{flex:1;min-width:0;background:none;border:0;border-radius:24px}
@@ -1001,6 +1052,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
       <p class="pick-label" id="durLabel">Et un mode de jeu</p>
       <div class="durs" id="durs" role="group" aria-labelledby="durLabel"></div>
       <p class="rules" id="rules"></p>
+      <button id="chalBtn" class="chal-btn" type="button" hidden></button>
       <button id="startBtn" class="start" type="button">C’est parti !</button>
     </div>
    </div>
@@ -1016,9 +1068,10 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
       <div class="frame-wrap" id="frameWrap">
         <div class="frame" id="frame">
           <div class="frame-in">
-            <div class="op" aria-live="polite">
-              <span class="op-text" id="opText">? + ?</span><span class="eq">=</span><span class="answer empty" id="answer"></span>
+            <div class="op" id="opLine" aria-live="polite">
+              <span class="op-text" id="opText">? + ?</span><span class="eq" id="opEq">=</span><span class="answer empty" id="answer"></span>
             </div>
+            <div class="posed" id="posed" aria-live="polite" hidden></div>
           </div>
         </div>
       </div>
@@ -1215,7 +1268,7 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
         <li><span aria-hidden="true">🦄</span><span><b>Marckorel</b><small>Idée, conception et tests</small></span></li>
         <li><span aria-hidden="true">✨</span><span><b>Claude</b><small>Développement (Anthropic)</small></span></li>
       </ul>
-      <p class="credits-ver" id="credVer">Version 38</p>
+      <p class="credits-ver" id="credVer">Version 39</p>
       <p class="credits-ver" id="diag"></p>
     </div>
   </div>
@@ -1942,7 +1995,7 @@ function renderMenu(dir = 0) {
   $('#myStatsBtn').hidden = !p;
 
   const d = durById(dur);
-  renderFamBtn();
+  renderFamBtn(); renderChalBtn();
   document.querySelectorAll('#homeKind button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === homeKind)));
   swapBestPane(homeKind === 'rec' || kindSlide ? dir : 0); kindSlide = false;
   if (famState === 'ok') famReconcile();
@@ -1987,7 +2040,8 @@ $('#introBtn').addEventListener('click', () => { store.set(K.legal, LEGAL_DATE);
 $('#playerCard').addEventListener('click', openWho);
 $('#whoBtn').addEventListener('click', openWho);
 $('#myStatsBtn').addEventListener('click', () => openProgress());
-$('#startBtn').addEventListener('click', startGame);
+$('#startBtn').addEventListener('click', () => { G.ch = null; startGame(); });
+$('#chalBtn').addEventListener('click', () => openChallenges());
 $('#scorePanel').addEventListener('click', e => { if (e.target.closest('[data-board]')) openBoard(); });
 document.querySelectorAll('#homeKind button').forEach(b => b.addEventListener('click', () => { if (homeKind === b.dataset.k) return; homeKind = b.dataset.k; kindSlide = true; renderMenu(homeKind === 'rec' ? 1 : -1); }));
 $('#famBtn').addEventListener('click', () => { if (!current()) { openWho(); return; } openFamily(); });
@@ -2254,13 +2308,15 @@ function startGame() {
   ac(); requestWake();
   ensureBust().catch(() => {});
   const run = ++G.run;
-  Object.assign(G, { active: false, level, dur: durById(dur), score: 0, good: 0, errors: 0, typed: '', q: null });
+  const ch = G.ch;
+  Object.assign(G, { active: false, level, dur: ch ? { id: 'ch', sec: ch.d.kind === 'eclair' ? ch.d.sec : 0, short: '', label: '' } : durById(dur), score: 0, good: 0, errors: 0, typed: '', q: null });
   const who = $('#gWho'); who.textContent = '';
   const info = el('span', 'nm'); info.textContent = p.name;
   const m = modeById(level);
-  const lv = el('small'); lv.textContent = 'Niv. ' + m.tier + ' · ' + G.dur.short; lv.className = 'label'; lv.style.display = 'block'; info.appendChild(lv);
+  const lv = el('small'); lv.textContent = ch ? '🎯 Défi · Niv. ' + m.tier : 'Niv. ' + m.tier + ' · ' + G.dur.short; lv.className = 'label'; lv.style.display = 'block'; info.appendChild(lv);
   who.append(avatarNode(p.avatar, p.name), info);
-  opText.textContent = '? ' + SYM[m.ops[m.ops.length - 1]] + ' ?'; renderAnswer();
+  $('#posed').hidden = true; $('#opLine').hidden = false; $('#opLine').className = 'op'; $('#opEq').hidden = false; answer.hidden = false;
+  opText.textContent = ch ? '?' : '? ' + SYM[m.ops[m.ops.length - 1]] + ' ?'; renderAnswer();
   stage.classList.add('counting');
   fx.textContent = '';
   show('game');
@@ -2282,7 +2338,7 @@ function countShow(s, go) {
 function elapsedMs() { return Math.max(performance.now() - G.t0, Date.now() - G.w0); }
 function beginPlay() {
   $('#count').hidden = true; stage.classList.remove('counting');
-  G.q = makeQuestion(G.level, null); G.typed = ''; renderQ();
+  G.q = G.ch ? chQuestion(null) : makeQuestion(G.level, null); G.typed = ''; renderQ();
   G.t0 = performance.now(); G.w0 = Date.now(); G.active = true;
   if (G.dur.sec) {
     const run = G.run;
@@ -2301,17 +2357,34 @@ function timeUp() {
   setTimeout(() => { if (G.run === run) finish(); }, 1000);
 }
 function renderQ() {
-  opText.textContent = G.q.a + ' ' + SYM[G.q.op] + ' ' + G.q.b;
+  const q = G.q, line = $('#opLine');
+  $('#posed').hidden = !q.posed; line.hidden = !!q.posed;
+  if (q.posed) { renderPosed(); return; }
+  if (q.parts) {
+    // A challenge question: the answer is typed where the hole is (« 7 + ? = 10 »).
+    opText.textContent = '';
+    q.parts.forEach(t => { if (t === HOLE) opText.appendChild(el('span', 'hole')); else opText.appendChild(document.createTextNode(t)); });
+    $('#opEq').hidden = true; answer.hidden = true;
+    const n = q.parts.filter(t => t !== HOLE).join('').length + String(q.r).length;
+    line.className = 'op' + (n > 18 ? ' sz4' : n > 13 ? ' sz3' : n > 9 ? ' sz2' : '');
+  } else {
+    opText.textContent = q.a + ' ' + SYM[q.op] + ' ' + q.b;
+    $('#opEq').hidden = false; answer.hidden = false; line.className = 'op';
+  }
   opText.classList.remove('new'); void opText.offsetWidth; opText.classList.add('new');
   renderAnswer();
 }
 function renderAnswer() {
+  if (G.q && G.q.posed) { renderPosed(); return; }
+  const hole = G.q && G.q.parts && opText.querySelector('.hole');
+  if (hole) { hole.textContent = G.typed ? fmtNum(G.typed) : '?'; hole.classList.toggle('empty', !G.typed); return; }
   answer.textContent = fmtNum(G.typed);
   answer.classList.toggle('empty', !G.typed);
 }
 function press(k) {
   if (!G.active || !G.q) return;
   if (G.dur && G.dur.sec && elapsedMs() >= G.dur.sec * 1000) { timeUp(); return; }
+  if (G.q.posed) { posedPress(k); return; }
   const exp = String(G.q.r), t = G.typed + k;
   if (exp.startsWith(t)) {
     if (t === exp) correct(); else { G.typed = t; renderAnswer(); }
@@ -2319,15 +2392,24 @@ function press(k) {
 }
 function correct() {
   G.score++; G.good++;
+  if (G.ch) {
+    if (G.ch.d.kind === 'q10' && G.good + G.errors >= 10) { fxGood(); chFinish(); return; }
+    fxGood(); next(); return;
+  }
   if (!G.dur.sec && G.score >= 10) { finish(); return; }
   fxGood(); next();
 }
 function wrong() {
   const q = G.q;
   G.score = Math.max(0, G.score - 1); G.errors++;
-  fxBad(q); next();
+  fxBad(q);
+  // Challenges: « sans filet » ends at the first mistake; the 10th answer ends the others (after the feedback).
+  if (G.ch && (G.ch.d.kind === 'nofall' || (G.ch.d.kind === 'q10' && G.good + G.errors >= 10))) {
+    G.active = false; const run = G.run; setTimeout(() => { if (G.run === run) chFinish(); }, 1100); return;
+  }
+  next();
 }
-function next() { G.q = makeQuestion(G.level, G.q); G.typed = ''; renderQ(); }
+function next() { G.q = G.ch ? chQuestion(G.q) : makeQuestion(G.level, G.q); G.typed = ''; renderQ(); }
 
 let lastWord = '';
 function showWord(text, kind, sub) {
@@ -2353,7 +2435,7 @@ function fxGood() {
 function fxBad(q) {
   sfxBad();
   try { if (navigator.vibrate) navigator.vibrate(80); } catch (e) {}
-  showWord('Mauvaise réponse', 'bad', q.a + ' ' + SYM[q.op] + ' ' + q.b + ' = ' + fmtNum(q.r));
+  showWord('Mauvaise réponse', 'bad', q.full || (q.a + ' ' + SYM[q.op] + ' ' + q.b + ' = ' + fmtNum(q.r)));
   flashFrame('ko');
 }
 function quitGame() {
@@ -2389,6 +2471,7 @@ addEventListener('keydown', e => {
 });
 
 function finish() {
+  if (G.ch) { chFinish(); return; }
   G.active = false; releaseWake();
   const d = G.dur, timed = !!d.sec;
   const ms = timed ? d.sec * 1000 : Math.round(elapsedMs());
@@ -2649,7 +2732,7 @@ function parade(n, giants) {
   if (giants >= 1) send(runner('🦄', false, { giant: true, dur: 5 }), 1500);
   if (giants >= 2) send(runner('🐎', true, { giant: true, dur: 4.5 }), 4200);
 }
-$('#retryBtn').addEventListener('click', () => { clearCelebration(); if (updateReady) { renderMenu(); show('menu'); return; } startGame(); });
+$('#retryBtn').addEventListener('click', () => { clearCelebration(); if (updateReady) { renderMenu(); show('menu'); return; } if (G.ch && chPlayable(G.ch.day)) startChallenge(G.ch.day); else { G.ch = null; startGame(); } });
 $('#menuBtn').addEventListener('click', () => { clearCelebration(); renderMenu(); show('menu'); });
 
 /* ---------- leaderboard ---------- */
@@ -2896,7 +2979,7 @@ function saveProfile() {
   syncAvatars(); try { pushCollections(); } catch (e) {}
   const go = draft.thenStart;
   closeSheet(); renderMenu();
-  if (go) startGame();
+  if (go) { G.ch = null; startGame(); }
 }
 $('#saveBtn').addEventListener('click', saveProfile);
 $('#addBtn').addEventListener('click', () => openEditor(null));
@@ -4769,6 +4852,333 @@ function renderFamBtn() {
   if (n) { const d = el('span', 'dot'); d.setAttribute('aria-hidden', 'true'); b.appendChild(d); }
   b.setAttribute('aria-label', (g ? 'Ma famille : ' + famGroups[g].name : 'Créer ou rejoindre une famille') + (n ? ', ' + n + ' demande' + (n > 1 ? 's' : '') + ' à valider' : '') + (waiting ? ', demande en attente' : ''));
 }
+/* ---------- v39 — Défi du jour ----------
+   One challenge a day, the same for everyone (they take turns, see CHALLENGES), sized by the level chosen in the menu.
+   Rewards, once per challenge: finished = 15 gold tokens, no mistake = 1 rainbow token, no mistake and a good score = 1 gem.
+   It can be replayed at will; the challenges of the last 7 days stay playable to catch up. Results are kept 40 days. */
+const HOLE = {};
+const CH_COINS = 15, CH_KEEP = 40, CH_BACK = 7;
+const chL = () => modeById(level).tier;                      // 1 … 5
+const between = (a, b) => a + rnd(b - a + 1);
+const signed = n => n < 0 ? '−' + Math.abs(n) : String(n);
+const dayNum = day => Math.floor(ymdT(day) / DAY_MS);
+// q: { parts: [... HOLE ...] (the hole is where the answer is typed), r: answer, full: the whole sentence, solved }
+const mk = (parts, r, full) => ({ parts, r, full, key: parts.join('|') });
+function fromNormal(L) {   // a question of the menu level, as in a normal game
+  const q = makeQuestion(MODES[L - 1].id, null);
+  return mk([q.a + ' ' + SYM[q.op] + ' ' + q.b + ' = ', HOLE], q.r, q.a + ' ' + SYM[q.op] + ' ' + q.b + ' = ' + signed(q.r));
+}
+const CHALLENGES = [
+  { id: 'dbl', ico: '🔁', name: 'Doubles et moitiés', kind: 'q10', target: 25,
+    rule: L => 'Trouve le double ou la moitié du nombre, jusqu’à ' + [5, 9, 25, 50, 100][L - 1] + ' pour les doubles.',
+    gen: L => {
+      const n = 1 + rnd([5, 9, 25, 50, 100][L - 1]);
+      return Math.random() < .5 ? mk(['Double de ' + n + ' = ', HOLE], 2 * n, 'Double de ' + n + ' = ' + 2 * n)
+        : mk(['Moitié de ' + 2 * n + ' = ', HOLE], n, 'Moitié de ' + 2 * n + ' = ' + n);
+    } },
+  { id: 'tab', ico: '✖️', name: 'La table du jour', kind: 'q10', target: 30,
+    table: (L, day) => L <= 2 ? [2, 5, 10][dayNum(day) % 3] : 2 + dayNum(day) % 8,
+    rule(L, day) { const t = this.table(L, day); return 'Toute la table de ' + t + (L >= 4 ? ', avec des multiplications et des divisions.' : ', en multiplications.'); },
+    gen(L, day) {
+      const t = this.table(L, day), k = 1 + rnd(L === 5 ? 12 : 10);
+      if (L >= 4 && Math.random() < .45) return mk([k * t + ' ÷ ' + t + ' = ', HOLE], k, k * t + ' ÷ ' + t + ' = ' + k);
+      const [a, b] = Math.random() < .5 ? [k, t] : [t, k];
+      return mk([a + ' × ' + b + ' = ', HOLE], a * b, a + ' × ' + b + ' = ' + a * b);
+    } },
+  { id: 'ami', ico: '🔟', name: 'Les amis de ' , kind: 'q10', target: 25,
+    total: L => [10, 10, 20, 100, 1000][L - 1],
+    title(L) { return 'Les amis de ' + this.total(L); },
+    rule(L) { return 'Trouve le nombre qui manque pour faire ' + this.total(L) + '.'; },
+    gen(L) {
+      const T = this.total(L), a = L === 5 ? 10 * between(1, 99) : between(1, T - 1), b = T - a;
+      return L >= 2 && Math.random() < .5 ? mk([HOLE, ' + ' + a + ' = ' + T], b, b + ' + ' + a + ' = ' + T)
+        : mk([a + ' + ', HOLE, ' = ' + T], b, a + ' + ' + b + ' = ' + T);
+    } },
+  { id: 'hole', ico: '🕳️', name: 'Le calcul à trou', kind: 'q10', target: 35,
+    rule: L => 'Un nombre a disparu dans le calcul (' + MODES[L - 1].name.toLowerCase() + ') : retrouve-le.',
+    gen: L => {
+      const q = makeQuestion(MODES[L - 1].id, null), s = SYM[q.op], res = ' = ' + signed(q.r);
+      return Math.random() < .5 ? mk([HOLE, ' ' + s + ' ' + q.b + res], q.a, q.a + ' ' + s + ' ' + q.b + res)
+        : mk([q.a + ' ' + s + ' ', HOLE, res], q.b, q.a + ' ' + s + ' ' + q.b + res);
+    } },
+  { id: 'three', ico: '➕', name: 'Trois nombres', kind: 'q10', target: 40,
+    rule: L => L <= 3 ? 'Des calculs avec trois nombres, à faire de gauche à droite.' : 'Trois nombres : la multiplication ou la division se fait en premier.',
+    gen: L => {
+      const d = () => between(1, 9);
+      let a = d(), b = d(), c = d(), text, r;
+      const form = L === 1 ? '++' : L === 2 ? pick(['+-', '-+']) : L === 3 ? pick(['++', '+-', '-+', '--']) : L === 4 ? pick(['*+', '*-', '+*']) : pick(['*+', '*-', '+*', '-*', '/+']);
+      if (form === '++') { r = a + b + c; text = a + ' + ' + b + ' + ' + c; }
+      else if (form === '+-') { r = a + b - c; text = a + ' + ' + b + ' − ' + c; }
+      else if (form === '-+') { r = a - b + c; text = a + ' − ' + b + ' + ' + c; }
+      else if (form === '--') { r = a - b - c; text = a + ' − ' + b + ' − ' + c; }
+      else if (form === '*+') { r = a * b + c; text = a + ' × ' + b + ' + ' + c; }
+      else if (form === '*-') { r = a * b - c; text = a + ' × ' + b + ' − ' + c; }
+      else if (form === '+*') { r = a + b * c; text = a + ' + ' + b + ' × ' + c; }
+      else if (form === '-*') { a = between(10, 30); r = a - b * c; text = a + ' − ' + b + ' × ' + c; }
+      else { const [x, y] = pick(DIV_PAIRS); r = x / y + c; text = x + ' ÷ ' + y + ' + ' + c; }
+      if (L <= 2 && r < 0) return CHALLENGES[4].gen(L);
+      return mk([text + ' = ', HOLE], r, text + ' = ' + signed(r));
+    } },
+  { id: 'seq', ico: '🔢', name: 'Les suites', kind: 'q10', target: 45,
+    rule: L => 'Trouve le nombre suivant de la suite' + (L >= 4 ? ' (on ajoute, on enlève ou on multiplie toujours pareil).' : ' (on ajoute ou on enlève toujours pareil).'),
+    gen: L => {
+      let terms;
+      if (L >= 4 && Math.random() < (L === 5 ? .4 : .25)) {
+        const k = L === 5 ? pick([2, 3]) : 2, s = between(1, L === 5 ? 5 : 4);
+        terms = [s, s * k, s * k * k, s * k * k * k, s * k * k * k * k];
+      } else {
+        const max = [2, 3, 5, 9, 12][L - 1], step = between(1, max) * (L >= 2 && Math.random() < .45 ? -1 : 1);
+        let s = between(0, [10, 20, 40, 60, 100][L - 1]);
+        if (step < 0) s += -step * 4;
+        terms = [0, 1, 2, 3, 4].map(i => s + i * step);
+      }
+      return mk([terms.slice(0, 4).join(', ') + ', ', HOLE], terms[4], terms.join(', '));
+    } },
+  { id: 'tens', ico: '💯', name: 'Les dizaines', kind: 'q10', target: 30,
+    rule: L => ['Des additions de dizaines.', 'Des soustractions de dizaines.', 'Des additions et soustractions de dizaines et de centaines.', 'Des dizaines multipliées ou divisées.', 'Des centaines et des milliers dans les quatre opérations.'][L - 1],
+    gen: L => {
+      const t = () => 10 * between(1, 9), h = () => 100 * between(1, 9);
+      let a, b, op;
+      if (L === 1) { a = t(); b = 10 * between(1, 10 - a / 10 || 1); op = '+'; }
+      else if (L === 2) { a = t(); b = 10 * between(1, a / 10); op = '−'; }
+      else if (L === 3) { const big = Math.random() < .5; a = big ? h() : t(); b = big ? h() : t(); op = pick(['+', '−']); if (op === '−' && b > a) [a, b] = [b, a]; }
+      else if (L === 4) { const k = between(2, 9), x = t(); if (Math.random() < .5) { a = x; b = k; op = '×'; } else { a = x * k; b = k; op = '÷'; } }
+      else { const f = pick(['×', '÷', '+', '−']); op = f;
+        if (f === '×') { a = pick([t(), h()]); b = between(2, 9); }
+        else if (f === '÷') { b = between(2, 9); a = 100 * between(1, 9) * b; }
+        else { a = 1000 * between(1, 9); b = h(); if (f === '−' && b > a) [a, b] = [b, a]; } }
+      const r = op === '+' ? a + b : op === '−' ? a - b : op === '×' ? a * b : a / b;
+      return mk([a + ' ' + op + ' ' + b + ' = ', HOLE], r, a + ' ' + op + ' ' + b + ' = ' + r);
+    } },
+  { id: 'flash', ico: '⚡', name: 'L’éclair', kind: 'eclair', sec: 20, need: [12, 11, 11, 10, 9],
+    rule(L) { return '20 secondes pour répondre au plus de calculs (' + MODES[L - 1].name.toLowerCase() + '). 5 bonnes réponses pour finir, ' + this.need[L - 1] + ' pour le bon score.'; },
+    gen: L => fromNormal(L) },
+  { id: 'nofall', ico: '💀', name: 'Sans filet', kind: 'nofall',
+    rule: L => 'Le plus de bonnes réponses d’affilée (' + MODES[L - 1].name.toLowerCase() + ') : la première erreur arrête tout. 5 pour finir, 10 pour le sans-faute, 20 pour le bon score.',
+    gen: L => fromNormal(L) },
+  { id: 'big', ico: '🧮', name: 'Le grand calcul', kind: 'posed', digits: [3, 4, 6, 8, 10], targets: [12, 16, 24, 32, 40],
+    size: L => ['centaines', 'milliers', 'centaines de milliers', 'dizaines de millions', 'milliards'][L - 1],
+    title(L) { return 'Le grand calcul des ' + this.size(L); },
+    rule(L) { return 'Une addition posée avec des ' + this.size(L) + '. Tape le résultat de droite à gauche, en commençant par les unités, comme à l’école.'; },
+    gen(L) {
+      const n = this.digits[L - 1], lo = Math.pow(10, n - 1);
+      const a = lo + rnd(9 * lo), b = lo + rnd(9 * lo), r = a + b;
+      return { posed: true, a, b, r, s: String(r), full: grp(a) + ' + ' + grp(b) + ' = ' + grp(r), key: a + '+' + b };
+    } }
+];
+const grp = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, NB);
+// Same challenge for everyone on a given day; 25 October 2026 is the first « grand calcul ».
+const chFor = day => CHALLENGES[((dayNum(day) + 8) % CHALLENGES.length + CHALLENGES.length) % CHALLENGES.length];
+const chTitle = (d, L) => d.title ? d.title(L) : d.name;
+const chTarget = (d, L) => d.kind === 'posed' ? d.targets[L - 1] : d.target;
+// What each finished game is worth: done (🪙), no mistake (🌈), no mistake and a good score (💎).
+function chTiers(d, L, res) {
+  if (d.kind === 'eclair') { const done = res.n >= 5; return { done, perfect: done && !res.e, good: done && !res.e && res.n >= d.need[L - 1] }; }
+  if (d.kind === 'nofall') return { done: res.n >= 5, perfect: res.n >= 10, good: res.n >= 20 };
+  return { done: true, perfect: !res.e, good: !res.e && res.ms <= chTarget(d, L) * 1000 };
+}
+function chGoals(d, L) {
+  if (d.kind === 'eclair') return ['Au moins 5 bonnes réponses', '5 bonnes réponses ou plus, sans erreur', d.need[L - 1] + ' bonnes réponses sans erreur'];
+  if (d.kind === 'nofall') return ['5 bonnes réponses d’affilée', '10 d’affilée', '20 d’affilée'];
+  return [d.kind === 'posed' ? 'Termine le calcul' : 'Termine les 10 calculs', 'Sans erreur', 'Sans erreur, en moins de ' + chTarget(d, L) + NB + 's'];
+}
+const chBetter = (d, a, b) => !b || (d.kind === 'eclair' || d.kind === 'nofall' ? a.n > b.n || (a.n === b.n && a.e < b.e) : a.e < b.e || (a.e === b.e && a.ms < b.ms));
+function chResText(d, r) {
+  if (!r) return '';
+  if (d.kind === 'eclair') return r.n + ' bonne' + (r.n > 1 ? 's' : '') + ' réponse' + (r.n > 1 ? 's' : '') + (r.e ? ' · ' + r.e + ' erreur' + (r.e > 1 ? 's' : '') : '');
+  if (d.kind === 'nofall') return r.n + ' d’affilée';
+  return fmtTime(r.ms) + ' · ' + (r.e ? r.e + ' erreur' + (r.e > 1 ? 's' : '') : 'sans erreur');
+}
+function chLog(w) { if (!w.chal || typeof w.chal !== 'object') w.chal = {}; return w.chal; }
+function chDays() { const out = [], now = nowMs(); for (let i = 0; out.length < CH_BACK && i < CH_BACK + 2; i++) { const k = dayKey(now - i * DAY_MS); if (!out.includes(k)) out.push(k); } return out; }
+const chPlayable = day => chDays().includes(day);
+const GOT = { g: 1, r: 2, m: 4 };
+
+/* playing */
+let chLast = null;
+function startChallenge(day) {
+  const p = current(); if (!p) { openWho(); return; }
+  if (!chPlayable(day)) return;
+  const d = chFor(day), L = chL();
+  chLast = day;
+  G.ch = { day, d, L };
+  closeCard();
+  startGame();
+}
+function chQuestion(prev) {
+  const c = G.ch; let q, guard = 0;
+  do q = c.d.gen(c.L, c.day); while (prev && q.key === prev.key && ++guard < 20);
+  return q;
+}
+function chFinish() {
+  G.active = false; releaseWake();
+  const c = G.ch, d = c.d, L = c.L, p = current(), w = wallet(p), log = chLog(w);
+  const res = { ms: d.kind === 'eclair' ? d.sec * 1000 : Math.round(elapsedMs()), n: G.good, e: G.errors, L };
+  const st = chTiers(d, L, res);
+  const rec = log[c.day] || (log[c.day] = { id: d.id, got: 0, tries: 0, best: null });
+  rec.tries++;
+  const gain = { g: 0, r: 0, m: 0 };
+  if (st.done && !(rec.got & GOT.g)) { rec.got |= GOT.g; gain.g = CH_COINS; }
+  if (st.perfect && !(rec.got & GOT.r)) { rec.got |= GOT.r; gain.r = 1; }
+  if (st.good && !(rec.got & GOT.m)) { rec.got |= GOT.m; gain.m = 1; }
+  const newBest = chBetter(d, res, rec.best);
+  if (newBest) rec.best = res;
+  w.g += gain.g; w.r += gain.r; w.m += gain.m;
+  const days = Object.keys(log).sort(); days.slice(0, Math.max(0, days.length - CH_KEEP)).forEach(k => { delete log[k]; });
+  saveColl();
+  // the win screen, worded for a challenge
+  const today = c.day === dayKey(nowMs());
+  $('#winLevel').textContent = '🎯 ' + (today ? 'Défi du jour' : 'Défi du ' + fmtDate(ymdT(c.day))) + ' · Niv. ' + L;
+  $('#winTitle').textContent = (st.done ? 'Défi réussi, ' : 'Presque, ') + p.name + NB + '!';
+  const bt = $('#winTime');
+  if (d.kind === 'eclair' || d.kind === 'nofall') { bt.textContent = String(res.n); const u = el('small'); u.textContent = d.kind === 'nofall' ? 'd’affilée' : (res.n > 1 ? 'bonnes réponses' : 'bonne réponse'); bt.appendChild(u); }
+  else bt.textContent = fmtTime(res.ms);
+  const badge = $('#winBadge'); badge.hidden = !st.perfect;
+  badge.textContent = st.good ? 'Bon score' + NB + '!' : 'Sans faute' + NB + '!';
+  $('#winRank').textContent = chTitle(d, L) + (newBest && rec.tries > 1 ? ' · nouveau meilleur résultat' : '');
+  $('#winGood').textContent = G.good; $('#winBad').textContent = G.errors;
+  // the three rewards of the challenge, lit when won (now or before)
+  const gains = $('#winGains'); gains.textContent = ''; gains.hidden = false;
+  const goals = chGoals(d, L);
+  [['g', '+' + CH_COINS, st.done], ['r', '+1', st.perfect], ['m', '+1', st.good]].forEach(([k, n, ok], i) => {
+    const had = (rec.got & GOT[k]) && !gain[k];
+    const s = curNode(k, gain[k] ? n : had ? '✓' : '—', ' ch-goal' + (gain[k] ? ' won' : had ? ' had' : ' miss'));
+    s.title = goals[i] + (gain[k] ? ' : gagné !' : had ? ' : déjà gagné pour ce défi' : ' : pas encore');
+    s.style.animationDelay = (.6 + i * .18) + 's';
+    gains.appendChild(s);
+  });
+  const note = el('span', 'gift ch-note');
+  note.textContent = gain.g || gain.r || gain.m ? 'Récompenses gagnées pour ce défi' + NB + '!' : !st.done ? goals[0] + ' pour gagner les jetons.' : (rec.got === 7 ? 'Toutes les récompenses de ce défi sont gagnées.' : 'Prochain objectif : ' + (!(rec.got & GOT.r) ? goals[1] : goals[2]).toLowerCase() + '.');
+  note.style.animationDelay = '1.2s'; gains.appendChild(note);
+  $('#winList').textContent = '';
+  const perf = st.good ? 1 : st.perfect ? .7 : st.done ? .45 : .1;
+  renderWinIcons(st.good ? 9 : st.perfect ? 7 : st.done ? 5 : 1, p);
+  $('#winCard').classList.toggle('record', st.good);
+  fx.textContent = '';
+  show('win');
+  celebrate(L, st.good, '', st.good ? 'Bon score' + NB + '!' : null, perf);
+  checkUpdate();
+}
+
+/* the posed addition: digits typed from the right */
+function renderPosed() {
+  const q = G.q, box = $('#posed'); box.textContent = '';
+  const S = q.s, A = String(q.a), B = String(q.b), cols = S.length + 1;
+  const row = (str, cls, sign) => {
+    const r = el('div', 'pr ' + cls);
+    for (let i = 0; i < cols; i++) {
+      const fromRight = cols - 1 - i, ch = i === 0 ? sign : (str[str.length - fromRight - 1] || '');
+      const c = el('span', 'pd' + (fromRight % 3 === 2 && fromRight < cols - 2 ? ' gap' : '')); c.textContent = ch || '';
+      r.appendChild(c);
+    }
+    return r;
+  };
+  box.append(row(A, 'a', ''), row(B, 'b', '+'), el('div', 'pline'));
+  const res = el('div', 'pr res'), n = G.typed.length;
+  for (let i = 0; i < cols; i++) {
+    const fromRight = cols - 1 - i, c = el('span', 'pd' + (fromRight % 3 === 2 && fromRight < cols - 2 ? ' gap' : ''));
+    if (i > 0) {
+      if (fromRight < n) c.textContent = G.typed[fromRight];
+      else if (fromRight === n) { c.classList.add('cur'); c.textContent = '?'; }
+      else if (fromRight < S.length) { c.classList.add('todo'); c.textContent = '·'; }
+    }
+    res.appendChild(c);
+  }
+  box.appendChild(res);
+  box.style.setProperty('--cols', cols);
+}
+function posedPress(k) {
+  if (k === '-') return;
+  const S = G.q.s, i = S.length - 1 - G.typed.length;
+  if (k === S[i]) {
+    G.typed += k; G.good = G.typed.length; renderPosed();
+    tone({ f: 880 + 60 * G.typed.length, d: .08, type: 'triangle', g: .12 });
+    if (G.typed.length === S.length) { fxGood(); chFinish(); }
+  } else {
+    G.errors++; sfxBad(); flashFrame('ko');
+    try { if (navigator.vibrate) navigator.vibrate(60); } catch (e) {}
+    const cur = $('#posed .cur'); if (cur) { cur.classList.remove('bad'); void cur.offsetWidth; cur.classList.add('bad'); }
+  }
+}
+
+/* home button and sheet */
+function renderChalBtn() {
+  const b = $('#chalBtn'), p = current();
+  b.hidden = !p; if (!p) return;
+  const day = dayKey(nowMs()), d = chFor(day), L = chL(), rec = chLog(wallet(p))[day], got = rec ? rec.got : 0;
+  b.textContent = '';
+  const t = el('span', 'ct'); const s = el('small'); s.textContent = '🎯 Défi du jour'; const n = el('b'); n.textContent = d.ico + ' ' + (d.kind === 'posed' ? d.name : chTitle(d, L));
+  t.append(s, n);
+  const ic = el('span', 'ch-icons'); ic.setAttribute('aria-hidden', 'true');
+  ['g', 'r', 'm'].forEach(k => { const c = coinNode(k); if (!(got & GOT[k])) c.classList.add('off'); ic.appendChild(c); });
+  b.append(t, ic);
+  b.setAttribute('aria-label', 'Défi du jour : ' + chTitle(d, L) + ', ' + [got & 1 ? 'jetons gagnés' : '', got & 2 ? 'jeton arc-en-ciel gagné' : '', got & 4 ? 'gemme gagnée' : ''].filter(Boolean).join(', '));
+}
+function chDayLabel(day) {
+  const t = dayKey(nowMs()), y = dayKey(nowMs() - DAY_MS);
+  if (day === t) return 'Aujourd’hui';
+  if (day === y) return 'Hier';
+  const d = new Date(ymdT(day)); return DOW[d.getUTCDay()] + ' ' + d.getUTCDate() + ' ' + MO[d.getUTCMonth()];
+}
+function openChallenges() {
+  const p = current(); if (!p) { openWho(); return; }
+  const box = $('#cardSheetIn'); box.textContent = '';
+  const top = el('div', 'sheet-top'); const h = el('h3'); h.textContent = '🎯 Défi du jour';
+  const x = el('button', 'close'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Fermer'); x.addEventListener('click', closeCard);
+  top.append(h, x);
+  const wrap = el('div', 'ch-sheet');
+  const w = wallet(p), log = chLog(w), L = chL(), m = MODES[L - 1], days = chDays(), today = days[0];
+  const d = chFor(today), rec = log[today];
+  const card = el('div', 'ch-card');
+  const ico = el('div', 'ch-ico'); ico.textContent = d.ico; ico.setAttribute('aria-hidden', 'true');
+  const nm = el('h4'); nm.textContent = chTitle(d, L);
+  const lv = el('span', 'mode-pill'); lv.textContent = 'Niv. ' + L + ' · ' + m.name; lv.style.setProperty('--c', m.color);
+  const rule = el('p'); rule.textContent = d.rule(L, today);
+  const goals = el('ul', 'ch-goals'), gl = chGoals(d, L);
+  [['g', CH_COINS + ' jetons dorés'], ['r', '1 jeton arc-en-ciel'], ['m', '1 gemme']].forEach(([k, what], i) => {
+    const li = el('li', (rec && rec.got & GOT[k]) ? 'got' : '');
+    li.append(coinNode(k));
+    const t = el('span'); const b = el('b'); b.textContent = what; const s = el('small'); s.textContent = gl[i]; t.append(b, s);
+    const ok = el('span', 'ok'); ok.textContent = (rec && rec.got & GOT[k]) ? '✓' : ''; ok.setAttribute('aria-label', (rec && rec.got & GOT[k]) ? 'gagné' : 'pas encore');
+    li.append(t, ok); goals.appendChild(li);
+  });
+  const best = el('p', 'ch-best'); best.textContent = rec && rec.best ? 'Ton meilleur : ' + chResText(d, rec.best) + (rec.best.L && rec.best.L !== L ? ' (niv. ' + rec.best.L + ')' : '') : 'Pas encore joué aujourd’hui.';
+  const go = el('button', 'start'); go.type = 'button'; go.textContent = rec ? 'Rejouer le défi' : 'Jouer le défi';
+  go.addEventListener('click', () => startChallenge(today));
+  card.append(ico, nm, lv, rule, goals, best, go);
+  wrap.appendChild(card);
+  const help = el('p', 'help'); help.textContent = 'Rejoue autant que tu veux : chaque récompense se gagne une seule fois par défi. Le défi suit le niveau choisi dans le menu.';
+  wrap.appendChild(help);
+  const h4 = el('h4'); h4.textContent = 'Défis précédents'; wrap.appendChild(h4);
+  const sub = el('p', 'help left'); sub.textContent = 'Un défi manqué reste jouable pendant ' + CH_BACK + ' jours pour gagner ses récompenses.'; wrap.appendChild(sub);
+  const ul = el('ul', 'ch-list');
+  days.slice(1).forEach(day => ul.appendChild(chRow(day, log[day], true)));
+  wrap.appendChild(ul);
+  const older = Object.keys(log).filter(k => !days.includes(k)).sort().reverse();
+  if (older.length) {
+    const h5 = el('h4'); h5.textContent = 'Plus anciens'; wrap.appendChild(h5);
+    const ul2 = el('ul', 'ch-list'); older.forEach(day => ul2.appendChild(chRow(day, log[day], false))); wrap.appendChild(ul2);
+  }
+  box.append(top, wrap);
+  $('#cardSheet').hidden = false; box.scrollTop = 0;
+}
+function chRow(day, rec, playable) {
+  const d = (rec && CHALLENGES.find(c => c.id === rec.id)) || chFor(day), L = chL(), got = rec ? rec.got : 0;
+  const li = el('li', 'ch-row');
+  const ico = el('span', 'ico'); ico.textContent = d.ico; ico.setAttribute('aria-hidden', 'true');
+  const t = el('span', 'nm'); t.textContent = chTitle(d, rec && rec.best && rec.best.L || L);
+  const s = el('small'); s.textContent = chDayLabel(day) + (rec && rec.best ? ' · ' + chResText(d, rec.best) : ''); t.appendChild(s);
+  const ic = el('span', 'ch-icons'); ['g', 'r', 'm'].forEach(k => { const c = coinNode(k); if (!(got & GOT[k])) c.classList.add('off'); ic.appendChild(c); });
+  ic.setAttribute('aria-label', got === 7 ? 'toutes les récompenses gagnées' : (got ? 'récompenses en partie gagnées' : 'aucune récompense'));
+  li.append(ico, t, ic);
+  if (playable) {
+    const b = el('button', 'fam-btn' + (got === 7 ? '' : ' ok')); b.type = 'button'; b.textContent = got === 7 ? 'Rejouer' : rec ? 'Rattraper' : 'Jouer';
+    b.setAttribute('aria-label', b.textContent + ' le défi « ' + chTitle(d, L) + ' » de ' + chDayLabel(day).toLowerCase());
+    b.addEventListener('click', () => startChallenge(day));
+    li.appendChild(b);
+  }
+  return li;
+}
 function viewCard(c, fx, back) {
   const box = $('#cardSheetIn'); box.textContent = '';
   const top = el('div', 'sheet-top'); const b = el('button', 'quit'); b.type = 'button'; b.textContent = '← Retour'; b.addEventListener('click', back);
@@ -4798,7 +5208,7 @@ setTimeout(maybeClaim, 800);
 
 /* ---------- Updates: version.json (next to index.html) holds the number of the version online.
    When it is newer than this page, the game reloads itself between games (never during a game or an opening). ---------- */
-const APP_VERSION = 38;
+const APP_VERSION = 39;
 let updateReady = 0;
 // The version this page was asked to load: if the server is still sending an older copy, never reload in a loop.
 const askedVersion = Number(new URLSearchParams(location.search).get('v')) || 0;
