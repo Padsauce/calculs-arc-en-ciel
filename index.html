@@ -747,6 +747,15 @@ button:focus-visible,input:focus-visible,label:focus-within{outline:3px solid va
 .daily-info p{margin:0;color:var(--mist);font-size:13.5px;line-height:1.35}
 .daily-rw{display:flex;flex-wrap:wrap;gap:6px}
 .daily-rw span{font-weight:800;font-size:13px;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.22)}
+.mdl{display:inline-flex;align-items:center;gap:6px;flex:none;font-weight:800;font-variant-numeric:tabular-nums;font-size:16px}
+.mdl .md{display:inline-flex;align-items:center;gap:2px}
+.mdl .md i{font-style:normal;font-size:1.1em;line-height:1}
+.pane .mdl{font-size:15px}
+.my-medals{display:flex;flex-direction:column;gap:8px;padding:12px 14px}
+.my-medals b{font-family:var(--f-display);font-size:16px}
+.my-medals p{margin:0;color:var(--mist);font-size:13.5px;line-height:1.35}
+.mm-list{display:flex;flex-wrap:wrap;gap:6px}
+.mm{font-weight:800;font-size:13.5px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);white-space:nowrap}
 .daily-yh{margin:6px 4px -4px;font-family:var(--f-display);font-weight:800;font-size:17px;color:var(--mist)}
 .daily-win{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;max-width:360px;animation:cardIn .6s cubic-bezier(.2,1.4,.4,1) both}
 .daily-medal{font-size:min(30vw,120px);line-height:1;filter:drop-shadow(0 8px 18px rgba(255,216,107,.6));animation:float 1.4s ease-in-out infinite alternate}
@@ -3604,8 +3613,9 @@ $('#collBtn').addEventListener('click', () => openColl('shop'));
 $('#collBack').addEventListener('click', () => { renderMenu(); show('menu'); });
 document.querySelectorAll('#collTabs .tab').forEach(b => b.addEventListener('click', () => { collTab = b.dataset.tab; renderColl(); $('#coll').scrollTop = 0; }));
 
-/* ---------- Daily leaderboard: one ranking for the whole day (Paris time), reset at midnight ----------
-   Daily points of a game = final points × level number (Niv. 1 to 5), added up over the day.
+/* ---------- Daily leaderboard: a medal table for the day (Paris time), reset at midnight ----------
+   v41: every level × mode is an event (6 × 4 = 24). Each day, the 3 best of each event (best game of the day per player)
+   win gold, silver and bronze. Ranking: gold 3 points, silver 2, bronze 1; then more golds, more silvers, the first to get there.
    The podium of a finished day is rewarded on the next visit: 1st 💎 + card pack, 2nd 💎 + promo pack, 3rd promo pack. */
 const PARIS_DAY = new Intl.DateTimeFormat('fr-CA', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' });
 const dayKey = t => PARIS_DAY.format(new Date(t));
@@ -3614,19 +3624,44 @@ const DAY_REWARDS = [
   { m: 1, classic: 0, promo: 1 },
   { m: 0, classic: 0, promo: 1 }
 ];
-const dayPoints = s => Math.max(0, Math.round(s.points || 0)) * (modeById(s.level) ? modeById(s.level).tier : 1);
-// keys: only these players (a family), or everyone.
+// Players an event needs before it gives medals (1: a player alone in an event gets the gold).
+const MEDAL_MIN = 1;
+const evKey = s => s.level + '|' + durOf(s);
+const evName = ev => { const [l, d] = ev.split('|'); return 'Niv. ' + modeById(l).tier + ' · ' + durById(d).short; };
+const MEDALS = ['🥇', '🥈', '🥉'];
+// keys: only these players (a family), or everyone. Returns the medal holders, best first; .events: each event's ranking.
 function dailyBoard(day, fair = false, keys = null) {
-  const by = new Map();
+  const by = new Map(), events = new Map();
   allScores().forEach(s => {
     if (!s.date || dayKey(s.date) !== day) return;
     if (fair && isHiddenScore(s)) return;
     const k = pkey(s); if (!k || (keys && !keys.has(k))) return;
-    let e = by.get(k); if (!e) by.set(k, e = { key: k, s, pts: 0, games: 0, last: 0 });
-    e.pts += dayPoints(s); e.games++;
+    let e = by.get(k); if (!e) by.set(k, e = { key: k, s, games: 0, last: 0, m: [0, 0, 0], pts: 0, at: 0, won: [] });
+    e.games++;
     if (s.date > e.last) { e.last = s.date; e.s = s; }
+    const timed = durOf(s) !== 'pts10';
+    if (timed && !(s.points > 0)) return;
+    const ev = evKey(s); let best = events.get(ev); if (!best) events.set(ev, best = new Map());
+    const cur = best.get(k);
+    if (!cur || (timed ? s.points > cur.points || (s.points === cur.points && (s.errors < cur.errors || (s.errors === cur.errors && s.date < cur.date))) : s.time < cur.time || (s.time === cur.time && s.date < cur.date))) best.set(k, s);
   });
-  return [...by.values()].filter(e => e.pts > 0).sort((a, b) => b.pts - a.pts || a.last - b.last);
+  const ranks = new Map();
+  events.forEach((best, ev) => {
+    const timed = ev.split('|')[1] !== 'pts10';
+    const list = [...best.values()].sort(timed ? (a, b) => b.points - a.points || a.errors - b.errors || a.date - b.date : (a, b) => a.time - b.time || a.date - b.date);
+    ranks.set(ev, list);
+    if (list.length < MEDAL_MIN) return;
+    list.slice(0, 3).forEach((s, i) => { const e = by.get(pkey(s)); e.m[i]++; e.pts += 3 - i; e.at = Math.max(e.at, s.date); e.won.push({ ev, rank: i }); });
+  });
+  const out = [...by.values()].filter(e => e.pts > 0).sort((a, b) => b.pts - a.pts || b.m[0] - a.m[0] || b.m[1] - a.m[1] || a.at - b.at);
+  out.events = ranks;
+  return out;
+}
+const medalText = e => e.m.map((n, i) => n ? MEDALS[i] + NB + n : '').filter(Boolean).join('  ');
+function medalNode(e) {
+  const box = el('span', 'mdl'); box.setAttribute('aria-label', e.m[0] + ' or, ' + e.m[1] + ' argent, ' + e.m[2] + ' bronze');
+  e.m.forEach((n, i) => { if (!n) return; const c = el('span', 'md'); const ic = el('i'); ic.textContent = MEDALS[i]; c.append(ic, document.createTextNode(String(n))); box.appendChild(c); });
+  return box;
 }
 function msToMidnight() {
   // Next Paris midnight, found by stepping forward until the Paris day changes.
@@ -3652,12 +3687,12 @@ function claimDailyRewards() {
       const me = String(p.name || '').trim().toLowerCase();
       const podium = dailyBoard(d, true).slice(0, 3);
       const i = podium.findIndex(e => e.key === me);
-      if (i >= 0) { const r = DAY_REWARDS[i]; grantReward(w, r); won.push({ p, rank: i + 1, day: d, pts: podium[i].pts, r }); }
+      if (i >= 0) { const r = DAY_REWARDS[i]; grantReward(w, r); won.push({ p, rank: i + 1, day: d, pts: medalText(podium[i]), r }); }
       // v37: the family podium (at least 2 players of the family that day; fewer winners in small families)
       const fg = famIdOf(p);
       if (fg) {
         const fl = dailyBoard(d, true, famKeys(fg)), j = fl.findIndex(e => e.key === me);
-        if (fl.length >= 2 && j >= 0 && j < famPrized(famSize(fg))) { const r = FAM_REWARDS[j]; grantReward(w, r); won.push({ p, rank: j + 1, day: d, pts: fl[j].pts, r, fam: famGroups[fg].name }); }
+        if (fl.length >= 2 && j >= 0 && j < famPrized(famSize(fg))) { const r = FAM_REWARDS[j]; grantReward(w, r); won.push({ p, rank: j + 1, day: d, pts: medalText(fl[j]), r, fam: famGroups[fg].name }); }
       }
     });
   });
@@ -3689,8 +3724,8 @@ function showDailyRewards(list) {
     const p = el('p'); const d = new Date(x.day + 'T12:00:00');
     const when = days > 1 ? d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) : 'Hier';
     const who = x.fam ? 'famille « ' + x.fam + ' »' : 'tous les joueurs';
-    p.textContent = (days > 1 || anyFam) ? when + ' · ' + who + ' : ' + ordinalF(x.rank) + ' avec ' + x.pts + ' points' + NB + '!'
-      : 'Hier, tu as fini à la ' + ordinalF(x.rank) + ' avec ' + x.pts + ' points' + NB + '!';
+    p.textContent = (days > 1 || anyFam) ? when + ' · ' + who + ' : ' + ordinalF(x.rank) + ' avec ' + x.pts + NB + '!'
+      : 'Hier, tu as fini à la ' + ordinalF(x.rank) + ' avec ' + x.pts + NB + '!';
     box.append(p, rewardChips(x.r));
   });
   const acts = el('div', 'op-actions');
@@ -3704,7 +3739,7 @@ function showDailyRewards(list) {
 
 /* board view */
 const DAY_MARKS = ['💎 + 🎴', '💎 + 🎁', '🎁'];
-function dailyRows(ol, list, hiKey, { limit = 20, marks = DAY_MARKS, emptyText = 'Personne n’a encore joué aujourd’hui. Lance la première partie' + NB + '!' } = {}) {
+function dailyRows(ol, list, hiKey, { limit = 20, marks = DAY_MARKS, emptyText = 'Personne n’a encore de médaille aujourd’hui. Lance la première partie' + NB + '!' } = {}) {
   ol.textContent = '';
   if (!list.length) { const li = el('li', 'empty'); li.textContent = emptyText; ol.appendChild(li); return; }
   let shown = list.slice(0, limit);
@@ -3720,9 +3755,8 @@ function dailyRows(ol, list, hiKey, { limit = 20, marks = DAY_MARKS, emptyText =
     const aw = el('span', 'avwrap' + (i < 3 ? ' sun s' + (i + 1) : '')); aw.appendChild(avatarNode(av, name));
     if (i === 0) { const c = el('span', 'crown'); c.textContent = '👑'; aw.appendChild(c); }
     const nm = el('span', 'nm'); nm.textContent = name;
-    const sm = el('small'); sm.textContent = e.games + ' partie' + (e.games > 1 ? 's' : '') + (marks[i] ? ' · ' + marks[i] : ''); nm.appendChild(sm);
-    const tm = el('span', 'tm'); tm.textContent = e.pts + NB + 'pts';
-    li.append(rk, aw, nm, tm); li.classList.add('tap'); li.addEventListener('click', () => openPlayer(e.key, s)); ol.appendChild(li);
+    const sm = el('small'); sm.textContent = e.pts + NB + 'pt' + (e.pts > 1 ? 's' : '') + (marks[i] ? ' · ' + marks[i] : ''); nm.appendChild(sm);
+    li.append(rk, aw, nm, medalNode(e)); li.classList.add('tap'); li.addEventListener('click', () => openPlayer(e.key, s)); ol.appendChild(li);
   });
 }
 function renderDaily() {
@@ -3734,19 +3768,29 @@ function renderDaily() {
   const info = el('div', 'daily-info');
   const ms = msToMidnight(), hh = Math.floor(ms / 3600e3), mm = Math.floor(ms % 3600e3 / 60e3);
   const t = el('div', 'daily-time'); t.textContent = '☀️ Fin du jour dans ' + (hh ? hh + ' h ' : '') + String(mm).padStart(hh ? 2 : 1, '0') + ' min';
-  const rule = el('p'); rule.textContent = 'Toutes les parties du jour comptent : tes points × le numéro du niveau. ' + (fam
+  const rule = el('p'); rule.textContent = 'Chaque niveau et chaque mode est une épreuve (24 en tout). Chaque jour, les 3 meilleurs de chaque épreuve gagnent l’or, l’argent ou le bronze : or = 3 points, argent = 2, bronze = 1. Le classement du jour se fait avec ces points. ' + (fam
     ? 'Le podium de la famille « ' + fam.name + ' » gagne des cadeaux, à récupérer demain, s’il y a au moins 2 joueurs de la famille ce jour-là. Le podium de tous les joueurs continue en plus.'
     : 'Le podium gagne des cadeaux, à récupérer demain.');
   const rw = el('div', 'daily-rw');
-  (fam ? [['🥇', '🎁 sachet promo'], ['🥈', '🪙 30 jetons dorés'], ['🥉', '🪙 15 jetons dorés']].slice(0, famPrized(size))
-    : [['🥇', '💎 + 🎴 sachet de cartes'], ['🥈', '💎 + 🎁 sachet promo'], ['🥉', '🎁 sachet promo']]).forEach(([m, txt]) => { const d = el('span'); d.textContent = m + ' ' + txt; rw.appendChild(d); });
-  if (fam && famPrized(size) < 3) { const d = el('span'); d.textContent = famPrized(size) === 1 ? '🥈 dès 3 joueurs · 🥉 dès 6' : '🥉 dès 6 joueurs'; d.style.opacity = '.7'; rw.appendChild(d); }
+  (fam ? [['1re', '🎁 sachet promo'], ['2e', '🪙 30 jetons dorés'], ['3e', '🪙 15 jetons dorés']].slice(0, famPrized(size))
+    : [['1re', '💎 + 🎴 sachet de cartes'], ['2e', '💎 + 🎁 sachet promo'], ['3e', '🎁 sachet promo']]).forEach(([m, txt]) => { const d = el('span'); d.textContent = m + ' place · ' + txt; rw.appendChild(d); });
+  if (fam && famPrized(size) < 3) { const d = el('span'); d.textContent = famPrized(size) === 1 ? '2e place dès 3 joueurs · 3e dès 6' : '3e place dès 6 joueurs'; d.style.opacity = '.7'; rw.appendChild(d); }
   info.append(t, rule, rw);
   const panel = el('div', 'panel board-list'); const ol = el('ol', 'rows'); panel.appendChild(ol);
-  dailyRows(ol, list, myKey, { marks, emptyText: fam ? 'Personne de ta famille n’a encore joué aujourd’hui. Lance la première partie' + NB + '!' : undefined });
+  dailyRows(ol, list, myKey, { marks, emptyText: fam ? 'Personne de ta famille n’a encore de médaille aujourd’hui. Lance la première partie' + NB + '!' : undefined });
   box.append(info, panel);
   const me = list.findIndex(e => e.key === myKey);
-  if (me >= 20) { const pl = el('p', 'board-mode'); pl.style.fontSize = '16px'; pl.textContent = 'Toi : ' + ordinalF(me + 1) + ' avec ' + list[me].pts + ' points'; box.appendChild(pl); }
+  if (me >= 20) { const pl = el('p', 'board-mode'); pl.style.fontSize = '16px'; pl.textContent = 'Toi : ' + ordinalF(me + 1) + ' avec ' + medalText(list[me]); box.appendChild(pl); }
+  // the current player's medals, event by event, and where one is still within reach
+  if (p) {
+    const mine = me >= 0 ? list[me].won.slice().sort((a, b) => a.rank - b.rank || a.ev.localeCompare(b.ev)) : [];
+    const mb = el('div', 'panel my-medals'); const mh = el('b'); mh.textContent = 'Tes médailles aujourd’hui'; mb.appendChild(mh);
+    if (mine.length) { const ul = el('div', 'mm-list'); mine.forEach(w => { const c = el('span', 'mm'); c.textContent = MEDALS[w.rank] + ' ' + evName(w.ev); ul.appendChild(c); }); mb.appendChild(ul); }
+    else { const q = el('p'); q.textContent = 'Pas encore de médaille : joue une épreuve (un niveau et un mode) pour entrer dans le classement.'; mb.appendChild(q); }
+    const open = MODES.length * DURS.length - [...list.events.values()].filter(r => r.length >= 3).length;
+    const tip = el('p'); tip.textContent = open + ' épreuve' + (open > 1 ? 's ont' : ' a') + ' encore une médaille libre : il suffit d’y jouer pour la gagner.'; mb.appendChild(tip);
+    box.appendChild(mb);
+  }
   const yk = dayKey(nowMs() - 86400e3), y = dailyBoard(yk, true, keys).slice(0, 3);
   if (y.length) {
     const yh = el('p', 'daily-yh'); yh.textContent = fam ? 'Podium d’hier de la famille' : 'Podium d’hier';
@@ -3756,9 +3800,12 @@ function renderDaily() {
 }
 function dailyGainLine(rec) {
   const fam = famScope(), today = dayKey(nowMs()), list = dailyBoard(today, false, fam && fam.keys), k = pkey(rec);
+  const ev = evKey(rec), ranking = list.events.get(ev) || [], er = ranking.findIndex(x => pkey(x) === k);
+  if (er < 0) return null;
   const i = list.findIndex(e => e.key === k);
-  if (i < 0) return null;
-  const s = el('span', 'gift'); s.textContent = '☀️ +' + dayPoints(rec) + ' points du jour · ' + ordinalF(i + 1) + (fam ? ' de ta famille' : ' aujourd’hui');
+  const s = el('span', 'gift');
+  s.textContent = (er < 3 && ranking.length >= MEDAL_MIN ? MEDALS[er] + ' Médaille ' + ['d’or', 'd’argent', 'de bronze'][er] + ' du jour (' + evName(ev) + ')' : '☀️ ' + ordinalF(er + 1) + ' de l’épreuve du jour (' + evName(ev) + ')')
+    + (i >= 0 ? ' · ' + ordinalF(i + 1) + (fam ? ' de ta famille' : ' du classement du jour') : '');
   return s;
 }
 
@@ -3853,7 +3900,7 @@ function openPlayer(key, s, keepAll) {
   const ng = gamesOf(key), gm = el('div', 'pl-games'); gm.textContent = '🎮 ' + ng + ' partie' + (ng > 1 ? 's' : '') + ' jouée' + (ng > 1 ? 's' : '');
   hm.append(nm, pod, gm); hero.append(aw, hm, sc);
   const today = dailyBoard(dayKey(nowMs())), di = today.findIndex(e => e.key === key);
-  const dline = el('p', 'help'); dline.textContent = di >= 0 ? '☀️ Aujourd’hui : ' + (di ? (di + 1) + 'e' : '1re') + ' place du classement du jour (' + today[di].pts + ' pts)' : '☀️ Pas encore joué aujourd’hui';
+  const dline = el('p', 'help'); dline.textContent = di >= 0 ? '☀️ Aujourd’hui : ' + (di ? (di + 1) + 'e' : '1re') + ' place du tableau des médailles (' + medalText(today[di]) + ')' : '☀️ Pas encore de médaille aujourd’hui';
   // positions in the 20 boards
   const grid = el('div', 'rank-grid');
   grid.appendChild(el('span'));
@@ -4524,7 +4571,7 @@ function famScope(p = current()) { const g = famIdOf(p); return g ? { g, name: f
 const famAvatar = m => m && Number.isInteger(m.av) && m.av >= 0 && m.av < AVATARS.length ? { kind: 'emoji', i: m.av } : null;
 function famPrizeMarks(n) { return ['🎁', '🪙 30', '🪙 15'].slice(0, famPrized(n)); }
 function famPrizeText(n) {
-  const k = famPrized(n), parts = ['🥇 🎁 sachet promo', '🥈 30 jetons dorés', '🥉 15 jetons dorés'].slice(0, k);
+  const k = famPrized(n), parts = ['1re place : 🎁 sachet promo', '2e : 30 jetons dorés', '3e : 15 jetons dorés'].slice(0, k);
   return parts.join(' · ') + (k < 3 ? ' (' + (k === 1 ? '2e place dès 3 joueurs, 3e dès 6' : '3e place dès 6 joueurs') + ')' : '');
 }
 
@@ -4532,7 +4579,8 @@ function watchFamilies() {
   if (!fb || famWatching) return;
   famWatching = true;
   let gotG = false, gotM = false;
-  const fail = e => { famState = e && e.code === 'permission-denied' ? 'denied' : (famState === 'ok' ? 'ok' : 'off'); famChanged(); };
+  // A listener that fails stops for good: react once, not at every retry.
+  const fail = e => { const st = e && e.code === 'permission-denied' ? 'denied' : (famState === 'ok' ? 'ok' : 'off'); if (st === famState) return; famState = st; famChanged(); };
   try {
     fb.db.collection('groups').onSnapshot(snap => {
       const o = {}; snap.forEach(d => { const v = d.data(); if (v && typeof v.name === 'string') o[d.id] = v; });
