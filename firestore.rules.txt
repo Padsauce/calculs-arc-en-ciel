@@ -199,5 +199,27 @@ service cloud.firestore {
         && (ownUpdate(mid) || otherUpdate(mid));
       allow delete: if mine(mid) || isAdmin();
     }
+
+    // ---------- Transfert de profil (v42) ----------
+    // Le profil voyage chiffré avec le code de 6 caractères (le serveur ne peut pas le lire),
+    // dans un document dont le nom est l'empreinte du code. Personne ne peut lister ces documents.
+    // Il ne sert que 15 minutes ; l'appareil qui reçoit vide le contenu, l'appareil qui envoie supprime le document.
+    match /moves/{mvid} {
+      allow get: if signedIn() && (resource == null || resource.data.exp > request.time);
+      allow list: if false;
+      allow create: if signedIn() && mvid.size() == 64
+        && request.resource.data.keys().hasOnly(['by', 'exp', 'd', 'z'])
+        && request.resource.data.by == request.auth.uid
+        && request.resource.data.exp is timestamp
+        && request.resource.data.exp > request.time
+        && request.resource.data.exp < request.time + duration.value(20, 'm')
+        && request.resource.data.d is string && request.resource.data.d.size() <= 1000000
+        && request.resource.data.z in [0, 1];
+      allow update: if signedIn() && resource.data.exp > request.time
+        && !('ok' in resource.data) && resource.data.d != ''
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['ok', 'd'])
+        && request.resource.data.ok in [1, 2] && request.resource.data.d == '';
+      allow delete: if signedIn() && (resource == null || resource.data.by == request.auth.uid || isAdmin());
+    }
   }
 }

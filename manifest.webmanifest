@@ -1,13 +1,23 @@
 {
+  "id": "./",
   "name": "Calculs Arc-en-ciel",
   "short_name": "Calculs",
+  "description": "Jeu de calcul mental plein de licornes et de paillettes : additions, soustractions, multiplications, divisions et puissances, défi du jour et cartes à collectionner.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#170d33",
   "theme_color": "#170d33",
   "lang": "fr",
+  "dir": "ltr",
+  "categories": ["education", "games", "kids"],
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
-  ]
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "related_applications": [
+    { "platform": "webapp", "url": "https://padsauce.github.io/calculs-arc-en-ciel/manifest.webmanifest" }
+  ],
+  "prefer_related_applications": false
 }

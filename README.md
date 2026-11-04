@@ -4,5 +4,6 @@ Jeu de calcul mental pour téléphone et ordinateur : 5 niveaux, course aux 10 p
 
 - `index.html` : le jeu (tout tient dans ce fichier).
 - `firestore.rules.txt` : règles de la base Firebase du tableau commun.
+- `sw.js`, `manifest.webmanifest`, icônes et `splash/` : le jeu installable comme une appli (écran d’accueil), utilisable sans connexion.
 
 Les versions numérotées sont archivées dans le projet Claude « Jeu Calcul Mental ».
