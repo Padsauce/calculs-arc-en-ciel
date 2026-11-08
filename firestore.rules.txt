@@ -221,5 +221,25 @@ service cloud.firestore {
         && request.resource.data.ok in [1, 2] && request.resource.data.d == '';
       allow delete: if signedIn() && (resource == null || resource.data.by == request.auth.uid || isAdmin());
     }
+
+    // ---------- Diceplacement Adventures Dungeon (8 novembre 2026) ----------
+    // L'autre jeu du même auteur utilise les joueurs de Calculs : il lit players, scores et hidden sans rien y changer,
+    // et range ses propres résultats ici, un document "<uid>_<profil>" par profil et par appareil.
+    match /dungeon/{did} {
+      function stat(v) { return v is number && v >= 0 && v <= 1000000000; }
+      allow read: if signedIn();
+      allow create, update: if mine(did)
+        && request.resource.data.keys().hasOnly(['uid', 'pid', 'name', 'avatar', 'floorMax', 'gold', 'goldBest', 'rolls', 'turns', 'wins', 'games', 'tombsBest', 'updated'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.pid is string && request.resource.data.pid.size() > 0 && request.resource.data.pid.size() <= 40
+        && did == request.auth.uid + '_' + request.resource.data.pid
+        && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 16
+        && request.resource.data.avatar is int && request.resource.data.avatar >= 0 && request.resource.data.avatar < 1000
+        && stat(request.resource.data.floorMax) && stat(request.resource.data.gold) && stat(request.resource.data.goldBest)
+        && stat(request.resource.data.rolls) && stat(request.resource.data.turns) && stat(request.resource.data.wins) && stat(request.resource.data.games)
+        && request.resource.data.tombsBest is number && request.resource.data.tombsBest >= -1 && request.resource.data.tombsBest <= 1000000000
+        && request.resource.data.updated is number;
+      allow delete: if mine(did) || isAdmin();
+    }
   }
 }
